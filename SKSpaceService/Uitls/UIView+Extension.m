@@ -224,6 +224,6 @@
     self.layer.shadowRadius = 4.f;
     self.layer.shadowOpacity = 0.2f;
     self.layer.shadowOffset = CGSizeMake(1, 1);
-    self.layer.cornerRadius = 4.f;
+    self.layer.cornerRadius = 0.f;
 }
 @end

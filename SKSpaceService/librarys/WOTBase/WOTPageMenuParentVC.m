@@ -31,12 +31,6 @@
 
 - (UIViewController *)makeVC {
     UIViewController *basevc = [[UIViewController alloc]init];
-//    //解决布局空白问题
-//    BOOL is7Version=[[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0 ? YES : NO;
-//    if (is7Version) {
-//        self.edgesForExtendedLayout=UIRectEdgeNone;
-//    }
-    
     return basevc;
 }
 
@@ -52,6 +46,7 @@
     self.pageTabView.titleStyle = XXPageTabTitleStyleDefault;
     self.pageTabView.indicatorStyle = XXPageTabIndicatorStyleDefault;
     self.pageTabView.indicatorWidth = 20;
+    self.pageTabView.bottomOffLine = YES;
     [self.view addSubview:self.pageTabView];
 }
 

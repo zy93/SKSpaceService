@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WOTEnums.h"
 #import "XXPageTabView.h"
 #import "XXPageTabItemLable.h"
 @interface WOTPageMenuParentVC : UIViewController
-@property(assign)WOTPageMenuVCType vctype;
 @property (nonatomic, strong) XXPageTabView *pageTabView;
 
 @end
+
