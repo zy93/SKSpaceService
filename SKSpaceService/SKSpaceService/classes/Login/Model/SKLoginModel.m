@@ -11,3 +11,7 @@
 @implementation SKLoginModel
 
 @end
+
+@implementation SKLoginModel_msg
+
+@end

@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "WOTUserSingleton.h"
+#import "LoginViewController.h"
+#import "SKSalesMainVC.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self loadViewController];
+    
     return YES;
 }
 
@@ -92,6 +97,22 @@
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
+    }
+}
+
+-(void)loadViewController
+{
+    if ([WOTUserSingleton shared].isLogin) {
+        if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"]) {
+            self.window.rootViewController = [[SKSalesMainVC alloc] init];
+        }
+        else {
+            
+        }
+    }
+    else {
+        
+        self.window.rootViewController = [[LoginViewController alloc] init];
     }
 }
 

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		03076E34FFC25D455EE279CD /* libPods-SKSpaceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */; };
+		2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */; };
+		2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */; };
+		2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BF20181CB500A8CC19 /* XXPageTabView.m */; };
+		2A4AC5CA20181D5300A8CC19 /* WOTBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5C620181D5200A8CC19 /* WOTBaseNavigationController.m */; };
+		2A4AC5CD20181E9A00A8CC19 /* WOTPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5CB20181E9A00A8CC19 /* WOTPageMenuParentVC.m */; };
 		2A985074201707C7005705ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A985073201707C7005705ED /* AppDelegate.m */; };
 		2A98507A201707C7005705ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A985078201707C7005705ED /* Main.storyboard */; };
 		2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A98507B201707C7005705ED /* SKSpaceService.xcdatamodeld */; };
@@ -137,6 +142,16 @@
 
 /* Begin PBXFileReference section */
 		1F43617551F8FBAC1ED4B92C /* Pods-SKSpaceServiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2A4AC5BA201818E300A8CC19 /* SKSalesMainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesMainVC.h; sourceTree = "<group>"; };
+		2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesMainVC.m; sourceTree = "<group>"; };
+		2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXPageTabItemLable.m; sourceTree = "<group>"; };
+		2A4AC5BF20181CB500A8CC19 /* XXPageTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXPageTabView.m; sourceTree = "<group>"; };
+		2A4AC5C020181CB500A8CC19 /* XXPageTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXPageTabView.h; sourceTree = "<group>"; };
+		2A4AC5C120181CB500A8CC19 /* XXPageTabItemLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXPageTabItemLable.h; sourceTree = "<group>"; };
+		2A4AC5C620181D5200A8CC19 /* WOTBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBaseNavigationController.m; sourceTree = "<group>"; };
+		2A4AC5C820181D5300A8CC19 /* WOTBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBaseNavigationController.h; sourceTree = "<group>"; };
+		2A4AC5CB20181E9A00A8CC19 /* WOTPageMenuParentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPageMenuParentVC.m; sourceTree = "<group>"; };
+		2A4AC5CC20181E9A00A8CC19 /* WOTPageMenuParentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPageMenuParentVC.h; sourceTree = "<group>"; };
 		2A98506F201707C7005705ED /* SKSpaceService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKSpaceService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A985072201707C7005705ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A985073201707C7005705ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -399,6 +414,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A4AC5BD20181CB500A8CC19 /* XXPageTab */ = {
+			isa = PBXGroup;
+			children = (
+				2A4AC5C020181CB500A8CC19 /* XXPageTabView.h */,
+				2A4AC5BF20181CB500A8CC19 /* XXPageTabView.m */,
+				2A4AC5C120181CB500A8CC19 /* XXPageTabItemLable.h */,
+				2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */,
+			);
+			path = XXPageTab;
+			sourceTree = "<group>";
+		};
+		2A4AC5C420181D4B00A8CC19 /* WOTBase */ = {
+			isa = PBXGroup;
+			children = (
+				2A4AC5C820181D5300A8CC19 /* WOTBaseNavigationController.h */,
+				2A4AC5C620181D5200A8CC19 /* WOTBaseNavigationController.m */,
+				2A4AC5CC20181E9A00A8CC19 /* WOTPageMenuParentVC.h */,
+				2A4AC5CB20181E9A00A8CC19 /* WOTPageMenuParentVC.m */,
+			);
+			path = WOTBase;
+			sourceTree = "<group>";
+		};
 		2A985066201707C7005705ED = {
 			isa = PBXGroup;
 			children = (
@@ -462,48 +499,48 @@
 		2A9850A720170802005705ED /* Uitls */ = {
 			isa = PBXGroup;
 			children = (
+				2A9850C420170802005705ED /* NSString+URL.h */,
 				2A9850A820170802005705ED /* NSString+URL.m */,
+				2A9850C320170802005705ED /* UIColor+ColorChange.h */,
 				2A9850A920170802005705ED /* UIColor+ColorChange.m */,
 				2A9850AA20170802005705ED /* NSString+Category.h */,
+				2A9850C220170802005705ED /* NSString+Category.m */,
+				2A9850C120170802005705ED /* WOTConfigThemeUitls.h */,
 				2A9850AB20170802005705ED /* WOTConfigThemeUitls.m */,
-				2A9850AC20170802005705ED /* WOTQRCodeUtils.m */,
+				2A9850B120170802005705ED /* WOTFileUitls.h */,
+				2A9850C620170802005705ED /* WOTFileUitls.m */,
+				2A9850B220170802005705ED /* WOTMapManager.h */,
+				2A9850C520170802005705ED /* WOTMapManager.m */,
+				2A9850B420170802005705ED /* UIView+Extension.h */,
+				2A9850CF20170802005705ED /* UIView+Extension.m */,
+				2A9850B620170802005705ED /* JudgmentTime.h */,
+				2A9850CC20170802005705ED /* JudgmentTime.m */,
+				2A9850C920170802005705ED /* UIImage+Extension.h */,
+				2A9850B920170802005705ED /* UIImage+Extension.m */,
+				2A9850D320170802005705ED /* UItableView+Extension.h */,
+				2A9850BA20170802005705ED /* UItableView+Extension.m */,
+				2A9850D120170802005705ED /* UISearchBar+JCSearchBarPlaceholder.h */,
+				2A9850BC20170802005705ED /* UISearchBar+JCSearchBarPlaceholder.m */,
+				2A9850BE20170802005705ED /* UIDevice+Resolutions.h */,
 				2A9850AD20170802005705ED /* UIDevice+Resolutions.m */,
 				2A9850AE20170802005705ED /* NSDate+Uitls.h */,
-				2A9850AF20170802005705ED /* WOTLocationManager.m */,
-				2A9850B020170802005705ED /* UIImage+Blur.m */,
-				2A9850B120170802005705ED /* WOTFileUitls.h */,
-				2A9850B220170802005705ED /* WOTMapManager.h */,
-				2A9850B320170802005705ED /* WOTBueToothManager.h */,
-				2A9850B420170802005705ED /* UIView+Extension.h */,
-				2A9850B520170802005705ED /* UIViewController+Extension.m */,
-				2A9850B620170802005705ED /* JudgmentTime.h */,
-				2A9850B720170802005705ED /* MBProgressHUD+Extension.h */,
-				2A9850B820170802005705ED /* WOTEnumUtils.h */,
-				2A9850B920170802005705ED /* UIImage+Extension.m */,
-				2A9850BA20170802005705ED /* UItableView+Extension.m */,
-				2A9850BC20170802005705ED /* UISearchBar+JCSearchBarPlaceholder.m */,
-				2A9850BD20170802005705ED /* WOTUitls.h */,
-				2A9850BE20170802005705ED /* UIDevice+Resolutions.h */,
 				2A9850BF20170802005705ED /* NSDate+Uitls.m */,
 				2A9850C020170802005705ED /* WOTQRCodeUtils.h */,
-				2A9850C120170802005705ED /* WOTConfigThemeUitls.h */,
-				2A9850C220170802005705ED /* NSString+Category.m */,
-				2A9850C320170802005705ED /* UIColor+ColorChange.h */,
-				2A9850C420170802005705ED /* NSString+URL.h */,
-				2A9850C520170802005705ED /* WOTMapManager.m */,
-				2A9850C620170802005705ED /* WOTFileUitls.m */,
+				2A9850AC20170802005705ED /* WOTQRCodeUtils.m */,
 				2A9850C720170802005705ED /* UIImage+Blur.h */,
+				2A9850B020170802005705ED /* UIImage+Blur.m */,
 				2A9850C820170802005705ED /* WOTLocationManager.h */,
-				2A9850C920170802005705ED /* UIImage+Extension.h */,
+				2A9850AF20170802005705ED /* WOTLocationManager.m */,
+				2A9850B720170802005705ED /* MBProgressHUD+Extension.h */,
 				2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */,
-				2A9850CB20170802005705ED /* WOTEnumUtils.m */,
-				2A9850CC20170802005705ED /* JudgmentTime.m */,
 				2A9850CD20170802005705ED /* UIViewController+Extension.h */,
+				2A9850B520170802005705ED /* UIViewController+Extension.m */,
+				2A9850B820170802005705ED /* WOTEnumUtils.h */,
+				2A9850CB20170802005705ED /* WOTEnumUtils.m */,
+				2A9850B320170802005705ED /* WOTBueToothManager.h */,
 				2A9850CE20170802005705ED /* WOTBueToothManager.m */,
-				2A9850CF20170802005705ED /* UIView+Extension.m */,
+				2A9850BD20170802005705ED /* WOTUitls.h */,
 				2A9850D020170802005705ED /* WOTUitls.m */,
-				2A9850D120170802005705ED /* UISearchBar+JCSearchBarPlaceholder.h */,
-				2A9850D320170802005705ED /* UItableView+Extension.h */,
 			);
 			path = Uitls;
 			sourceTree = "<group>";
@@ -511,6 +548,8 @@
 		2A9850EA20170814005705ED /* librarys */ = {
 			isa = PBXGroup;
 			children = (
+				2A4AC5C420181D4B00A8CC19 /* WOTBase */,
+				2A4AC5BD20181CB500A8CC19 /* XXPageTab */,
 				2A9850EB20170814005705ED /* UMSocial */,
 				2A9850FF20170814005705ED /* Card */,
 				2A98510820170814005705ED /* HCSystemicQRCode */,
@@ -907,6 +946,8 @@
 		2AC82A9D201726CA0076305E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2A4AC5BA201818E300A8CC19 /* SKSalesMainVC.h */,
+				2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -979,9 +1020,9 @@
 			isa = PBXGroup;
 			children = (
 				2AC82AA7201726CA0076305E /* SKLoginModel.h */,
-				2AC82AA8201726CA0076305E /* WOTBaseModel.m */,
-				2AC82AA9201726CA0076305E /* WOTBaseModel.h */,
 				2AC82AAA201726CA0076305E /* SKLoginModel.m */,
+				2AC82AA9201726CA0076305E /* WOTBaseModel.h */,
+				2AC82AA8201726CA0076305E /* WOTBaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1334,6 +1375,7 @@
 				2A9851AB20170814005705ED /* SRSIMDHelpers.m in Sources */,
 				2A985074201707C7005705ED /* AppDelegate.m in Sources */,
 				2A9851BA20170814005705ED /* NSArray+MASAdditions.m in Sources */,
+				2A4AC5CD20181E9A00A8CC19 /* WOTPageMenuParentVC.m in Sources */,
 				2A9850E320170802005705ED /* WOTFileUitls.m in Sources */,
 				2A9851AA20170814005705ED /* SRRandom.m in Sources */,
 				2A9851AD20170814005705ED /* SRIOConsumerPool.m in Sources */,
@@ -1347,6 +1389,7 @@
 				2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */,
 				2A9850E520170803005705ED /* WOTEnumUtils.m in Sources */,
 				2A9850D420170802005705ED /* NSString+URL.m in Sources */,
+				2A4AC5CA20181D5300A8CC19 /* WOTBaseNavigationController.m in Sources */,
 				2A98519F20170814005705ED /* SRSecurityPolicy.m in Sources */,
 				2A9850E920170803005705ED /* WOTUitls.m in Sources */,
 				2A9850D820170802005705ED /* UIDevice+Resolutions.m in Sources */,
@@ -1362,6 +1405,7 @@
 				2A9850D520170802005705ED /* UIColor+ColorChange.m in Sources */,
 				2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */,
 				2A9850DC20170802005705ED /* UIImage+Extension.m in Sources */,
+				2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */,
 				2A9851A020170814005705ED /* SRProxyConnect.m in Sources */,
 				2A985085201707C7005705ED /* main.m in Sources */,
 				2A9851AF20170814005705ED /* NSURLRequest+SRWebSocket.m in Sources */,
@@ -1374,6 +1418,7 @@
 				2A9851AC20170814005705ED /* SRIOConsumer.m in Sources */,
 				2A9851AE20170814005705ED /* SRConstants.m in Sources */,
 				2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */,
+				2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */,
 				2A9850D920170802005705ED /* WOTLocationManager.m in Sources */,
 				2A9851BB20170814005705ED /* View+MASAdditions.m in Sources */,
 				2A98519120170814005705ED /* CardViewItem.m in Sources */,
@@ -1389,6 +1434,7 @@
 				2AC82A9A201725040076305E /* LoginViewController.m in Sources */,
 				2A9850DA20170802005705ED /* UIImage+Blur.m in Sources */,
 				2A9851B120170814005705ED /* UIScrollView+Touch.m in Sources */,
+				2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */,
 				2A9851BC20170814005705ED /* MASConstraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

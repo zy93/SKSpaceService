@@ -34,10 +34,10 @@
                           @"password":[WOTUitls md5HexDigestByString:pwd],
                           @"alias":alias
                           };
-    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/User/Login"];
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Staff/Login"];
     
     [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
-        SKLoginModel *model = [[SKLoginModel alloc] initWithDictionary:responseDic error:nil];
+        SKLoginModel_msg *model = [[SKLoginModel_msg alloc] initWithDictionary:responseDic error:nil];
         return model;
     } success:success fail:fail];
 }

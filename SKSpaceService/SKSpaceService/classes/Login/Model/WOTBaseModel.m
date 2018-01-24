@@ -9,5 +9,8 @@
 #import "WOTBaseModel.h"
 
 @implementation WOTBaseModel
-
++(BOOL)propertyIsOptional:(NSString *)propertyName
+{
+    return YES;
+}
 @end

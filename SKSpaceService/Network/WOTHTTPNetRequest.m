@@ -41,9 +41,9 @@
     [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"request URL:%@",task.originalRequest.URL.absoluteString);
+        NSLog(@"**********request URL:%@",task.originalRequest.URL.absoluteString);
         NSString *responseStr = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"responseStr:%@",responseStr);
+        NSLog(@"**********responseStr:%@",responseStr);
         NSError *error = nil;
         NSData *jsonData = [responseStr dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];

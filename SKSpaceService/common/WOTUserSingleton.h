@@ -13,9 +13,9 @@
 
 //用户信息
 @property (nonatomic, strong) SKLoginModel *userInfo;
+@property (nonatomic, assign, getter=isLogin) BOOL login;
 
-
-+(instancetype)shareUser;
++(instancetype)shared;
 -(void)saveUserInfoToPlistWithModel:(SKLoginModel *)model;
 -(void)deletePlistFile;
 

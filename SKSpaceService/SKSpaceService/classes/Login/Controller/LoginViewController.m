@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "Masonry.h"
 #import "UIColor+ColorChange.h"
-
+#import "AppDelegate.h"
 
 
 @interface LoginViewController ()<UITextFieldDelegate>
@@ -193,22 +193,18 @@
         [MBProgressHUDUtil showMessage:@"请填写完整信息！" toView:self.view];
         return;
     }
-    
-    if (![NSString valiMobile:self.userTelField.text]) {
+    else if (![NSString valiMobile:self.userTelField.text]) {
         [MBProgressHUDUtil showMessage:@"电话格式不正确！" toView:self.view];
         return;
     }
     [WOTHTTPNetwork userLoginWithTelOrEmail:self.userTelField.text password:self.verificationCodeField.text alias:[NSString stringWithFormat:@"%@C",self.userTelField.text] success:^(id bean) {
-        NSLog(@"========%@",bean);
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-//                [[WOTUserSingleton shareUser] saveUserInfoToPlistWithModel:model.msg];
-//                [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGIN_STATE_USERDEFAULT];
-//                [WOTSingtleton shared].isuserLogin = YES;
-//            });
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                NSLog(@"是否登陆：%d",[WOTSingtleton shared].isuserLogin);
-//                [self.navigationController popViewControllerAnimated:YES];
-//            });
+        SKLoginModel_msg *model = bean;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[WOTUserSingleton shared] saveUserInfoToPlistWithModel:model.msg];
+                [WOTUserSingleton shared].login = YES;
+                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [appDelegate loadViewController];
+            });
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
     }];

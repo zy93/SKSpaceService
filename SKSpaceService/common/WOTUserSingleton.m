@@ -20,7 +20,7 @@ static dispatch_once_t token;
 }
 
 
-+(instancetype)shareUser{
++(instancetype)shared{
     
     dispatch_once(&token, ^{
         shareUser = [[self alloc] initSingleton];
@@ -38,6 +38,9 @@ static dispatch_once_t token;
     NSDictionary *dic = [self readUserInfoFromPlist];
     NSError *error;
     _userInfo = [[SKLoginModel alloc] initWithDictionary:dic error:&error];
+    if (_userInfo) {
+        _login = YES;
+    }
 }
 
 -(void)saveUserInfoToPlistWithModel:(SKLoginModel *)model

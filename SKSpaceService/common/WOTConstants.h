@@ -76,5 +76,5 @@
 #define Partner_Sign_Key @"sczJpiMw6V3YO1lPOSL9VsrueXwrIEiK"
 
 //NSUserDefault 
-#define LOGIN_STATE_USERDEFAULT @"islogin"
+
 #endif /* WOTConstants_h */
