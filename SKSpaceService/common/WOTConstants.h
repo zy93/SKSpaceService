@@ -54,6 +54,9 @@
 #define UICOLOR_GRAY_F1     UIColorFromRGB(0xf1f1f1) //灰色、
 #define UICOLOR_GRAY_b4     UIColorFromRGB(0xf1f1f1) //灰色
 #define UICOLOR_MAIN_TEXT_PLACEHOLDER  RGBA(0,0,31,0.22) //输入框底纹颜色
+#define UICOLOR_BLUE_7d     UIColorFromRGB(0x7dc3f7)
+#define UICOLOR_RED_dc      UIColorFromRGB(0xdc756c)
+#define UICOLOR_GREE_b0     UIColorFromRGB(0xb0c76f)
 
 #define HTTPBaseURL @"http://219.143.170.98:10011"//公网测试
 //#define HTTPBaseURL @"http://192.168.1.216:8080"//赵亮亮

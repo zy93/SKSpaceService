@@ -126,7 +126,7 @@
                 
                     if (i < _tabItems.count-1) {
                         UIView *lineview = [[UIView alloc]initWithFrame:CGRectMake(tabItem.frame.size.width-1, 10, 1, tabItem.frame.size.height-20)];
-                        lineview.backgroundColor = UICOLOR_GRAY_DD;
+                        lineview.backgroundColor = UICOLOR_MAIN_ORANGE;
                         [tabItem addSubview:lineview];
                     }
                 

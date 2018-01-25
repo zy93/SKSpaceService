@@ -13,6 +13,12 @@
 		2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BF20181CB500A8CC19 /* XXPageTabView.m */; };
 		2A4AC5CA20181D5300A8CC19 /* WOTBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5C620181D5200A8CC19 /* WOTBaseNavigationController.m */; };
 		2A4AC5CD20181E9A00A8CC19 /* WOTPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5CB20181E9A00A8CC19 /* WOTPageMenuParentVC.m */; };
+		2A4AC5D02018640A00A8CC19 /* WOTButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5CE2018640A00A8CC19 /* WOTButton.m */; };
+		2A4AC5D320186AD100A8CC19 /* WOTBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5D220186AD100A8CC19 /* WOTBaseTableViewController.m */; };
+		2A4AC5D620186B2E00A8CC19 /* SKSalesOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5D520186B2E00A8CC19 /* SKSalesOrderVC.m */; };
+		2A4AC5DA20186B6500A8CC19 /* SKSalesOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5D820186B6500A8CC19 /* SKSalesOrderCell.m */; };
+		2A4AC5DB20186B6500A8CC19 /* SKSalesOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4AC5D920186B6500A8CC19 /* SKSalesOrderCell.xib */; };
+		2A4AC5DE2018750700A8CC19 /* SKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5DD2018750700A8CC19 /* SKViewController.m */; };
 		2A985074201707C7005705ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A985073201707C7005705ED /* AppDelegate.m */; };
 		2A98507A201707C7005705ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A985078201707C7005705ED /* Main.storyboard */; };
 		2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A98507B201707C7005705ED /* SKSpaceService.xcdatamodeld */; };
@@ -37,7 +43,6 @@
 		2A9850E220170802005705ED /* WOTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850C520170802005705ED /* WOTMapManager.m */; };
 		2A9850E320170802005705ED /* WOTFileUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850C620170802005705ED /* WOTFileUitls.m */; };
 		2A9850E420170802005705ED /* MBProgressHUD+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */; };
-		2A9850E520170803005705ED /* WOTEnumUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CB20170802005705ED /* WOTEnumUtils.m */; };
 		2A9850E620170803005705ED /* JudgmentTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CC20170802005705ED /* JudgmentTime.m */; };
 		2A9850E720170803005705ED /* WOTBueToothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CE20170802005705ED /* WOTBueToothManager.m */; };
 		2A9850E820170803005705ED /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CF20170802005705ED /* UIView+Extension.m */; };
@@ -154,6 +159,17 @@
 		2A4AC5C820181D5300A8CC19 /* WOTBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBaseNavigationController.h; sourceTree = "<group>"; };
 		2A4AC5CB20181E9A00A8CC19 /* WOTPageMenuParentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTPageMenuParentVC.m; sourceTree = "<group>"; };
 		2A4AC5CC20181E9A00A8CC19 /* WOTPageMenuParentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTPageMenuParentVC.h; sourceTree = "<group>"; };
+		2A4AC5CE2018640A00A8CC19 /* WOTButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTButton.m; sourceTree = "<group>"; };
+		2A4AC5CF2018640A00A8CC19 /* WOTButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTButton.h; sourceTree = "<group>"; };
+		2A4AC5D120186AD100A8CC19 /* WOTBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WOTBaseTableViewController.h; sourceTree = "<group>"; };
+		2A4AC5D220186AD100A8CC19 /* WOTBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WOTBaseTableViewController.m; sourceTree = "<group>"; };
+		2A4AC5D420186B2E00A8CC19 /* SKSalesOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesOrderVC.h; sourceTree = "<group>"; };
+		2A4AC5D520186B2E00A8CC19 /* SKSalesOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderVC.m; sourceTree = "<group>"; };
+		2A4AC5D720186B6500A8CC19 /* SKSalesOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesOrderCell.h; sourceTree = "<group>"; };
+		2A4AC5D820186B6500A8CC19 /* SKSalesOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderCell.m; sourceTree = "<group>"; };
+		2A4AC5D920186B6500A8CC19 /* SKSalesOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKSalesOrderCell.xib; sourceTree = "<group>"; };
+		2A4AC5DC2018750700A8CC19 /* SKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKViewController.h; sourceTree = "<group>"; };
+		2A4AC5DD2018750700A8CC19 /* SKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKViewController.m; sourceTree = "<group>"; };
 		2A98506F201707C7005705ED /* SKSpaceService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKSpaceService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A985072201707C7005705ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A985073201707C7005705ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -185,7 +201,6 @@
 		2A9850B520170802005705ED /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		2A9850B620170802005705ED /* JudgmentTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JudgmentTime.h; sourceTree = "<group>"; };
 		2A9850B720170802005705ED /* MBProgressHUD+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Extension.h"; sourceTree = "<group>"; };
-		2A9850B820170802005705ED /* WOTEnumUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnumUtils.h; sourceTree = "<group>"; };
 		2A9850B920170802005705ED /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		2A9850BA20170802005705ED /* UItableView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UItableView+Extension.m"; sourceTree = "<group>"; };
 		2A9850BC20170802005705ED /* UISearchBar+JCSearchBarPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+JCSearchBarPlaceholder.m"; sourceTree = "<group>"; };
@@ -203,7 +218,6 @@
 		2A9850C820170802005705ED /* WOTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTLocationManager.h; sourceTree = "<group>"; };
 		2A9850C920170802005705ED /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extension.m"; sourceTree = "<group>"; };
-		2A9850CB20170802005705ED /* WOTEnumUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTEnumUtils.m; sourceTree = "<group>"; };
 		2A9850CC20170802005705ED /* JudgmentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JudgmentTime.m; sourceTree = "<group>"; };
 		2A9850CD20170802005705ED /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
 		2A9850CE20170802005705ED /* WOTBueToothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBueToothManager.m; sourceTree = "<group>"; };
@@ -337,7 +351,6 @@
 		2AC82A7320171C8A0076305E /* WOTSingtleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSingtleton.m; sourceTree = "<group>"; };
 		2AC82A7420171C8A0076305E /* CityCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityCode.plist; sourceTree = "<group>"; };
 		2AC82A7520171C8A0076305E /* WOTErrorMessageMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTErrorMessageMacro.h; sourceTree = "<group>"; };
-		2AC82A7620171C8A0076305E /* WOTEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTEnums.h; sourceTree = "<group>"; };
 		2AC82A7720171C8A0076305E /* WOTWorkSpace_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWorkSpace_Prefix.pch; sourceTree = "<group>"; };
 		2AC82A7820171C8A0076305E /* WOTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTConstants.h; sourceTree = "<group>"; };
 		2AC82A7920171C8A0076305E /* WOTSingtleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTSingtleton.h; sourceTree = "<group>"; };
@@ -436,6 +449,8 @@
 			children = (
 				2A4AC5C820181D5300A8CC19 /* WOTBaseNavigationController.h */,
 				2A4AC5C620181D5200A8CC19 /* WOTBaseNavigationController.m */,
+				2A4AC5D120186AD100A8CC19 /* WOTBaseTableViewController.h */,
+				2A4AC5D220186AD100A8CC19 /* WOTBaseTableViewController.m */,
 				2A4AC5CC20181E9A00A8CC19 /* WOTPageMenuParentVC.h */,
 				2A4AC5CB20181E9A00A8CC19 /* WOTPageMenuParentVC.m */,
 			);
@@ -541,8 +556,6 @@
 				2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */,
 				2A9850CD20170802005705ED /* UIViewController+Extension.h */,
 				2A9850B520170802005705ED /* UIViewController+Extension.m */,
-				2A9850B820170802005705ED /* WOTEnumUtils.h */,
-				2A9850CB20170802005705ED /* WOTEnumUtils.m */,
 				2A9850B320170802005705ED /* WOTBueToothManager.h */,
 				2A9850CE20170802005705ED /* WOTBueToothManager.m */,
 				2A9850BD20170802005705ED /* WOTUitls.h */,
@@ -918,7 +931,6 @@
 				2AC82A7120171C8A0076305E /* ServiceCategory.plist */,
 				2AC82A7420171C8A0076305E /* CityCode.plist */,
 				2AC82A7520171C8A0076305E /* WOTErrorMessageMacro.h */,
-				2AC82A7620171C8A0076305E /* WOTEnums.h */,
 				2AC82A7720171C8A0076305E /* WOTWorkSpace_Prefix.pch */,
 				2AC82A7820171C8A0076305E /* WOTConstants.h */,
 				2AC82A7920171C8A0076305E /* WOTSingtleton.h */,
@@ -954,6 +966,10 @@
 			children = (
 				2A4AC5BA201818E300A8CC19 /* SKSalesMainVC.h */,
 				2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */,
+				2A4AC5D420186B2E00A8CC19 /* SKSalesOrderVC.h */,
+				2A4AC5D520186B2E00A8CC19 /* SKSalesOrderVC.m */,
+				2A4AC5DC2018750700A8CC19 /* SKViewController.h */,
+				2A4AC5DD2018750700A8CC19 /* SKViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -968,6 +984,11 @@
 		2AC82A9F201726CA0076305E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2A4AC5CF2018640A00A8CC19 /* WOTButton.h */,
+				2A4AC5CE2018640A00A8CC19 /* WOTButton.m */,
+				2A4AC5D720186B6500A8CC19 /* SKSalesOrderCell.h */,
+				2A4AC5D820186B6500A8CC19 /* SKSalesOrderCell.m */,
+				2A4AC5D920186B6500A8CC19 /* SKSalesOrderCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1203,6 +1224,7 @@
 				2AC82A7B20171C8A0076305E /* ServiceCategory.plist in Resources */,
 				2A98507F201707C7005705ED /* Assets.xcassets in Resources */,
 				2A98519220170814005705ED /* WOTCardViewItem.xib in Resources */,
+				2A4AC5DB20186B6500A8CC19 /* SKSalesOrderCell.xib in Resources */,
 				2A98507A201707C7005705ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1397,21 +1419,24 @@
 				2A9850E720170803005705ED /* WOTBueToothManager.m in Sources */,
 				2A9850DD20170802005705ED /* UItableView+Extension.m in Sources */,
 				2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */,
-				2A9850E520170803005705ED /* WOTEnumUtils.m in Sources */,
 				2A9850D420170802005705ED /* NSString+URL.m in Sources */,
 				C5A4C1512019B6E200336297 /* SKRepairVC.m in Sources */,
 				2A4AC5CA20181D5300A8CC19 /* WOTBaseNavigationController.m in Sources */,
 				2A98519F20170814005705ED /* SRSecurityPolicy.m in Sources */,
 				2A9850E920170803005705ED /* WOTUitls.m in Sources */,
 				2A9850D820170802005705ED /* UIDevice+Resolutions.m in Sources */,
+				2A4AC5D620186B2E00A8CC19 /* SKSalesOrderVC.m in Sources */,
 				2A98519520170814005705ED /* UIFont+MyFont.m in Sources */,
 				2A9850E220170802005705ED /* WOTMapManager.m in Sources */,
+				2A4AC5DA20186B6500A8CC19 /* SKSalesOrderCell.m in Sources */,
 				2A9851A320170814005705ED /* SRDelegateController.m in Sources */,
 				2AC82A7E20171C8A0076305E /* WOTUserSingleton.m in Sources */,
 				2A98519720170814005705ED /* HCScanQRViewController.m in Sources */,
 				2A9850E620170803005705ED /* JudgmentTime.m in Sources */,
+				2A4AC5D320186AD100A8CC19 /* WOTBaseTableViewController.m in Sources */,
 				2A9850D620170802005705ED /* WOTConfigThemeUitls.m in Sources */,
 				2A9850D720170802005705ED /* WOTQRCodeUtils.m in Sources */,
+				2A4AC5D02018640A00A8CC19 /* WOTButton.m in Sources */,
 				2A9851A720170814005705ED /* SRLog.m in Sources */,
 				2A9850D520170802005705ED /* UIColor+ColorChange.m in Sources */,
 				2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */,
@@ -1422,6 +1447,7 @@
 				2A9851AF20170814005705ED /* NSURLRequest+SRWebSocket.m in Sources */,
 				2A98519620170814005705ED /* UIView+Frame.m in Sources */,
 				2A9851BD20170814005705ED /* MASViewConstraint.m in Sources */,
+				2A4AC5DE2018750700A8CC19 /* SKViewController.m in Sources */,
 				2A98519820170814005705ED /* SystemFunctions.m in Sources */,
 				2A9850E120170802005705ED /* NSString+Category.m in Sources */,
 				2A9850E820170803005705ED /* UIView+Extension.m in Sources */,

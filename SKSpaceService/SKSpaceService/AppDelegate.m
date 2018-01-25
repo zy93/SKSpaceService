@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WOTBaseNavigationController.h"
 #import "WOTUserSingleton.h"
 #import "LoginViewController.h"
 #import "SKSalesMainVC.h"
@@ -105,7 +106,8 @@
 {
     if ([WOTUserSingleton shared].isLogin) {
         if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"]) {
-            self.window.rootViewController = [[SKSalesMainVC alloc] init];
+            WOTBaseNavigationController *nav = [[WOTBaseNavigationController alloc] initWithRootViewController:[[SKSalesMainVC alloc] init]];
+            self.window.rootViewController = nav;
         }
         else {
             self.window.rootViewController = [[SKRepairVC alloc] init];
