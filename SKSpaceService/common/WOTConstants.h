@@ -52,7 +52,7 @@
 #define UICOLOR_GRAY_DD     UIColorFromRGB(0xdddddd) //灰色 最不明显使用。
 #define UICOLOR_GRAY_E1     UIColorFromRGB(0xe1e1e1) //灰色
 #define UICOLOR_GRAY_F1     UIColorFromRGB(0xf1f1f1) //灰色、
-#define UICOLOR_GRAY_b4     UIColorFromRGB(0xf1f1f1) //灰色
+//#define UICOLOR_GRAY_f9     UIColorFromRGB(0xf9f9f9) //灰色
 #define UICOLOR_MAIN_TEXT_PLACEHOLDER  RGBA(0,0,31,0.22) //输入框底纹颜色
 #define UICOLOR_BLUE_7d     UIColorFromRGB(0x7dc3f7)
 #define UICOLOR_RED_dc      UIColorFromRGB(0xdc756c)

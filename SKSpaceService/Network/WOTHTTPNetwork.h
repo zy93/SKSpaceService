@@ -22,5 +22,23 @@
  */
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd alias:(NSString *)alias success:(success)success fail:(fail)fail;
 
+#pragma mark - 空间
 
+/**
+ 获取所有空间列表
+
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)getSapaceFromGroupBlockSuccess:(success)success fail:(fail)fail;
+
+/**
+ 分页获取空间列表
+
+ @param page 页码
+ @param pageSize 数据量
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)getSapaceWithPage:(NSNumber *)page pageSize:(NSNumber *)pageSize success:(success)success fail:(fail)fail;
 @end
