@@ -10,6 +10,7 @@
 #import "WOTUserSingleton.h"
 #import "LoginViewController.h"
 #import "SKSalesMainVC.h"
+#import "SKRepairVC.h"
 @interface AppDelegate ()
 
 @end
@@ -107,11 +108,10 @@
             self.window.rootViewController = [[SKSalesMainVC alloc] init];
         }
         else {
-            
+            self.window.rootViewController = [[SKRepairVC alloc] init];
         }
     }
     else {
-        
         self.window.rootViewController = [[LoginViewController alloc] init];
     }
 }

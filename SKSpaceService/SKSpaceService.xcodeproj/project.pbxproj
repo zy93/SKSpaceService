@@ -119,6 +119,8 @@
 		2AC82A9A201725040076305E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82A99201725040076305E /* LoginViewController.m */; };
 		2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AA8201726CA0076305E /* WOTBaseModel.m */; };
 		2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AAA201726CA0076305E /* SKLoginModel.m */; };
+		C5A4C14B2019B45C00336297 /* SKPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */; };
+		C5A4C1512019B6E200336297 /* SKRepairVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C1502019B6E200336297 /* SKRepairVC.m */; };
 		DA1BBBB078BB9353ECB5FE70 /* libPods-SKSpaceServiceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A28CF1A5D01B08520871E17 /* libPods-SKSpaceServiceUITests.a */; };
 		EE3F58836CB18DE061A68206 /* libPods-SKSpaceServiceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E63B3B941F14DE95A92AB7DB /* libPods-SKSpaceServiceTests.a */; };
 /* End PBXBuildFile section */
@@ -362,6 +364,10 @@
 		76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceService.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		891FC413E8C2F086217A5A11 /* Pods-SKSpaceService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AA5708E2389643C4D3D890 /* Pods-SKSpaceServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5A4C1492019B45C00336297 /* SKPageMenuParentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKPageMenuParentVC.h; sourceTree = "<group>"; };
+		C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKPageMenuParentVC.m; sourceTree = "<group>"; };
+		C5A4C14F2019B6E200336297 /* SKRepairVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKRepairVC.h; sourceTree = "<group>"; };
+		C5A4C1502019B6E200336297 /* SKRepairVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKRepairVC.m; sourceTree = "<group>"; };
 		CD005319737C341DE0E3D9DC /* Pods-SKSpaceService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceService.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService.release.xcconfig"; sourceTree = "<group>"; };
 		D36C1CD9E6BAE2C219D2F4D8 /* Pods-SKSpaceServiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E63B3B941F14DE95A92AB7DB /* libPods-SKSpaceServiceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceServiceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -969,32 +975,11 @@
 		2AC82AA0201726CA0076305E /* Repair */ = {
 			isa = PBXGroup;
 			children = (
-				2AC82AA1201726CA0076305E /* Controller */,
-				2AC82AA2201726CA0076305E /* Model */,
-				2AC82AA3201726CA0076305E /* Views */,
+				C5A4C1432019AD2200336297 /* Controller */,
+				C5A4C1452019AD3A00336297 /* Views */,
+				C5A4C1442019AD3100336297 /* Model */,
 			);
 			path = Repair;
-			sourceTree = "<group>";
-		};
-		2AC82AA1201726CA0076305E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2AC82AA2201726CA0076305E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2AC82AA3201726CA0076305E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		2AC82AA4201726CA0076305E /* Login */ = {
@@ -1045,6 +1030,31 @@
 				1F43617551F8FBAC1ED4B92C /* Pods-SKSpaceServiceUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C5A4C1432019AD2200336297 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C5A4C1492019B45C00336297 /* SKPageMenuParentVC.h */,
+				C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */,
+				C5A4C14F2019B6E200336297 /* SKRepairVC.h */,
+				C5A4C1502019B6E200336297 /* SKRepairVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C5A4C1442019AD3100336297 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5A4C1452019AD3A00336297 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C92E5C1A7947AE002977DF5B /* Frameworks */ = {
@@ -1389,6 +1399,7 @@
 				2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */,
 				2A9850E520170803005705ED /* WOTEnumUtils.m in Sources */,
 				2A9850D420170802005705ED /* NSString+URL.m in Sources */,
+				C5A4C1512019B6E200336297 /* SKRepairVC.m in Sources */,
 				2A4AC5CA20181D5300A8CC19 /* WOTBaseNavigationController.m in Sources */,
 				2A98519F20170814005705ED /* SRSecurityPolicy.m in Sources */,
 				2A9850E920170803005705ED /* WOTUitls.m in Sources */,
@@ -1426,6 +1437,7 @@
 				2A9851A520170814005705ED /* SRHTTPConnectMessage.m in Sources */,
 				2A9851BE20170814005705ED /* MASViewAttribute.m in Sources */,
 				2A9851A620170814005705ED /* SRURLUtilities.m in Sources */,
+				C5A4C14B2019B45C00336297 /* SKPageMenuParentVC.m in Sources */,
 				2A9851A120170814005705ED /* SRRunLoopThread.m in Sources */,
 				2A98519C20170814005705ED /* SRWebSocket.m in Sources */,
 				2A9850DF20170802005705ED /* UISearchBar+JCSearchBarPlaceholder.m in Sources */,
