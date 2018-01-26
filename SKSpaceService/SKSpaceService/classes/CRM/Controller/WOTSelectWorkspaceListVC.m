@@ -12,7 +12,7 @@
 
 @interface WOTSelectWorkspaceListVC () <UITableViewDelegate, UITableViewDataSource>//1
 {
-//    NSArray *tableList;
+    NSIndexPath *selectPath;
     NSDictionary *tableDic;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -40,6 +40,12 @@
     if (is7Version) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
+}
+
+#pragma mark - action
+-(void)rightItemAction
+{
+    
 }
 
 #pragma mark - request
@@ -148,15 +154,37 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSArray *arrKey = [tableDic allKeys];
-    NSString *key = arrKey[indexPath.section];
-    NSArray *modelList = tableDic[key];
-    
-    WOTSpaceModel *model = modelList[indexPath.row];
-    if (self.selectSpaceBlock) {
-        self.selectSpaceBlock(model);
+    if (_isChangeSpace) {
+        UITableViewCell *cell =[tableView cellForRowAtIndexPath:selectPath];
+        if (cell) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryView = nil;
+        }
+        cell =[tableView cellForRowAtIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryDetailButton;
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"select_round_blue"]];
+        selectPath = indexPath;
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    else {
+        NSArray *arrKey = [tableDic allKeys];
+        NSString *key = arrKey[indexPath.section];
+        NSArray *modelList = tableDic[key];
+        
+        WOTSpaceModel *model = modelList[indexPath.row];
+        if (self.selectSpaceBlock) {
+            self.selectSpaceBlock(model);
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - other
+-(void)setIsChangeSpace:(BOOL)isChangeSpace
+{
+    _isChangeSpace = isChangeSpace;
+    if (isChangeSpace) {
+        [self configNaviRightItemWithTitle:@"保存" textColor:UICOLOR_MAIN_ORANGE];
+    }
 }
 
 /*

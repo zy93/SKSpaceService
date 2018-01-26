@@ -26,6 +26,7 @@
 		2A870D03201AFDA5006396B6 /* SKLogDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870D02201AFDA5006396B6 /* SKLogDetailsVC.m */; };
 		2A870D07201B083B006396B6 /* SKLogContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870D05201B083B006396B6 /* SKLogContentCell.m */; };
 		2A870D08201B083B006396B6 /* SKLogContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A870D06201B083B006396B6 /* SKLogContentCell.xib */; };
+		2A870D0B201B2616006396B6 /* SKTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870D0A201B2616006396B6 /* SKTextViewVC.m */; };
 		2A985074201707C7005705ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A985073201707C7005705ED /* AppDelegate.m */; };
 		2A98507A201707C7005705ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A985078201707C7005705ED /* Main.storyboard */; };
 		2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A98507B201707C7005705ED /* SKSpaceService.xcdatamodeld */; };
@@ -201,6 +202,8 @@
 		2A870D04201B083B006396B6 /* SKLogContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogContentCell.h; sourceTree = "<group>"; };
 		2A870D05201B083B006396B6 /* SKLogContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKLogContentCell.m; sourceTree = "<group>"; };
 		2A870D06201B083B006396B6 /* SKLogContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKLogContentCell.xib; sourceTree = "<group>"; };
+		2A870D09201B2616006396B6 /* SKTextViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTextViewVC.h; sourceTree = "<group>"; };
+		2A870D0A201B2616006396B6 /* SKTextViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKTextViewVC.m; sourceTree = "<group>"; };
 		2A98506F201707C7005705ED /* SKSpaceService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKSpaceService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A985072201707C7005705ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A985073201707C7005705ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1036,6 +1039,8 @@
 				2A870CF7201AF246006396B6 /* SKLogListVC.m */,
 				2A870D01201AFDA5006396B6 /* SKLogDetailsVC.h */,
 				2A870D02201AFDA5006396B6 /* SKLogDetailsVC.m */,
+				2A870D09201B2616006396B6 /* SKTextViewVC.h */,
+				2A870D0A201B2616006396B6 /* SKTextViewVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1491,6 +1496,7 @@
 				2ABC42F22019B4BB008C3EDA /* SKTextField.m in Sources */,
 				2A9851C920170827005705ED /* MBProgressHUD+Add.m in Sources */,
 				2A9851BF20170814005705ED /* MBProgressHUD.m in Sources */,
+				2A870D0B201B2616006396B6 /* SKTextViewVC.m in Sources */,
 				2A98519020170814005705ED /* WOTCardViewItem.m in Sources */,
 				2A9851A820170814005705ED /* SRHash.m in Sources */,
 				2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */,

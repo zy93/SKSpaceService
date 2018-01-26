@@ -8,6 +8,7 @@
 
 #import "SKSalesOrderVC.h"
 #import "SKSalesOrderCell.h"
+#import "SKLogDetailsVC.h"
 
 @interface SKSalesOrderVC ()
 
@@ -50,10 +51,19 @@
     SKSalesOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKSalesOrderCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    cell.stateLab.text = @"初步沟通";
+    cell.titleLab.text = @"张晓宇宙";
+    cell.star1IV.selected = YES;
+    cell.star2IV.selected = YES;
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SKLogDetailsVC *vc = [[SKLogDetailsVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.

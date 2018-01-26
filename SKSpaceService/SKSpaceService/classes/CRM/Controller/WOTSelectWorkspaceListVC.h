@@ -10,6 +10,9 @@
 #import "WOTSpaceModel.h"
 #import "WOTBaseTableViewController.h"
 
-@interface WOTSelectWorkspaceListVC : WOTBaseTableViewController//1
+@interface WOTSelectWorkspaceListVC : WOTBaseTableViewController
+
+@property (nonatomic, assign) BOOL isChangeSpace;
+
 @property (nonatomic, copy) void(^selectSpaceBlock)(WOTSpaceModel *model);
 @end

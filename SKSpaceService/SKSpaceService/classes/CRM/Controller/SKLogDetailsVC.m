@@ -8,6 +8,8 @@
 
 #import "SKLogDetailsVC.h"
 #import "SKLogContentCell.h"
+#import "SKTextViewVC.h"
+#import "WOTSelectWorkspaceListVC.h"
 
 @interface SKLogDetailsVC () <UITableViewDelegate, UITableViewDataSource, SKLogContentCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -52,7 +54,7 @@
 {
     NSArray *baseList = @[@"客户姓名：", @"电话号码：", @"公司名称", @"意向空间：", @"客户来源：", @"具体来源：", @"创建时间：", @"客户意向："];
     self.tableList = [NSMutableArray new];
-    NSArray *logList = @[@"客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死",@"萨克雷锋骄傲了时代峻峰可连接阿斯顿离开家",@"萨克雷锋骄傲了时代峻峰可连接阿斯顿离开家",@"萨克雷锋骄傲了时代峻峰可连接阿斯顿离开家", @"老卡机是地方了课教案上是；里空间阿萨德发阿斯顿f离开家；离开家哦豁asdf发"];
+    NSArray *logList = @[@"客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死",@"萨克雷锋骄傲了时代峻峰可连接阿斯顿离开家"];
     [self.tableList addObject:baseList];
     [self.tableList addObject:logList];
 }
@@ -61,7 +63,8 @@
 #pragma mark - cell delegate
 -(void)logContentCell:(SKLogContentCell *)cell addBtnClick:(id)sender
 {
-    
+    SKTextViewVC *vc = [[SKTextViewVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - table delegate & dataSource
@@ -156,20 +159,44 @@
         NSArray *arr = self.tableList[indexPath.section];
         NSString *str = arr[indexPath.row];
         cell.contentTextView.text = str;
+        cell.delegate = self;
         if (indexPath.row==0) {
             cell.topLine.hidden = YES;
+            cell.addLogBtn.hidden = YES;
         }
         else if (indexPath.row == arr.count-1) {
             cell.bottomLine.hidden = YES;
+            cell.addLogBtn.hidden = NO;
         }
         else {
             cell.topLine.hidden = NO;
             cell.bottomLine.hidden = NO;
+            cell.addLogBtn.hidden = YES;
         }
         return  cell;
     }
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section==0) {
+        if (indexPath.row==3) {
+            //选择空间
+            
+            WOTSelectWorkspaceListVC *vc = [[WOTSelectWorkspaceListVC alloc] init];
+            vc.isChangeSpace = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row==4) {
+            //客户来源
+        }
+        else {
+            SKTextViewVC *vc = [[SKTextViewVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }
+}
 
 #pragma mark - other
 -(UIButton *)createStarButtonWithTag:(NSInteger)tag
