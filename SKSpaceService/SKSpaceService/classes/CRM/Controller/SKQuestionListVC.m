@@ -1,19 +1,20 @@
 //
-//  SKSalesOrderVC.m
+//  SKQuestionListVC.m
 //  SKSpaceService
 //
-//  Created by 张雨 on 2018/1/24.
+//  Created by 张雨 on 2018/1/25.
 //  Copyright © 2018年 张雨. All rights reserved.
 //
 
-#import "SKSalesOrderVC.h"
-#import "SKSalesOrderCell.h"
+#import "SKQuestionListVC.h"
+#import "SKQuestionListCell.h"
+#import "SKQuestionDetailsVC.h"
 
-@interface SKSalesOrderVC ()
+@interface SKQuestionListVC ()
 
 @end
 
-@implementation SKSalesOrderVC
+@implementation SKQuestionListVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,8 +24,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"SKSalesOrderCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKSalesOrderCell"];
+    self.view.backgroundColor = UICOLOR_MAIN_BACKGROUND;
+    self.tableView.backgroundColor = UICOLOR_MAIN_BACKGROUND;
+    self.navigationItem.title = @"问题列表";
+    [self.tableView registerNib:[UINib nibWithNibName:@"SKQuestionListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKQuestionListCell"];
+    self.tableView.delegate = self;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,11 +38,17 @@
 }
 
 #pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
     return 10;
 }
 
@@ -47,13 +58,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SKSalesOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKSalesOrderCell" forIndexPath:indexPath];
+    SKQuestionListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKQuestionListCell" forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SKQuestionDetailsVC *vc = [[SKQuestionDetailsVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.

@@ -1,19 +1,20 @@
 //
-//  SKSalesOrderVC.m
+//  SKLogListVC.m
 //  SKSpaceService
 //
-//  Created by 张雨 on 2018/1/24.
+//  Created by 张雨 on 2018/1/26.
 //  Copyright © 2018年 张雨. All rights reserved.
 //
 
-#import "SKSalesOrderVC.h"
-#import "SKSalesOrderCell.h"
+#import "SKLogListVC.h"
+#import "SKLogListCell.h"
+#import "SKLogDetailsVC.h"
 
-@interface SKSalesOrderVC ()
+@interface SKLogListVC ()
 
 @end
 
-@implementation SKSalesOrderVC
+@implementation SKLogListVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,7 +25,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"SKSalesOrderCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKSalesOrderCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SKLogListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKLogListCell"];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,28 +34,44 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 #pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
     return 10;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 90;
+    return 175;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SKSalesOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKSalesOrderCell" forIndexPath:indexPath];
+    SKLogListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKLogListCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    cell.stateLab.text = @"初次沟通";
+    cell.clientNameLab.text = @"客户姓名：张三";
+    cell.clientTelLab.text = @"13333333333";
+    cell.createTimeLab.text = @"2018/01/02";
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SKLogDetailsVC *vc = [[SKLogDetailsVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.

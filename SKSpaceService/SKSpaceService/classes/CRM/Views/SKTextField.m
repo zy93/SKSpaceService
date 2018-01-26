@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        [self commInit];
+        [self commonInit];
     }
     return self;
 }
@@ -31,12 +31,12 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commInit];
+        [self commonInit];
     }
     return self;
 }
 
--(void)commInit
+-(void)commonInit
 {
     [self setBackgroundColor:[UIColor whiteColor]];
     [self setShadowWithText];

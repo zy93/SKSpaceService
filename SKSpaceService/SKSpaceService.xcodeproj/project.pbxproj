@@ -18,6 +18,14 @@
 		2A4AC5D620186B2E00A8CC19 /* SKSalesOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5D520186B2E00A8CC19 /* SKSalesOrderVC.m */; };
 		2A4AC5DA20186B6500A8CC19 /* SKSalesOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5D820186B6500A8CC19 /* SKSalesOrderCell.m */; };
 		2A4AC5DB20186B6500A8CC19 /* SKSalesOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4AC5D920186B6500A8CC19 /* SKSalesOrderCell.xib */; };
+		2A870CEF201ACEFD006396B6 /* SKBottomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870CEE201ACEFD006396B6 /* SKBottomTextView.m */; };
+		2A870CF5201AF222006396B6 /* SKLogPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870CF4201AF222006396B6 /* SKLogPageVC.m */; };
+		2A870CF8201AF246006396B6 /* SKLogListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870CF7201AF246006396B6 /* SKLogListVC.m */; };
+		2A870CFF201AF2FD006396B6 /* SKLogListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870CFD201AF2FD006396B6 /* SKLogListCell.m */; };
+		2A870D00201AF2FD006396B6 /* SKLogListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A870CFE201AF2FD006396B6 /* SKLogListCell.xib */; };
+		2A870D03201AFDA5006396B6 /* SKLogDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870D02201AFDA5006396B6 /* SKLogDetailsVC.m */; };
+		2A870D07201B083B006396B6 /* SKLogContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A870D05201B083B006396B6 /* SKLogContentCell.m */; };
+		2A870D08201B083B006396B6 /* SKLogContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A870D06201B083B006396B6 /* SKLogContentCell.xib */; };
 		2A985074201707C7005705ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A985073201707C7005705ED /* AppDelegate.m */; };
 		2A98507A201707C7005705ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A985078201707C7005705ED /* Main.storyboard */; };
 		2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A98507B201707C7005705ED /* SKSpaceService.xcdatamodeld */; };
@@ -110,6 +118,15 @@
 		2ABC42F52019BE8A008C3EDA /* WOTSelectWorkspaceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC42F42019BE8A008C3EDA /* WOTSelectWorkspaceListVC.m */; };
 		2ABC42F82019BEB2008C3EDA /* WOTSpaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC42F72019BEB2008C3EDA /* WOTSpaceModel.m */; };
 		2ABC42FE2019CE5E008C3EDA /* SKSelectTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC42FD2019CE5E008C3EDA /* SKSelectTypeVC.m */; };
+		2ABC43012019E45A008C3EDA /* SKQuestionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC43002019E45A008C3EDA /* SKQuestionListVC.m */; };
+		2ABC43052019E481008C3EDA /* SKQuestionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC43032019E481008C3EDA /* SKQuestionListCell.m */; };
+		2ABC43062019E481008C3EDA /* SKQuestionListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABC43042019E481008C3EDA /* SKQuestionListCell.xib */; };
+		2ABC43092019E7E6008C3EDA /* SKQuestionDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC43082019E7E6008C3EDA /* SKQuestionDetailsVC.m */; };
+		2ABC430D2019E982008C3EDA /* SKQuestionSendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC430B2019E982008C3EDA /* SKQuestionSendCell.m */; };
+		2ABC430E2019E982008C3EDA /* SKQuestionSendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABC430C2019E982008C3EDA /* SKQuestionSendCell.xib */; };
+		2ABC43122019E9FA008C3EDA /* SKQuestionReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC43102019E9FA008C3EDA /* SKQuestionReplyCell.m */; };
+		2ABC43132019E9FA008C3EDA /* SKQuestionReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABC43112019E9FA008C3EDA /* SKQuestionReplyCell.xib */; };
+		2ABC43162019EBC2008C3EDA /* SKQuestionDetailsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC43152019EBC2008C3EDA /* SKQuestionDetailsHeader.m */; };
 		2AC82A7B20171C8A0076305E /* ServiceCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC82A7120171C8A0076305E /* ServiceCategory.plist */; };
 		2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82A7320171C8A0076305E /* WOTSingtleton.m */; };
 		2AC82A7D20171C8A0076305E /* CityCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC82A7420171C8A0076305E /* CityCode.plist */; };
@@ -170,6 +187,20 @@
 		2A4AC5D720186B6500A8CC19 /* SKSalesOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesOrderCell.h; sourceTree = "<group>"; };
 		2A4AC5D820186B6500A8CC19 /* SKSalesOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderCell.m; sourceTree = "<group>"; };
 		2A4AC5D920186B6500A8CC19 /* SKSalesOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKSalesOrderCell.xib; sourceTree = "<group>"; };
+		2A870CED201ACEFD006396B6 /* SKBottomTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBottomTextView.h; sourceTree = "<group>"; };
+		2A870CEE201ACEFD006396B6 /* SKBottomTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBottomTextView.m; sourceTree = "<group>"; };
+		2A870CF3201AF222006396B6 /* SKLogPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogPageVC.h; sourceTree = "<group>"; };
+		2A870CF4201AF222006396B6 /* SKLogPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKLogPageVC.m; sourceTree = "<group>"; };
+		2A870CF6201AF246006396B6 /* SKLogListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogListVC.h; sourceTree = "<group>"; };
+		2A870CF7201AF246006396B6 /* SKLogListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKLogListVC.m; sourceTree = "<group>"; };
+		2A870CFC201AF2FD006396B6 /* SKLogListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogListCell.h; sourceTree = "<group>"; };
+		2A870CFD201AF2FD006396B6 /* SKLogListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKLogListCell.m; sourceTree = "<group>"; };
+		2A870CFE201AF2FD006396B6 /* SKLogListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKLogListCell.xib; sourceTree = "<group>"; };
+		2A870D01201AFDA5006396B6 /* SKLogDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogDetailsVC.h; sourceTree = "<group>"; };
+		2A870D02201AFDA5006396B6 /* SKLogDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKLogDetailsVC.m; sourceTree = "<group>"; };
+		2A870D04201B083B006396B6 /* SKLogContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogContentCell.h; sourceTree = "<group>"; };
+		2A870D05201B083B006396B6 /* SKLogContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKLogContentCell.m; sourceTree = "<group>"; };
+		2A870D06201B083B006396B6 /* SKLogContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKLogContentCell.xib; sourceTree = "<group>"; };
 		2A98506F201707C7005705ED /* SKSpaceService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKSpaceService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A985072201707C7005705ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A985073201707C7005705ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -355,6 +386,21 @@
 		2ABC42F72019BEB2008C3EDA /* WOTSpaceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTSpaceModel.m; sourceTree = "<group>"; };
 		2ABC42FC2019CE5E008C3EDA /* SKSelectTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSelectTypeVC.h; sourceTree = "<group>"; };
 		2ABC42FD2019CE5E008C3EDA /* SKSelectTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSelectTypeVC.m; sourceTree = "<group>"; };
+		2ABC42FF2019E45A008C3EDA /* SKQuestionListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionListVC.h; sourceTree = "<group>"; };
+		2ABC43002019E45A008C3EDA /* SKQuestionListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionListVC.m; sourceTree = "<group>"; };
+		2ABC43022019E481008C3EDA /* SKQuestionListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionListCell.h; sourceTree = "<group>"; };
+		2ABC43032019E481008C3EDA /* SKQuestionListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionListCell.m; sourceTree = "<group>"; };
+		2ABC43042019E481008C3EDA /* SKQuestionListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKQuestionListCell.xib; sourceTree = "<group>"; };
+		2ABC43072019E7E6008C3EDA /* SKQuestionDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionDetailsVC.h; sourceTree = "<group>"; };
+		2ABC43082019E7E6008C3EDA /* SKQuestionDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionDetailsVC.m; sourceTree = "<group>"; };
+		2ABC430A2019E982008C3EDA /* SKQuestionSendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionSendCell.h; sourceTree = "<group>"; };
+		2ABC430B2019E982008C3EDA /* SKQuestionSendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionSendCell.m; sourceTree = "<group>"; };
+		2ABC430C2019E982008C3EDA /* SKQuestionSendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKQuestionSendCell.xib; sourceTree = "<group>"; };
+		2ABC430F2019E9FA008C3EDA /* SKQuestionReplyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionReplyCell.h; sourceTree = "<group>"; };
+		2ABC43102019E9FA008C3EDA /* SKQuestionReplyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionReplyCell.m; sourceTree = "<group>"; };
+		2ABC43112019E9FA008C3EDA /* SKQuestionReplyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKQuestionReplyCell.xib; sourceTree = "<group>"; };
+		2ABC43142019EBC2008C3EDA /* SKQuestionDetailsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionDetailsHeader.h; sourceTree = "<group>"; };
+		2ABC43152019EBC2008C3EDA /* SKQuestionDetailsHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionDetailsHeader.m; sourceTree = "<group>"; };
 		2AC82A7020171C8A0076305E /* header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
 		2AC82A7120171C8A0076305E /* ServiceCategory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceCategory.plist; sourceTree = "<group>"; };
 		2AC82A7220171C8A0076305E /* WOTUserSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTUserSingleton.h; sourceTree = "<group>"; };
@@ -980,6 +1026,16 @@
 				2ABC42F42019BE8A008C3EDA /* WOTSelectWorkspaceListVC.m */,
 				2ABC42FC2019CE5E008C3EDA /* SKSelectTypeVC.h */,
 				2ABC42FD2019CE5E008C3EDA /* SKSelectTypeVC.m */,
+				2ABC42FF2019E45A008C3EDA /* SKQuestionListVC.h */,
+				2ABC43002019E45A008C3EDA /* SKQuestionListVC.m */,
+				2ABC43072019E7E6008C3EDA /* SKQuestionDetailsVC.h */,
+				2ABC43082019E7E6008C3EDA /* SKQuestionDetailsVC.m */,
+				2A870CF3201AF222006396B6 /* SKLogPageVC.h */,
+				2A870CF4201AF222006396B6 /* SKLogPageVC.m */,
+				2A870CF6201AF246006396B6 /* SKLogListVC.h */,
+				2A870CF7201AF246006396B6 /* SKLogListVC.m */,
+				2A870D01201AFDA5006396B6 /* SKLogDetailsVC.h */,
+				2A870D02201AFDA5006396B6 /* SKLogDetailsVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1003,6 +1059,25 @@
 				2A4AC5D920186B6500A8CC19 /* SKSalesOrderCell.xib */,
 				2ABC42F02019B4BB008C3EDA /* SKTextField.h */,
 				2ABC42F12019B4BB008C3EDA /* SKTextField.m */,
+				2ABC43022019E481008C3EDA /* SKQuestionListCell.h */,
+				2ABC43032019E481008C3EDA /* SKQuestionListCell.m */,
+				2ABC43042019E481008C3EDA /* SKQuestionListCell.xib */,
+				2ABC430A2019E982008C3EDA /* SKQuestionSendCell.h */,
+				2ABC430B2019E982008C3EDA /* SKQuestionSendCell.m */,
+				2ABC430C2019E982008C3EDA /* SKQuestionSendCell.xib */,
+				2ABC430F2019E9FA008C3EDA /* SKQuestionReplyCell.h */,
+				2ABC43102019E9FA008C3EDA /* SKQuestionReplyCell.m */,
+				2ABC43112019E9FA008C3EDA /* SKQuestionReplyCell.xib */,
+				2ABC43142019EBC2008C3EDA /* SKQuestionDetailsHeader.h */,
+				2ABC43152019EBC2008C3EDA /* SKQuestionDetailsHeader.m */,
+				2A870CED201ACEFD006396B6 /* SKBottomTextView.h */,
+				2A870CEE201ACEFD006396B6 /* SKBottomTextView.m */,
+				2A870CFC201AF2FD006396B6 /* SKLogListCell.h */,
+				2A870CFD201AF2FD006396B6 /* SKLogListCell.m */,
+				2A870CFE201AF2FD006396B6 /* SKLogListCell.xib */,
+				2A870D04201B083B006396B6 /* SKLogContentCell.h */,
+				2A870D05201B083B006396B6 /* SKLogContentCell.m */,
+				2A870D06201B083B006396B6 /* SKLogContentCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1225,10 +1300,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A870D08201B083B006396B6 /* SKLogContentCell.xib in Resources */,
 				2A98518A20170814005705ED /* UMSocialSDKPromptResources.bundle in Resources */,
+				2ABC43062019E481008C3EDA /* SKQuestionListCell.xib in Resources */,
+				2ABC430E2019E982008C3EDA /* SKQuestionSendCell.xib in Resources */,
 				2A985082201707C7005705ED /* LaunchScreen.storyboard in Resources */,
 				2A98519E20170814005705ED /* Info.plist in Resources */,
 				2AC82A7D20171C8A0076305E /* CityCode.plist in Resources */,
+				2ABC43132019E9FA008C3EDA /* SKQuestionReplyCell.xib in Resources */,
 				2A98519920170814005705ED /* image.bundle in Resources */,
 				2A98518720170814005705ED /* UMSocialSDKResources.bundle in Resources */,
 				2AC82A7B20171C8A0076305E /* ServiceCategory.plist in Resources */,
@@ -1236,6 +1315,7 @@
 				2A98519220170814005705ED /* WOTCardViewItem.xib in Resources */,
 				2A4AC5DB20186B6500A8CC19 /* SKSalesOrderCell.xib in Resources */,
 				2A98507A201707C7005705ED /* Main.storyboard in Resources */,
+				2A870D00201AF2FD006396B6 /* SKLogListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1398,6 +1478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABC43122019E9FA008C3EDA /* SKQuestionReplyCell.m in Sources */,
 				2A9851A420170814005705ED /* SRMutex.m in Sources */,
 				2A9850E020170802005705ED /* NSDate+Uitls.m in Sources */,
 				2A98519D20170814005705ED /* NSRunLoop+SRWebSocket.m in Sources */,
@@ -1413,13 +1494,17 @@
 				2A98519020170814005705ED /* WOTCardViewItem.m in Sources */,
 				2A9851A820170814005705ED /* SRHash.m in Sources */,
 				2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */,
+				2A870D07201B083B006396B6 /* SKLogContentCell.m in Sources */,
 				2ABC42F52019BE8A008C3EDA /* WOTSelectWorkspaceListVC.m in Sources */,
 				2A9850DB20170802005705ED /* UIViewController+Extension.m in Sources */,
+				2A870CEF201ACEFD006396B6 /* SKBottomTextView.m in Sources */,
 				2A9851A220170814005705ED /* SRPinningSecurityPolicy.m in Sources */,
 				2A9851AB20170814005705ED /* SRSIMDHelpers.m in Sources */,
+				2ABC43052019E481008C3EDA /* SKQuestionListCell.m in Sources */,
 				2ABC42F82019BEB2008C3EDA /* WOTSpaceModel.m in Sources */,
 				2A985074201707C7005705ED /* AppDelegate.m in Sources */,
 				2A9851BA20170814005705ED /* NSArray+MASAdditions.m in Sources */,
+				2ABC430D2019E982008C3EDA /* SKQuestionSendCell.m in Sources */,
 				2A4AC5CD20181E9A00A8CC19 /* WOTPageMenuParentVC.m in Sources */,
 				2A9850E320170802005705ED /* WOTFileUitls.m in Sources */,
 				2A9851AA20170814005705ED /* SRRandom.m in Sources */,
@@ -1437,12 +1522,15 @@
 				2A98519F20170814005705ED /* SRSecurityPolicy.m in Sources */,
 				2A9850E920170803005705ED /* WOTUitls.m in Sources */,
 				2A9850D820170802005705ED /* UIDevice+Resolutions.m in Sources */,
+				2ABC43012019E45A008C3EDA /* SKQuestionListVC.m in Sources */,
 				2A4AC5D620186B2E00A8CC19 /* SKSalesOrderVC.m in Sources */,
 				2A98519520170814005705ED /* UIFont+MyFont.m in Sources */,
 				2A9850E220170802005705ED /* WOTMapManager.m in Sources */,
 				2A4AC5DA20186B6500A8CC19 /* SKSalesOrderCell.m in Sources */,
+				2A870CF8201AF246006396B6 /* SKLogListVC.m in Sources */,
 				2A9851A320170814005705ED /* SRDelegateController.m in Sources */,
 				2AC82A7E20171C8A0076305E /* WOTUserSingleton.m in Sources */,
+				2A870D03201AFDA5006396B6 /* SKLogDetailsVC.m in Sources */,
 				2A98519720170814005705ED /* HCScanQRViewController.m in Sources */,
 				2ABC42EC2019701D008C3EDA /* SKCreateSalesVC.m in Sources */,
 				2A9850E620170803005705ED /* JudgmentTime.m in Sources */,
@@ -1451,9 +1539,11 @@
 				2A9850D720170802005705ED /* WOTQRCodeUtils.m in Sources */,
 				2A4AC5D02018640A00A8CC19 /* WOTButton.m in Sources */,
 				2A9851A720170814005705ED /* SRLog.m in Sources */,
+				2ABC43162019EBC2008C3EDA /* SKQuestionDetailsHeader.m in Sources */,
 				2A9850D520170802005705ED /* UIColor+ColorChange.m in Sources */,
 				2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */,
 				2A9850DC20170802005705ED /* UIImage+Extension.m in Sources */,
+				2ABC43092019E7E6008C3EDA /* SKQuestionDetailsVC.m in Sources */,
 				2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */,
 				2A9851A020170814005705ED /* SRProxyConnect.m in Sources */,
 				2A985085201707C7005705ED /* main.m in Sources */,
@@ -1480,11 +1570,13 @@
 				2A9850DF20170802005705ED /* UISearchBar+JCSearchBarPlaceholder.m in Sources */,
 				2A9851B220170814005705ED /* JXPopoverView.m in Sources */,
 				2A9851B420170814005705ED /* JXPopoverAction.m in Sources */,
+				2A870CFF201AF2FD006396B6 /* SKLogListCell.m in Sources */,
 				2AC82A9A201725040076305E /* LoginViewController.m in Sources */,
 				2A9850DA20170802005705ED /* UIImage+Blur.m in Sources */,
 				2ABC42FE2019CE5E008C3EDA /* SKSelectTypeVC.m in Sources */,
 				2A9851B120170814005705ED /* UIScrollView+Touch.m in Sources */,
 				2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */,
+				2A870CF5201AF222006396B6 /* SKLogPageVC.m in Sources */,
 				2A9851BC20170814005705ED /* MASConstraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1660,6 +1752,7 @@
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/common/WOTWorkSpace_Prefix.pch";
 				INFOPLIST_FILE = SKSpaceService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1692,6 +1785,7 @@
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/common/WOTWorkSpace_Prefix.pch";
 				INFOPLIST_FILE = SKSpaceService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

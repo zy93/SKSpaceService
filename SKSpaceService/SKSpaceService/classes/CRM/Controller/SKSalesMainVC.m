@@ -10,6 +10,8 @@
 #import "WOTButton.h"
 #import "SKSalesOrderVC.h"
 #import "SKCreateSalesVC.h"
+#import "SKQuestionListVC.h"
+#import "SKLogPageVC.h"
 
 @interface SKSalesMainVC ()
 @property (nonatomic, strong) UIImageView *topBGIV;
@@ -175,12 +177,14 @@
 
 -(void)questionBtnClick:(id)sender
 {
-    
+    SKQuestionListVC *vc = [[SKQuestionListVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)logBtnClick:(id)sender
 {
-    
+    SKLogPageVC *vc = [[SKLogPageVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*
