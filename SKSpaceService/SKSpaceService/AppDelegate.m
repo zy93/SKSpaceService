@@ -110,7 +110,9 @@
             self.window.rootViewController = nav;
         }
         else {
-            self.window.rootViewController = [[SKRepairVC alloc] init];
+            WOTBaseNavigationController *nav = [[WOTBaseNavigationController alloc] initWithRootViewController:[[SKRepairVC alloc] init]];
+            self.window.rootViewController = nav;
+            //self.window.rootViewController = [[SKRepairVC alloc] init];
         }
     }
     else {

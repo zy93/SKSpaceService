@@ -124,8 +124,22 @@
 		2AC82A9A201725040076305E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82A99201725040076305E /* LoginViewController.m */; };
 		2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AA8201726CA0076305E /* WOTBaseModel.m */; };
 		2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AAA201726CA0076305E /* SKLoginModel.m */; };
+		C59FA728201AF1FA00C7E22F /* SKAcceptableOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */; };
+		C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */; };
 		C5A4C14B2019B45C00336297 /* SKPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */; };
 		C5A4C1512019B6E200336297 /* SKRepairVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C1502019B6E200336297 /* SKRepairVC.m */; };
+		C5ACC955201ECF4700FAAA31 /* SKOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC954201ECF4700FAAA31 /* SKOrderTableViewCell.m */; };
+		C5ACC958201ED0BE00FAAA31 /* SKAcceptedOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC957201ED0BE00FAAA31 /* SKAcceptedOrderVC.m */; };
+		C5ACC95B201ED34900FAAA31 /* SKServicingOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC95A201ED34900FAAA31 /* SKServicingOrderVC.m */; };
+		C5ACC95E201ED44700FAAA31 /* SKFinishedOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC95D201ED44700FAAA31 /* SKFinishedOrderVC.m */; };
+		C5ACC961201EE80500FAAA31 /* SKUserOrderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC960201EE80500FAAA31 /* SKUserOrderInfoView.m */; };
+		C5ACC96B201EEAAC00FAAA31 /* ClickImageShowArtwork.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC965201EEAAB00FAAA31 /* ClickImageShowArtwork.m */; };
+		C5ACC96C201EEAAC00FAAA31 /* DetailImageInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC969201EEAAC00FAAA31 /* DetailImageInfoView.m */; };
+		C5ACC96D201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC96A201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m */; };
+		C5ACC970201EEC5200FAAA31 /* SKOrderInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC96F201EEC5200FAAA31 /* SKOrderInfoVC.m */; };
+		C5ACC973201F000C00FAAA31 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC972201F000B00FAAA31 /* ButtonView.m */; };
+		C5E4DCA820200B35006BC4C2 /* SKOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E4DCA720200B35006BC4C2 /* SKOrderInfoModel.m */; };
+		C5E4DCAB20205C30006BC4C2 /* SKAcceptAnOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E4DCAA20205C30006BC4C2 /* SKAcceptAnOrderModel.m */; };
 		DA1BBBB078BB9353ECB5FE70 /* libPods-SKSpaceServiceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A28CF1A5D01B08520871E17 /* libPods-SKSpaceServiceUITests.a */; };
 		EE3F58836CB18DE061A68206 /* libPods-SKSpaceServiceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E63B3B941F14DE95A92AB7DB /* libPods-SKSpaceServiceTests.a */; };
 /* End PBXBuildFile section */
@@ -377,10 +391,38 @@
 		76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceService.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		891FC413E8C2F086217A5A11 /* Pods-SKSpaceService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AA5708E2389643C4D3D890 /* Pods-SKSpaceServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C59FA726201AF1FA00C7E22F /* SKAcceptableOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAcceptableOrderVC.h; sourceTree = "<group>"; };
+		C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAcceptableOrderVC.m; sourceTree = "<group>"; };
+		C59FA729201AFA3200C7E22F /* SKOrderIncludeButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderIncludeButtonCell.h; sourceTree = "<group>"; };
+		C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderIncludeButtonCell.m; sourceTree = "<group>"; };
 		C5A4C1492019B45C00336297 /* SKPageMenuParentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKPageMenuParentVC.h; sourceTree = "<group>"; };
 		C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKPageMenuParentVC.m; sourceTree = "<group>"; };
 		C5A4C14F2019B6E200336297 /* SKRepairVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKRepairVC.h; sourceTree = "<group>"; };
 		C5A4C1502019B6E200336297 /* SKRepairVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKRepairVC.m; sourceTree = "<group>"; };
+		C5ACC953201ECF4700FAAA31 /* SKOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderTableViewCell.h; sourceTree = "<group>"; };
+		C5ACC954201ECF4700FAAA31 /* SKOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderTableViewCell.m; sourceTree = "<group>"; };
+		C5ACC956201ED0BE00FAAA31 /* SKAcceptedOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAcceptedOrderVC.h; sourceTree = "<group>"; };
+		C5ACC957201ED0BE00FAAA31 /* SKAcceptedOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAcceptedOrderVC.m; sourceTree = "<group>"; };
+		C5ACC959201ED34900FAAA31 /* SKServicingOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKServicingOrderVC.h; sourceTree = "<group>"; };
+		C5ACC95A201ED34900FAAA31 /* SKServicingOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKServicingOrderVC.m; sourceTree = "<group>"; };
+		C5ACC95C201ED44700FAAA31 /* SKFinishedOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKFinishedOrderVC.h; sourceTree = "<group>"; };
+		C5ACC95D201ED44700FAAA31 /* SKFinishedOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKFinishedOrderVC.m; sourceTree = "<group>"; };
+		C5ACC95F201EE80500FAAA31 /* SKUserOrderInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKUserOrderInfoView.h; sourceTree = "<group>"; };
+		C5ACC960201EE80500FAAA31 /* SKUserOrderInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKUserOrderInfoView.m; sourceTree = "<group>"; };
+		C5ACC965201EEAAB00FAAA31 /* ClickImageShowArtwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickImageShowArtwork.m; sourceTree = "<group>"; };
+		C5ACC966201EEAAC00FAAA31 /* ClickImageShowArtwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickImageShowArtwork.h; sourceTree = "<group>"; };
+		C5ACC967201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailInfoCollectionViewCell.h; sourceTree = "<group>"; };
+		C5ACC968201EEAAC00FAAA31 /* DetailImageInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailImageInfoView.h; sourceTree = "<group>"; };
+		C5ACC969201EEAAC00FAAA31 /* DetailImageInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailImageInfoView.m; sourceTree = "<group>"; };
+		C5ACC96A201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailInfoCollectionViewCell.m; sourceTree = "<group>"; };
+		C5ACC96E201EEC5200FAAA31 /* SKOrderInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderInfoVC.h; sourceTree = "<group>"; };
+		C5ACC96F201EEC5200FAAA31 /* SKOrderInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderInfoVC.m; sourceTree = "<group>"; };
+		C5ACC971201F000B00FAAA31 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonView.h; sourceTree = "<group>"; };
+		C5ACC972201F000B00FAAA31 /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonView.m; sourceTree = "<group>"; };
+		C5E4DCA620200B35006BC4C2 /* SKOrderInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderInfoModel.h; sourceTree = "<group>"; };
+		C5E4DCA720200B35006BC4C2 /* SKOrderInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderInfoModel.m; sourceTree = "<group>"; };
+		C5E4DCA920205C30006BC4C2 /* SKAcceptAnOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAcceptAnOrderModel.h; sourceTree = "<group>"; };
+		C5E4DCAA20205C30006BC4C2 /* SKAcceptAnOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAcceptAnOrderModel.m; sourceTree = "<group>"; };
 		CD005319737C341DE0E3D9DC /* Pods-SKSpaceService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceService.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService.release.xcconfig"; sourceTree = "<group>"; };
 		D36C1CD9E6BAE2C219D2F4D8 /* Pods-SKSpaceServiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E63B3B941F14DE95A92AB7DB /* libPods-SKSpaceServiceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceServiceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1060,6 +1102,16 @@
 				C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */,
 				C5A4C14F2019B6E200336297 /* SKRepairVC.h */,
 				C5A4C1502019B6E200336297 /* SKRepairVC.m */,
+				C59FA726201AF1FA00C7E22F /* SKAcceptableOrderVC.h */,
+				C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */,
+				C5ACC956201ED0BE00FAAA31 /* SKAcceptedOrderVC.h */,
+				C5ACC957201ED0BE00FAAA31 /* SKAcceptedOrderVC.m */,
+				C5ACC959201ED34900FAAA31 /* SKServicingOrderVC.h */,
+				C5ACC95A201ED34900FAAA31 /* SKServicingOrderVC.m */,
+				C5ACC95C201ED44700FAAA31 /* SKFinishedOrderVC.h */,
+				C5ACC95D201ED44700FAAA31 /* SKFinishedOrderVC.m */,
+				C5ACC96E201EEC5200FAAA31 /* SKOrderInfoVC.h */,
+				C5ACC96F201EEC5200FAAA31 /* SKOrderInfoVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1067,6 +1119,10 @@
 		C5A4C1442019AD3100336297 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5E4DCA620200B35006BC4C2 /* SKOrderInfoModel.h */,
+				C5E4DCA720200B35006BC4C2 /* SKOrderInfoModel.m */,
+				C5E4DCA920205C30006BC4C2 /* SKAcceptAnOrderModel.h */,
+				C5E4DCAA20205C30006BC4C2 /* SKAcceptAnOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1074,8 +1130,30 @@
 		C5A4C1452019AD3A00336297 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C5ACC964201EEA7B00FAAA31 /* ShowImageScrollView */,
+				C59FA729201AFA3200C7E22F /* SKOrderIncludeButtonCell.h */,
+				C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */,
+				C5ACC953201ECF4700FAAA31 /* SKOrderTableViewCell.h */,
+				C5ACC954201ECF4700FAAA31 /* SKOrderTableViewCell.m */,
+				C5ACC95F201EE80500FAAA31 /* SKUserOrderInfoView.h */,
+				C5ACC960201EE80500FAAA31 /* SKUserOrderInfoView.m */,
+				C5ACC971201F000B00FAAA31 /* ButtonView.h */,
+				C5ACC972201F000B00FAAA31 /* ButtonView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C5ACC964201EEA7B00FAAA31 /* ShowImageScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				C5ACC966201EEAAC00FAAA31 /* ClickImageShowArtwork.h */,
+				C5ACC965201EEAAB00FAAA31 /* ClickImageShowArtwork.m */,
+				C5ACC968201EEAAC00FAAA31 /* DetailImageInfoView.h */,
+				C5ACC969201EEAAC00FAAA31 /* DetailImageInfoView.m */,
+				C5ACC967201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.h */,
+				C5ACC96A201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m */,
+			);
+			path = ShowImageScrollView;
 			sourceTree = "<group>";
 		};
 		C92E5C1A7947AE002977DF5B /* Frameworks */ = {
@@ -1394,6 +1472,8 @@
 				2A9851B520170814005705ED /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2A9851B720170814005705ED /* MASCompositeConstraint.m in Sources */,
 				2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */,
+				C5ACC970201EEC5200FAAA31 /* SKOrderInfoVC.m in Sources */,
+				C5ACC955201ECF4700FAAA31 /* SKOrderTableViewCell.m in Sources */,
 				2A9851E220170837005705ED /* WOTHTTPNetwork.m in Sources */,
 				2A9851A920170814005705ED /* SRError.m in Sources */,
 				2A9851B620170814005705ED /* ViewController+MASAdditions.m in Sources */,
@@ -1405,6 +1485,8 @@
 				2A9850DB20170802005705ED /* UIViewController+Extension.m in Sources */,
 				2A9851A220170814005705ED /* SRPinningSecurityPolicy.m in Sources */,
 				2A9851AB20170814005705ED /* SRSIMDHelpers.m in Sources */,
+				C5ACC96B201EEAAC00FAAA31 /* ClickImageShowArtwork.m in Sources */,
+				C5ACC95B201ED34900FAAA31 /* SKServicingOrderVC.m in Sources */,
 				2A985074201707C7005705ED /* AppDelegate.m in Sources */,
 				2A9851BA20170814005705ED /* NSArray+MASAdditions.m in Sources */,
 				2A4AC5CD20181E9A00A8CC19 /* WOTPageMenuParentVC.m in Sources */,
@@ -1413,9 +1495,11 @@
 				2A9851AD20170814005705ED /* SRIOConsumerPool.m in Sources */,
 				2A9851B320170814005705ED /* JXPopoverViewCell.m in Sources */,
 				2A98519420170814005705ED /* HCCreateQRCode.m in Sources */,
+				C5E4DCA820200B35006BC4C2 /* SKOrderInfoModel.m in Sources */,
 				2A9851B820170814005705ED /* MASConstraintMaker.m in Sources */,
 				2A98519320170814005705ED /* CardView.m in Sources */,
 				2A9850E420170802005705ED /* MBProgressHUD+Extension.m in Sources */,
+				C5ACC973201F000C00FAAA31 /* ButtonView.m in Sources */,
 				2A9850E720170803005705ED /* WOTBueToothManager.m in Sources */,
 				2A9850DD20170802005705ED /* UItableView+Extension.m in Sources */,
 				2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */,
@@ -1445,7 +1529,11 @@
 				2A9851A020170814005705ED /* SRProxyConnect.m in Sources */,
 				2A985085201707C7005705ED /* main.m in Sources */,
 				2A9851AF20170814005705ED /* NSURLRequest+SRWebSocket.m in Sources */,
+				C5ACC95E201ED44700FAAA31 /* SKFinishedOrderVC.m in Sources */,
 				2A98519620170814005705ED /* UIView+Frame.m in Sources */,
+				C5ACC96C201EEAAC00FAAA31 /* DetailImageInfoView.m in Sources */,
+				C5ACC96D201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m in Sources */,
+				C5E4DCAB20205C30006BC4C2 /* SKAcceptAnOrderModel.m in Sources */,
 				2A9851BD20170814005705ED /* MASViewConstraint.m in Sources */,
 				2A4AC5DE2018750700A8CC19 /* SKViewController.m in Sources */,
 				2A98519820170814005705ED /* SystemFunctions.m in Sources */,
@@ -1459,9 +1547,12 @@
 				2A9850D920170802005705ED /* WOTLocationManager.m in Sources */,
 				2A9851BB20170814005705ED /* View+MASAdditions.m in Sources */,
 				2A98519120170814005705ED /* CardViewItem.m in Sources */,
+				C5ACC958201ED0BE00FAAA31 /* SKAcceptedOrderVC.m in Sources */,
+				C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */,
 				2A9851B920170814005705ED /* MASLayoutConstraint.m in Sources */,
 				2A9851A520170814005705ED /* SRHTTPConnectMessage.m in Sources */,
 				2A9851BE20170814005705ED /* MASViewAttribute.m in Sources */,
+				C59FA728201AF1FA00C7E22F /* SKAcceptableOrderVC.m in Sources */,
 				2A9851A620170814005705ED /* SRURLUtilities.m in Sources */,
 				C5A4C14B2019B45C00336297 /* SKPageMenuParentVC.m in Sources */,
 				2A9851A120170814005705ED /* SRRunLoopThread.m in Sources */,
@@ -1469,6 +1560,7 @@
 				2A9850DF20170802005705ED /* UISearchBar+JCSearchBarPlaceholder.m in Sources */,
 				2A9851B220170814005705ED /* JXPopoverView.m in Sources */,
 				2A9851B420170814005705ED /* JXPopoverAction.m in Sources */,
+				C5ACC961201EE80500FAAA31 /* SKUserOrderInfoView.m in Sources */,
 				2AC82A9A201725040076305E /* LoginViewController.m in Sources */,
 				2A9850DA20170802005705ED /* UIImage+Blur.m in Sources */,
 				2A9851B120170814005705ED /* UIScrollView+Touch.m in Sources */,
@@ -1658,7 +1750,7 @@
 					"$(PROJECT_DIR)/librarys/WOTImagePicker",
 					"$(PROJECT_DIR)/librarys/WXPay",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuzhang.SKSpaceService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SKSpaceService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1690,7 +1782,7 @@
 					"$(PROJECT_DIR)/librarys/WOTImagePicker",
 					"$(PROJECT_DIR)/librarys/WXPay",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuzhang.SKSpaceService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SKSpaceService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

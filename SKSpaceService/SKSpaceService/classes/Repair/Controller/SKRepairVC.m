@@ -7,6 +7,10 @@
 //
 
 #import "SKRepairVC.h"
+#import "SKAcceptableOrderVC.h"
+#import "SKAcceptedOrderVC.h"
+#import "SKServicingOrderVC.h"
+#import "SKFinishedOrderVC.h"
 
 @interface SKRepairVC ()<XXPageTabViewDelegate>
 
@@ -17,8 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"主页";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    //self.extendedLayoutIncludesOpaqueBars = YES;
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self];
 //    [self.view addSubview:nav.view];
     // Do any additional setup after loading the view.
@@ -41,37 +47,36 @@
     self.pageTabView.delegate = self;
     self.pageTabView.titleStyle = XXPageTabTitleStyleDefault;
     self.pageTabView.indicatorStyle = XXPageTabIndicatorStyleDefault;
-    self.pageTabView.indicatorWidth = 20;
-    
+    self.pageTabView.indicatorWidth = 40;
     [self.view addSubview:self.pageTabView];
 }
 
 -(NSArray *)createTitles{
     return [[NSArray alloc]initWithObjects:@"可接订单",@"已接订单",@"维修中",@"已完成",nil];
 }
+
 -(NSArray<__kindof UIViewController *> *)createViewControllers{
-    UIViewController *VC1 = [[UIViewController alloc] init];
+    SKAcceptableOrderVC *VC1 = [[SKAcceptableOrderVC alloc] init];
     [self addChildViewController:VC1];
     
-    UIViewController *VC2 = [[UIViewController alloc] init];
+    SKAcceptedOrderVC *VC2 = [[SKAcceptedOrderVC alloc] init];
     [self addChildViewController:VC2];
     
-    UIViewController *VC3 = [[UIViewController alloc] init];
+    SKServicingOrderVC *VC3 = [[SKServicingOrderVC alloc] init];
     [self addChildViewController:VC3];
     
-    UIViewController *VC4 = [[UIViewController alloc] init];
+    SKFinishedOrderVC *VC4 = [[SKFinishedOrderVC alloc] init];
     [self addChildViewController:VC4];
 //    WOTNearCirclesVC *circle = [[UIStoryboard storyboardWithName:@"Socialcontact" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTNearCirclesVCID"];
 //    [self addChildViewController:circle];
-//
+
 //    SKFocusListViewController *circle1 = [[SKFocusListViewController alloc]init];
 //    circle1.view.backgroundColor = UICOLOR_WHITE;
 //    [self addChildViewController:circle1];
-//
+
 //    SKCommentViewController *circle2 = [[SKCommentViewController alloc]init];
 //    circle2.view.backgroundColor = UICOLOR_WHITE;
 //    [self addChildViewController:circle2];
-    
     
     return self.childViewControllers;
 }

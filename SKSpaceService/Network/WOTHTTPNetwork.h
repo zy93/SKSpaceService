@@ -22,5 +22,28 @@
  */
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd alias:(NSString *)alias success:(success)success fail:(fail)fail;
 
+/**
+ 查询订单
 
+ @param spaceList 空间id数组
+ @param statuscode 订单状态，1 待维修  2 已接单   3 维修中    4 维修完成
+ @param pickUpUserID 接单人的id
+ @param success 成功回调
+ @param fail 失败回调
+ */
+
++(void)queryRepairsOrderWithSpaceList:(NSString *)spaceList statuscode:(NSString *)statuscode pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+
+
+/**
+ 接受订单
+
+ @param username 接单人的名字
+ @param infoId 信息id
+ @param pickUpUserID 接单人id
+ @param success 成功回调
+ @param fail 失败回调
+ */
+
++(void)acceptAnOrderWithUserName:(NSString *)username infoId:(NSNumber *)infoId pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
 @end

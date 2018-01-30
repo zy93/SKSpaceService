@@ -8,7 +8,7 @@
 
 #import "SKPageMenuParentVC.h"
 
-@interface SKPageMenuParentVC ()<XXPageTabViewDelegate>
+@interface SKPageMenuParentVC ()<XXPageTabViewDelegate,UINavigationControllerDelegate>
 
 @end
 
