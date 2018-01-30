@@ -11,6 +11,10 @@
 #import "SKLoginModel.h"
 #import "SKOrderInfoModel.h"
 #import "SKAcceptAnOrderModel.h"
+#import "WOTSpaceModel.h"
+#import "SKBaseResponseModel.h"
+#import "SKSalesOrderModel.h"
+#import "SKSalesOrderLogModel.h"
 
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
@@ -43,6 +47,42 @@
         return model;
     } success:success fail:fail];
 }
+
+#pragma mark - 维修订单
+//查询报修订单
++(void)queryRepairsOrderWithSpaceList:(NSString *)spaceList statuscode:(NSString *)statuscode pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+{
+    
+    NSMutableDictionary *dic = [@{@"spaceList" :spaceList,
+                                  @"statuscode":statuscode
+                                  }mutableCopy];
+    
+    if (![pickUpUserID isEqualToNumber:@0]) {
+        [dic setValue:pickUpUserID forKey:@"pickUpUserID"];
+    }
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/findBySpaceListId"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
+        SKOrderInfoModel_result *model = [[SKOrderInfoModel_result alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    } success:success fail:fail];
+}
+
+//接受订单
++(void)acceptAnOrderWithUserName:(NSString *)username infoId:(NSNumber *)infoId pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+{
+    NSDictionary *dic = @{@"username" :username,
+                          @"infoId":infoId,
+                          @"pickUpUserID":pickUpUserID
+                          };
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/order"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
+        SKAcceptAnOrderModel *model = [[SKAcceptAnOrderModel alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    } success:success fail:fail];
+}
+
 #pragma mark - 获取所有的空间列表
 +(void)getSapaceFromGroupBlockSuccess:(success)success fail:(fail)fail
 {
@@ -87,39 +127,6 @@
     } success:success fail:fail];
 }
 
-//查询报修订单
-+(void)queryRepairsOrderWithSpaceList:(NSString *)spaceList statuscode:(NSString *)statuscode pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
-{
-    
-    NSMutableDictionary *dic = [@{@"spaceList" :spaceList,
-                          @"statuscode":statuscode
-                          }mutableCopy];
-    
-    if (![pickUpUserID isEqualToNumber:@0]) {
-        [dic setValue:pickUpUserID forKey:@"pickUpUserID"];
-    }
-    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/findBySpaceListId"];
-    
-    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
-        SKOrderInfoModel_result *model = [[SKOrderInfoModel_result alloc] initWithDictionary:responseDic error:nil];
-        return model;
-    } success:success fail:fail];
-}
-
-//接受订单
-+(void)acceptAnOrderWithUserName:(NSString *)username infoId:(NSNumber *)infoId pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
-{
-    NSDictionary *dic = @{@"username" :username,
-                          @"infoId":infoId,
-                          @"pickUpUserID":pickUpUserID
-                          };
-    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/order"];
-    
-    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
-        SKAcceptAnOrderModel *model = [[SKAcceptAnOrderModel alloc] initWithDictionary:responseDic error:nil];
-        return model;
-    } success:success fail:fail];
-}
 
 
 @end
