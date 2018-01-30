@@ -25,6 +25,7 @@
     self.textView = [[UITextView alloc] init];
     [self.view addSubview:self.textView];
     self.textView.layer.cornerRadius = 5.f;
+    [self.textView setFont:[UIFont systemFontOfSize:17.f]];
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(10);

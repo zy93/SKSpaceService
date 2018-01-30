@@ -19,8 +19,6 @@
     self.roundView.backgroundColor  = UIColorFromRGB(0xb2b2b2);
     self.topLine.backgroundColor    = UIColorFromRGB(0xe0e0e0);
     self.bottomLine.backgroundColor = UIColorFromRGB(0xe0e0e0);
-    [self.addLogBtn setBackgroundColor:UICOLOR_MAIN_ORANGE];
-    self.addLogBtn.layer.cornerRadius = 5.f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -28,10 +26,6 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)addLogBtnClick:(id)sender {
-    if ([_delegate respondsToSelector:@selector(logContentCell:addBtnClick:)]) {
-        [_delegate logContentCell:self addBtnClick:sender];
-    }
-}
+
 
 @end

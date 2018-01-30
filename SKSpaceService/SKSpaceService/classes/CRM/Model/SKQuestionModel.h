@@ -12,7 +12,7 @@
 @end
 
 @interface SKQuestionModel : WOTBaseModel
-@property (nonatomic, strong) NSNumber *id1;
+@property (nonatomic, strong) NSNumber *id;
 @property (nonatomic, strong) NSNumber *sellId;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSNumber *userId;

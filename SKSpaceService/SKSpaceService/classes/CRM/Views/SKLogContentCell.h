@@ -11,7 +11,7 @@
 @class SKLogContentCell;
 
 @protocol SKLogContentCellDelegate <NSObject>
--(void)logContentCell:(SKLogContentCell *)cell addBtnClick:(id)sender;
+//-(void)logContentCell:(SKLogContentCell *)cell addBtnClick:(id)sender;
 @end
 
 
@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomLine;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
-@property (weak, nonatomic) IBOutlet UIButton *addLogBtn;
 
 @property (nonatomic, strong) id <SKLogContentCellDelegate> delegate;
 

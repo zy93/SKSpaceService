@@ -13,6 +13,12 @@
 
 @interface SKSalesOrderLogModel : WOTBaseModel
 
+@property (nonatomic, strong) NSNumber * id;
+@property (nonatomic, strong) NSNumber * sellId;
+@property (nonatomic, strong) NSString * content;
+@property (nonatomic, strong) NSString * time;
+
+
 @end
 
 @interface SKSalesOrderLogList : WOTBaseModel

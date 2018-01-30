@@ -110,8 +110,22 @@
         [self.tableList addObject:model.msg.list];
         [self.tableView reloadData];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        if (errorCode == 202) {
+            //无数据，补充一个空数据吧！
+            [self.tableList addObject:@[]];
+            [self.tableView reloadData];
+        }
         [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
     }];
+}
+
+#pragma mark - action
+-(void)addLogBtnClick:(UIButton *)sender
+{
+    SKTextViewVC *vc = [[SKTextViewVC alloc] init];
+    vc.type = SKTextViewVCTYPE_EDIT_LOG;
+    vc.model = self.model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - cell delegate
@@ -142,8 +156,8 @@
     }
     else {
         NSArray *arr = self.tableList[indexPath.section];
-        NSString *str = arr[indexPath.row];
-        CGFloat h = [str heightWithFont:[UIFont systemFontOfSize:15.f] maxWidth:(SCREEN_WIDTH-60)];
+        SKSalesOrderLogModel *model = arr[indexPath.row];
+        CGFloat h = [model.content heightWithFont:[UIFont systemFontOfSize:15.f] maxWidth:(SCREEN_WIDTH-60)];
         return h+90;
     }
 }
@@ -158,7 +172,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 7;
+    return section==1? 45: 7;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -174,6 +188,24 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
+    if (section == 1) {
+        UIView *view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor whiteColor];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setTitle:@"添加日志" forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(addLogBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [btn.layer setCornerRadius:5.f];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
+        [btn setBackgroundColor:UICOLOR_MAIN_ORANGE];
+        [view addSubview:btn];
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-20);
+            make.height.mas_equalTo(35);
+            make.width.mas_equalTo(100);
+            make.centerY.equalTo(view.mas_centerY);
+        }];
+        return view;
+    }
     return nil;
 }
 
@@ -209,21 +241,25 @@
     else {
         SKLogContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKLogContentCell"];
         NSArray *arr = self.tableList[indexPath.section];
-        NSString *str = arr[indexPath.row];
-        cell.contentTextView.text = str;
+        SKSalesOrderLogModel *model = arr[indexPath.row];
+        cell.contentTextView.text = model.content;
+        cell.timeLab.text = [NSString stringWithFormat:@"创建时间：%@",[model.time substringToIndex:16]];
         cell.delegate = self;
-        if (indexPath.row==0) {
+        if (arr.count<=1) {
             cell.topLine.hidden = YES;
-            cell.addLogBtn.hidden = YES;
+            cell.bottomLine.hidden = YES;
+        }
+        else if (indexPath.row==0) {
+            cell.topLine.hidden = YES;
+            cell.bottomLine.hidden = NO;
         }
         else if (indexPath.row == arr.count-1) {
+            cell.topLine.hidden = NO;
             cell.bottomLine.hidden = YES;
-            cell.addLogBtn.hidden = NO;
         }
         else {
             cell.topLine.hidden = NO;
             cell.bottomLine.hidden = NO;
-            cell.addLogBtn.hidden = YES;
         }
         return  cell;
     }

@@ -41,8 +41,8 @@
 -(void)createRequest
 {
     NSArray *arr = SalesOrderStateList;
-    
-    [WOTHTTPNetwork getSalesOrderWithState:self.type==0?nil:arr[self.type] success:^(id bean) {
+//    self.type==0?nil:arr[self.type]
+    [WOTHTTPNetwork getSalesOrderWithState:nil success:^(id bean) {
         SKSalesOrder_msg *model = bean;
         self.tableList = model.msg.list;
         [self StopRefresh];
