@@ -46,9 +46,12 @@
 -(UIImage *)toImage;
 
 //设置view的阴影
-
+-(void)setShadowWithText;
 -(void)setShadow:(UIColor *)shadowColor;
-
+-(void)setShadow:(UIColor *)shadowColor cornerRadius:(CGFloat)radius;
+-(void)setShadow:(UIColor *)shadowColor downOffset:(CGFloat)offset cornerRadius:(CGFloat)radius;
+-(void)setShadow:(UIColor *)shadowColor lineColor:(UIColor *)lineColor cornerRadius:(CGFloat)radius;
+-(void)setShadow:(UIColor *)shadowColor lineColor:(UIColor *)lineColor lineWidth:(CGFloat)lineWidth cornerRadius:(CGFloat)radius;
 /**
  *  获取视图所在的控制器
  *

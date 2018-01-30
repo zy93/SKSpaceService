@@ -20,7 +20,7 @@
     self.stateLab.clipsToBounds = YES;
     self.stateLab.backgroundColor = UICOLOR_BLUE_7d;
     
-    self.titleLab.textColor = [UIColor whiteColor];
+    self.titleLab.textColor = [UIColor blackColor];
     
     self.dateLab.textColor = UICOLOR_GRAY_99;
 }

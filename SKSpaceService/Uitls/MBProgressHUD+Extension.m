@@ -34,7 +34,7 @@
     hud.labelText = message;
     if(message==nil || [message isEqualToString:@""])
     {
-        hud.labelText = @"MBProgressHUDUtil收到的message为空";
+        hud.labelText = @"异常！";
     }
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;

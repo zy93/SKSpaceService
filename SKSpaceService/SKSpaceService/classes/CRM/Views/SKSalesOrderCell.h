@@ -14,9 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 @property (weak, nonatomic) IBOutlet UIView *starBGView;
-@property (weak, nonatomic) IBOutlet UIImageView *star1IV;
-@property (weak, nonatomic) IBOutlet UIImageView *star2IV;
-@property (weak, nonatomic) IBOutlet UIImageView *star3IV;
-@property (weak, nonatomic) IBOutlet UIImageView *star4IV;
+@property (weak, nonatomic) IBOutlet UIButton *star1IV;
+@property (weak, nonatomic) IBOutlet UIButton *star2IV;
+@property (weak, nonatomic) IBOutlet UIButton *star3IV;
+@property (weak, nonatomic) IBOutlet UIButton *star4IV;
 
 @end

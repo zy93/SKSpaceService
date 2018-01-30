@@ -219,11 +219,47 @@
 
 //设置view的阴影
 
--(void)setShadow:(UIColor *)shadowColor{
+-(void)setShadow:(UIColor *)shadowColor
+{
+    [self setShadow:shadowColor cornerRadius:0.f];
+}
+
+-(void)setShadow:(UIColor *)shadowColor cornerRadius:(CGFloat)radius
+{
     self.layer.shadowColor = shadowColor.CGColor;
     self.layer.shadowRadius = 4.f;
     self.layer.shadowOpacity = 0.2f;
     self.layer.shadowOffset = CGSizeMake(1, 1);
-    self.layer.cornerRadius = 0.f;
+    self.layer.cornerRadius = radius;
 }
+
+-(void)setShadow:(UIColor *)shadowColor downOffset:(CGFloat)offset cornerRadius:(CGFloat)radius
+{
+    self.layer.shadowColor = shadowColor.CGColor;
+    self.layer.shadowRadius = 4.f;
+    self.layer.shadowOpacity = 0.2f;
+    self.layer.shadowOffset = CGSizeMake(1, offset);
+    self.layer.cornerRadius = radius;
+}
+
+-(void)setShadowWithText
+{
+    [self setShadow:UICOLOR_MAIN_BLACK lineColor:UIColorFromRGB(0xced7d7) lineWidth:0.5f cornerRadius:5.f];
+}
+-(void)setShadow:(UIColor *)shadowColor lineColor:(UIColor *)lineColor cornerRadius:(CGFloat)radius
+{
+    [self setShadow:shadowColor lineColor:lineColor lineWidth:0.5f cornerRadius:5.f];
+}
+
+-(void)setShadow:(UIColor *)shadowColor lineColor:(UIColor *)lineColor lineWidth:(CGFloat)lineWidth cornerRadius:(CGFloat)radius
+{
+    self.layer.shadowColor = shadowColor.CGColor;
+    self.layer.shadowRadius = 4.f;
+    self.layer.shadowOpacity = 0.2f;
+    self.layer.shadowOffset = CGSizeMake(1, 1);
+    self.layer.cornerRadius = radius;
+    self.layer.borderWidth = lineWidth;
+    self.layer.borderColor = lineColor.CGColor;
+}
+
 @end
