@@ -10,6 +10,8 @@
 #import "SKTextField.h"
 #import "WOTSelectWorkspaceListVC.h"
 #import "SKSelectTypeVC.h"
+#import "SKBaseResponseModel.h"
+#import "SKSalesMainVC.h"
 
 @interface SKCreateSalesVC ()
 @property (nonatomic, strong) UILabel *clientNameLab;
@@ -34,6 +36,7 @@
 
 //数据
 @property (nonatomic, strong) NSNumber *spaceId;
+@property (nonatomic, strong) NSString *spaceName;
 //@property (nonatomic, strong) UIButton *saveBtn;
 
 @end
@@ -84,7 +87,7 @@
     [self.view addSubview:self.intentionStarLab];
     
     self.clientNameText = [[SKTextField alloc] init];
-    self.clientNameText.textField.placeholder = @"  请输入客户姓名";
+    self.clientNameText.textField.placeholder = @"请输入客户姓名";
     [self.view addSubview:self.clientNameText];
     self.clientTelText = [[SKTextField alloc] init];
     self.clientTelText.textField.placeholder = @"请输入客户电话号码";
@@ -100,7 +103,9 @@
         WOTSelectWorkspaceListVC *vc = [[WOTSelectWorkspaceListVC alloc] init];
         [weakSelf.navigationController pushViewController:vc animated:YES];
         vc.selectSpaceBlock = ^(WOTSpaceModel *model) {
-            textField.placeholder = model.spaceName;
+            textField.text = model.spaceName;
+            weakSelf.spaceId = model.spaceId;
+            weakSelf.spaceName = model.spaceName;
         };
     };
     [self.view addSubview:self.intentionSpaceText];
@@ -109,10 +114,10 @@
     self.clientSourceText.button = YES;
     self.clientSourceText.selectText = ^(UITextField *textField) {
         SKSelectTypeVC *vc = [[SKSelectTypeVC alloc] init];
-        vc.tableList = @[@"官网",@"广告",@"友人介绍",@"中介"];
+        vc.tableList = SalesClientSource;
         [weakSelf.navigationController pushViewController:vc animated:YES];
         vc.selectSpaceBlock = ^(__autoreleasing id model) {
-            textField.placeholder = (NSString *)model;
+            textField.text = (NSString *)model;
         };
         
     };
@@ -135,6 +140,7 @@
     [self.saveBtn setBackgroundColor:UICOLOR_MAIN_ORANGE];
     [self.saveBtn setTitle:@"保存" forState:UIControlStateNormal];
     [self.saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.saveBtn addTarget:self action:@selector(saveBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.saveBtn setShadow:UICOLOR_MAIN_BLACK downOffset:3 cornerRadius:5.f];
     [self.view addSubview:self.saveBtn];
     
@@ -263,6 +269,59 @@
     }
 }
 
+-(void)saveBtnClick:(UIButton *)sender
+{
+    if (strIsEmpty(self.clientNameText.textField.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入客户姓名！" toView:self.view];
+        return;
+    }
+    else if (strIsEmpty(self.clientTelText.textField.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入客户电话号码！" toView:self.view];
+        return;
+    }
+    else if (strIsEmpty(self.clientSourceText.textField.text)) {
+        [MBProgressHUDUtil showMessage:@"请选择客户来源！" toView:self.view];
+        return;
+    }
+    else if (strIsEmpty(self.specificSourceText.textField.text)) {
+        [MBProgressHUDUtil showMessage:@"请输入具体来源！" toView:self.view];
+        return;
+    }
+    else if (!self.star1Btn.isSelected) {
+        [MBProgressHUDUtil showMessage:@"请选择客户意向！" toView:self.view];
+        return;
+    }
+    
+    NSMutableDictionary *params = [@{@"clientName":self.clientNameText.textField.text,
+                                     @"contacts":self.clientNameText.textField.text,
+                                     @"tel":self.clientNameText.textField.text,
+                                     @"source":self.clientSourceText.textField.text,
+                                     @"specificSource":self.specificSourceText.textField.text,
+                                     @"will":[self getClientIntention],
+                                     @"stage":@"客户咨询",
+                                     @"leaderId":[WOTUserSingleton shared].userInfo.staffId,
+                                     @"leaderName":[WOTUserSingleton shared].userInfo.realName,
+                             } mutableCopy];
+    if (!strIsEmpty(self.spaceName)) {
+        [params setValue:self.spaceId   forKey:@"spaceId"];
+        [params setValue:self.spaceName forKey:@"spaceName"];
+    }
+    if (!strIsEmpty(self.clientCompanyText.textField.text)) {
+        [params setValue:self.clientCompanyText.textField.text forKey:@"companyName"];
+    }
+    
+    [WOTHTTPNetwork addSalesOrderWithParam:params success:^(id bean) {
+        [MBProgressHUD showMessage:@"添加成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+    }];
+    
+}
+
+
+
 #pragma mark - other
 -(UIButton *)createStarButtonWithTag:(NSInteger)tag
 {
@@ -272,6 +331,25 @@
     [button addTarget:self action:@selector(starBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     button.tag = tag;
     return button;
+}
+
+-(NSString *)getClientIntention
+{
+    NSString *result = nil;
+    if (self.star1Btn.isSelected) {
+        result = SalesOrderIntentionList[0];
+    }
+     if (self.star2Btn.isSelected) {
+        result = SalesOrderIntentionList[1];
+    }
+     if (self.star3Btn.isSelected) {
+        result = SalesOrderIntentionList[2];
+    }
+     if (self.star4Btn.isSelected) {
+        result = SalesOrderIntentionList[3];
+    }
+    
+    return result;
 }
 
 /*

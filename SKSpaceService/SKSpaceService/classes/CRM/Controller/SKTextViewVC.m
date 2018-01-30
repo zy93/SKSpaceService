@@ -32,7 +32,7 @@
         make.right.mas_equalTo(-10);
         make.height.mas_equalTo(140);
     }];
-
+    
     
     CGFloat viewWidth = SCREEN_WIDTH - 20;
     CGFloat viewHeight = 140;
@@ -52,6 +52,7 @@
     [self.saveBtn setTitle:@"保存" forState:UIControlStateNormal];
     [self.saveBtn setTitleColor:UICOLOR_WHITE forState:UIControlStateNormal];
     [self.saveBtn.layer setCornerRadius:5.f];
+    [self.saveBtn addTarget:self action:@selector(saveBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.saveBtn];
     
     [self.saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,6 +68,95 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - action
+- (void)saveBtnClick:(UIButton *)sender
+{
+    
+    switch (self.type) {
+        case SKTextViewVCTYPE_EDIT_LOG:
+        {
+            NSDictionary *params = @{@"sellId":self.model.sellId,
+                                     @"content":self.textView.text,
+                                     };
+            [WOTHTTPNetwork addSalesOrderLogWithParam:params success:^(id bean) {
+                [MBProgressHUD showMessage:@"添加成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+            }];
+        }
+        
+            break;
+        case SKTextViewVCTYPE_EDIT_CLIENT_NAME:
+            {
+                NSDictionary *params = @{@"sellId":self.model.sellId,
+                                         @"clientName":self.textView.text,
+                                         @"contacts":self.textView.text,
+                                         };
+                [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+                    [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                        self.model.clientName = self.textView.text;
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                    [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+                }];
+                
+            }
+            break;
+        case SKTextViewVCTYPE_EDIT_CLIENT_TEL:
+        {
+            NSDictionary *params = @{@"sellId":self.model.sellId,
+                                     @"tel":self.textView.text,
+                                     };
+            [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+                [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                    self.model.tel = self.textView.text;
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+            }];
+        }
+            break;
+        case SKTextViewVCTYPE_EDIT_CLIENT_COMPANY:
+        {
+            NSDictionary *params = @{@"sellId":self.model.sellId,
+                                     @"companyName":self.textView.text,
+                                     };
+            [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+                [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                    self.model.companyName = self.textView.text;
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+            }];
+        }
+            break;
+        case SKTextViewVCTYPE_EDIT_CLIENT_SPECIFIC_SOURCE:
+        {
+            NSDictionary *params = @{@"sellId":self.model.sellId,
+                                     @"specificSource":self.textView.text,
+                                     };
+            [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+                [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                    self.model.specificSource = self.textView.text;
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 /*

@@ -123,19 +123,33 @@
 }
 
 -(NSArray *)createTitles{
-    return [[NSArray alloc]initWithObjects:@"全部",@"未完成",@"已完成", nil];
+    return [[NSArray alloc] initWithArray:SalesOrderStateList];
 }
 
 
 -(NSArray<__kindof UIViewController *> *)createViewControllers{
     SKSalesOrderVC *vc1 = [[SKSalesOrderVC alloc]init];
+    vc1.type = SKSalesOrderVCTYPE_ALL;
+    SKSalesOrderVC *vc = [[SKSalesOrderVC alloc]init];
+    vc.type = SKSalesOrderVCTYPE_CLIENT_CONSULTING;
     SKSalesOrderVC *vc2 = [[SKSalesOrderVC alloc]init];
+    vc2.type = SKSalesOrderVCTYPE_PRELIMINARY_CONTACT;
     SKSalesOrderVC *vc3 = [[SKSalesOrderVC alloc]init];
+    vc3.type = SKSalesOrderVCTYPE_FURTHER_CONTACT;
+    SKSalesOrderVC *vc4 = [[SKSalesOrderVC alloc]init];
+    vc4.type = SKSalesOrderVCTYPE_FINISHED;
+    SKSalesOrderVC *vc5 = [[SKSalesOrderVC alloc]init];
+    vc5.type = SKSalesOrderVCTYPE_UNFINISHED;
 
     
     [self addChildViewController:vc1];
+    [self addChildViewController:vc ];
     [self addChildViewController:vc2];
     [self addChildViewController:vc3];
+    [self addChildViewController:vc4];
+    [self addChildViewController:vc5];
+
+    
     return self.childViewControllers;
 }
 

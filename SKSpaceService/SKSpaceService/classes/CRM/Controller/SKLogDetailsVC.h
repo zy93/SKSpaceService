@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKSalesOrderModel.h"
 
 @interface SKLogDetailsVC : UIViewController
+
+@property (nonatomic, strong) SKSalesOrderModel * model;
 
 @end

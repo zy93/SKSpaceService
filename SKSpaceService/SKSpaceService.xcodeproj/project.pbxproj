@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03076E34FFC25D455EE279CD /* libPods-SKSpaceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */; };
+		2A1540E920207A25001730D4 /* SKSalesOrderLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1540E820207A25001730D4 /* SKSalesOrderLogModel.m */; };
 		2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */; };
 		2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */; };
 		2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BF20181CB500A8CC19 /* XXPageTabView.m */; };
@@ -128,6 +129,9 @@
 		2ABC43122019E9FA008C3EDA /* SKQuestionReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC43102019E9FA008C3EDA /* SKQuestionReplyCell.m */; };
 		2ABC43132019E9FA008C3EDA /* SKQuestionReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABC43112019E9FA008C3EDA /* SKQuestionReplyCell.xib */; };
 		2ABC43162019EBC2008C3EDA /* SKQuestionDetailsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC43152019EBC2008C3EDA /* SKQuestionDetailsHeader.m */; };
+		2AC45A4E201EC7B7009D0698 /* SKBaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC45A4D201EC7B7009D0698 /* SKBaseResponseModel.m */; };
+		2AC45A51201F045B009D0698 /* SKSalesOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC45A50201F045B009D0698 /* SKSalesOrderModel.m */; };
+		2AC45A54201F3870009D0698 /* SKQuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC45A53201F3870009D0698 /* SKQuestionModel.m */; };
 		2AC82A7B20171C8A0076305E /* ServiceCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC82A7120171C8A0076305E /* ServiceCategory.plist */; };
 		2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82A7320171C8A0076305E /* WOTSingtleton.m */; };
 		2AC82A7D20171C8A0076305E /* CityCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC82A7420171C8A0076305E /* CityCode.plist */; };
@@ -169,6 +173,8 @@
 
 /* Begin PBXFileReference section */
 		1F43617551F8FBAC1ED4B92C /* Pods-SKSpaceServiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2A1540E720207A25001730D4 /* SKSalesOrderLogModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesOrderLogModel.h; sourceTree = "<group>"; };
+		2A1540E820207A25001730D4 /* SKSalesOrderLogModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderLogModel.m; sourceTree = "<group>"; };
 		2A4AC5BA201818E300A8CC19 /* SKSalesMainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesMainVC.h; sourceTree = "<group>"; };
 		2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesMainVC.m; sourceTree = "<group>"; };
 		2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXPageTabItemLable.m; sourceTree = "<group>"; };
@@ -404,6 +410,12 @@
 		2ABC43112019E9FA008C3EDA /* SKQuestionReplyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKQuestionReplyCell.xib; sourceTree = "<group>"; };
 		2ABC43142019EBC2008C3EDA /* SKQuestionDetailsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionDetailsHeader.h; sourceTree = "<group>"; };
 		2ABC43152019EBC2008C3EDA /* SKQuestionDetailsHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionDetailsHeader.m; sourceTree = "<group>"; };
+		2AC45A4C201EC7B7009D0698 /* SKBaseResponseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBaseResponseModel.h; sourceTree = "<group>"; };
+		2AC45A4D201EC7B7009D0698 /* SKBaseResponseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBaseResponseModel.m; sourceTree = "<group>"; };
+		2AC45A4F201F045B009D0698 /* SKSalesOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesOrderModel.h; sourceTree = "<group>"; };
+		2AC45A50201F045B009D0698 /* SKSalesOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderModel.m; sourceTree = "<group>"; };
+		2AC45A52201F3870009D0698 /* SKQuestionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionModel.h; sourceTree = "<group>"; };
+		2AC45A53201F3870009D0698 /* SKQuestionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionModel.m; sourceTree = "<group>"; };
 		2AC82A7020171C8A0076305E /* header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
 		2AC82A7120171C8A0076305E /* ServiceCategory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceCategory.plist; sourceTree = "<group>"; };
 		2AC82A7220171C8A0076305E /* WOTUserSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTUserSingleton.h; sourceTree = "<group>"; };
@@ -1050,6 +1062,14 @@
 			children = (
 				2ABC42F62019BEB2008C3EDA /* WOTSpaceModel.h */,
 				2ABC42F72019BEB2008C3EDA /* WOTSpaceModel.m */,
+				2AC45A4C201EC7B7009D0698 /* SKBaseResponseModel.h */,
+				2AC45A4D201EC7B7009D0698 /* SKBaseResponseModel.m */,
+				2AC45A4F201F045B009D0698 /* SKSalesOrderModel.h */,
+				2AC45A50201F045B009D0698 /* SKSalesOrderModel.m */,
+				2A1540E720207A25001730D4 /* SKSalesOrderLogModel.h */,
+				2A1540E820207A25001730D4 /* SKSalesOrderLogModel.m */,
+				2AC45A52201F3870009D0698 /* SKQuestionModel.h */,
+				2AC45A53201F3870009D0698 /* SKQuestionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1490,6 +1510,7 @@
 				2A9851B520170814005705ED /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				2A9851B720170814005705ED /* MASCompositeConstraint.m in Sources */,
 				2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */,
+				2AC45A4E201EC7B7009D0698 /* SKBaseResponseModel.m in Sources */,
 				2A9851E220170837005705ED /* WOTHTTPNetwork.m in Sources */,
 				2A9851A920170814005705ED /* SRError.m in Sources */,
 				2A9851B620170814005705ED /* ViewController+MASAdditions.m in Sources */,
@@ -1544,6 +1565,7 @@
 				2A9850D620170802005705ED /* WOTConfigThemeUitls.m in Sources */,
 				2A9850D720170802005705ED /* WOTQRCodeUtils.m in Sources */,
 				2A4AC5D02018640A00A8CC19 /* WOTButton.m in Sources */,
+				2AC45A51201F045B009D0698 /* SKSalesOrderModel.m in Sources */,
 				2A9851A720170814005705ED /* SRLog.m in Sources */,
 				2ABC43162019EBC2008C3EDA /* SKQuestionDetailsHeader.m in Sources */,
 				2A9850D520170802005705ED /* UIColor+ColorChange.m in Sources */,
@@ -1554,6 +1576,7 @@
 				2A9851A020170814005705ED /* SRProxyConnect.m in Sources */,
 				2A985085201707C7005705ED /* main.m in Sources */,
 				2A9851AF20170814005705ED /* NSURLRequest+SRWebSocket.m in Sources */,
+				2A1540E920207A25001730D4 /* SKSalesOrderLogModel.m in Sources */,
 				2A98519620170814005705ED /* UIView+Frame.m in Sources */,
 				2A9851BD20170814005705ED /* MASViewConstraint.m in Sources */,
 				2A98519820170814005705ED /* SystemFunctions.m in Sources */,
@@ -1564,6 +1587,7 @@
 				2A9851AE20170814005705ED /* SRConstants.m in Sources */,
 				2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */,
 				2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */,
+				2AC45A54201F3870009D0698 /* SKQuestionModel.m in Sources */,
 				2A9850D920170802005705ED /* WOTLocationManager.m in Sources */,
 				2A9851BB20170814005705ED /* View+MASAdditions.m in Sources */,
 				2A98519120170814005705ED /* CardViewItem.m in Sources */,

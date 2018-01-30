@@ -37,6 +37,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - request
+-(void)createRequest
+{
+//    [WOTHTTPNetwork getQuestionSuccess:^(id bean) {
+//        
+//    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+//        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+//    }];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

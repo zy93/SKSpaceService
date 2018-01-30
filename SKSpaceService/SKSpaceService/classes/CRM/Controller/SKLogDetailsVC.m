@@ -10,6 +10,9 @@
 #import "SKLogContentCell.h"
 #import "SKTextViewVC.h"
 #import "WOTSelectWorkspaceListVC.h"
+#import "SKSalesMainVC.h"
+#import "SKSelectTypeVC.h"
+#import "SKSalesOrderLogModel.h"
 
 @interface SKLogDetailsVC () <UITableViewDelegate, UITableViewDataSource, SKLogContentCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -33,11 +36,18 @@
 
     [self setupViews];
     [self loadData];
+    [self AddRefreshHeader];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self StartRefresh];
 }
 
 -(void)setupViews
@@ -50,20 +60,66 @@
     }];
 }
 
--(void)loadData
+
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
 {
-    NSArray *baseList = @[@"客户姓名：", @"电话号码：", @"公司名称", @"意向空间：", @"客户来源：", @"具体来源：", @"创建时间：", @"客户意向："];
-    self.tableList = [NSMutableArray new];
-    NSArray *logList = @[@"客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死客户想要一个独立版送死",@"萨克雷锋骄傲了时代峻峰可连接阿斯顿离开家"];
-    [self.tableList addObject:baseList];
-    [self.tableList addObject:logList];
+    __weak UIScrollView *pTableView = self.tableView;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
 }
 
+- (void)StartRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_footer != nil && [pTableView.mj_footer isRefreshing])
+    {
+        [pTableView.mj_footer endRefreshing];
+    }
+    [self createRequest];
+}
+
+- (void)StopRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_header != nil && [pTableView.mj_header isRefreshing])
+    {
+        [pTableView.mj_header endRefreshing];
+    }
+}
+
+-(void)loadData
+{
+    NSArray *baseList = @[@"客户姓名：", @"电话号码：", @"订单进度：", @"公司名称", @"意向空间：", @"客户来源：", @"具体来源：", @"创建时间：", @"客户意向："];
+    self.tableList = [NSMutableArray new];
+    [self.tableList addObject:baseList];
+}
+
+#pragma mark - request
+-(void)createRequest
+{
+    [WOTHTTPNetwork getSalesOrderLogWithSellId:self.model.sellId success:^(id bean) {
+        SKSalesOrderLog_msg *model = bean;
+        if (self.tableList.count>=2) {
+            [self.tableList removeLastObject];
+        }
+        [self.tableList addObject:model.msg.list];
+        [self.tableView reloadData];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+    }];
+}
 
 #pragma mark - cell delegate
 -(void)logContentCell:(SKLogContentCell *)cell addBtnClick:(id)sender
 {
     SKTextViewVC *vc = [[SKTextViewVC alloc] init];
+    vc.type = SKTextViewVCTYPE_EDIT_LOG;
+    vc.model = self.model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -138,16 +194,12 @@
                 make.height.mas_offset(1);
             }];
         }
-        NSArray *detailList = @[@"张三", @"18812345678", @"初次沟通", @"中介介绍", @"链家王老五介绍", @"2018/01/01", @"3"];
+        //数据value
+        NSArray *detailList = @[self.model.clientName, self.model.tel, self.model.stage, self.model.companyName, self.model.spaceName, self.model.source, self.model.specificSource, self.model.createTime];
         NSArray *arr = self.tableList[indexPath.section];
         cell.textLabel.text =arr[indexPath.row];
-        if (indexPath.row==7) {
-            UIButton *btn = [self createStarButtonWithTag:1001];
-            [cell addSubview:btn];
-            [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.offset(-40);
-                make.centerY.equalTo(cell.mas_centerY);
-            }];
+        if (indexPath.row == ((NSArray *)self.tableList[indexPath.section]).count-1) {
+            [self setStarWithCell:cell state:self.model.will];
         }
         else {
             cell.detailTextLabel.text = detailList[indexPath.row];
@@ -179,19 +231,51 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==0) {
-        if (indexPath.row==3) {
-            //选择空间
-            
-            WOTSelectWorkspaceListVC *vc = [[WOTSelectWorkspaceListVC alloc] init];
-            vc.isChangeSpace = YES;
-            [self.navigationController pushViewController:vc animated:YES];
+         if (indexPath.row==2) {
+            //订单进度
+             __weak typeof(self) weakSelf = self;
+             SKSelectTypeVC *vc = [[SKSelectTypeVC alloc] init];
+             vc.tableList = [SalesOrderStateList subarrayWithRange:NSMakeRange(1, SalesOrderStateList.count-3)];
+             vc.model = self.model;
+             vc.type = SKSelectTypeVCTYPE_ORDER_STATE;
+             [weakSelf.navigationController pushViewController:vc animated:YES];
         }
         else if (indexPath.row==4) {
+            //选择空间
+            WOTSelectWorkspaceListVC *vc = [[WOTSelectWorkspaceListVC alloc] init];
+            vc.isChangeSpace = YES;
+            vc.model = self.model;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row==5) {
             //客户来源
+            __weak typeof(self) weakSelf = self;
+            SKSelectTypeVC *vc = [[SKSelectTypeVC alloc] init];
+            vc.tableList = SalesClientSource;
+            vc.model = self.model;
+            vc.type = SKSelectTypeVCTYPE_CLIENT_SOURCE;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row==7) {
+            //创建时间
+        }
+        else if (indexPath.row==8) {
+            //客户意向
         }
         else {
             SKTextViewVC *vc = [[SKTextViewVC alloc] init];
+            if (indexPath.row==0) {
+                vc.type = SKTextViewVCTYPE_EDIT_CLIENT_NAME;
+            } else if (indexPath.row==1) {
+                vc.type = SKTextViewVCTYPE_EDIT_CLIENT_TEL;
+            } else if (indexPath.row==3) {
+                vc.type = SKTextViewVCTYPE_EDIT_CLIENT_COMPANY;
+            } else if (indexPath.row==6) {
+                vc.type = SKTextViewVCTYPE_EDIT_CLIENT_SPECIFIC_SOURCE;
+            }
+            vc.model = self.model;
             [self.navigationController pushViewController:vc animated:YES];
         }
         
@@ -199,6 +283,66 @@
 }
 
 #pragma mark - other
+-(void)setStarWithCell:(UITableViewCell *)cell state:(NSString *)state
+{
+    UIButton *btn1 = [self createStarButtonWithTag:1001];
+    UIButton *btn2 = [self createStarButtonWithTag:1002];
+    UIButton *btn3 = [self createStarButtonWithTag:1003];
+    UIButton *btn4 = [self createStarButtonWithTag:1004];
+    if ([state isEqualToString:SalesOrderIntentionList[0]]) {
+        btn1.selected = YES;
+        btn2.selected = NO;
+        btn3.selected = NO;
+        btn4.selected = NO;
+    }
+    else if ([state isEqualToString:SalesOrderIntentionList[1]]) {
+        btn1.selected = YES;
+        btn2.selected = YES;
+        btn3.selected = NO;
+        btn4.selected = NO;
+    }
+    else if ([state isEqualToString:SalesOrderIntentionList[2]]) {
+        btn1.selected = YES;
+        btn2.selected = YES;
+        btn3.selected = YES;
+        btn4.selected = NO;
+    }
+    else if ([state isEqualToString:SalesOrderIntentionList[3]]) {
+        btn1.selected = YES;
+        btn2.selected = YES;
+        btn3.selected = YES;
+        btn4.selected = YES;
+    }
+    else
+    {
+        btn1.selected = NO;
+        btn2.selected = NO;
+        btn3.selected = NO;
+        btn4.selected = NO;
+    }
+    
+    [cell addSubview:btn1];
+    [cell addSubview:btn2];
+    [cell addSubview:btn3];
+    [cell addSubview:btn4];
+    [btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-35*[WOTUitls GetLengthAdaptRate]);
+        make.centerY.equalTo(cell.mas_centerY);
+    }];
+    [btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(btn4.mas_left).offset(-2);
+        make.centerY.equalTo(cell.mas_centerY);
+    }];
+    [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(btn3.mas_left).offset(-2);
+        make.centerY.equalTo(cell.mas_centerY);
+    }];
+    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(btn2.mas_left).offset(-2);
+        make.centerY.equalTo(cell.mas_centerY);
+    }];
+}
+
 -(UIButton *)createStarButtonWithTag:(NSInteger)tag
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

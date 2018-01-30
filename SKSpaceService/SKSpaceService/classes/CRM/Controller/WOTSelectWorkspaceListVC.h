@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "WOTSpaceModel.h"
+#import "SKSalesOrderModel.h"
 #import "WOTBaseTableViewController.h"
 
 @interface WOTSelectWorkspaceListVC : WOTBaseTableViewController
-
-@property (nonatomic, assign) BOOL isChangeSpace;
-
 @property (nonatomic, copy) void(^selectSpaceBlock)(WOTSpaceModel *model);
+@property (nonatomic, assign) BOOL isChangeSpace;
+@property (nonatomic, strong) SKSalesOrderModel * model;;
+
 @end

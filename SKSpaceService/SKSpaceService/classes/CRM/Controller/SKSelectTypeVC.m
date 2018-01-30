@@ -9,7 +9,8 @@
 #import "SKSelectTypeVC.h"
 
 @interface SKSelectTypeVC ()
-
+@property (nonatomic, strong) NSDictionary * params;
+@property (nonatomic, strong) NSIndexPath  * index;
 @end
 
 @implementation SKSelectTypeVC
@@ -22,12 +23,42 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"选择类型";
+    if (self.type != SKSelectTypeVCTYPE_SELECT) {
+        [self configNaviRightItemWithTitle:@"保存" textColor:UICOLOR_MAIN_ORANGE];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - action
+-(void)rightItemAction
+{
+    //
+    
+    if (!self.params) {
+        [MBProgressHUDUtil showMessage:@"请选择类型！" toView:self.view];
+        return;
+    }
+    
+    [WOTHTTPNetwork updateSalesOrderInfoWithParam:self.params success:^(id bean) {
+        [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+            if (self.type == SKSelectTypeVCTYPE_ORDER_STATE) {
+                self.model.stage = self.params[@"stage"];
+            }
+            else {
+                self.model.source = self.params[@"source"];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+    }];
+}
+
 
 #pragma mark - Table view data source
 
@@ -39,9 +70,9 @@
     return self.tableList.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier"];
     }
@@ -49,6 +80,39 @@
     cell.textLabel.text = self.tableList[indexPath.row];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (self.type == SKSelectTypeVCTYPE_SELECT) {
+        self.selectSpaceBlock(cell.textLabel.text);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"select_round_blue"]];
+       
+        
+        if (self.type == SKSelectTypeVCTYPE_ORDER_STATE) {
+            self.params = @{@"sellId":self.model.sellId,
+                       @"stage":cell.textLabel.text,
+                       };
+        }
+        else {
+            self.params = @{@"sellId":self.model.sellId,
+                       @"source":cell.textLabel.text,
+                       };
+        }
+        if (self.index) {
+            cell = [tableView cellForRowAtIndexPath:indexPath];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryView = nil;
+        }
+        self.index = indexPath;
+    }
 }
 
 

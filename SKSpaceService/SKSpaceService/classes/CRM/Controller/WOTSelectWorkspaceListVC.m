@@ -14,7 +14,9 @@
 {
     NSIndexPath *selectPath;
     NSDictionary *tableDic;
+    NSDictionary *params;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
 @end
@@ -24,8 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     [self config];
     [self createRequest];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +50,20 @@
 -(void)rightItemAction
 {
     
+    if (!params) {
+        [MBProgressHUDUtil showMessage:@"请选空间！" toView:self.view];
+        return;
+    }
+    
+    [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+        [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+            self.model.spaceId = params[@"spaceId"];
+            self.model.spaceName = params[@"spaceName"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+    }];
 }
 
 #pragma mark - request
@@ -155,8 +173,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_isChangeSpace) {
-        UITableViewCell *cell =[tableView cellForRowAtIndexPath:selectPath];
-        if (cell) {
+        UITableViewCell *cell;
+        if (selectPath) {
+            cell =[tableView cellForRowAtIndexPath:selectPath];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.accessoryView = nil;
         }
@@ -164,6 +183,15 @@
         cell.accessoryType = UITableViewCellAccessoryDetailButton;
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"select_round_blue"]];
         selectPath = indexPath;
+        NSArray *arrKey = [tableDic allKeys];
+        NSString *key = arrKey[indexPath.section];
+        NSArray *modelList = tableDic[key];
+        
+        WOTSpaceModel *model = modelList[indexPath.row];
+        params = @{@"sellId":self.model.sellId,
+                   @"spaceId":model.spaceId,
+                   @"spaceName":model.spaceName,
+                   };
     }
     else {
         NSArray *arrKey = [tableDic allKeys];
