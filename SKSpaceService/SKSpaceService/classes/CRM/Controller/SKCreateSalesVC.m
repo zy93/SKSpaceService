@@ -294,7 +294,7 @@
     
     NSMutableDictionary *params = [@{@"clientName":self.clientNameText.textField.text,
                                      @"contacts":self.clientNameText.textField.text,
-                                     @"tel":self.clientNameText.textField.text,
+                                     @"tel":self.clientTelText.textField.text,
                                      @"source":self.clientSourceText.textField.text,
                                      @"specificSource":self.specificSourceText.textField.text,
                                      @"will":[self getClientIntention],

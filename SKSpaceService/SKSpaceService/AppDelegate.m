@@ -105,19 +105,48 @@
 -(void)loadViewController
 {
     if ([WOTUserSingleton shared].isLogin) {
-        if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"]) {
-            WOTBaseNavigationController *nav = [[WOTBaseNavigationController alloc] initWithRootViewController:[[SKSalesMainVC alloc] init]];
-            self.window.rootViewController = nav;
+        
+        //如果没有值说明是第一次登录进来
+        if (strIsEmpty([WOTUserSingleton shared].currentStatus)) {
+            //是否有
+            if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"]) {
+                [WOTUserSingleton shared].currentStatus = @"销控管理";
+                [self loadViewControllerWithName:@"SKSalesMainVC"];
+            }
+            else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"报修管理"]) {
+                [WOTUserSingleton shared].currentStatus = @"报修管理";
+                [self loadViewControllerWithName:@"SKRepairVC"];
+            }
+            else {
+                [MBProgressHUDUtil showMessage:@"没有其他权限！" toView:self.window.rootViewController.view];
+            }
+        }
+        //否则：目前是销控权限切换到报修管理权限
+        else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"报修管理"] &&
+                 [[WOTUserSingleton shared].currentStatus containsString:@"销控管理"]
+                 ) {
+            [WOTUserSingleton shared].currentStatus = @"报修管理";
+            [self loadViewControllerWithName:@"SKRepairVC"];
+        }
+        else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"] &&
+                 [[WOTUserSingleton shared].currentStatus containsString:@"报修管理"]) {
+            [WOTUserSingleton shared].currentStatus = @"销控管理";
+            [self loadViewControllerWithName:@"SKSalesMainVC"];
         }
         else {
-            WOTBaseNavigationController *nav = [[WOTBaseNavigationController alloc] initWithRootViewController:[[SKRepairVC alloc] init]];
-            self.window.rootViewController = nav;
-            //self.window.rootViewController = [[SKRepairVC alloc] init];
+            [MBProgressHUDUtil showMessage:@"没有其他权限！" toView:self.window.rootViewController.view];
         }
     }
     else {
         self.window.rootViewController = [[LoginViewController alloc] init];
     }
+}
+
+-(void)loadViewControllerWithName:(NSString *)vcName
+{
+    Class class = NSClassFromString(vcName);
+    WOTBaseNavigationController *nav = [[WOTBaseNavigationController alloc] initWithRootViewController:[[class alloc] init]];
+    self.window.rootViewController = nav;
 }
 
 @end

@@ -131,6 +131,11 @@
 		2AC45A4E201EC7B7009D0698 /* SKBaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC45A4D201EC7B7009D0698 /* SKBaseResponseModel.m */; };
 		2AC45A51201F045B009D0698 /* SKSalesOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC45A50201F045B009D0698 /* SKSalesOrderModel.m */; };
 		2AC45A54201F3870009D0698 /* SKQuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC45A53201F3870009D0698 /* SKQuestionModel.m */; };
+		2AC4A7A7202171D300D824EA /* SKMyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4A7A6202171D300D824EA /* SKMyVC.m */; };
+		2AC4A7AB202190FC00D824EA /* SKMyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4A7A9202190FC00D824EA /* SKMyCell.m */; };
+		2AC4A7AC202190FC00D824EA /* SKMyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AC4A7AA202190FC00D824EA /* SKMyCell.xib */; };
+		2AC4A7B02021A5DD00D824EA /* SKMyCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4A7AE2021A5DD00D824EA /* SKMyCollectionReusableView.m */; };
+		2AC4A7B12021A5DD00D824EA /* SKMyCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AC4A7AF2021A5DD00D824EA /* SKMyCollectionReusableView.xib */; };
 		2AC82A7B20171C8A0076305E /* ServiceCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC82A7120171C8A0076305E /* ServiceCategory.plist */; };
 		2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82A7320171C8A0076305E /* WOTSingtleton.m */; };
 		2AC82A7D20171C8A0076305E /* CityCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC82A7420171C8A0076305E /* CityCode.plist */; };
@@ -430,6 +435,14 @@
 		2AC45A50201F045B009D0698 /* SKSalesOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderModel.m; sourceTree = "<group>"; };
 		2AC45A52201F3870009D0698 /* SKQuestionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKQuestionModel.h; sourceTree = "<group>"; };
 		2AC45A53201F3870009D0698 /* SKQuestionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKQuestionModel.m; sourceTree = "<group>"; };
+		2AC4A7A5202171D300D824EA /* SKMyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKMyVC.h; sourceTree = "<group>"; };
+		2AC4A7A6202171D300D824EA /* SKMyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKMyVC.m; sourceTree = "<group>"; };
+		2AC4A7A8202190FC00D824EA /* SKMyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKMyCell.h; sourceTree = "<group>"; };
+		2AC4A7A9202190FC00D824EA /* SKMyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKMyCell.m; sourceTree = "<group>"; };
+		2AC4A7AA202190FC00D824EA /* SKMyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKMyCell.xib; sourceTree = "<group>"; };
+		2AC4A7AD2021A5DD00D824EA /* SKMyCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKMyCollectionReusableView.h; sourceTree = "<group>"; };
+		2AC4A7AE2021A5DD00D824EA /* SKMyCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKMyCollectionReusableView.m; sourceTree = "<group>"; };
+		2AC4A7AF2021A5DD00D824EA /* SKMyCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKMyCollectionReusableView.xib; sourceTree = "<group>"; };
 		2AC82A7020171C8A0076305E /* header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
 		2AC82A7120171C8A0076305E /* ServiceCategory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceCategory.plist; sourceTree = "<group>"; };
 		2AC82A7220171C8A0076305E /* WOTUserSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTUserSingleton.h; sourceTree = "<group>"; };
@@ -1178,6 +1191,8 @@
 			children = (
 				2AC82A98201725040076305E /* LoginViewController.h */,
 				2AC82A99201725040076305E /* LoginViewController.m */,
+				2AC4A7A5202171D300D824EA /* SKMyVC.h */,
+				2AC4A7A6202171D300D824EA /* SKMyVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1196,6 +1211,12 @@
 		2AC82AAB201726CA0076305E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2AC4A7A8202190FC00D824EA /* SKMyCell.h */,
+				2AC4A7A9202190FC00D824EA /* SKMyCell.m */,
+				2AC4A7AA202190FC00D824EA /* SKMyCell.xib */,
+				2AC4A7AD2021A5DD00D824EA /* SKMyCollectionReusableView.h */,
+				2AC4A7AE2021A5DD00D824EA /* SKMyCollectionReusableView.m */,
+				2AC4A7AF2021A5DD00D824EA /* SKMyCollectionReusableView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1425,10 +1446,12 @@
 				2A98518720170814005705ED /* UMSocialSDKResources.bundle in Resources */,
 				2AC82A7B20171C8A0076305E /* ServiceCategory.plist in Resources */,
 				2A98507F201707C7005705ED /* Assets.xcassets in Resources */,
+				2AC4A7AC202190FC00D824EA /* SKMyCell.xib in Resources */,
 				2A98519220170814005705ED /* WOTCardViewItem.xib in Resources */,
 				2A4AC5DB20186B6500A8CC19 /* SKSalesOrderCell.xib in Resources */,
 				2A98507A201707C7005705ED /* Main.storyboard in Resources */,
 				2A870D00201AF2FD006396B6 /* SKLogListCell.xib in Resources */,
+				2AC4A7B12021A5DD00D824EA /* SKMyCollectionReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1655,6 +1678,7 @@
 				2AC82A7E20171C8A0076305E /* WOTUserSingleton.m in Sources */,
 				2A870D03201AFDA5006396B6 /* SKLogDetailsVC.m in Sources */,
 				2A98519720170814005705ED /* HCScanQRViewController.m in Sources */,
+				2AC4A7AB202190FC00D824EA /* SKMyCell.m in Sources */,
 				2ABC42EC2019701D008C3EDA /* SKCreateSalesVC.m in Sources */,
 				2A9850E620170803005705ED /* JudgmentTime.m in Sources */,
 				2A4AC5D320186AD100A8CC19 /* WOTBaseTableViewController.m in Sources */,
@@ -1705,6 +1729,8 @@
 				2A9851B220170814005705ED /* JXPopoverView.m in Sources */,
 				2A9851B420170814005705ED /* JXPopoverAction.m in Sources */,
 				C5ACC961201EE80500FAAA31 /* SKUserOrderInfoView.m in Sources */,
+				2AC4A7B02021A5DD00D824EA /* SKMyCollectionReusableView.m in Sources */,
+				2AC4A7A7202171D300D824EA /* SKMyVC.m in Sources */,
 				2A870CFF201AF2FD006396B6 /* SKLogListCell.m in Sources */,
 				2AC82A9A201725040076305E /* LoginViewController.m in Sources */,
 				2A9850DA20170802005705ED /* UIImage+Blur.m in Sources */,

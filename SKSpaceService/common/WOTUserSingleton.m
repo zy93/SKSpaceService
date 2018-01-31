@@ -59,6 +59,14 @@ static dispatch_once_t token;
     
 }
 
+-(void)userLogout
+{
+    self.login = NO;
+    self.userInfo = nil;
+    self.currentStatus = nil;
+    [self deletePlistFile];
+}
+
 -(void)deletePlistFile{
     NSFileManager* fileManager=[NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);

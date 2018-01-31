@@ -11,5 +11,6 @@
 @interface UIImage (Blur)
 
 - (UIImage *)blur;
-
+- (UIImage *)blurWithDegree:(CGFloat)degree;
+- (UIImage *)blurWithLightAlpha:(CGFloat)alpha radius:(CGFloat)radius colorSaturationFactor:(CGFloat)colorSaturationFactor;
 @end

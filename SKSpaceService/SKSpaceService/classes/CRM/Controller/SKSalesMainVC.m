@@ -12,6 +12,7 @@
 #import "SKCreateSalesVC.h"
 #import "SKQuestionListVC.h"
 #import "SKLogListVC.h"
+#import "SKMyVC.h"
 
 @interface SKSalesMainVC ()
 @property (nonatomic, strong) UIImageView *topBGIV;
@@ -130,26 +131,22 @@
 -(NSArray<__kindof UIViewController *> *)createViewControllers{
     SKSalesOrderVC *vc1 = [[SKSalesOrderVC alloc]init];
     vc1.type = SKSalesOrderVCTYPE_ALL;
+    [self addChildViewController:vc1];
     SKSalesOrderVC *vc = [[SKSalesOrderVC alloc]init];
     vc.type = SKSalesOrderVCTYPE_CLIENT_CONSULTING;
+    [self addChildViewController:vc ];
     SKSalesOrderVC *vc2 = [[SKSalesOrderVC alloc]init];
     vc2.type = SKSalesOrderVCTYPE_PRELIMINARY_CONTACT;
+    [self addChildViewController:vc2];
     SKSalesOrderVC *vc3 = [[SKSalesOrderVC alloc]init];
     vc3.type = SKSalesOrderVCTYPE_FURTHER_CONTACT;
+    [self addChildViewController:vc3];
     SKSalesOrderVC *vc4 = [[SKSalesOrderVC alloc]init];
     vc4.type = SKSalesOrderVCTYPE_FINISHED;
+    [self addChildViewController:vc4];
     SKSalesOrderVC *vc5 = [[SKSalesOrderVC alloc]init];
     vc5.type = SKSalesOrderVCTYPE_UNFINISHED;
-
-    
-    [self addChildViewController:vc1];
-    [self addChildViewController:vc ];
-    [self addChildViewController:vc2];
-    [self addChildViewController:vc3];
-    [self addChildViewController:vc4];
     [self addChildViewController:vc5];
-
-    
     return self.childViewControllers;
 }
 
@@ -180,7 +177,8 @@
 #pragma mark - action
 -(void)rightItemAction
 {
-    
+    SKMyVC *vc = [[SKMyVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)createBtnClick:(id)sender
