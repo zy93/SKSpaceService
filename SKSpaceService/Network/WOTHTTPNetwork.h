@@ -46,7 +46,16 @@
 
 +(void)acceptAnOrderWithUserName:(NSString *)username infoId:(NSNumber *)infoId pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
 
-//+(void)startServiceWith
+
+/**
+ 开始维修
+
+ @param infoId 信息id
+ @param imageArray 图片数组
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)startServiceWithInfoId:(NSNumber *)infoId  imageArray:(NSArray *)imageArray success:(success)success fail:(fail)fail;
 
 #pragma mark - 空间
 

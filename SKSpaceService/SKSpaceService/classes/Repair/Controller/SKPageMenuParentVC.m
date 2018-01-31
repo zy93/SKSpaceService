@@ -7,6 +7,7 @@
 //
 
 #import "SKPageMenuParentVC.h"
+#import "SKMyVC.h"
 
 @interface SKPageMenuParentVC ()<XXPageTabViewDelegate,UINavigationControllerDelegate>
 
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configNaviRightItemWithImage:[UIImage imageNamed:@"top_my"]];
     [self setpageMenu];
 }
 
@@ -36,6 +38,12 @@
     self.pageTabView.indicatorStyle = XXPageTabIndicatorStyleDefault;
     self.pageTabView.indicatorWidth = 20;
     [self.view addSubview:self.pageTabView];
+}
+
+-(void)rightItemAction
+{
+    SKMyVC *vc = [[SKMyVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(UIViewController *)makeVC {
