@@ -11,12 +11,13 @@
 #import "SKQuestionSendCell.h"
 #import "SKQuestionReplyCell.h"
 #import "SKBottomTextView.h"
-
-#define str  @"阿asdf家具家居军不阿斯蒂芬莱卡安防会计说；阿"
+#import "SKQuestionModel.h"
+#import "SKSalesMainVC.h"
 
 @interface SKQuestionDetailsVC () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SKBottomTextView *textView;
+@property (nonatomic, strong) NSArray *tableList;
 @end
 
 @implementation SKQuestionDetailsVC
@@ -35,32 +36,100 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.showsHorizontalScrollIndicator=NO;
     self.tableView.backgroundColor = UICOLOR_MAIN_BACKGROUND;
     [self.tableView registerNib:[UINib nibWithNibName:@"SKQuestionSendCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKQuestionSendCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"SKQuestionReplyCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKQuestionReplyCell"];
     [self.view addSubview:self.tableView];
     
+    __weak typeof(self) weakSelf = self;
     self.textView = [[SKBottomTextView alloc] init];
+    self.textView.editingText = ^(NSString *string) {
+        NSDictionary *param  =@{@"sellId":weakSelf.model.sellId,
+                                @"type":@"用户",
+                                @"userId":[WOTUserSingleton shared].userInfo.staffId,
+                                @"userName":[WOTUserSingleton shared].userInfo.staffName,
+                                @"content":string,
+                              };
+        [WOTHTTPNetwork addSalesOrderQuestionWithParam:param success:^(id bean) {
+            weakSelf.textView.textView.text = nil;
+            //应该手动加一个model到list尾部
+            [weakSelf StartRefresh];
+        } fail:^(NSInteger errorCode, NSString *errorMessage) {
+            if (errorCode != 202) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:weakSelf.view];
+            }
+        }];
+    };
     [self.view addSubview:self.textView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_offset(0);
         make.left.mas_offset(0);
         make.right.mas_offset(0);
-        make.bottom.equalTo(self.view.mas_bottom).offset(-42);
+        make.bottom.equalTo(self.textView.mas_top);
     }];
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.tableView.mas_bottom).offset(42);
+        make.bottom.mas_offset(0);
         make.left.mas_offset(0);
         make.right.equalTo(self.tableView.mas_right);
         make.height.mas_offset(52);
     }];
+    [self AddRefreshHeader];
+    [self StartRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
+
+- (void)StartRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_footer != nil && [pTableView.mj_footer isRefreshing])
+    {
+        [pTableView.mj_footer endRefreshing];
+    }
+    [self createRequest];
+}
+
+- (void)StopRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_header != nil && [pTableView.mj_header isRefreshing])
+    {
+        [pTableView.mj_header endRefreshing];
+    }
+}
+#pragma mark - request
+-(void)createRequest
+{
+    [WOTHTTPNetwork getSalesOrderQuestionWithSellId:self.model.sellId success:^(id bean) {
+        SKQuestion_msg *model = bean;
+        self.tableList = model.msg.list;
+        [self.tableView reloadData];
+        [self StopRefresh];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.tableList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        if (errorCode != 202) {
+            [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -70,12 +139,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 50;
+    return self.tableList.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = [str heightWithFont:[UIFont systemFontOfSize:15.f] maxWidth:(SCREEN_WIDTH-20-35)];
+    SKQuestionModel *model = self.tableList[indexPath.row];
+    CGFloat height = [model.content heightWithFont:[UIFont systemFontOfSize:15.f] maxWidth:(SCREEN_WIDTH-20-35)];
     
     return height+40;
 }
@@ -88,36 +158,68 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     SKQuestionDetailsHeader *header = [[SKQuestionDetailsHeader alloc] init];
-    header.clientNameLab.text = @"客户姓名：张三";
+    header.clientNameLab.text = [NSString stringWithFormat:@"客户姓名：%@",self.model.clientName];
     header.intentionLab.text = @"意向程度：";
-    header.intentionSpaceLab.text = @"意向地点：方圆大厦";
-    header.star1Btn.selected = YES;
-    header.star2Btn.selected = YES;
+    header.intentionSpaceLab.text = [NSString stringWithFormat:@"意向地点：%@",self.model.spaceName];
+    if ([self.model.will isEqualToString:SalesOrderIntentionList[0]]) {
+        header.star1Btn.selected = YES;
+        header.star2Btn.selected = NO;
+        header.star3Btn.selected = NO;
+        header.star4Btn.selected = NO;
+    }
+    else if ([self.model.will isEqualToString:SalesOrderIntentionList[1]]) {
+        header.star1Btn.selected = YES;
+        header.star2Btn.selected = YES;
+        header.star3Btn.selected = NO;
+        header.star4Btn.selected = NO;
+    }
+    else if ([self.model.will isEqualToString:SalesOrderIntentionList[2]]) {
+        header.star1Btn.selected = YES;
+        header.star2Btn.selected = YES;
+        header.star3Btn.selected = YES;
+        header.star4Btn.selected = NO;
+    }
+    else if ([self.model.will isEqualToString:SalesOrderIntentionList[3]]) {
+        header.star1Btn.selected = YES;
+        header.star2Btn.selected = YES;
+        header.star3Btn.selected = YES;
+        header.star4Btn.selected = YES;
+    }
+    else
+    {
+        header.star1Btn.selected = NO;
+        header.star2Btn.selected = NO;
+        header.star3Btn.selected = NO;
+        header.star4Btn.selected = NO;
+    }
     return header;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
-    if (indexPath.row %2 ==0) {
-      cell = [tableView dequeueReusableCellWithIdentifier:@"SKQuestionSendCell" forIndexPath:indexPath];
-        
-        ((SKQuestionSendCell *)cell).contentTextView.text = str;
+    
+    SKQuestionModel *model = self.tableList[indexPath.row];
+    if ([model.type isEqualToString:@"管理员"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SKQuestionReplyCell" forIndexPath:indexPath];
+        ((SKQuestionReplyCell *)cell).contentTextView.text = model.content;
         //图片拉伸
-        UIImage*bubble = [UIImage imageNamed:@"dialogue_right"];
-        bubble=[bubble stretchableImageWithLeftCapWidth:10 topCapHeight:10];
-        [((SKQuestionSendCell *)cell).bgIV setImage:bubble];
+        UIImage*bubble = [UIImage imageNamed:@"dialogue_left"];
+        bubble=[bubble stretchableImageWithLeftCapWidth:10 topCapHeight:25];
+        [((SKQuestionReplyCell *)cell).bgIV setImage:bubble];
+        //
         
     }
     else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SKQuestionReplyCell" forIndexPath:indexPath];
-        ((SKQuestionReplyCell *)cell).contentTextView.text = str;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SKQuestionSendCell" forIndexPath:indexPath];
+        
+        ((SKQuestionSendCell *)cell).contentTextView.text = model.content;
         //图片拉伸
-        UIImage*bubble = [UIImage imageNamed:@"dialogue_left"];
-        bubble=[bubble stretchableImageWithLeftCapWidth:10 topCapHeight:10];
-        [((SKQuestionReplyCell *)cell).bgIV setImage:bubble];
+        UIImage*bubble = [UIImage imageNamed:@"dialogue_right"];
+        bubble=[bubble stretchableImageWithLeftCapWidth:10 topCapHeight:25];
+        [((SKQuestionSendCell *)cell).bgIV setImage:bubble];
     }
-    
+
     return cell;
 }
 
