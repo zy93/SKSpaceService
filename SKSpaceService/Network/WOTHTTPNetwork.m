@@ -127,6 +127,51 @@
     } success:success fail:fail];
 }
 
++(void)updateSalesOrderInfoWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/addSell"];
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKBaseResponseModel * spacemodel = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
+        return  spacemodel;
+    } success:success fail:fail];
+}
 
+
+#pragma mark - 销售日志
++(void)addSalesOrderLogWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellLog/addSellLog"];
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKBaseResponseModel * spacemodel = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
+        return  spacemodel;
+    } success:success fail:fail];
+}
+
++(void)getSalesOrderLogWithSellId:(NSNumber *)sellId success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellLog/find"];
+    NSDictionary *parameters = @{@"pageNo":@(1),
+                                 @"pageSize":@(1000),
+                                 @"sellId":sellId,
+                                 };
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKSalesOrderLog_msg * spacemodel = [[SKSalesOrderLog_msg alloc] initWithDictionary:responseDic error:nil];
+        return  spacemodel;
+    } success:success fail:fail];
+}
+
+#pragma mark - 销售问题
++(void)getSalesOrderQuestionSuccess:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/addSell"];
+    //    NSDictionary *parameters = @{@"pageNo":@(1),
+    //                                 @"pageSize":@(1000),
+    //                                 @"sellId":sellId,
+    //                                 };
+    //    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+    //        SKBaseResponseModel * spacemodel = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
+    //        return  spacemodel;
+    //    } success:success fail:fail];
+}
 
 @end

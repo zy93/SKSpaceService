@@ -49,6 +49,7 @@
             NSLog(@"%@", model.msg.list);
         }
         [self.tableView reloadData];
+        [self StopRefresh];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
     }];
@@ -107,20 +108,20 @@
     SKSalesOrderModel *model = self.tableList[indexPath.row];
     cell.stateLab.text = model.stage;
     if ([model.stage isEqualToString:@"客户咨询"]) {
-        cell.stateLab.backgroundColor = UICOLOR_BLUE_7d;
+        cell.stateLab.backgroundColor = UICOLOR_BLUE_7D;
     }
     else if ([model.stage isEqualToString:@"初步接洽"]) {
-        cell.stateLab.backgroundColor = UICOLOR_MAIN_PINK;
+        cell.stateLab.backgroundColor = UICOLOR_GREE_B0;
     }
     else if ([model.stage isEqualToString:@"深入沟通"]) {
-        cell.stateLab.backgroundColor = UICOLOR_MAIN_ORANGE;
+        cell.stateLab.backgroundColor = UICOLOR_PURPLE_E1;
     }
     else if ([model.stage isEqualToString:@"赢单"]) {
-        cell.stateLab.backgroundColor = UIColorFromRGB(0xdc756c);
+        cell.stateLab.backgroundColor = UICOLOR_RED_DC;
     }
     else
     {
-        cell.stateLab.backgroundColor = UICOLOR_GRAY_DD;
+        cell.stateLab.backgroundColor = UICOLOR_GRAY_AA;
     }
     cell.titleLab.text = model.clientName;
     if ([model.will isEqualToString:SalesOrderIntentionList[0]]) {
