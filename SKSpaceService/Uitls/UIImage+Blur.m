@@ -19,6 +19,11 @@
 //    return [self imgWithLightAlpha:0.1 radius:3 colorSaturationFactor:1];
 }
 
+-(UIImage *)blurWithDegree:(CGFloat)degree
+{
+    return [self imgWithLightAlpha:.1f radius:degree colorSaturationFactor:1.f];
+}
+
 - (UIImage *)imgWithLightAlpha:(CGFloat)alpha radius:(CGFloat)radius colorSaturationFactor:(CGFloat)colorSaturationFactor
 {
     UIColor *tintColor = [UIColor colorWithWhite:1.0 alpha:alpha];

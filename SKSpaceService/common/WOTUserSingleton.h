@@ -14,11 +14,10 @@
 //用户信息
 @property (nonatomic, strong) SKLoginModel *userInfo;
 @property (nonatomic, assign, getter=isLogin) BOOL login;
+@property (nonatomic, strong) NSString *currentStatus; //当前身份状态 维修清洁、销售人员
 
 +(instancetype)shared;
 -(void)saveUserInfoToPlistWithModel:(SKLoginModel *)model;
--(void)deletePlistFile;
+-(void)userLogout;
 
-//销毁单例
-+ (void)destroyInstance;
 @end

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SKMyCell" id="gTV-IL-0wX" customClass="SKMyCell">
+            <rect key="frame" x="0.0" y="0.0" width="97" height="89"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="97" height="89"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="change_user" translatesAutoresizingMaskIntoConstraints="NO" id="CZd-Bd-bAo">
+                        <rect key="frame" x="35" y="22" width="27" height="25"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="切换身份" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSF-8h-bsN">
+                        <rect key="frame" x="21.5" y="57" width="53.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="CZd-Bd-bAo" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-10" id="BK8-UN-5jc"/>
+                <constraint firstItem="NSF-8h-bsN" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Q5H-Nr-awy"/>
+                <constraint firstItem="CZd-Bd-bAo" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dfM-4b-qp9"/>
+                <constraint firstItem="NSF-8h-bsN" firstAttribute="top" secondItem="CZd-Bd-bAo" secondAttribute="bottom" constant="10" id="rmw-fA-Drk"/>
+            </constraints>
+            <size key="customSize" width="97" height="89"/>
+            <connections>
+                <outlet property="iconIV" destination="CZd-Bd-bAo" id="I8Y-yj-mHg"/>
+                <outlet property="titleLab" destination="NSF-8h-bsN" id="3uj-8g-Xxx"/>
+            </connections>
+            <point key="canvasLocation" x="48.5" y="71.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="change_user" width="27" height="25"/>
+    </resources>
+</document>

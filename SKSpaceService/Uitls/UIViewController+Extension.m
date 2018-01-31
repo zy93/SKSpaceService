@@ -12,14 +12,22 @@
 
 @implementation UIViewController(Extension) 
 -(void)configNaviBackItem{
-   
-    UIBarButtonItem *backitem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(goback)];
-    
-    [self.navigationItem.backBarButtonItem setBackButtonBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.navigationItem setHidesBackButton:YES];
-    [self.navigationItem setLeftBarButtonItem:backitem];
-//    [self.tabBarController.tabBar setHidden:YES];
- 
+    if (self.navigationController.navigationBar.isHidden) {
+        //如果nav隐藏，则加载一个button
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setFrame:CGRectMake(0, 20, 50*[WOTUitls GetLengthAdaptRate], 30*[WOTUitls GetLengthAdaptRate])];
+        [btn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
+    }
+    else {
+        //否则加载baritem
+        UIBarButtonItem *backitem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(goback)];
+        
+        [self.navigationItem.backBarButtonItem setBackButtonBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self.navigationItem setHidesBackButton:YES];
+        [self.navigationItem setLeftBarButtonItem:backitem];
+    }
 }
 
 
