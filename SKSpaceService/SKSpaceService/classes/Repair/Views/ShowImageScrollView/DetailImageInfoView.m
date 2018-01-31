@@ -29,22 +29,21 @@ static NSString * const identifier = @"DetailInfoCollectionViewCell";
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        
+        //[self setUpView];
     }
     return self;
 }
 
 -(void)willMoveToSuperview:(UIView *)newSuperview
 {
-    [self loadData];
-    
     [self setUpView];
 }
 
--(void)loadData
+-(void)setimageArray:(NSArray *)imageUrlArray
 {
-    _iconArray = self.imageUrlStrArray;
+    self.iconArray = imageUrlArray;
 }
+
 
 -(void)setUpView{
     
@@ -54,9 +53,9 @@ static NSString * const identifier = @"DetailInfoCollectionViewCell";
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize = CGSizeMake(60, 60);
+    layout.itemSize = CGSizeMake(75, 75);
     // item距离view的边距
-    layout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
+    layout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 20);
     // 最小行间距
     layout.minimumLineSpacing = 20;
     // 最小列间距
@@ -69,9 +68,9 @@ static NSString * const identifier = @"DetailInfoCollectionViewCell";
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.layer.cornerRadius = 5.f;
-    self.collectionView.layer.borderWidth = 1.f;
-    self.collectionView.layer.borderColor = [UIColor grayColor].CGColor;
+//    self.collectionView.layer.cornerRadius = 5.f;
+//    self.collectionView.layer.borderWidth = 1.f;
+//    self.collectionView.layer.borderColor = [UIColor grayColor].CGColor;
     [self addSubview:self.collectionView];
     [self setCollectionLayout];
 }
@@ -104,7 +103,7 @@ static NSString * const identifier = @"DetailInfoCollectionViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DetailInfoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:self.iconArray[indexPath.item]] ];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:self.iconArray[indexPath.item]] placeholderImage:[UIImage imageNamed:@"Notloaded"]];
+    [cell.imageView sd_setImageWithURL:self.iconArray[indexPath.item] placeholderImage:[UIImage imageNamed:@"Notloaded"]];
     return cell;
 }
 
@@ -114,14 +113,21 @@ static NSString * const identifier = @"DetailInfoCollectionViewCell";
     [ClickImageShowArtwork scanBigImageWithImageView:cell.imageView alpha:1];
 }
 
-#pragma mark - UICollectionViewDelegateFlowLayout
+#pragma mark - UICollectionViewDelegateFlowLayoutd
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake(60, 60);
+    return CGSizeMake(75, 75);
 }
 
+-(NSArray *)iconArray
+{
+    if (_iconArray == nil) {
+        _iconArray = [[NSArray alloc] init];
+    }
+    return _iconArray;
+}
 
 
 @end

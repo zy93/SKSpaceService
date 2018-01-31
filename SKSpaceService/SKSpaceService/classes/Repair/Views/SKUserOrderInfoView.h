@@ -24,4 +24,6 @@
 
 @property(nonatomic,strong)NSArray *imageUrlArray;
 
+-(void)setImageDataArray:(NSArray *)imageArray;
+
 @end

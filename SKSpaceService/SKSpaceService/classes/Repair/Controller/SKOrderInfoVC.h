@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SKOrderInfoModel.h"
 @interface SKOrderInfoVC : UIViewController
-
+@property(nonatomic,strong)NSString *titleStr;
 @property(nonatomic,strong)SKOrderInfoModel *orderInfoModel;
 
 @end

@@ -76,6 +76,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SKOrderInfoVC *orderInfoVC = [[SKOrderInfoVC alloc] init];
+    orderInfoVC.titleStr = @"开始维修";
     orderInfoVC.orderInfoModel = self.acceptedOrderArray[indexPath.row];
     [self.navigationController pushViewController:orderInfoVC animated:YES];
 }
