@@ -52,6 +52,22 @@
 #pragma mark - XXPageTabViewDelegate
 - (void)pageTabViewDidEndChange {
     NSLog(@"#####%d", (int)self.pageTabView.selectedTabIndex);
+    if (self.pageTabView.selectedTabIndex == 0) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_ACCEPTABLEORDER;
+    }
+    
+    if (self.pageTabView.selectedTabIndex == 1) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_ACCEPTEDORDER;
+    }
+    
+    if (self.pageTabView.selectedTabIndex == 2) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_SERVICINGORDER;
+    }
+    
+    if (self.pageTabView.selectedTabIndex == 3) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_FINISHEDORDER;
+    }
+    
 }
 
 #pragma mark - Event response

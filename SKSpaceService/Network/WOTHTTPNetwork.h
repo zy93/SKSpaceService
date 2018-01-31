@@ -40,12 +40,13 @@
  @param username 接单人的名字
  @param infoId 信息id
  @param pickUpUserID 接单人id
- @param infoId 信息id
- @param pickUpUserID 接单人id
  @param success 成功回调
  @param fail 失败回调
  */
+
 +(void)acceptAnOrderWithUserName:(NSString *)username infoId:(NSNumber *)infoId pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+
+//+(void)startServiceWith
 
 #pragma mark - 空间
 
