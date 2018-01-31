@@ -9,9 +9,11 @@
 #import "SKLogListVC.h"
 #import "SKLogListCell.h"
 #import "SKLogDetailsVC.h"
+#import "SKSalesOrderModel.h"
+#import "SKSalesMainVC.h"
 
 @interface SKLogListVC ()
-
+@property (nonatomic, strong) NSArray *tableList;
 @end
 
 @implementation SKLogListVC
@@ -24,8 +26,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"回访日志";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"SKLogListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKLogListCell"];
+    [self AddRefreshHeader];
+    [self StartRefresh];
 
 }
 
@@ -34,7 +39,49 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
 
+- (void)StartRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_footer != nil && [pTableView.mj_footer isRefreshing])
+    {
+        [pTableView.mj_footer endRefreshing];
+    }
+    [self createRequest];
+}
+
+- (void)StopRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_header != nil && [pTableView.mj_header isRefreshing])
+    {
+        [pTableView.mj_header endRefreshing];
+    }
+}
+
+#pragma mark - request
+-(void)createRequest
+{
+    [WOTHTTPNetwork getSalesOrderWithState:nil success:^(id bean) {
+        SKSalesOrder_msg *model = bean;
+        self.tableList = model.msg.list;
+        [self.tableView reloadData];
+        [self StopRefresh];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+    }];
+}
 
 #pragma mark - Table view data source
 
@@ -45,7 +92,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 10;
+    return self.tableList.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -58,10 +105,61 @@
     SKLogListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKLogListCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.stateLab.text = @"初次沟通";
-    cell.clientNameLab.text = @"客户姓名：张三";
-    cell.clientTelLab.text = @"13333333333";
-    cell.createTimeLab.text = @"2018/01/02";
+    SKSalesOrderModel *model = self.tableList[indexPath.row];
+    
+    cell.clientNameLab.text =[NSString stringWithFormat:@"客户姓名：%@",model.clientName];
+    cell.clientTelLab.text = [NSString stringWithFormat:@"客户电话：%@",model.tel];
+    cell.createTimeLab.text = [NSString stringWithFormat:@"创建时间：%@",[model.createTime substringToIndex:16]];
+    cell.stateLab.text = model.stage ;
+    if ([model.stage isEqualToString:@"客户咨询"]) {
+        cell.stateLab.backgroundColor = UICOLOR_BLUE_7D;
+    }
+    else if ([model.stage isEqualToString:@"初步接洽"]) {
+        cell.stateLab.backgroundColor = UICOLOR_GREE_B0;
+    }
+    else if ([model.stage isEqualToString:@"深入沟通"]) {
+        cell.stateLab.backgroundColor = UICOLOR_PURPLE_E1;
+    }
+    else if ([model.stage isEqualToString:@"赢单"]) {
+        cell.stateLab.backgroundColor = UICOLOR_RED_DC;
+    }
+    else
+    {
+        cell.stateLab.backgroundColor = UICOLOR_GRAY_AA;
+    }
+    if ([model.will isEqualToString:SalesOrderIntentionList[0]]) {
+        cell.star1Btn.selected = YES;
+        cell.star2Btn.selected = NO;
+        cell.star3Btn.selected = NO;
+        cell.star4Btn.selected = NO;
+    }
+    else if ([model.will isEqualToString:SalesOrderIntentionList[1]]) {
+        cell.star1Btn.selected = YES;
+        cell.star2Btn.selected = YES;
+        cell.star3Btn.selected = NO;
+        cell.star4Btn.selected = NO;
+    }
+    else if ([model.will isEqualToString:SalesOrderIntentionList[2]]) {
+        cell.star1Btn.selected = YES;
+        cell.star2Btn.selected = YES;
+        cell.star3Btn.selected = YES;
+        cell.star4Btn.selected = NO;
+    }
+    else if ([model.will isEqualToString:SalesOrderIntentionList[3]]) {
+        cell.star1Btn.selected = YES;
+        cell.star2Btn.selected = YES;
+        cell.star3Btn.selected = YES;
+        cell.star4Btn.selected = YES;
+    }
+    else
+    {
+        cell.star1Btn.selected = NO;
+        cell.star2Btn.selected = NO;
+        cell.star3Btn.selected = NO;
+        cell.star4Btn.selected = NO;
+    }
+    
+    
     
     return cell;
 }
@@ -70,6 +168,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SKLogDetailsVC *vc = [[SKLogDetailsVC alloc] init];
+    vc.model = self.tableList[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

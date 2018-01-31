@@ -15,6 +15,7 @@
 #import "SKBaseResponseModel.h"
 #import "SKSalesOrderModel.h"
 #import "SKSalesOrderLogModel.h"
+#import "SKQuestionModel.h"
 
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
@@ -96,8 +97,8 @@
                                  @"pageSize":pageSize
                                  };
     [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
-        WOTSpaceModel_msg * spacemodel = [[WOTSpaceModel_msg alloc]initWithDictionary:responseDic error:nil];
-        return  spacemodel;
+        WOTSpaceModel_msg * model_msg = [[WOTSpaceModel_msg alloc]initWithDictionary:responseDic error:nil];
+        return  model_msg;
     } success:success fail:fail];
 }
 
@@ -106,8 +107,8 @@
 {
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/addSell"];
     [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
-        SKBaseResponseModel * spacemodel = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
-        return  spacemodel;
+        SKBaseResponseModel * model_msg = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
+        return  model_msg;
     } success:success fail:fail];
 }
 
@@ -122,11 +123,65 @@
         [parameters setValue:state forKey:@"stage"];
     }
     [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
-        SKSalesOrder_msg * spacemodel = [[SKSalesOrder_msg alloc]initWithDictionary:responseDic error:nil];
-        return  spacemodel;
+        SKSalesOrder_msg * model_msg = [[SKSalesOrder_msg alloc]initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
++(void)updateSalesOrderInfoWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/addSell"];
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKBaseResponseModel * model_msg = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
+        return  model_msg;
     } success:success fail:fail];
 }
 
 
+#pragma mark - 销售日志
++(void)addSalesOrderLogWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellLog/addSellLog"];
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKBaseResponseModel * model_msg = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
++(void)getSalesOrderLogWithSellId:(NSNumber *)sellId success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellLog/find"];
+    NSDictionary *parameters = @{@"pageNo":@(1),
+                                 @"pageSize":@(1000),
+                                 @"sellId":sellId,
+                                 };
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKSalesOrderLog_msg * model_msg = [[SKSalesOrderLog_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
+#pragma mark - 销售问题
++(void)addSalesOrderQuestionWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellIssue/addSellIssue"];
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKBaseResponseModel * model_msg = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
++(void)getSalesOrderQuestionWithSellId:(NSNumber *)sellId success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellIssue/find"];
+    NSDictionary *parameters = @{@"pageNo":@(1),
+                                 @"pageSize":@(1000),
+                                 @"sellId":sellId,
+                                 };
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKQuestion_msg * model_msg = [[SKQuestion_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
 
 @end

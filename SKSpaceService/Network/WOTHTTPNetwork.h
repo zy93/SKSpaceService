@@ -114,12 +114,21 @@
 +(void)getSalesOrderLogWithSellId:(NSNumber *)sellId success:(success)success fail:(fail)fail;
 
 #pragma mark - 销售问题
+
 /**
- 获取问题列表
- 
+ 添加销售问题
+
+ @param parameters 参数列表
  @param success 成功回调
  @param fail 失败回调
  */
-+(void)getSalesOrderQuestionSuccess:(success)success fail:(fail)fail;
++(void)addSalesOrderQuestionWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail;
+/**
+ 获取问题列表
+ @param sellId 销售订单id
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)getSalesOrderQuestionWithSellId:(NSNumber *)sellId success:(success)success fail:(fail)fail;
 
 @end

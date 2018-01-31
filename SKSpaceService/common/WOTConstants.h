@@ -46,20 +46,21 @@
 #define UICOLOR_MAIN_ORANGE     UIColorFromRGB(0xff5907) //主橙色
 #define UICOLOR_MAIN_PINK       UIColorFromRGB(0xff7171) //主粉色
 #define UICOLOR_MAIN_LINE       UIColorFromRGB(0xeeeeee) //主线条使用
+#define UICOLOR_MAIN_TEXT_PLACEHOLDER  RGBA(0,0,31,0.22) //输入框底纹颜色
 #define UICOLOR_GRAY_66     UIColorFromRGB(0x666666) //灰色 中等等级，副标题。
 #define UICOLOR_GRAY_99     UIColorFromRGB(0x999999) //灰色 低等标题，深色底纹文字。
+#define UICOLOR_GRAY_AA     UIColorFromRGB(0xaaaaaa) //灰色 流单背景
 #define UICOLOR_GRAY_CC     UIColorFromRGB(0xcccccc) //灰色 最不明显使用。
 #define UICOLOR_GRAY_DD     UIColorFromRGB(0xdddddd) //灰色 最不明显使用。
 #define UICOLOR_GRAY_E1     UIColorFromRGB(0xe1e1e1) //灰色
 #define UICOLOR_GRAY_F1     UIColorFromRGB(0xf1f1f1) //灰色、
-//#define UICOLOR_GRAY_f9     UIColorFromRGB(0xf9f9f9) //灰色
-#define UICOLOR_MAIN_TEXT_PLACEHOLDER  RGBA(0,0,31,0.22) //输入框底纹颜色
-#define UICOLOR_BLUE_7d     UIColorFromRGB(0x7dc3f7)
-#define UICOLOR_RED_dc      UIColorFromRGB(0xdc756c)
-#define UICOLOR_GREE_b0     UIColorFromRGB(0xb0c76f)
+#define UICOLOR_BLUE_7D     UIColorFromRGB(0x7dc3f7)
+#define UICOLOR_RED_DC      UIColorFromRGB(0xdc756c)
+#define UICOLOR_GREE_B0     UIColorFromRGB(0xb0c76f)
+#define UICOLOR_PURPLE_E1   UIColorFromRGB(0xe18cfa) //紫色
 
-//#define HTTPBaseURL @"http://219.143.170.98:10011"//公网测试
-#define HTTPBaseURL @"http://192.168.1.216:8080"//赵亮亮
+#define HTTPBaseURL @"http://219.143.170.98:10011"//公网测试
+//#define HTTPBaseURL @"http://192.168.1.216:8080"//赵亮亮
 //#define HTTPBaseURL @"http://192.168.1.116:8080"//石宇驰
 
 //集团的appid

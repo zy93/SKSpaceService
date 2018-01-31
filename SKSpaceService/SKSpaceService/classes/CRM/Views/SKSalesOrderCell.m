@@ -14,14 +14,10 @@
     [super awakeFromNib];
     // Initialization code
     [self.bgView setShadow:UICOLOR_MAIN_BLACK];
-    
-    
     self.stateLab.layer.cornerRadius = 3.f;
     self.stateLab.clipsToBounds = YES;
-    self.stateLab.backgroundColor = UICOLOR_BLUE_7d;
-    
+    self.stateLab.backgroundColor = UICOLOR_BLUE_7D;
     self.titleLab.textColor = [UIColor blackColor];
-    
     self.dateLab.textColor = UICOLOR_GRAY_99;
 }
 

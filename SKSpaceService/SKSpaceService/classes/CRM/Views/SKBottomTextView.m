@@ -44,6 +44,7 @@
     self.addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addBtn setTitle:@"添加" forState:UIControlStateNormal];
     [self.addBtn setBackgroundColor:UICOLOR_MAIN_ORANGE];
+    [self.addBtn addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.addBtn.layer.cornerRadius = 5.f;
     [self addSubview:self.addBtn];
     

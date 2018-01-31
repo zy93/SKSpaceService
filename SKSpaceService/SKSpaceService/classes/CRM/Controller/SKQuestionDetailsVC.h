@@ -8,7 +8,8 @@
 
 
 #import <UIKit/UIKit.h>
+#import "SKSalesOrderModel.h"
 
 @interface SKQuestionDetailsVC : UIViewController
-
+@property (nonatomic, strong) SKSalesOrderModel * model;
 @end

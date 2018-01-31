@@ -11,7 +11,7 @@
 #import "SKSalesOrderVC.h"
 #import "SKCreateSalesVC.h"
 #import "SKQuestionListVC.h"
-#import "SKLogPageVC.h"
+#import "SKLogListVC.h"
 
 @interface SKSalesMainVC ()
 @property (nonatomic, strong) UIImageView *topBGIV;
@@ -123,7 +123,7 @@
 }
 
 -(NSArray *)createTitles{
-    return [[NSArray alloc] initWithArray:SalesOrderStateList];
+    return SalesOrderStateList;
 }
 
 
@@ -197,7 +197,7 @@
 
 -(void)logBtnClick:(id)sender
 {
-    SKLogPageVC *vc = [[SKLogPageVC alloc] init];
+    SKLogListVC *vc = [[SKLogListVC alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

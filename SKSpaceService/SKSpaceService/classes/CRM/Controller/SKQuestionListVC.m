@@ -9,9 +9,10 @@
 #import "SKQuestionListVC.h"
 #import "SKQuestionListCell.h"
 #import "SKQuestionDetailsVC.h"
+#import "SKSalesOrderModel.h"
 
 @interface SKQuestionListVC ()
-
+@property (nonatomic, strong) NSArray * tableList;
 @end
 
 @implementation SKQuestionListVC
@@ -29,22 +30,55 @@
     self.navigationItem.title = @"问题列表";
     [self.tableView registerNib:[UINib nibWithNibName:@"SKQuestionListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKQuestionListCell"];
     self.tableView.delegate = self;
-
+    [self AddRefreshHeader];
+    [self StartRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
 
+- (void)StartRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_footer != nil && [pTableView.mj_footer isRefreshing])
+    {
+        [pTableView.mj_footer endRefreshing];
+    }
+    [self createRequest];
+}
+
+- (void)StopRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_header != nil && [pTableView.mj_header isRefreshing])
+    {
+        [pTableView.mj_header endRefreshing];
+    }
+}
 #pragma mark - request
 -(void)createRequest
 {
-//    [WOTHTTPNetwork getQuestionSuccess:^(id bean) {
-//        
-//    } fail:^(NSInteger errorCode, NSString *errorMessage) {
-//        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
-//    }];
+    [WOTHTTPNetwork getSalesOrderWithState:nil success:^(id bean) {
+        SKSalesOrder_msg *model = bean;
+        self.tableList = model.msg.list;
+        [self.tableView reloadData];
+        [self StopRefresh];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+    }];
 }
 
 
@@ -55,7 +89,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.tableList.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -72,6 +106,9 @@
     SKQuestionListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SKQuestionListCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    SKSalesOrderModel *model = self.tableList[indexPath.row];
+    cell.titleLab.text = model.clientName;
+    cell.subtitleLab.text = [NSString stringWithFormat:@"意向空间：%@", model.spaceName];
     
     return cell;
 }
@@ -80,6 +117,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SKQuestionDetailsVC *vc = [[SKQuestionDetailsVC alloc] init];
+    vc.model = self.tableList[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
