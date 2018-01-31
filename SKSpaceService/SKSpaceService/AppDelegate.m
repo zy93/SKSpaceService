@@ -11,6 +11,7 @@
 #import "WOTUserSingleton.h"
 #import "LoginViewController.h"
 #import "SKSalesMainVC.h"
+#import "SKRepairVC.h"
 @interface AppDelegate ()
 
 @end
@@ -109,11 +110,12 @@
             self.window.rootViewController = nav;
         }
         else {
-            
+            WOTBaseNavigationController *nav = [[WOTBaseNavigationController alloc] initWithRootViewController:[[SKRepairVC alloc] init]];
+            self.window.rootViewController = nav;
+            //self.window.rootViewController = [[SKRepairVC alloc] init];
         }
     }
     else {
-        
         self.window.rootViewController = [[LoginViewController alloc] init];
     }
 }

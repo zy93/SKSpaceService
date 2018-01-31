@@ -22,11 +22,36 @@
  */
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd alias:(NSString *)alias success:(success)success fail:(fail)fail;
 
+#pragma mark - 维修订单
+/**
+ 查询订单
+
+ @param spaceList 空间id数组
+ @param statuscode 订单状态，1 待维修  2 已接单   3 维修中    4 维修完成
+ @param pickUpUserID 接单人的id
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryRepairsOrderWithSpaceList:(NSString *)spaceList statuscode:(NSString *)statuscode pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+
+/**
+ 接受订单
+
+ @param username 接单人的名字
+ @param infoId 信息id
+ @param pickUpUserID 接单人id
+ @param infoId 信息id
+ @param pickUpUserID 接单人id
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)acceptAnOrderWithUserName:(NSString *)username infoId:(NSNumber *)infoId pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+
 #pragma mark - 空间
 
 /**
  获取所有空间列表
-
+ 
  @param success 成功回调
  @param fail 失败回调
  */
@@ -34,7 +59,7 @@
 
 /**
  分页获取空间列表
-
+ 
  @param page 页码
  @param pageSize 数据量
  @param success 成功回调
@@ -45,7 +70,7 @@
 #pragma mark - 销售
 /**
  添加销售订单
-
+ 
  @param parameters 参数字典
  @param success 成功回调
  @param fail 失败回调
@@ -54,7 +79,7 @@
 
 /**
  获取用户销售订单记录
-
+ 
  @param state 订单状态
  @param success 成功回调
  @param fail 失败回调
@@ -63,7 +88,7 @@
 
 /**
  更新销售订单信息
-
+ 
  @param parameters 更新内容
  @param success 成功回调
  @param fail 失败回调
@@ -73,7 +98,7 @@
 #pragma mark - 销售日志
 /**
  添加销售日志
-
+ 
  @param parameters 参数列表
  @param success 成功回调
  @param fail 失败回调
@@ -81,7 +106,7 @@
 +(void)addSalesOrderLogWithParam:(NSDictionary *)parameters  success:(success)success fail:(fail)fail;
 /**
  获取日志
-
+ 
  @param sellId 销售订单id
  @param success 成功回调
  @param fail 失败回调
@@ -96,7 +121,5 @@
  @param fail 失败回调
  */
 +(void)getSalesOrderQuestionSuccess:(success)success fail:(fail)fail;
-
-
 
 @end

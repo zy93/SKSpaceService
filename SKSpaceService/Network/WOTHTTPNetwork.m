@@ -9,6 +9,8 @@
 #import "WOTHTTPNetwork.h"
 #import "header.h"
 #import "SKLoginModel.h"
+#import "SKOrderInfoModel.h"
+#import "SKAcceptAnOrderModel.h"
 #import "WOTSpaceModel.h"
 #import "SKBaseResponseModel.h"
 #import "SKSalesOrderModel.h"
@@ -45,6 +47,42 @@
         return model;
     } success:success fail:fail];
 }
+
+#pragma mark - 维修订单
+//查询报修订单
++(void)queryRepairsOrderWithSpaceList:(NSString *)spaceList statuscode:(NSString *)statuscode pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+{
+    
+    NSMutableDictionary *dic = [@{@"spaceList" :spaceList,
+                                  @"statuscode":statuscode
+                                  }mutableCopy];
+    
+    if (![pickUpUserID isEqualToNumber:@0]) {
+        [dic setValue:pickUpUserID forKey:@"pickUpUserID"];
+    }
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/findBySpaceListId"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
+        SKOrderInfoModel_result *model = [[SKOrderInfoModel_result alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    } success:success fail:fail];
+}
+
+//接受订单
++(void)acceptAnOrderWithUserName:(NSString *)username infoId:(NSNumber *)infoId pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
+{
+    NSDictionary *dic = @{@"username" :username,
+                          @"infoId":infoId,
+                          @"pickUpUserID":pickUpUserID
+                          };
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/order"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
+        SKAcceptAnOrderModel *model = [[SKAcceptAnOrderModel alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    } success:success fail:fail];
+}
+
 #pragma mark - 获取所有的空间列表
 +(void)getSapaceFromGroupBlockSuccess:(success)success fail:(fail)fail
 {
@@ -89,51 +127,6 @@
     } success:success fail:fail];
 }
 
-+(void)updateSalesOrderInfoWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail
-{
-    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/addSell"];
-    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
-        SKBaseResponseModel * spacemodel = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
-        return  spacemodel;
-    } success:success fail:fail];
-}
 
-
-#pragma mark - 销售日志
-+(void)addSalesOrderLogWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail
-{
-    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellLog/addSellLog"];
-    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
-        SKBaseResponseModel * spacemodel = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
-        return  spacemodel;
-    } success:success fail:fail];
-}
-
-+(void)getSalesOrderLogWithSellId:(NSNumber *)sellId success:(success)success fail:(fail)fail
-{
-    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/SellLog/find"];
-    NSDictionary *parameters = @{@"pageNo":@(1),
-                                 @"pageSize":@(1000),
-                                 @"sellId":sellId,
-                                 };
-    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
-        SKSalesOrderLog_msg * spacemodel = [[SKSalesOrderLog_msg alloc] initWithDictionary:responseDic error:nil];
-        return  spacemodel;
-    } success:success fail:fail];
-}
-
-#pragma mark - 销售问题
-+(void)getSalesOrderQuestionSuccess:(success)success fail:(fail)fail
-{
-    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/addSell"];
-//    NSDictionary *parameters = @{@"pageNo":@(1),
-//                                 @"pageSize":@(1000),
-//                                 @"sellId":sellId,
-//                                 };
-//    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
-//        SKBaseResponseModel * spacemodel = [[SKBaseResponseModel alloc]initWithDictionary:responseDic error:nil];
-//        return  spacemodel;
-//    } success:success fail:fail];
-}
 
 @end
