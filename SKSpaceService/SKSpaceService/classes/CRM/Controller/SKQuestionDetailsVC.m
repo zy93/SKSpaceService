@@ -126,6 +126,7 @@
         [self StopRefresh];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.tableList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [self StopRefresh];
         if (errorCode != 202) {
             [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
         }

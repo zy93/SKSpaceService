@@ -111,11 +111,11 @@
         [self.tableView reloadData];
         [self StopRefresh];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [self StopRefresh];
         if (errorCode == 202) {
             //无数据，补充一个空数据吧！
             [self.tableList addObject:@[]];
             [self.tableView reloadData];
-            [self StopRefresh];
         }
         [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
     }];

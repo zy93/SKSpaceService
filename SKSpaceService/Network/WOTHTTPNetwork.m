@@ -117,7 +117,7 @@
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/find"];
     NSMutableDictionary *parameters = [@{@"pageNo":@(1),
                                          @"pageSize":@(10000),
-                                         @"staffId":[WOTUserSingleton shared].userInfo.staffId,
+                                         @"leaderId":[WOTUserSingleton shared].userInfo.staffId,
                                          } mutableCopy];
     if (!strIsEmpty(state)) {
         [parameters setValue:state forKey:@"stage"];
