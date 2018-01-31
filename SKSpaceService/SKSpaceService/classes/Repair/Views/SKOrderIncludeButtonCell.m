@@ -101,6 +101,7 @@
     if (_backGroundView == nil) {
         _backGroundView = [[UIView alloc] init];
         _backGroundView.backgroundColor = [UIColor whiteColor];
+        _backGroundView.userInteractionEnabled = YES;
         _backGroundView.layer.shadowOpacity = 0.5;// 阴影透明度
         _backGroundView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
         _backGroundView.layer.shadowRadius = 3;// 阴影扩散的范围控制

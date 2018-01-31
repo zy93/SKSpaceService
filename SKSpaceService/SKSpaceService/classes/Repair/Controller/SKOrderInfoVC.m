@@ -12,6 +12,7 @@
 #import "ButtonView.h"
 
 @interface SKOrderInfoVC ()
+@property(nonatomic,strong)NSMutableArray *imageArray;
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)SKUserOrderInfoView *userOrderInfoView;
 @property(nonatomic,strong)DetailImageInfoView *servicingImageInfoView;
@@ -26,13 +27,15 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"报修详情";
+    for (NSString *imageString in [self.orderInfoModel.pictureOne componentsSeparatedByString:@","]) {
+        [self.imageArray addObject:[imageString ToResourcesUrl]];
+    }
     [self.view addSubview:self.scrollView];
-    //self.view = self.scrollView;
-    //[self.scrollView addSubview:self.constView];
     [self.scrollView addSubview:self.userOrderInfoView];
     [self.scrollView addSubview:self.servicingImageInfoView];
     [self.scrollView addSubview:self.finishedImageInfoView];
     [self.scrollView addSubview:self.bottomButtonView];
+    [self.bottomButtonView.disposeButton addTarget:self action:@selector(startService) forControlEvents:UIControlEventTouchDown];
     [self layoutSubviews];
 }
 
@@ -87,7 +90,7 @@
 #pragma mark - 开始维修接口
 -(void)startService
 {
-    NSLog(@"开始维修接口");
+    
 }
 
 -(UIScrollView *)scrollView
@@ -103,11 +106,18 @@
 {
     if (_userOrderInfoView == nil) {
         _userOrderInfoView = [[SKUserOrderInfoView alloc] init];
+        _userOrderInfoView.userInteractionEnabled = YES;
         _userOrderInfoView.backgroundColor = [UIColor whiteColor];
         _userOrderInfoView.layer.shadowOpacity = 0.5;// 阴影透明度
         _userOrderInfoView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
         _userOrderInfoView.layer.shadowRadius = 3;// 阴影扩散的范围控制
         _userOrderInfoView.layer.shadowOffset = CGSizeMake(1, 1);// 阴影的范围
+        _userOrderInfoView.serviceAddressInfoLabel.text = self.orderInfoModel.address;
+        _userOrderInfoView.serviceArticleInfoLabel.text = self.orderInfoModel.type;
+        _userOrderInfoView.serviceCauseInfoLabel.text = self.orderInfoModel.info;
+        _userOrderInfoView.serviceTimeInfoLabel.text = self.orderInfoModel.sorderTime;
+//        _userOrderInfoView.imageUrlArray = self.imageArray;
+        [_userOrderInfoView setImageDataArray:self.imageArray];
     }
     return _userOrderInfoView;
 }
@@ -144,10 +154,17 @@
 {
     if (_bottomButtonView == nil) {
         _bottomButtonView = [[ButtonView alloc] init];
-        _bottomButtonView.buttonTitleStr = @"开始维修";
-        [_bottomButtonView.disposeButton addTarget:self action:@selector(startService) forControlEvents:UIControlEventTouchDown];
+        _bottomButtonView.buttonTitleStr = self.titleStr;
     }
     return _bottomButtonView;
+}
+
+-(NSMutableArray *)imageArray
+{
+    if (_imageArray == nil) {
+        _imageArray = [[NSMutableArray alloc] init];
+    }
+    return _imageArray;
 }
 
 @end

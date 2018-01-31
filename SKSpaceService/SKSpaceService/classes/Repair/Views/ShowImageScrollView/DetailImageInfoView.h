@@ -13,4 +13,6 @@
 @property (nonatomic, strong)NSString *titleString;
 @property (nonatomic, strong)NSArray *imageUrlStrArray;
 
+-(void)setimageArray:(NSArray *)imageUrlArray;
+
 @end

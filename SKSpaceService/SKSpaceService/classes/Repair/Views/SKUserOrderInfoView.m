@@ -83,8 +83,16 @@
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.serviceTimeLabel.mas_bottom).with.offset(5);
         make.left.equalTo(self);
-        make.right.equalTo(self).with.offset(-15);
+        make.right.equalTo(self);
+        make.bottom.equalTo(self);
     }];
+}
+
+-(void)setImageDataArray:(NSArray *)imageArray
+{
+    self.imageUrlArray = imageArray;
+   // self.imageView.imageUrlStrArray = imageArray;
+    [self.imageView setimageArray:self.imageUrlArray];
 }
 
 -(UILabel *)serviceAddressLabel90
@@ -96,7 +104,7 @@
     return _serviceAddressLabel90;
 }
 
--(UILabel *)serviceAddressInfoLabelLabel
+-(UILabel *)serviceAddressInfoLabel
 {
     if (_serviceAddressInfoLabel == nil) {
         _serviceAddressInfoLabel = [[UILabel alloc] init];
@@ -160,7 +168,7 @@
     if (_imageView == nil) {
         _imageView = [[DetailImageInfoView alloc] init];
         _imageView.titleString = @"用户上传图片";
-        _imageView.imageUrlStrArray = self.imageUrlArray;
+        //_imageView.imageUrlStrArray = self.imageUrlArray;
     }
     return _imageView;
 }
