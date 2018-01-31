@@ -28,9 +28,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
     
-    self.pageTabView.selectedColor = UICOLOR_MAIN_ORANGE;
-    self.pageTabView.bottomOffLine = NO;
     [self loadViews];
+    [self.pageTabView addIndicatorViewWithStyle];
+    [self.pageTabView layoutSubviews];
+    self.pageTabView.titleStyle = XXPageTabTitleStyleDefault;
+    self.pageTabView.selectedColor = UICOLOR_MAIN_ORANGE;
+    self.pageTabView.bottomOffLine = YES;
+    self.pageTabView.indicatorStyle = XXPageTabIndicatorStyleDefault;
+    self.pageTabView.indicatorWidth = 40;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,11 +115,6 @@
         make.width.equalTo(self.questionBtn.mas_width);
         make.bottom.equalTo(self.topBGIV.mas_bottom);
     }];
-    
-    
-    
-    
-    
     [self.pageTabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.topBGIV.mas_bottom);
         make.left.mas_equalTo(0);

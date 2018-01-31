@@ -7,6 +7,7 @@
 //
 
 #import "SKPageMenuParentVC.h"
+#import "SKMyVC.h"
 
 @interface SKPageMenuParentVC ()<XXPageTabViewDelegate,UINavigationControllerDelegate>
 
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configNaviRightItemWithImage:[UIImage imageNamed:@"top_my"]];
     [self setpageMenu];
 }
 
@@ -38,6 +40,12 @@
     [self.view addSubview:self.pageTabView];
 }
 
+-(void)rightItemAction
+{
+    SKMyVC *vc = [[SKMyVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(UIViewController *)makeVC {
     UIViewController *basevc = [[UIViewController alloc]init];
     return basevc;
@@ -52,6 +60,22 @@
 #pragma mark - XXPageTabViewDelegate
 - (void)pageTabViewDidEndChange {
     NSLog(@"#####%d", (int)self.pageTabView.selectedTabIndex);
+    if (self.pageTabView.selectedTabIndex == 0) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_ACCEPTABLEORDER;
+    }
+    
+    if (self.pageTabView.selectedTabIndex == 1) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_ACCEPTEDORDER;
+    }
+    
+    if (self.pageTabView.selectedTabIndex == 2) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_SERVICINGORDER;
+    }
+    
+    if (self.pageTabView.selectedTabIndex == 3) {
+        [WOTSingtleton shared].orderType = ORDER_TYPE_FINISHEDORDER;
+    }
+    
 }
 
 #pragma mark - Event response

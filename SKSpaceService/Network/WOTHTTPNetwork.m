@@ -84,6 +84,17 @@
     } success:success fail:fail];
 }
 
+//开始维修
++(void)startServiceWithInfoId:(NSNumber *)infoId  imageArray:(NSArray *)imageArray success:(success)success fail:(fail)fail
+{
+//    NSDictionary *dic = @{@"infoId" :infoId
+//                          };
+//    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/order"];
+//    [WOTHTTPNetRequest doFileRequestWithParameters:dic useUrl:string image:imageArray complete:^WOTBaseModel *(id responseDic) {
+//        
+//    } success:success fail:fail];
+}
+
 #pragma mark - 获取所有的空间列表
 +(void)getSapaceFromGroupBlockSuccess:(success)success fail:(fail)fail
 {

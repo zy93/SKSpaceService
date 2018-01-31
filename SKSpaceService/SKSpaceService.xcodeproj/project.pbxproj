@@ -156,6 +156,7 @@
 		2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AAA201726CA0076305E /* SKLoginModel.m */; };
 		C59FA728201AF1FA00C7E22F /* SKAcceptableOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */; };
 		C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */; };
+		C5A084A520219EAE00AA629C /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A084A420219EAE00AA629C /* TZTestCell.m */; };
 		C5A4C14B2019B45C00336297 /* SKPageMenuParentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */; };
 		C5A4C1512019B6E200336297 /* SKRepairVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A4C1502019B6E200336297 /* SKRepairVC.m */; };
 		C5ACC955201ECF4700FAAA31 /* SKOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC954201ECF4700FAAA31 /* SKOrderTableViewCell.m */; };
@@ -478,6 +479,8 @@
 		C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAcceptableOrderVC.m; sourceTree = "<group>"; };
 		C59FA729201AFA3200C7E22F /* SKOrderIncludeButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderIncludeButtonCell.h; sourceTree = "<group>"; };
 		C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderIncludeButtonCell.m; sourceTree = "<group>"; };
+		C5A084A320219EAD00AA629C /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
+		C5A084A420219EAE00AA629C /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
 		C5A4C1492019B45C00336297 /* SKPageMenuParentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKPageMenuParentVC.h; sourceTree = "<group>"; };
 		C5A4C14A2019B45C00336297 /* SKPageMenuParentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKPageMenuParentVC.m; sourceTree = "<group>"; };
 		C5A4C14F2019B6E200336297 /* SKRepairVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKRepairVC.h; sourceTree = "<group>"; };
@@ -1266,6 +1269,8 @@
 		C5A4C1452019AD3A00336297 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C5A084A320219EAD00AA629C /* TZTestCell.h */,
+				C5A084A420219EAE00AA629C /* TZTestCell.m */,
 				C5ACC964201EEA7B00FAAA31 /* ShowImageScrollView */,
 				C59FA729201AFA3200C7E22F /* SKOrderIncludeButtonCell.h */,
 				C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */,
@@ -1609,6 +1614,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A084A520219EAE00AA629C /* TZTestCell.m in Sources */,
 				2ABC43122019E9FA008C3EDA /* SKQuestionReplyCell.m in Sources */,
 				2A9851A420170814005705ED /* SRMutex.m in Sources */,
 				2A9850E020170802005705ED /* NSDate+Uitls.m in Sources */,
