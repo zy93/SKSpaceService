@@ -215,6 +215,7 @@
 		2A4AC5D720186B6500A8CC19 /* SKSalesOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesOrderCell.h; sourceTree = "<group>"; };
 		2A4AC5D820186B6500A8CC19 /* SKSalesOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderCell.m; sourceTree = "<group>"; };
 		2A4AC5D920186B6500A8CC19 /* SKSalesOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKSalesOrderCell.xib; sourceTree = "<group>"; };
+		2A6D36C02022FE4C00754A72 /* SKSpaceService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SKSpaceService.entitlements; sourceTree = "<group>"; };
 		2A870CED201ACEFD006396B6 /* SKBottomTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBottomTextView.h; sourceTree = "<group>"; };
 		2A870CEE201ACEFD006396B6 /* SKBottomTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBottomTextView.m; sourceTree = "<group>"; };
 		2A870CF6201AF246006396B6 /* SKLogListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogListVC.h; sourceTree = "<group>"; };
@@ -614,6 +615,7 @@
 		2A985071201707C7005705ED /* SKSpaceService */ = {
 			isa = PBXGroup;
 			children = (
+				2A6D36C02022FE4C00754A72 /* SKSpaceService.entitlements */,
 				2AC82A9B201726CA0076305E /* classes */,
 				2A985072201707C7005705ED /* AppDelegate.h */,
 				2A985073201707C7005705ED /* AppDelegate.m */,
@@ -1396,6 +1398,11 @@
 					2A98506E201707C7005705ED = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2A985089201707C7005705ED = {
 						CreatedOnToolsVersion = 9.2;
@@ -1901,6 +1908,7 @@
 			baseConfigurationReference = 891FC413E8C2F086217A5A11 /* Pods-SKSpaceService.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SKSpaceService/SKSpaceService.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5EY377SJTX;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1922,6 +1930,7 @@
 					"$(PROJECT_DIR)/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/librarys/WOTImagePicker",
 					"$(PROJECT_DIR)/librarys/WXPay",
+					"$(PROJECT_DIR)/librarys/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SKSpaceService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1934,6 +1943,7 @@
 			baseConfigurationReference = CD005319737C341DE0E3D9DC /* Pods-SKSpaceService.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SKSpaceService/SKSpaceService.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5EY377SJTX;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1955,6 +1965,7 @@
 					"$(PROJECT_DIR)/librarys/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/librarys/WOTImagePicker",
 					"$(PROJECT_DIR)/librarys/WXPay",
+					"$(PROJECT_DIR)/librarys/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SKSpaceService;
 				PRODUCT_NAME = "$(TARGET_NAME)";

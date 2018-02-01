@@ -45,9 +45,6 @@
         SKSalesOrder_msg *model = bean;
         self.tableList = model.msg.list;
         [self StopRefresh];
-        if (self.type == SKSalesOrderVCTYPE_PRELIMINARY_CONTACT) {
-            NSLog(@"%@", model.msg.list);
-        }
         [self.tableView reloadData];
         [self StopRefresh];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {

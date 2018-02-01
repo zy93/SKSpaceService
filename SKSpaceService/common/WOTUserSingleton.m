@@ -55,7 +55,7 @@ static dispatch_once_t token;
 
     NSString *filename=[plistPath1 stringByAppendingPathComponent:@"userInfo.plist"];
     //输入写入
-    NSLog(@"fileName:%@",filename);
+//    NSLog(@"fileName:%@",filename);
     [dic writeToFile:filename atomically:YES];
 
     [self setValues];
@@ -64,7 +64,6 @@ static dispatch_once_t token;
 
 -(void)updateUserInfoToPlist
 {
-    NSLog(@"===========!!! %@",self.userInfo.currentStatus);
     [self saveUserInfoToPlistWithModel:self.userInfo];
 }
 
@@ -83,15 +82,15 @@ static dispatch_once_t token;
     NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:@"userInfo.plist"];
     BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
     if (!blHave) {
-        NSLog(@"no  have");
+//        NSLog(@"no  have");
         return ;
     }else {
-        NSLog(@" have");
+//        NSLog(@" have");
         BOOL blDele= [fileManager removeItemAtPath:uniquePath error:nil];
         if (blDele) {
-            NSLog(@"dele success");
+//            NSLog(@"dele success");
         }else {
-            NSLog(@"dele fail");
+//            NSLog(@"dele fail");
         }
         
     }

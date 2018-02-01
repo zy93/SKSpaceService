@@ -22,6 +22,9 @@ PODS:
   - AMapSearch (5.5.0):
     - AMapFoundation (~> 1.4)
   - IQKeyboardManager (5.0.6)
+  - JCore (1.1.6)
+  - JPush (3.0.7):
+    - JCore (~> 1.1.6)
   - JSONModel (1.2.0)
   - MJRefresh (3.1.15.1)
   - SDCycleScrollView (1.74):
@@ -40,6 +43,7 @@ DEPENDENCIES:
   - AMapLocation
   - AMapSearch
   - IQKeyboardManager
+  - JPush
   - JSONModel (~> 1.2.0)
   - MJRefresh
   - SDCycleScrollView (~> 1.64)
@@ -54,6 +58,8 @@ SPEC CHECKSUMS:
   AMapLocation: d02bd8c0081b0bc51b2e4cf89925ef57448263c9
   AMapSearch: dc9958acfb61b58dcbce79736bf14a39dde7506f
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
+  JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
+  JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   SDCycleScrollView: f821215226f6146a35470721a9d6e83ec5cfb04b
@@ -62,6 +68,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   ZLPhotoBrowser: b81d2afbedd46fe165840ffe3d0d50133fbadff5
 
-PODFILE CHECKSUM: e4116abb02d9f566609b580b1e4e14cec20aeadd
+PODFILE CHECKSUM: 83d6381d58423821c472254d469e1f18d0534f84
 
 COCOAPODS: 1.2.1
