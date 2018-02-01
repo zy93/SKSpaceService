@@ -16,9 +16,12 @@
 #import "TZTestCell.h"
 #import "TZImageManager.h"
 #import <Photos/Photos.h>
+#import "NSArray+ImageArray.h"
 
 @interface SKOrderInfoVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UIImagePickerControllerDelegate,TZImagePickerControllerDelegate>
-@property(nonatomic,strong)NSMutableArray *imageArray;
+@property(nonatomic,strong)NSMutableArray *userImageArray;
+@property(nonatomic,strong)NSMutableArray *servicingImageArray;
+@property(nonatomic,strong)NSMutableArray *finishedImageArray;
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)SKUserOrderInfoView *userOrderInfoView;
 @property(nonatomic,strong)DetailImageInfoView *servicingImageInfoView;
@@ -44,9 +47,22 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"报修详情";
-    for (NSString *imageString in [self.orderInfoModel.pictureOne componentsSeparatedByString:@","]) {
-        [self.imageArray addObject:[imageString ToResourcesUrl]];
+    if ([WOTSingtleton shared].orderType == ORDER_TYPE_ACCEPTEDORDER) {
+        self.userImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureOne];
+//        self.servicingImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureTwo];
+//        self.finishedImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureThree];
+    }else if ([WOTSingtleton shared].orderType == ORDER_TYPE_SERVICINGORDER)
+    {
+        self.userImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureOne];
+        self.servicingImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureTwo];
+        //self.finishedImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureThree];
+    }else
+    {
+        self.userImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureOne];
+        self.servicingImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureTwo];
+        self.finishedImageArray = [NSArray imageArrayWithString:self.orderInfoModel.pictureThree];
     }
+    
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.userOrderInfoView];
     [self.scrollView addSubview:self.servicingImageInfoView];
@@ -282,10 +298,32 @@
     }];
 }
 
-#pragma mark - 开始维修接口
+#pragma mark - 处理订单接口
 -(void)startService
 {
+    if ([WOTSingtleton shared].orderType == ORDER_TYPE_ACCEPTEDORDER) {
+        [WOTHTTPNetwork startServiceWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
+            [MBProgressHUD showMessage:@"处理成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+            }];
+        } fail:^(NSInteger errorCode, NSString *errorMessage) {
+            [MBProgressHUDUtil showMessage:@"处理失败！" toView:self.view];
+        }];
+    }
     
+    if ([WOTSingtleton shared].orderType == ORDER_TYPE_SERVICINGORDER) {
+        [WOTHTTPNetwork serviceFinishWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
+            [MBProgressHUD showMessage:@"处理成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+            }];
+        } fail:^(NSInteger errorCode, NSString *errorMessage) {
+             [MBProgressHUDUtil showMessage:@"处理失败！" toView:self.view];
+        }];
+    }
 }
 
 -(UIScrollView *)scrollView
@@ -311,7 +349,8 @@
         _userOrderInfoView.serviceArticleInfoLabel.text = self.orderInfoModel.type;
         _userOrderInfoView.serviceCauseInfoLabel.text = self.orderInfoModel.info;
         _userOrderInfoView.serviceTimeInfoLabel.text = self.orderInfoModel.sorderTime;
-        [_userOrderInfoView setImageDataArray:self.imageArray];
+        //[_userOrderInfoView setImageDataArray:self.userImageArray];
+        _userOrderInfoView.imageUrlArray = self.userImageArray;
     }
     return _userOrderInfoView;
 }
@@ -327,6 +366,8 @@
         _servicingImageInfoView.layer.shadowOffset = CGSizeMake(1, 1);// 阴影的范围
         _servicingImageInfoView.titleString = @"维修中图片";
         self.servicingImageInfoHeight = 1;
+        //[_servicingImageInfoView setimageArray:self.servicingImageArray];
+        _servicingImageInfoView.imageUrlStrArray = self.servicingImageArray;
     }
     return _servicingImageInfoView;
 }
@@ -342,6 +383,8 @@
         _finishedImageInfoView.layer.shadowOffset = CGSizeMake(1, 1);// 阴影的范围
         _finishedImageInfoView.titleString = @"维修完成图片";
         self.finishedImageInfoHeight = 1;
+
+        _finishedImageInfoView.imageUrlStrArray = self.finishedImageArray;
     }
     return _finishedImageInfoView;
 }
@@ -356,12 +399,12 @@
     return _bottomButtonView;
 }
 
--(NSMutableArray *)imageArray
+-(NSMutableArray *)userImageArray
 {
-    if (_imageArray == nil) {
-        _imageArray = [[NSMutableArray alloc] init];
+    if (_userImageArray == nil) {
+        _userImageArray = [[NSMutableArray alloc] init];
     }
-    return _imageArray;
+    return _userImageArray;
 }
 
 -(UIView *)addImageView
@@ -414,6 +457,22 @@
         _selectedAssets = [[NSMutableArray alloc] init];
     }
     return _selectedAssets;
+}
+
+-(NSMutableArray *)servicingImageArray
+{
+    if (_servicingImageArray == nil) {
+        _servicingImageArray = [[NSMutableArray alloc] init];
+    }
+    return _servicingImageArray;
+}
+
+-(NSMutableArray *)finishedImageArray
+{
+    if (_finishedImageArray == nil) {
+        _finishedImageArray = [[NSMutableArray alloc] init];
+    }
+    return _finishedImageArray;
 }
 
 @end

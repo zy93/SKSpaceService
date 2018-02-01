@@ -57,6 +57,18 @@
  */
 +(void)startServiceWithInfoId:(NSNumber *)infoId  imageArray:(NSArray *)imageArray success:(success)success fail:(fail)fail;
 
+
+/**
+ 维修完成
+
+ @param infoId 信息id
+ @param imageArray 图片数组
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)serviceFinishWithInfoId:(NSNumber *)infoId  imageArray:(NSArray *)imageArray success:(success)success fail:(fail)fail;
+
+
 #pragma mark - 空间
 
 /**

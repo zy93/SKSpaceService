@@ -30,18 +30,21 @@ static NSString * const identifier = @"DetailInfoCollectionViewCell";
 {
     if (self = [super initWithFrame:frame]) {
         //[self setUpView];
+//        [self loadData];
+//        [self setUpView];
     }
     return self;
 }
 
 -(void)willMoveToSuperview:(UIView *)newSuperview
 {
+    [self loadData];
     [self setUpView];
 }
 
--(void)setimageArray:(NSArray *)imageUrlArray
+-(void)loadData
 {
-    self.iconArray = imageUrlArray;
+    _iconArray = self.imageUrlStrArray;
 }
 
 
@@ -68,9 +71,6 @@ static NSString * const identifier = @"DetailInfoCollectionViewCell";
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor whiteColor];
-//    self.collectionView.layer.cornerRadius = 5.f;
-//    self.collectionView.layer.borderWidth = 1.f;
-//    self.collectionView.layer.borderColor = [UIColor grayColor].CGColor;
     [self addSubview:self.collectionView];
     [self setCollectionLayout];
 }
