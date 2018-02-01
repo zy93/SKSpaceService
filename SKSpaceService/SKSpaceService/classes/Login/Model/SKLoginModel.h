@@ -11,7 +11,7 @@
 @protocol SKLoginModel
 @end
 
-@interface SKLoginModel : JSONModel
+@interface SKLoginModel : WOTBaseModel
 @property (nonatomic, strong) NSString *alias ;
 @property (nonatomic, strong) NSString *appId;
 @property (nonatomic, strong) NSString *birthDate;
@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSNumber *staffType;
 @property (nonatomic, strong) NSNumber *state ;
 @property (nonatomic, strong) NSString *tel ;
+@property (nonatomic, strong) NSString *currentStatus; //当前身份状态 维修清洁、销售人员 不是接口内所含参数
 @end
 
 @interface SKLoginModel_msg : WOTBaseModel

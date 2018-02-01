@@ -21,8 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [WOTUserSingleton shared].firstLoad = YES;
     [self loadViewController];
+    [WOTUserSingleton shared].firstLoad = NO;
     
     return YES;
 }
@@ -105,32 +106,45 @@
 -(void)loadViewController
 {
     if ([WOTUserSingleton shared].isLogin) {
-        
-        //如果没有值说明是第一次登录进来
-        if (strIsEmpty([WOTUserSingleton shared].currentStatus)) {
+        //第一次启动
+        if ([WOTUserSingleton shared].isFirstLoad) {
+            //读取上次显示页面
+            if ([[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"销控管理"]) {
+                [WOTUserSingleton shared].userInfo.currentStatus = @"销控管理";
+                [self loadViewControllerWithName:@"SKSalesMainVC"];
+            }
+            else if ([[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"报修管理"]) {
+                [WOTUserSingleton shared].userInfo.currentStatus = @"报修管理";
+                [self loadViewControllerWithName:@"SKRepairVC"];
+            }
+        }
+        //登录后
+       else if (strIsEmpty([WOTUserSingleton shared].userInfo.currentStatus) ||
+           [WOTUserSingleton shared].firstLoad == YES) {
             //是否有
             if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"]) {
-                [WOTUserSingleton shared].currentStatus = @"销控管理";
+                [WOTUserSingleton shared].userInfo.currentStatus = @"销控管理";
                 [self loadViewControllerWithName:@"SKSalesMainVC"];
             }
             else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"报修管理"]) {
-                [WOTUserSingleton shared].currentStatus = @"报修管理";
+                [WOTUserSingleton shared].userInfo.currentStatus = @"报修管理";
                 [self loadViewControllerWithName:@"SKRepairVC"];
             }
             else {
                 [MBProgressHUDUtil showMessage:@"没有其他权限！" toView:self.window.rootViewController.view];
             }
         }
-        //否则：目前是销控权限切换到报修管理权限
+        //否则：目前是销控权限 切换到 报修管理权限
         else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"报修管理"] &&
-                 [[WOTUserSingleton shared].currentStatus containsString:@"销控管理"]
+                 [[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"销控管理"]
                  ) {
-            [WOTUserSingleton shared].currentStatus = @"报修管理";
+            [WOTUserSingleton shared].userInfo.currentStatus = @"报修管理";
             [self loadViewControllerWithName:@"SKRepairVC"];
         }
+        //否则：目前是 报修管理权限 切换到 销控权限
         else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"] &&
-                 [[WOTUserSingleton shared].currentStatus containsString:@"报修管理"]) {
-            [WOTUserSingleton shared].currentStatus = @"销控管理";
+                 [[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"报修管理"]) {
+            [WOTUserSingleton shared].userInfo.currentStatus = @"销控管理";
             [self loadViewControllerWithName:@"SKSalesMainVC"];
         }
         else {

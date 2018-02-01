@@ -30,7 +30,6 @@ static dispatch_once_t token;
 }
 
 + (void)destroyInstance {
-    
     shareUser=nil;
     token=0l;
 }
@@ -40,7 +39,11 @@ static dispatch_once_t token;
     _userInfo = [[SKLoginModel alloc] initWithDictionary:dic error:&error];
     if (_userInfo) {
         _login = YES;
+        //监听currentStatus，实时保存
+        [self addObserver:self forKeyPath:@"_userInfo.currentStatus" options:NSKeyValueObservingOptionNew context:nil];
     }
+    
+    
 }
 
 -(void)saveUserInfoToPlistWithModel:(SKLoginModel *)model
@@ -59,11 +62,16 @@ static dispatch_once_t token;
     
 }
 
+-(void)updateUserInfoToPlist
+{
+    NSLog(@"===========!!! %@",self.userInfo.currentStatus);
+    [self saveUserInfoToPlistWithModel:self.userInfo];
+}
+
 -(void)userLogout
 {
     self.login = NO;
     self.userInfo = nil;
-    self.currentStatus = nil;
     [self deletePlistFile];
 }
 
@@ -120,5 +128,18 @@ static dispatch_once_t token;
     }
     return [dic copy];
 }
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == nil) {
+        if ([keyPath isEqualToString:@"_userInfo.currentStatus"]) {
+            [self updateUserInfoToPlist];
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
 
 @end

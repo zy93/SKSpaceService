@@ -51,6 +51,7 @@
         [self.tableView reloadData];
         [self StopRefresh];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [self StopRefresh];
         [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
     }];
 }
