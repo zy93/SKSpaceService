@@ -59,8 +59,8 @@
 #define UICOLOR_GREE_B0     UIColorFromRGB(0xb0c76f)
 #define UICOLOR_PURPLE_E1   UIColorFromRGB(0xe18cfa) //紫色
 
-//#define HTTPBaseURL @"http://219.143.170.98:10011"//公网测试
-#define HTTPBaseURL @"http://192.168.1.216:8080"//赵亮亮
+#define HTTPBaseURL @"http://219.143.170.98:10011"//公网测试
+//#define HTTPBaseURL @"http://192.168.1.216:8080"//赵亮亮
 //#define HTTPBaseURL @"http://192.168.1.116:8080"//石宇驰
 
 //集团的appid

@@ -124,7 +124,9 @@
         self.tableList = model.msg.list;
         [self.tableView reloadData];
         [self StopRefresh];
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.tableList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.tableList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+        });
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [self StopRefresh];
         if (errorCode != 202) {

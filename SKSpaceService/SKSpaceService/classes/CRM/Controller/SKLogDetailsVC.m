@@ -117,6 +117,7 @@
             [self.tableList addObject:@[]];
             [self.tableView reloadData];
         }
+        else
         [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
     }];
 }
