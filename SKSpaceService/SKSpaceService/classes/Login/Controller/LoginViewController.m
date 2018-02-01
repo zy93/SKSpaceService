@@ -198,7 +198,8 @@
         [MBProgressHUDUtil showMessage:@"电话格式不正确！" toView:self.view];
         return;
     }
-    [WOTHTTPNetwork userLoginWithTelOrEmail:self.userTelField.text password:self.verificationCodeField.text alias:[NSString stringWithFormat:@"%@S",self.userTelField.text] success:^(id bean) {
+    NSString *alias = [NSString stringWithFormat:@"%@S",self.userTelField.text];
+    [WOTHTTPNetwork userLoginWithTelOrEmail:self.userTelField.text password:self.verificationCodeField.text alias:alias success:^(id bean) {
         SKLoginModel_msg *model = bean;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[WOTUserSingleton shared] saveUserInfoToPlistWithModel:model.msg];
@@ -206,9 +207,8 @@
                 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [appDelegate loadViewController];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [JPUSHService setTags:[NSSet setWithObject:@"iOS"] alias:[NSString stringWithFormat:@"%@S",self.userTelField.text] fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
-                        //NSLog(@"********set Alias:%@",alias);
-                    }];
+                    [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                    } seq:1];
                 });
             });
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
