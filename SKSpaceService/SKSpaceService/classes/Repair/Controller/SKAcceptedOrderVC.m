@@ -14,7 +14,7 @@
 @interface SKAcceptedOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UITableView *tableView;
-@property(nonatomic,strong)NSArray<SKOrderInfoModel*>*acceptedOrderArray;
+@property(nonatomic,strong)NSMutableArray<SKOrderInfoModel*>*acceptedOrderArray;
 @end
 
 @implementation SKAcceptedOrderVC
@@ -87,11 +87,16 @@
     [WOTHTTPNetwork queryRepairsOrderWithSpaceList:[WOTUserSingleton shared].userInfo.spaceList statuscode:@"2" pickUpUserID:[WOTUserSingleton shared].userInfo.staffId success:^(id bean) {
         SKOrderInfoModel_result *model_result = (SKOrderInfoModel_result *)bean;
         SKOrderInfoModel_msg *model_msg = model_result.msg;
-        self.acceptedOrderArray = model_msg.list;
+        self.acceptedOrderArray = [NSMutableArray arrayWithArray:model_msg.list];
+        //model_msg.list;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [self.acceptedOrderArray removeAllObjects];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
         [MBProgressHUDUtil showMessage:@"没有接受的订单！" toView:self.view];
     }];
 }
@@ -107,10 +112,10 @@
     return _tableView;
 }
 
--(NSArray<SKOrderInfoModel*>*)acceptedOrderArray
+-(NSMutableArray<SKOrderInfoModel*>*)acceptedOrderArray
 {
     if (_acceptedOrderArray == nil) {
-        _acceptedOrderArray = [[NSArray alloc] init];
+        _acceptedOrderArray = [[NSMutableArray alloc] init];
     }
     return _acceptedOrderArray;
 }

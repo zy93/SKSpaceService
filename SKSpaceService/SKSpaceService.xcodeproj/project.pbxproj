@@ -154,6 +154,7 @@
 		2AC82A9A201725040076305E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82A99201725040076305E /* LoginViewController.m */; };
 		2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AA8201726CA0076305E /* WOTBaseModel.m */; };
 		2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AAA201726CA0076305E /* SKLoginModel.m */; };
+		C5031C0E2022A6F0009854DF /* NSArray+ImageArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5031C0D2022A6F0009854DF /* NSArray+ImageArray.m */; };
 		C59FA728201AF1FA00C7E22F /* SKAcceptableOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */; };
 		C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */; };
 		C5A084A520219EAE00AA629C /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A084A420219EAE00AA629C /* TZTestCell.m */; };
@@ -475,6 +476,8 @@
 		76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceService.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		891FC413E8C2F086217A5A11 /* Pods-SKSpaceService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AA5708E2389643C4D3D890 /* Pods-SKSpaceServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5031C0C2022A6F0009854DF /* NSArray+ImageArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ImageArray.h"; sourceTree = "<group>"; };
+		C5031C0D2022A6F0009854DF /* NSArray+ImageArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ImageArray.m"; sourceTree = "<group>"; };
 		C59FA726201AF1FA00C7E22F /* SKAcceptableOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAcceptableOrderVC.h; sourceTree = "<group>"; };
 		C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAcceptableOrderVC.m; sourceTree = "<group>"; };
 		C59FA729201AFA3200C7E22F /* SKOrderIncludeButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderIncludeButtonCell.h; sourceTree = "<group>"; };
@@ -688,6 +691,8 @@
 				2A9850CE20170802005705ED /* WOTBueToothManager.m */,
 				2A9850BD20170802005705ED /* WOTUitls.h */,
 				2A9850D020170802005705ED /* WOTUitls.m */,
+				C5031C0C2022A6F0009854DF /* NSArray+ImageArray.h */,
+				C5031C0D2022A6F0009854DF /* NSArray+ImageArray.m */,
 			);
 			path = Uitls;
 			sourceTree = "<group>";
@@ -1705,6 +1710,7 @@
 				2A9851BD20170814005705ED /* MASViewConstraint.m in Sources */,
 				2A98519820170814005705ED /* SystemFunctions.m in Sources */,
 				2A9850E120170802005705ED /* NSString+Category.m in Sources */,
+				C5031C0E2022A6F0009854DF /* NSArray+ImageArray.m in Sources */,
 				2A9850E820170803005705ED /* UIView+Extension.m in Sources */,
 				2A9851DF20170837005705ED /* WOTHTTPNetRequest.m in Sources */,
 				2A9851AC20170814005705ED /* SRIOConsumer.m in Sources */,

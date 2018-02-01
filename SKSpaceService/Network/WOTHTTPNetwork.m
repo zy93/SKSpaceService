@@ -87,12 +87,25 @@
 //开始维修
 +(void)startServiceWithInfoId:(NSNumber *)infoId  imageArray:(NSArray *)imageArray success:(success)success fail:(fail)fail
 {
-//    NSDictionary *dic = @{@"infoId" :infoId
-//                          };
-//    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/order"];
-//    [WOTHTTPNetRequest doFileRequestWithParameters:dic useUrl:string image:imageArray complete:^WOTBaseModel *(id responseDic) {
-//        
-//    } success:success fail:fail];
+    NSDictionary *dic = @{@"infoId" :infoId
+                          };
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/confirmInfo"];
+    [WOTHTTPNetRequest doFileRequestWithParameters:dic useUrl:string image:imageArray complete:^WOTBaseModel *(id responseDic) {
+        SKAcceptAnOrderModel *model = [[SKAcceptAnOrderModel alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    }success:success fail:fail];
+}
+
+//维修完成
++(void)serviceFinishWithInfoId:(NSNumber *)infoId  imageArray:(NSArray *)imageArray success:(success)success fail:(fail)fail
+{
+    NSDictionary *dic = @{@"infoId" :infoId
+                          };
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/MaintainInfo/mainInfo"];
+    [WOTHTTPNetRequest doFileRequestWithParameters:dic useUrl:string image:imageArray complete:^WOTBaseModel *(id responseDic) {
+        SKAcceptAnOrderModel *model = [[SKAcceptAnOrderModel alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    }success:success fail:fail];
 }
 
 #pragma mark - 获取所有的空间列表

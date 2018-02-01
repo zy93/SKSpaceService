@@ -20,19 +20,28 @@
 -(id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        [self addSubview:self.serviceAddressLabel90];
-        [self addSubview:self.serviceAddressInfoLabel];
-        [self addSubview:self.serviceArticleLabel];
-        [self addSubview:self.serviceArticleInfoLabel];
-        [self addSubview:self.serviceCauseLabel];
-        [self addSubview:self.serviceCauseInfoLabel];
-        [self addSubview:self.serviceTimeLabel];
-        [self addSubview:self.serviceTimeInfoLabel];
-        [self addSubview:self.imageView];
-        [self layoutSubviews];
+        
     }
     return self;
 }
+
+-(void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [self addSubview:self.serviceAddressLabel90];
+    [self addSubview:self.serviceAddressInfoLabel];
+    [self addSubview:self.serviceArticleLabel];
+    [self addSubview:self.serviceArticleInfoLabel];
+    [self addSubview:self.serviceCauseLabel];
+    [self addSubview:self.serviceCauseInfoLabel];
+    [self addSubview:self.serviceTimeLabel];
+    [self addSubview:self.serviceTimeInfoLabel];
+    [self addSubview:self.imageView];
+    [self layoutSubviews];
+}
+//-(void)willMoveToSuperview:(UIView *)newS uperview
+//{
+//
+//}
 
 -(void)layoutSubviews
 {
@@ -88,12 +97,12 @@
     }];
 }
 
--(void)setImageDataArray:(NSArray *)imageArray
-{
-    self.imageUrlArray = imageArray;
-   // self.imageView.imageUrlStrArray = imageArray;
-    [self.imageView setimageArray:self.imageUrlArray];
-}
+//-(void)setImageDataArray:(NSArray *)imageArray
+//{
+//    //self.imageUrlArray = imageArray;
+//    self.imageView.imageUrlStrArray = imageArray;
+//    //[self.imageView setimageArray:self.imageUrlArray];
+//}
 
 -(UILabel *)serviceAddressLabel90
 {
@@ -168,7 +177,7 @@
     if (_imageView == nil) {
         _imageView = [[DetailImageInfoView alloc] init];
         _imageView.titleString = @"用户上传图片";
-        //_imageView.imageUrlStrArray = self.imageUrlArray;
+        _imageView.imageUrlStrArray = self.imageUrlArray;
     }
     return _imageView;
 }
