@@ -7,6 +7,7 @@
 //
 
 #import "SKTextViewVC.h"
+#import "NSString+Category.h"
 
 @interface SKTextViewVC ()
 
@@ -79,6 +80,11 @@
     switch (self.type) {
         case SKTextViewVCTYPE_EDIT_LOG:
         {
+            if (strIsEmpty(self.textView.text)) {
+                [MBProgressHUDUtil showMessage:@"请录入信息!" toView:self.view];
+                return;
+                
+            }
             NSDictionary *params = @{@"sellId":self.model.sellId,
                                      @"content":self.textView.text,
                                      };
@@ -94,6 +100,11 @@
             break;
         case SKTextViewVCTYPE_EDIT_CLIENT_NAME:
             {
+                if (strIsEmpty(self.textView.text)) {
+                    [MBProgressHUDUtil showMessage:@"请录入信息!" toView:self.view];
+                    return;
+                    
+                }
                 NSDictionary *params = @{@"sellId":self.model.sellId,
                                          @"clientName":self.textView.text,
                                          @"contacts":self.textView.text,
@@ -111,6 +122,11 @@
             break;
         case SKTextViewVCTYPE_EDIT_CLIENT_TEL:
         {
+            if (strIsEmpty(self.textView.text) || ![NSString valiMobile:self.textView.text]) {
+                [MBProgressHUDUtil showMessage:@"请录入正确手机号!" toView:self.view];
+                return;
+                
+            }
             NSDictionary *params = @{@"sellId":self.model.sellId,
                                      @"tel":self.textView.text,
                                      };
@@ -126,6 +142,7 @@
             break;
         case SKTextViewVCTYPE_EDIT_CLIENT_COMPANY:
         {
+            
             NSDictionary *params = @{@"sellId":self.model.sellId,
                                      @"companyName":self.textView.text,
                                      };
@@ -141,6 +158,11 @@
             break;
         case SKTextViewVCTYPE_EDIT_CLIENT_SPECIFIC_SOURCE:
         {
+            if (strIsEmpty(self.textView.text)) {
+                [MBProgressHUDUtil showMessage:@"请录入信息!" toView:self.view];
+                return;
+                
+            }
             NSDictionary *params = @{@"sellId":self.model.sellId,
                                      @"specificSource":self.textView.text,
                                      };
