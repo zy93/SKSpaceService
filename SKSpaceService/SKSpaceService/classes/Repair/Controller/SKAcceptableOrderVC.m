@@ -25,7 +25,7 @@
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[SKOrderIncludeButtonCell class] forCellReuseIdentifier:@"cell"];
     [self layoutSubviews];
-    
+    [self AddRefreshHeader];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +44,37 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+}
+
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
+
+- (void)StartRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_footer != nil && [pTableView.mj_footer isRefreshing])
+    {
+        [pTableView.mj_footer endRefreshing];
+    }
+    [self queryAcceptableOrderMethod];
+}
+
+- (void)StopRefresh
+{
+    __weak UIScrollView *pTableView = self.tableView;
+    if (pTableView.mj_header != nil && [pTableView.mj_header isRefreshing])
+    {
+        [pTableView.mj_header endRefreshing];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -97,10 +128,12 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
+        [self StopRefresh];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [self.infoModelArray removeAllObjects];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            [self StopRefresh];
         });
         [MBProgressHUDUtil showMessage:@"没有订单！" toView:self.view];
     }];

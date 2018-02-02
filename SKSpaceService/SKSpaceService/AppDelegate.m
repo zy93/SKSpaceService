@@ -26,6 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //更新用户信息
+    [[WOTUserSingleton shared] updateUserInfoByServer];
     [WOTUserSingleton shared].firstLoad = YES;
     [self loadViewController];
     [WOTUserSingleton shared].firstLoad = NO;

@@ -8,14 +8,15 @@
 
 #import "UIViewController+Extension.h"
 #import "UISearchBar+JCSearchBarPlaceholder.h"
-
+#import "UIDevice+Resolutions.h"
 
 @implementation UIViewController(Extension) 
 -(void)configNaviBackItem{
     if (self.navigationController.navigationBar.isHidden) {
         //如果nav隐藏，则加载一个button
+        CGFloat  buff = [[UIDevice currentDevice] resolution]==UIDeviceResolution_iPhoneRetina58 ? 50: 20;
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setFrame:CGRectMake(0, 20, 50*[WOTUitls GetLengthAdaptRate], 30*[WOTUitls GetLengthAdaptRate])];
+        [btn setFrame:CGRectMake(0, buff, 50*[WOTUitls GetLengthAdaptRate], 30*[WOTUitls GetLengthAdaptRate])];
         [btn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:btn];

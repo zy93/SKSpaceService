@@ -42,7 +42,8 @@
     {
         rate = 320/375.0;
     }
-    if([[UIDevice currentDevice] resolution]==UIDeviceResolution_iPhoneRetina47)
+    if([[UIDevice currentDevice] resolution]==UIDeviceResolution_iPhoneRetina47 ||
+       [[UIDevice currentDevice] resolution]==UIDeviceResolution_iPhoneRetina58)
     {
         rate = 1;
         

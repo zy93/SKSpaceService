@@ -36,10 +36,14 @@ static dispatch_once_t token;
 -(void)setValues{
     NSDictionary *dic = [self readUserInfoFromPlist];
     NSError *error;
+    //刷新逻辑
+    if (_userInfo) {
+        [self removeObserver:self forKeyPath:@"_userInfo.currentStatus" context:nil];
+    }
     _userInfo = [[SKLoginModel alloc] initWithDictionary:dic error:&error];
     if (_userInfo) {
         _login = YES;
-        //监听currentStatus，实时保存
+        //监听currentStatus，实时保存启动页面
         [self addObserver:self forKeyPath:@"_userInfo.currentStatus" options:NSKeyValueObservingOptionNew context:nil];
     }
     
@@ -65,6 +69,21 @@ static dispatch_once_t token;
 -(void)updateUserInfoToPlist
 {
     [self saveUserInfoToPlistWithModel:self.userInfo];
+}
+
+-(void)updateUserInfoByServer
+{
+    if (!_userInfo) {
+        return;
+    }
+    //更新用户信息
+    [WOTHTTPNetwork updateUserInfoUserId:_userInfo.staffId success:^(id bean) {
+        SKLoginModel_msg *model = bean;
+        model.msg.currentStatus = _userInfo.currentStatus;
+        [self saveUserInfoToPlistWithModel:model.msg];
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        //失败
+    }];
 }
 
 -(void)userLogout

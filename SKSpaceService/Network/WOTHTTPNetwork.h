@@ -22,6 +22,8 @@
  */
 +(void)userLoginWithTelOrEmail:(NSString *)telOrEmail password:(NSString *)pwd alias:(NSString *)alias success:(success)success fail:(fail)fail;
 
++(void)updateUserInfoUserId:(NSNumber *)userId success:(success)success fail:(fail)fail;
+
 #pragma mark - 维修订单
 /**
  查询订单

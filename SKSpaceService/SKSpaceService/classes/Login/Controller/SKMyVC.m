@@ -10,6 +10,7 @@
 #import "SKMyCell.h"
 #import "SKMyCollectionReusableView.h"
 #import "AppDelegate.h"
+#import "UIDevice+Resolutions.h"
 
 @interface SKMyVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -26,15 +27,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    CGFloat  buff = [[UIDevice currentDevice] resolution]==UIDeviceResolution_iPhoneRetina58 ? 88: 20;
+
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 1; //左右间距
     flowLayout.minimumLineSpacing = 1; //上下间距
     flowLayout.itemSize = CGSizeMake((SCREEN_WIDTH-4)/3, 90*[WOTUitls GetLengthAdaptRate]); //cell 大小
-    flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 280*[WOTUitls GetLengthAdaptRate]);
+    flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 280*[WOTUitls GetLengthAdaptRate]+buff);
 //    flowLayout.estimatedItemSize = CGSizeMake(SCREEN_HEIGHT/3, 90*[WOTUitls GetLengthAdaptRate]); //估算大小？
 //    flowLayout.sectionInset  //cell间内边距
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -20, SCREEN_WIDTH, SCREEN_HEIGHT+20) collectionViewLayout:flowLayout];
+    
+    //
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -buff, SCREEN_WIDTH, SCREEN_HEIGHT+buff) collectionViewLayout:flowLayout];
     self.collectionView.backgroundColor = UICOLOR_MAIN_LINE;
     self.collectionView.delegate= self;
     self.collectionView.dataSource = self;
@@ -108,7 +112,8 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    CGFloat height = 280*[WOTUitls GetLengthAdaptRate];
+    CGFloat  buff = [[UIDevice currentDevice] resolution]==UIDeviceResolution_iPhoneRetina58 ? 88: 20;
+    CGFloat height = 280*[WOTUitls GetLengthAdaptRate]+buff;
     return CGSizeMake(320, height);
 }
 

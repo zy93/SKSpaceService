@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^searchBlock)(NSString* searchString);
-typedef void(^clearSearchBlock)();
+typedef void(^clearSearchBlock)(void);
 
 @interface UIViewController(Extension) <UISearchBarDelegate>
 

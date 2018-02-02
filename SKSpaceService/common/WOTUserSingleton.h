@@ -20,5 +20,5 @@
 +(instancetype)shared;
 -(void)saveUserInfoToPlistWithModel:(SKLoginModel *)model;
 -(void)userLogout;
-
+-(void)updateUserInfoByServer;
 @end

@@ -49,6 +49,18 @@
     } success:success fail:fail];
 }
 
++(void)updateUserInfoUserId:(NSNumber *)userId success:(success)success fail:(fail)fail
+{
+    NSDictionary *dic = @{@"staffId" :userId,
+                          };
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Staff/findById"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
+        SKLoginModel_msg *model = [[SKLoginModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    } success:success fail:fail];
+}
+
 #pragma mark - 维修订单
 //查询报修订单
 +(void)queryRepairsOrderWithSpaceList:(NSString *)spaceList statuscode:(NSString *)statuscode pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;
