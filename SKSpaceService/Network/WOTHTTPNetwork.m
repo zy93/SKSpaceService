@@ -16,6 +16,7 @@
 #import "SKSalesOrderModel.h"
 #import "SKSalesOrderLogModel.h"
 #import "SKQuestionModel.h"
+#import "SKDemandModel.h"
 
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
@@ -216,6 +217,33 @@
                                  };
     [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
         SKQuestion_msg * model_msg = [[SKQuestion_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
+
+#pragma mark - 服务商
++(void)getDemandWithState:(NSString *)state success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Demand/find"];
+    NSMutableDictionary *parameters = [@{@"pageNo":@(1),
+                                         @"pageSize":@(1000),
+                                         @"dealState":state,
+                                         } mutableCopy];
+    if (![state isEqualToString:@"未处理"]) {
+        [parameters setValue:[WOTUserSingleton shared].userInfo.staffId forKey:@"staffId"];
+    }
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKDemandModel_msg * model_msg = [[SKDemandModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
++(void)setDemandWithParams:(NSDictionary *)params success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Demand/addDemand"];
+    [WOTHTTPNetRequest doRequestWithParameters:params useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        WOTBaseModel * model_msg = [[WOTBaseModel alloc] initWithDictionary:responseDic error:nil];
         return  model_msg;
     } success:success fail:fail];
 }

@@ -29,7 +29,12 @@
     //更新用户信息
     [[WOTUserSingleton shared] updateUserInfoByServer];
     [WOTUserSingleton shared].firstLoad = YES;
-    [self loadViewController];
+    if ([WOTUserSingleton shared].isLogin) {
+        [self loadViewControllerWithName:permissionVCNameList[[WOTUserSingleton shared].userInfo.currentPermission]];
+    }
+    else {
+        [self loadViewControllerWithName:@"LoginViewController"];
+    }
     [WOTUserSingleton shared].firstLoad = NO;
     
     //注册推送
@@ -128,59 +133,6 @@
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
-    }
-}
-
--(void)loadViewController
-{
-    if ([WOTUserSingleton shared].isLogin) {
-        //第一次启动
-        if ([WOTUserSingleton shared].isFirstLoad) {
-            //读取上次显示页面
-            if ([[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"销控管理"]) {
-                [WOTUserSingleton shared].userInfo.currentStatus = @"销控管理";
-                [self loadViewControllerWithName:@"SKSalesMainVC"];
-            }
-            else if ([[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"报修管理"]) {
-                [WOTUserSingleton shared].userInfo.currentStatus = @"报修管理";
-                [self loadViewControllerWithName:@"SKRepairVC"];
-            }
-        }
-        //登录后
-       else if (strIsEmpty([WOTUserSingleton shared].userInfo.currentStatus) ||
-           [WOTUserSingleton shared].firstLoad == YES) {
-            //是否有
-            if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"]) {
-                [WOTUserSingleton shared].userInfo.currentStatus = @"销控管理";
-                [self loadViewControllerWithName:@"SKSalesMainVC"];
-            }
-            else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"报修管理"]) {
-                [WOTUserSingleton shared].userInfo.currentStatus = @"报修管理";
-                [self loadViewControllerWithName:@"SKRepairVC"];
-            }
-            else {
-                [MBProgressHUDUtil showMessage:@"没有其他权限！" toView:self.window.rootViewController.view];
-            }
-        }
-        //否则：目前是销控权限 切换到 报修管理权限
-        else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"报修管理"] &&
-                 [[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"销控管理"]
-                 ) {
-            [WOTUserSingleton shared].userInfo.currentStatus = @"报修管理";
-            [self loadViewControllerWithName:@"SKRepairVC"];
-        }
-        //否则：目前是 报修管理权限 切换到 销控权限
-        else if ([[WOTUserSingleton shared].userInfo.jurisdiction containsString:@"销控管理"] &&
-                 [[WOTUserSingleton shared].userInfo.currentStatus isEqualToString:@"报修管理"]) {
-            [WOTUserSingleton shared].userInfo.currentStatus = @"销控管理";
-            [self loadViewControllerWithName:@"SKSalesMainVC"];
-        }
-        else {
-            [MBProgressHUDUtil showMessage:@"没有其他权限！" toView:self.window.rootViewController.view];
-        }
-    }
-    else {
-        self.window.rootViewController = [[LoginViewController alloc] init];
     }
 }
 

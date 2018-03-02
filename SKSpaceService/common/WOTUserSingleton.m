@@ -38,13 +38,13 @@ static dispatch_once_t token;
     NSError *error;
     //刷新逻辑
     if (_userInfo) {
-        [self removeObserver:self forKeyPath:@"_userInfo.currentStatus" context:nil];
+        [self removeObserver:self forKeyPath:@"_userInfo.currentPermission" context:nil];
     }
     _userInfo = [[SKLoginModel alloc] initWithDictionary:dic error:&error];
     if (_userInfo) {
         _login = YES;
         //监听currentStatus，实时保存启动页面
-        [self addObserver:self forKeyPath:@"_userInfo.currentStatus" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"_userInfo.currentPermission" options:NSKeyValueObservingOptionNew context:nil];
     }
     
     
@@ -79,11 +79,22 @@ static dispatch_once_t token;
     //更新用户信息
     [WOTHTTPNetwork updateUserInfoUserId:_userInfo.staffId success:^(id bean) {
         SKLoginModel_msg *model = bean;
-        model.msg.currentStatus = _userInfo.currentStatus;
+        model.msg.currentPermission = _userInfo.currentPermission;
         [self saveUserInfoToPlistWithModel:model.msg];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         //失败
     }];
+}
+
+-(NSArray *)getUserPermissions
+{
+    NSMutableArray *arr = [NSMutableArray new];
+    for (NSString * systemPermission in permissionList) {
+        if ([self.userInfo.jurisdiction containsString:systemPermission]) {
+            [arr addObject:systemPermission];
+        }
+    }
+    return [arr copy];
 }
 
 -(void)userLogout
@@ -151,7 +162,7 @@ static dispatch_once_t token;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == nil) {
-        if ([keyPath isEqualToString:@"_userInfo.currentStatus"]) {
+        if ([keyPath isEqualToString:@"_userInfo.currentPermission"]) {
             [self updateUserInfoToPlist];
         }
     } else {

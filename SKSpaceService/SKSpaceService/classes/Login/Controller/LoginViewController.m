@@ -9,11 +9,12 @@
 #import "LoginViewController.h"
 #import "Masonry.h"
 #import "UIColor+ColorChange.h"
+#import "SKSelectIdentityView.h"
 #import "AppDelegate.h"
 #import <JPUSHService.h>
 
 
-@interface LoginViewController ()<UITextFieldDelegate>
+@interface LoginViewController () <SKSelectIdentityViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UIImageView *logoImageView;
 @property (nonatomic, strong) UIView *userTelView;
@@ -183,6 +184,10 @@
     [self.navigationController.navigationBar setHidden:NO];
 
 }
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 
 #pragma mark - 登录
@@ -204,8 +209,11 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[WOTUserSingleton shared] saveUserInfoToPlistWithModel:model.msg];
                 [WOTUserSingleton shared].login = YES;
-                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [appDelegate loadViewController];
+                //让用户选择所要进入的页面。
+                SKSelectIdentityView *select = [[SKSelectIdentityView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, CGRectGetHeight(self.view.frame)) buttonTitles:[[WOTUserSingleton shared] getUserPermissions]];
+                select.delegate = self;
+                [self.view addSubview:select];
+                [select showView];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                     } seq:1];
@@ -216,17 +224,21 @@
     }];
 }
 
-
+#pragma mark - text delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.view endEditing:YES];
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - selectIndentity delegate
+-(void)selectIdentityView:(SKSelectIdentityView *)view selectIndentity:(NSString *)indentity
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate loadViewControllerWithName:permissionVCNameList[indentity]];
+    [WOTUserSingleton shared].userInfo.currentPermission = indentity;
 }
+
 
 
 @end

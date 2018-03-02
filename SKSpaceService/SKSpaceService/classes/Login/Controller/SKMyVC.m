@@ -11,8 +11,9 @@
 #import "SKMyCollectionReusableView.h"
 #import "AppDelegate.h"
 #import "UIDevice+Resolutions.h"
+#import "SKSelectIdentityView.h"
 
-@interface SKMyVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface SKMyVC () < SKSelectIdentityViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UIButton * headerBtn;
 @property (nonatomic, strong) UILabel * nameLab;
@@ -120,9 +121,13 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==0) {
-        //跳转登录页
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate loadViewController];
+//        //跳转登录页
+//        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//        [appDelegate loadViewController];
+        SKSelectIdentityView *select = [[SKSelectIdentityView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, CGRectGetHeight(self.view.frame)) buttonTitles:[[WOTUserSingleton shared] getUserPermissions]];
+        select.delegate = self;
+        [self.view addSubview:select];
+        [select showView];
     }
     else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认退出？" preferredStyle:UIAlertControllerStyleAlert];
@@ -131,13 +136,22 @@
             [[WOTUserSingleton shared] userLogout];
             //跳转登录页
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate loadViewController];
+            [appDelegate loadViewControllerWithName:@"LoginViewController"];
         }];
         [alert addAction:action1];
         [alert addAction:action2];
         [self presentViewController:alert animated:YES completion:nil];
 
     }
+}
+
+#pragma mark - selectIndentity delegate
+-(void)selectIdentityView:(SKSelectIdentityView *)view selectIndentity:(NSString *)indentity
+{
+    //跳转页面
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate loadViewControllerWithName:permissionVCNameList[indentity]];
+    [WOTUserSingleton shared].userInfo.currentPermission = indentity;
 }
 
 /*

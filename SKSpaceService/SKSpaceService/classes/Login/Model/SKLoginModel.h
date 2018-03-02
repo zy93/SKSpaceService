@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSNumber *staffType;
 @property (nonatomic, strong) NSNumber *state ;
 @property (nonatomic, strong) NSString *tel ;
-@property (nonatomic, strong) NSString *currentStatus; //当前身份状态 维修清洁、销售人员 不是接口内所含参数
+@property (nonatomic, strong) NSString *currentPermission; //当前身份状态 维修清洁/销售人员/服务商 不是接口内所含参数
 @end
 
 @interface SKLoginModel_msg : WOTBaseModel

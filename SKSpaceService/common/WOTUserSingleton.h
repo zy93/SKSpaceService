@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "SKLoginModel.h"
 
+//系统权限
+#define permissionList @[@"报修管理", @"销控管理", @"服务商管理"]
+#define permissionVCNameList @{@"报修管理":@"SKRepairVC", @"销控管理":@"SKSalesMainVC", @"服务商管理":@"SKProviderMainVC"}
+
+
 @interface WOTUserSingleton : NSObject
 
 //用户信息
@@ -19,6 +24,7 @@
 
 +(instancetype)shared;
 -(void)saveUserInfoToPlistWithModel:(SKLoginModel *)model;
+-(NSArray *)getUserPermissions;
 -(void)userLogout;
 -(void)updateUserInfoByServer;
 @end

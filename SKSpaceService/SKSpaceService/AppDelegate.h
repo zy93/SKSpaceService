@@ -17,7 +17,7 @@
 
 - (void)saveContext;
 
--(void)loadViewController;
+-(void)loadViewControllerWithName:(NSString *)vcName;
 
 @end
 

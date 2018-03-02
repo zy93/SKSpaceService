@@ -155,4 +155,17 @@
  */
 +(void)getSalesOrderQuestionWithSellId:(NSNumber *)sellId success:(success)success fail:(fail)fail;
 
+
+#pragma mark - 服务商
+
+/**
+ 获取未处理的服务商需求
+ @param state 状态  未处理、处理中、已处理
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)getDemandWithState:(NSString *)state success:(success)success fail:(fail)fail;
+
++(void)setDemandWithParams:(NSDictionary *)params  success:(success)success fail:(fail)fail;
+
 @end

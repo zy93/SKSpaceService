@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		03076E34FFC25D455EE279CD /* libPods-SKSpaceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */; };
 		2A1540E920207A25001730D4 /* SKSalesOrderLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1540E820207A25001730D4 /* SKSalesOrderLogModel.m */; };
+		2A3E3FF42048F02F00171558 /* SKDemandeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF22048F02F00171558 /* SKDemandeCell.m */; };
+		2A3E3FF52048F02F00171558 /* SKDemandeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF32048F02F00171558 /* SKDemandeCell.xib */; };
+		2A3E3FF82048FE6D00171558 /* SKDemandDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF72048FE6D00171558 /* SKDemandDetailsVC.m */; };
 		2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */; };
 		2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */; };
 		2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BF20181CB500A8CC19 /* XXPageTabView.m */; };
@@ -94,8 +97,6 @@
 		2A9851AD20170814005705ED /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98514820170814005705ED /* SRIOConsumerPool.m */; };
 		2A9851AE20170814005705ED /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98514920170814005705ED /* SRConstants.m */; };
 		2A9851AF20170814005705ED /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98514E20170814005705ED /* NSURLRequest+SRWebSocket.m */; };
-		2A9851B020170814005705ED /* libZSIMagePickerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A98515020170814005705ED /* libZSIMagePickerSDK.a */; };
-		2A9851B120170814005705ED /* UIScrollView+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515320170814005705ED /* UIScrollView+Touch.m */; };
 		2A9851B220170814005705ED /* JXPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515A20170814005705ED /* JXPopoverView.m */; };
 		2A9851B320170814005705ED /* JXPopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515B20170814005705ED /* JXPopoverViewCell.m */; };
 		2A9851B420170814005705ED /* JXPopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515C20170814005705ED /* JXPopoverAction.m */; };
@@ -114,6 +115,10 @@
 		2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9851C720170827005705ED /* MBProgressHUDUtil.m */; };
 		2A9851DF20170837005705ED /* WOTHTTPNetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9851CC20170837005705ED /* WOTHTTPNetRequest.m */; };
 		2A9851E220170837005705ED /* WOTHTTPNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9851D220170837005705ED /* WOTHTTPNetwork.m */; };
+		2AAFCBE620479BF40096F27A /* SKSelectIdentityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFCBE520479BF40096F27A /* SKSelectIdentityView.m */; };
+		2AAFCBEE20480B540096F27A /* SKProviderOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFCBEA20480B540096F27A /* SKProviderOrderListVC.m */; };
+		2AAFCBEF20480B540096F27A /* SKProviderMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFCBEB20480B540096F27A /* SKProviderMainVC.m */; };
+		2AAFCBF220480FB40096F27A /* SKDemandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFCBF120480FB40096F27A /* SKDemandModel.m */; };
 		2ABC42EC2019701D008C3EDA /* SKCreateSalesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC42EB2019701D008C3EDA /* SKCreateSalesVC.m */; };
 		2ABC42F22019B4BB008C3EDA /* SKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC42F12019B4BB008C3EDA /* SKTextField.m */; };
 		2ABC42F52019BE8A008C3EDA /* WOTSelectWorkspaceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC42F42019BE8A008C3EDA /* WOTSelectWorkspaceListVC.m */; };
@@ -197,6 +202,11 @@
 		1F43617551F8FBAC1ED4B92C /* Pods-SKSpaceServiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2A1540E720207A25001730D4 /* SKSalesOrderLogModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesOrderLogModel.h; sourceTree = "<group>"; };
 		2A1540E820207A25001730D4 /* SKSalesOrderLogModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesOrderLogModel.m; sourceTree = "<group>"; };
+		2A3E3FF12048F02F00171558 /* SKDemandeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKDemandeCell.h; sourceTree = "<group>"; };
+		2A3E3FF22048F02F00171558 /* SKDemandeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKDemandeCell.m; sourceTree = "<group>"; };
+		2A3E3FF32048F02F00171558 /* SKDemandeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKDemandeCell.xib; sourceTree = "<group>"; };
+		2A3E3FF62048FE6D00171558 /* SKDemandDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKDemandDetailsVC.h; sourceTree = "<group>"; };
+		2A3E3FF72048FE6D00171558 /* SKDemandDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKDemandDetailsVC.m; sourceTree = "<group>"; };
 		2A4AC5BA201818E300A8CC19 /* SKSalesMainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesMainVC.h; sourceTree = "<group>"; };
 		2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesMainVC.m; sourceTree = "<group>"; };
 		2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXPageTabItemLable.m; sourceTree = "<group>"; };
@@ -360,11 +370,6 @@
 		2A98514C20170814005705ED /* NSRunLoop+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocket.h"; sourceTree = "<group>"; };
 		2A98514D20170814005705ED /* SRSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSecurityPolicy.h; sourceTree = "<group>"; };
 		2A98514E20170814005705ED /* NSURLRequest+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+SRWebSocket.m"; sourceTree = "<group>"; };
-		2A98515020170814005705ED /* libZSIMagePickerSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZSIMagePickerSDK.a; sourceTree = "<group>"; };
-		2A98515220170814005705ED /* ZSDefineFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSDefineFile.h; sourceTree = "<group>"; };
-		2A98515320170814005705ED /* UIScrollView+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Touch.m"; sourceTree = "<group>"; };
-		2A98515420170814005705ED /* ZSImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSImagePickerController.h; sourceTree = "<group>"; };
-		2A98515520170814005705ED /* UIScrollView+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Touch.h"; sourceTree = "<group>"; };
 		2A98515720170814005705ED /* JXPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverView.h; sourceTree = "<group>"; };
 		2A98515820170814005705ED /* JXPopoverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverViewCell.h; sourceTree = "<group>"; };
 		2A98515920170814005705ED /* JXPopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPopoverAction.h; sourceTree = "<group>"; };
@@ -406,6 +411,14 @@
 		2A9851D220170837005705ED /* WOTHTTPNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTHTTPNetwork.m; sourceTree = "<group>"; };
 		2A9851D820170837005705ED /* WOTHTTPNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTHTTPNetwork.h; sourceTree = "<group>"; };
 		2A9851D920170837005705ED /* WOTHTTPNetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTHTTPNetRequest.h; sourceTree = "<group>"; };
+		2AAFCBE420479BF40096F27A /* SKSelectIdentityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSelectIdentityView.h; sourceTree = "<group>"; };
+		2AAFCBE520479BF40096F27A /* SKSelectIdentityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSelectIdentityView.m; sourceTree = "<group>"; };
+		2AAFCBEA20480B540096F27A /* SKProviderOrderListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKProviderOrderListVC.m; sourceTree = "<group>"; };
+		2AAFCBEB20480B540096F27A /* SKProviderMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKProviderMainVC.m; sourceTree = "<group>"; };
+		2AAFCBEC20480B540096F27A /* SKProviderOrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKProviderOrderListVC.h; sourceTree = "<group>"; };
+		2AAFCBED20480B540096F27A /* SKProviderMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKProviderMainVC.h; sourceTree = "<group>"; };
+		2AAFCBF020480FB40096F27A /* SKDemandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKDemandModel.h; sourceTree = "<group>"; };
+		2AAFCBF120480FB40096F27A /* SKDemandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKDemandModel.m; sourceTree = "<group>"; };
 		2ABC42EA2019701D008C3EDA /* SKCreateSalesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKCreateSalesVC.h; sourceTree = "<group>"; };
 		2ABC42EB2019701D008C3EDA /* SKCreateSalesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKCreateSalesVC.m; sourceTree = "<group>"; };
 		2ABC42F02019B4BB008C3EDA /* SKTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKTextField.h; sourceTree = "<group>"; };
@@ -534,7 +547,6 @@
 				2AC82A872017230D0076305E /* Foundation.framework in Frameworks */,
 				2AC82A85201723050076305E /* CFNetwork.framework in Frameworks */,
 				2AC82A83201722FE0076305E /* CoreMotion.framework in Frameworks */,
-				2A9851B020170814005705ED /* libZSIMagePickerSDK.a in Frameworks */,
 				2A98518E20170814005705ED /* libSocialQQ.a in Frameworks */,
 				2A98518920170814005705ED /* UMSocialNetwork.framework in Frameworks */,
 				2A98518B20170814005705ED /* UMSocialCore.framework in Frameworks */,
@@ -709,7 +721,6 @@
 				2A98510820170814005705ED /* HCSystemicQRCode */,
 				2A98511720170814005705ED /* MJRefresh */,
 				2A98511C20170814005705ED /* SocketRocket */,
-				2A98514F20170814005705ED /* WOTImagePicker */,
 				2A98515620170814005705ED /* JXPopoverView */,
 				2A98515D20170814005705ED /* Masonry */,
 				2A98517720170814005705ED /* MBProgressHUD */,
@@ -970,26 +981,6 @@
 			path = IOConsumer;
 			sourceTree = "<group>";
 		};
-		2A98514F20170814005705ED /* WOTImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				2A98515020170814005705ED /* libZSIMagePickerSDK.a */,
-				2A98515120170814005705ED /* ZSImagePickerController */,
-			);
-			path = WOTImagePicker;
-			sourceTree = "<group>";
-		};
-		2A98515120170814005705ED /* ZSImagePickerController */ = {
-			isa = PBXGroup;
-			children = (
-				2A98515220170814005705ED /* ZSDefineFile.h */,
-				2A98515320170814005705ED /* UIScrollView+Touch.m */,
-				2A98515420170814005705ED /* ZSImagePickerController.h */,
-				2A98515520170814005705ED /* UIScrollView+Touch.h */,
-			);
-			path = ZSImagePickerController;
-			sourceTree = "<group>";
-		};
 		2A98515620170814005705ED /* JXPopoverView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1059,6 +1050,38 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		2AAFCBE720480B540096F27A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2AAFCBF020480FB40096F27A /* SKDemandModel.h */,
+				2AAFCBF120480FB40096F27A /* SKDemandModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2AAFCBE820480B540096F27A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A3E3FF12048F02F00171558 /* SKDemandeCell.h */,
+				2A3E3FF22048F02F00171558 /* SKDemandeCell.m */,
+				2A3E3FF32048F02F00171558 /* SKDemandeCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2AAFCBE920480B540096F27A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2AAFCBED20480B540096F27A /* SKProviderMainVC.h */,
+				2AAFCBEB20480B540096F27A /* SKProviderMainVC.m */,
+				2AAFCBEC20480B540096F27A /* SKProviderOrderListVC.h */,
+				2AAFCBEA20480B540096F27A /* SKProviderOrderListVC.m */,
+				2A3E3FF62048FE6D00171558 /* SKDemandDetailsVC.h */,
+				2A3E3FF72048FE6D00171558 /* SKDemandDetailsVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		2AC82A6F20171C8A0076305E /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1079,6 +1102,7 @@
 		2AC82A9B201726CA0076305E /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				2AD765072046AC500007188C /* Provider */,
 				2AC82A9C201726CA0076305E /* CRM */,
 				2AC82AA0201726CA0076305E /* Repair */,
 				2AC82AA4201726CA0076305E /* Login */,
@@ -1224,8 +1248,20 @@
 				2AC4A7AD2021A5DD00D824EA /* SKMyCollectionReusableView.h */,
 				2AC4A7AE2021A5DD00D824EA /* SKMyCollectionReusableView.m */,
 				2AC4A7AF2021A5DD00D824EA /* SKMyCollectionReusableView.xib */,
+				2AAFCBE420479BF40096F27A /* SKSelectIdentityView.h */,
+				2AAFCBE520479BF40096F27A /* SKSelectIdentityView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2AD765072046AC500007188C /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				2AAFCBE920480B540096F27A /* ViewController */,
+				2AAFCBE720480B540096F27A /* Model */,
+				2AAFCBE820480B540096F27A /* View */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		5DDABAD841BEFE5B43ECA480 /* Pods */ = {
@@ -1454,6 +1490,7 @@
 				2A98519E20170814005705ED /* Info.plist in Resources */,
 				2AC82A7D20171C8A0076305E /* CityCode.plist in Resources */,
 				2ABC43132019E9FA008C3EDA /* SKQuestionReplyCell.xib in Resources */,
+				2A3E3FF52048F02F00171558 /* SKDemandeCell.xib in Resources */,
 				2A98519920170814005705ED /* image.bundle in Resources */,
 				2A98518720170814005705ED /* UMSocialSDKResources.bundle in Resources */,
 				2AC82A7B20171C8A0076305E /* ServiceCategory.plist in Resources */,
@@ -1628,6 +1665,7 @@
 			files = (
 				C5A084A520219EAE00AA629C /* TZTestCell.m in Sources */,
 				2ABC43122019E9FA008C3EDA /* SKQuestionReplyCell.m in Sources */,
+				2AAFCBF220480FB40096F27A /* SKDemandModel.m in Sources */,
 				2A9851A420170814005705ED /* SRMutex.m in Sources */,
 				2A9850E020170802005705ED /* NSDate+Uitls.m in Sources */,
 				2A98519D20170814005705ED /* NSRunLoop+SRWebSocket.m in Sources */,
@@ -1685,6 +1723,7 @@
 				2A98519520170814005705ED /* UIFont+MyFont.m in Sources */,
 				2A9850E220170802005705ED /* WOTMapManager.m in Sources */,
 				2A4AC5DA20186B6500A8CC19 /* SKSalesOrderCell.m in Sources */,
+				2A3E3FF82048FE6D00171558 /* SKDemandDetailsVC.m in Sources */,
 				2A870CF8201AF246006396B6 /* SKLogListVC.m in Sources */,
 				2A9851A320170814005705ED /* SRDelegateController.m in Sources */,
 				2AC82A7E20171C8A0076305E /* WOTUserSingleton.m in Sources */,
@@ -1723,6 +1762,7 @@
 				2A9851AC20170814005705ED /* SRIOConsumer.m in Sources */,
 				2A9851AE20170814005705ED /* SRConstants.m in Sources */,
 				2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */,
+				2AAFCBEF20480B540096F27A /* SKProviderMainVC.m in Sources */,
 				2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */,
 				2AC45A54201F3870009D0698 /* SKQuestionModel.m in Sources */,
 				2A9850D920170802005705ED /* WOTLocationManager.m in Sources */,
@@ -1732,6 +1772,7 @@
 				C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */,
 				2A9851B920170814005705ED /* MASLayoutConstraint.m in Sources */,
 				2A9851A520170814005705ED /* SRHTTPConnectMessage.m in Sources */,
+				2AAFCBE620479BF40096F27A /* SKSelectIdentityView.m in Sources */,
 				2A9851BE20170814005705ED /* MASViewAttribute.m in Sources */,
 				C59FA728201AF1FA00C7E22F /* SKAcceptableOrderVC.m in Sources */,
 				2A9851A620170814005705ED /* SRURLUtilities.m in Sources */,
@@ -1747,9 +1788,10 @@
 				2A870CFF201AF2FD006396B6 /* SKLogListCell.m in Sources */,
 				2AC82A9A201725040076305E /* LoginViewController.m in Sources */,
 				2A9850DA20170802005705ED /* UIImage+Blur.m in Sources */,
+				2A3E3FF42048F02F00171558 /* SKDemandeCell.m in Sources */,
 				2ABC42FE2019CE5E008C3EDA /* SKSelectTypeVC.m in Sources */,
-				2A9851B120170814005705ED /* UIScrollView+Touch.m in Sources */,
 				2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */,
+				2AAFCBEE20480B540096F27A /* SKProviderOrderListVC.m in Sources */,
 				2A9851BC20170814005705ED /* MASConstraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
