@@ -132,6 +132,9 @@
     SKSalesOrderVC *vc1 = [[SKSalesOrderVC alloc]init];
     vc1.type = SKSalesOrderVCTYPE_ALL;
     [self addChildViewController:vc1];
+    SKSalesOrderVC *vc11 = [[SKSalesOrderVC alloc]init];
+    vc11.type = SKSalesOrderVCTYPE_CLIENT_ORDER;
+    [self addChildViewController:vc11];
     SKSalesOrderVC *vc = [[SKSalesOrderVC alloc]init];
     vc.type = SKSalesOrderVCTYPE_CLIENT_CONSULTING;
     [self addChildViewController:vc ];

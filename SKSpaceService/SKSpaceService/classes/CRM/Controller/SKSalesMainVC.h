@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WOTPageMenuParentVC.h"
 
-#define SalesOrderStateList @[@"全部", @"客户咨询", @"初步接洽", @"深入沟通", @"赢单", @"流单"]
+#define SalesOrderStateList @[@"全部", @"客户订单", @"客户咨询", @"初步接洽", @"深入沟通", @"赢单", @"流单"]
 #define SalesOrderIntentionList @[@"较低意愿",@"一般意愿",@"较高意愿",@"极强意愿"]
 #define SalesClientSource @[@"官网",@"广告",@"友人介绍",@"中介"]
 

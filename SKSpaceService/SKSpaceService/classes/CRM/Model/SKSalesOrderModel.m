@@ -18,3 +18,6 @@
 
 @implementation SKSalesOrder_msg
 @end 
+
+@implementation SKUntreatedSalesOrder_msg
+@end

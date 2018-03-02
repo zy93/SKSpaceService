@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSInteger, SKSalesOrderVCTYPE) {
     SKSalesOrderVCTYPE_ALL = 0, //全部
+    SKSalesOrderVCTYPE_CLIENT_ORDER , //客户订单（客户端生成）
     SKSalesOrderVCTYPE_CLIENT_CONSULTING,    //客户咨询
     SKSalesOrderVCTYPE_PRELIMINARY_CONTACT, //初步接洽
     SKSalesOrderVCTYPE_FURTHER_CONTACT, //深入接洽

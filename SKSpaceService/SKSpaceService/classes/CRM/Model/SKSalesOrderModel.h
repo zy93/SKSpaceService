@@ -51,3 +51,10 @@
 @interface SKSalesOrder_msg : WOTBaseModel
 @property (nonatomic, strong) SKSalesOrderList *msg;
 @end
+
+//未处理销售订单
+@interface SKUntreatedSalesOrder_msg : WOTBaseModel
+@property (nonatomic, strong) NSArray <SKSalesOrderModel> *msg;
+@end
+
+

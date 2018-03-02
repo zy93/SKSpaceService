@@ -9,8 +9,15 @@
 #import "WOTBaseTableViewController.h"
 #import "SKDemandModel.h"
 
-@interface SKDemandDetailsVC : WOTBaseTableViewController
+typedef NS_ENUM(NSInteger, SKDemandDetailsVCTYPE) {
+    SKDemandDetailsVCTYPE_INTREATED, //正在处理
+    SKDemandDetailsVCTYPE_TREATED,   //已处理
+};
+
+@interface SKDemandDetailsVC : UIViewController
 
 @property (nonatomic, strong) SKDemandModel * model;
+
+@property (nonatomic, assign) SKDemandDetailsVCTYPE vcType;
 
 @end

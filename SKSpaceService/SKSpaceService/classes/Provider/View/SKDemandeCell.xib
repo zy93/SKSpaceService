@@ -131,6 +131,7 @@
                 <outlet property="addrLab" destination="9DD-xX-7UP" id="UvB-y4-PbC"/>
                 <outlet property="addrValueLab" destination="1Kb-Ft-mIx" id="qAw-gH-eSA"/>
                 <outlet property="bgView" destination="WSf-be-hjB" id="klp-Xf-IKA"/>
+                <outlet property="bgViewBottomConstraints" destination="Rjq-4a-np9" id="oCq-CW-y05"/>
                 <outlet property="btn" destination="MmH-VU-zaE" id="M3O-V9-Tws"/>
                 <outlet property="createLab" destination="uyh-na-5Nh" id="HgX-34-RTJ"/>
                 <outlet property="createValueLab" destination="W3m-OA-ZBz" id="2aJ-xR-xY1"/>

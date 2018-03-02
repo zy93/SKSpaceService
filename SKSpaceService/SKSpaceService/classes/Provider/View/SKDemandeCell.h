@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *createLab;
 @property (weak, nonatomic) IBOutlet UILabel *createValueLab;
 @property (weak, nonatomic) IBOutlet UIButton *btn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewBottomConstraints;
 
 @property (nonatomic, strong) id <SKDemandeCellDelegate> delegate;
 @property (nonatomic, strong) NSIndexPath * index;

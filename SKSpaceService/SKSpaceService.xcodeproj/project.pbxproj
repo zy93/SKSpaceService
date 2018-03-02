@@ -12,6 +12,7 @@
 		2A3E3FF42048F02F00171558 /* SKDemandeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF22048F02F00171558 /* SKDemandeCell.m */; };
 		2A3E3FF52048F02F00171558 /* SKDemandeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF32048F02F00171558 /* SKDemandeCell.xib */; };
 		2A3E3FF82048FE6D00171558 /* SKDemandDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF72048FE6D00171558 /* SKDemandDetailsVC.m */; };
+		2A3E3FFB2049224700171558 /* SKDemandeLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E3FFA2049224700171558 /* SKDemandeLogModel.m */; };
 		2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */; };
 		2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */; };
 		2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4AC5BF20181CB500A8CC19 /* XXPageTabView.m */; };
@@ -207,6 +208,8 @@
 		2A3E3FF32048F02F00171558 /* SKDemandeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SKDemandeCell.xib; sourceTree = "<group>"; };
 		2A3E3FF62048FE6D00171558 /* SKDemandDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKDemandDetailsVC.h; sourceTree = "<group>"; };
 		2A3E3FF72048FE6D00171558 /* SKDemandDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKDemandDetailsVC.m; sourceTree = "<group>"; };
+		2A3E3FF92049224700171558 /* SKDemandeLogModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKDemandeLogModel.h; sourceTree = "<group>"; };
+		2A3E3FFA2049224700171558 /* SKDemandeLogModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKDemandeLogModel.m; sourceTree = "<group>"; };
 		2A4AC5BA201818E300A8CC19 /* SKSalesMainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSalesMainVC.h; sourceTree = "<group>"; };
 		2A4AC5BB201818E300A8CC19 /* SKSalesMainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSalesMainVC.m; sourceTree = "<group>"; };
 		2A4AC5BE20181CB500A8CC19 /* XXPageTabItemLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXPageTabItemLable.m; sourceTree = "<group>"; };
@@ -1055,6 +1058,8 @@
 			children = (
 				2AAFCBF020480FB40096F27A /* SKDemandModel.h */,
 				2AAFCBF120480FB40096F27A /* SKDemandModel.m */,
+				2A3E3FF92049224700171558 /* SKDemandeLogModel.h */,
+				2A3E3FFA2049224700171558 /* SKDemandeLogModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1767,6 +1772,7 @@
 				2AC45A54201F3870009D0698 /* SKQuestionModel.m in Sources */,
 				2A9850D920170802005705ED /* WOTLocationManager.m in Sources */,
 				2A9851BB20170814005705ED /* View+MASAdditions.m in Sources */,
+				2A3E3FFB2049224700171558 /* SKDemandeLogModel.m in Sources */,
 				2A98519120170814005705ED /* CardViewItem.m in Sources */,
 				C5ACC958201ED0BE00FAAA31 /* SKAcceptedOrderVC.m in Sources */,
 				C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */,

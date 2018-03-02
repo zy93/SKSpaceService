@@ -41,16 +41,29 @@
 -(void)createRequest
 {
     NSArray *arr = SalesOrderStateList;
-    [WOTHTTPNetwork getSalesOrderWithState:self.type==0?nil:arr[self.type] success:^(id bean) {
-        SKSalesOrder_msg *model = bean;
-        self.tableList = model.msg.list;
-        [self StopRefresh];
-        [self.tableView reloadData];
-        [self StopRefresh];
-    } fail:^(NSInteger errorCode, NSString *errorMessage) {
-        [self StopRefresh];
-        [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
-    }];
+    if (self.type == SKSalesOrderVCTYPE_CLIENT_ORDER) {
+        [WOTHTTPNetwork getUntreatedSalesOrderSuccess:^(id bean) {
+            SKUntreatedSalesOrder_msg *model = bean;
+            self.tableList = model.msg;
+            [self StopRefresh];
+            [self.tableView reloadData];
+        } fail:^(NSInteger errorCode, NSString *errorMessage) {
+            [self StopRefresh];
+            [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+        }];
+    }
+    else {
+        [WOTHTTPNetwork getSalesOrderWithState:self.type==0?nil:arr[self.type] success:^(id bean) {
+            SKSalesOrder_msg *model = bean;
+            self.tableList = model.msg.list;
+            [self StopRefresh];
+            [self.tableView reloadData];
+        } fail:^(NSInteger errorCode, NSString *errorMessage) {
+            [self StopRefresh];
+            [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+        }];
+    }
+    
 }
 
 #pragma mark -- Refresh method
@@ -152,6 +165,15 @@
         cell.star2IV.selected = NO;
         cell.star3IV.selected = NO;
         cell.star4IV.selected = NO;
+    }
+    cell.dateLab.text = [model.createTime substringToIndex:11];
+    if ([model.stage isEqualToString:@"客户订单"]) {
+        cell.starBGView.hidden = YES;
+        cell.detailsLab.hidden = NO;
+    }
+    else {
+        cell.starBGView.hidden = NO;
+        cell.detailsLab.hidden = YES;
     }
     return cell;
 }

@@ -85,22 +85,32 @@
                                     <constraint firstItem="rbL-K4-4T1" firstAttribute="centerX" secondItem="xyO-0H-WDe" secondAttribute="centerX" constant="7" id="zgf-YD-UEl"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看详情" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eae-sP-tXX">
+                                <rect key="frame" x="208" y="10" width="66" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xyO-0H-WDe" firstAttribute="centerY" secondItem="dc4-Sd-FWk" secondAttribute="centerY" constant="-10" id="6B2-lQ-Vtz"/>
                             <constraint firstItem="Mun-y9-pny" firstAttribute="leading" secondItem="FUY-Xq-bmO" secondAttribute="trailing" constant="10" id="Ag6-Ji-fH8"/>
+                            <constraint firstItem="eae-sP-tXX" firstAttribute="top" secondItem="xyO-0H-WDe" secondAttribute="top" id="Asa-FD-Qs7"/>
                             <constraint firstItem="Mun-y9-pny" firstAttribute="leading" secondItem="xyO-0H-WDe" secondAttribute="leading" id="Ery-4M-V55"/>
                             <constraint firstItem="Mun-y9-pny" firstAttribute="trailing" secondItem="xyO-0H-WDe" secondAttribute="trailing" id="K3z-2G-Q7q"/>
                             <constraint firstItem="Mun-y9-pny" firstAttribute="height" secondItem="xyO-0H-WDe" secondAttribute="height" id="QdK-XZ-FJs"/>
                             <constraint firstItem="FUY-Xq-bmO" firstAttribute="leading" secondItem="Dj5-BD-b1S" secondAttribute="trailing" constant="10" id="RbD-Ci-VsK"/>
                             <constraint firstItem="Dj5-BD-b1S" firstAttribute="leading" secondItem="dc4-Sd-FWk" secondAttribute="leading" constant="15" id="Uls-kG-sgY"/>
+                            <constraint firstItem="eae-sP-tXX" firstAttribute="bottom" secondItem="xyO-0H-WDe" secondAttribute="bottom" id="V9k-jw-h7J"/>
                             <constraint firstItem="Dj5-BD-b1S" firstAttribute="centerY" secondItem="dc4-Sd-FWk" secondAttribute="centerY" id="Wtv-69-BHG"/>
                             <constraint firstItem="FUY-Xq-bmO" firstAttribute="centerY" secondItem="Dj5-BD-b1S" secondAttribute="centerY" id="XUS-qQ-vtZ"/>
                             <constraint firstItem="Dj5-BD-b1S" firstAttribute="leading" secondItem="dc4-Sd-FWk" secondAttribute="leading" constant="15" id="YKH-BK-oNV"/>
+                            <constraint firstItem="eae-sP-tXX" firstAttribute="trailing" secondItem="xyO-0H-WDe" secondAttribute="trailing" id="ady-hN-oxw"/>
                             <constraint firstItem="Dj5-BD-b1S" firstAttribute="centerY" secondItem="dc4-Sd-FWk" secondAttribute="centerY" id="bBP-bD-pdD"/>
                             <constraint firstAttribute="trailing" secondItem="Mun-y9-pny" secondAttribute="trailing" constant="20" id="bEL-wJ-h0l"/>
                             <constraint firstItem="Mun-y9-pny" firstAttribute="centerY" secondItem="dc4-Sd-FWk" secondAttribute="centerY" constant="10" id="bGu-3C-c73"/>
+                            <constraint firstItem="eae-sP-tXX" firstAttribute="leading" secondItem="xyO-0H-WDe" secondAttribute="leading" id="vWG-bq-ZyH"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -115,6 +125,7 @@
             <connections>
                 <outlet property="bgView" destination="dc4-Sd-FWk" id="dUo-KX-IbV"/>
                 <outlet property="dateLab" destination="Mun-y9-pny" id="1fI-O1-2Kp"/>
+                <outlet property="detailsLab" destination="eae-sP-tXX" id="uv7-oi-nVi"/>
                 <outlet property="star1IV" destination="Xz0-CD-Fsl" id="wDQ-wh-oAT"/>
                 <outlet property="star2IV" destination="8cS-F0-tnE" id="Esp-3G-6gJ"/>
                 <outlet property="star3IV" destination="rbL-K4-4T1" id="Dbm-FU-UFT"/>

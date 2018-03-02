@@ -102,6 +102,13 @@
 +(void)addSalesOrderWithParam:(NSDictionary *)parameters success:(success)success fail:(fail)fail;
 
 /**
+ 获取未处理销售订单
+
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)getUntreatedSalesOrderSuccess:(success)success fail:(fail)fail;
+/**
  获取用户销售订单记录
  
  @param state 订单状态
@@ -166,6 +173,48 @@
  */
 +(void)getDemandWithState:(NSString *)state success:(success)success fail:(fail)fail;
 
+/**
+ 处理服务商需求
+
+ @param params 参数列表
+ @param success 成功回调
+ @param fail 失败回调
+ */
 +(void)setDemandWithParams:(NSDictionary *)params  success:(success)success fail:(fail)fail;
+
+/**
+ 添加需求日志
+
+ @param demandId 需求id
+ @param content 内容
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)addDemandLogWithDemandId:(NSNumber *)demandId content:(NSString *)content success:(success)success fail:(fail)fail;
+
+/**
+ 获取需求日志
+
+ @param demandId 需求id
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)getDemandLogWithDemandId:(NSNumber *)demandId success:(success)success fail:(fail)fail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

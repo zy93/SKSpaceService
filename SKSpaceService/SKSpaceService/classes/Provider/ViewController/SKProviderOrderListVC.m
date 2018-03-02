@@ -40,45 +40,30 @@
 #pragma mark - request
 -(void)createRequest
 {
+    NSString *str ;
     switch (self.vcType ) {
         case SKProviderOrderListVCTYPE_UNTREATED:
-        {
-            [WOTHTTPNetwork getDemandWithState:@"未处理" success:^(id bean) {
-                self.tableList = ((SKDemandModel_msg*)bean).msg.list;
-                [self StopRefresh];
-                [self.tableView reloadData];
-                
-            } fail:^(NSInteger errorCode, NSString *errorMessage) {
-                [self StopRefresh];
-            }];
-        }
+        { str = @"未处理";}
             break;
         case SKProviderOrderListVCTYPE_INTREATED:
-        {
-            [WOTHTTPNetwork getDemandWithState:@"处理中" success:^(id bean) {
-                self.tableList = ((SKDemandModel_msg*)bean).msg.list;
-                [self StopRefresh];
-                [self.tableView reloadData];
-            } fail:^(NSInteger errorCode, NSString *errorMessage) {
-                
-            }];
-        }
+        {str = @"处理中";}
             break;
         case SKProviderOrderListVCTYPE_TREATED:
-        {
-            [WOTHTTPNetwork getDemandWithState:@"已处理" success:^(id bean) {
-                self.tableList = ((SKDemandModel_msg*)bean).msg.list;
-                [self StopRefresh];
-                [self.tableView reloadData];
-            } fail:^(NSInteger errorCode, NSString *errorMessage) {
-                
-            }];
-        }
+        {str =@"已处理";}
             break;
         default:
             break;
     }
-    
+    [WOTHTTPNetwork getDemandWithState:str success:^(id bean) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.tableList = ((SKDemandModel_msg*)bean).msg.list;
+            [self StopRefresh];
+            [self.tableView reloadData];
+        });
+        
+    } fail:^(NSInteger errorCode, NSString *errorMessage) {
+        [self StopRefresh];
+    }];
 }
 
 #pragma mark -- Refresh method
@@ -136,11 +121,16 @@
         {
             SKDemandDetailsVC *vc = [[SKDemandDetailsVC alloc] init];
             vc.model = self.tableList[index.row];
+            vc.vcType = SKDemandDetailsVCTYPE_INTREATED;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case SKProviderOrderListVCTYPE_TREATED:
         {
+            SKDemandDetailsVC *vc = [[SKDemandDetailsVC alloc] init];
+            vc.vcType = SKDemandDetailsVCTYPE_TREATED;
+            vc.model = self.tableList[index.row];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         default:
@@ -161,7 +151,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 230;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

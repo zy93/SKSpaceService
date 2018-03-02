@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *stateLab;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
+@property (weak, nonatomic) IBOutlet UILabel *detailsLab;
+
 @property (weak, nonatomic) IBOutlet UIView *starBGView;
 @property (weak, nonatomic) IBOutlet UIButton *star1IV;
 @property (weak, nonatomic) IBOutlet UIButton *star2IV;

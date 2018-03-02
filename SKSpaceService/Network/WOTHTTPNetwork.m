@@ -17,6 +17,7 @@
 #import "SKSalesOrderLogModel.h"
 #import "SKQuestionModel.h"
 #import "SKDemandModel.h"
+#import "SKDemandeLogModel.h"
 
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
@@ -149,6 +150,17 @@
     } success:success fail:fail];
 }
 
++(void)getUntreatedSalesOrderSuccess:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/findSOO"];
+    NSDictionary *parameters = @{@"leaderId":[WOTUserSingleton shared].userInfo.staffId,
+                                };
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKUntreatedSalesOrder_msg * model_msg = [[SKUntreatedSalesOrder_msg alloc]initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
 +(void)getSalesOrderWithState:(NSString *)state success:(success)success fail:(fail)fail
 {
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Sell/find"];
@@ -244,6 +256,31 @@
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Demand/addDemand"];
     [WOTHTTPNetRequest doRequestWithParameters:params useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
         WOTBaseModel * model_msg = [[WOTBaseModel alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
++(void)addDemandLogWithDemandId:(NSNumber *)demandId content:(NSString *)content success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/DemandLog/addDemandLog"];
+    NSDictionary *parameters = @{@"demandId":demandId,
+                                 @"log":content,
+                                 };
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        WOTBaseModel * model_msg = [[WOTBaseModel alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
++(void)getDemandLogWithDemandId:(NSNumber *)demandId success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/DemandLog/findByDemanId"];
+    NSDictionary *parameters = @{@"pageNo":@(1),
+                                 @"pageSize":@(1000),
+                                 @"demandId":demandId,
+                                 };
+    [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKDemandeLogModel_msg * model_msg = [[SKDemandeLogModel_msg alloc] initWithDictionary:responseDic error:nil];
         return  model_msg;
     } success:success fail:fail];
 }
