@@ -36,6 +36,7 @@
     self.pageTabView.bottomOffLine = YES;
     self.pageTabView.indicatorStyle = XXPageTabIndicatorStyleDefault;
     self.pageTabView.indicatorWidth = 40;
+    self.pageTabView.selectedTabIndex = 3;
 }
 
 - (void)didReceiveMemoryWarning {
