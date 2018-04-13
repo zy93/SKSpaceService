@@ -1965,7 +1965,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SKSpaceService/SKSpaceService.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5EY377SJTX;
+				DEVELOPMENT_TEAM = HU7B3MZ5C3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/librarys/UMSocial/UMSocialUI",
@@ -1987,7 +1987,7 @@
 					"$(PROJECT_DIR)/librarys/WXPay",
 					"$(PROJECT_DIR)/librarys/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SKSpaceService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skwork.service.gtsk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2001,7 +2001,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SKSpaceService/SKSpaceService.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5EY377SJTX;
+				DEVELOPMENT_TEAM = HU7B3MZ5C3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/librarys/UMSocial/UMSocialUI",
@@ -2023,7 +2023,7 @@
 					"$(PROJECT_DIR)/librarys/WXPay",
 					"$(PROJECT_DIR)/librarys/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SKSpaceService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skwork.service.gtsk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

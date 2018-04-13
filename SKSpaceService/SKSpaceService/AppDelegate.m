@@ -51,7 +51,7 @@
     // init Push
     // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
-    [JPUSHService setupWithOption:launchOptions appKey:@"66c0aa6d5aad93cbf657ac58" channel:@"Test" apsForProduction:NO];
+    [JPUSHService setupWithOption:launchOptions appKey:@"69ad762405c8d6fd5f184d4c" channel:@"APP Stroe" apsForProduction:NO];
     [JPUSHService resetBadge];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
