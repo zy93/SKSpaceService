@@ -207,11 +207,16 @@
     [WOTHTTPNetwork userLoginWithTelOrEmail:self.userTelField.text password:self.verificationCodeField.text alias:alias success:^(id bean) {
         SKLoginModel_msg *model = bean;
         if ([model.code isEqualToString:@"200"]) {
-            NSLog(@"字段%@",model.msg.jurisdiction);
+            NSLog(@"权限字段%@",[[WOTUserSingleton shared] getUserPermissions]);
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[WOTUserSingleton shared] saveUserInfoToPlistWithModel:model.msg];
                 [WOTUserSingleton shared].login = YES;
-                //让用户选择所要进入的页面。
+                //让用户选择所要进入的页面。[WOTUserSingleton shared] getUserPermissions]
+                if ([[WOTUserSingleton shared] getUserPermissions].count == 0) {
+                    [MBProgressHUDUtil showMessage:@"没有权限！" toView:self.view];
+                    return ;
+                }
                 SKSelectIdentityView *select = [[SKSelectIdentityView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, CGRectGetHeight(self.view.frame)) buttonTitles:[[WOTUserSingleton shared] getUserPermissions]];
                 select.delegate = self;
                 [self.view addSubview:select];
