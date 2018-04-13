@@ -15,7 +15,7 @@
 {
     NSAttributedString * phoneNumber;
 }
-@property (nonatomic, strong) NSArray * tableList;
+@property (nonatomic, strong) NSMutableArray * tableList;
 
 @end
 
@@ -43,6 +43,10 @@
 #pragma mark - request
 -(void)createRequest
 {
+    if (self.tableList.count) {
+        [self.tableList removeAllObjects];
+    }
+    
     NSString *str ;
     switch (self.vcType ) {
         case SKProviderOrderListVCTYPE_UNTREATED:
@@ -57,16 +61,20 @@
         default:
             break;
     }
+    
     [WOTHTTPNetwork getDemandWithState:str success:^(id bean) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.tableList = ((SKDemandModel_msg*)bean).msg.list;
+            self.tableList = [[NSMutableArray alloc] initWithArray:((SKDemandModel_msg*)bean).msg.list];
             [self StopRefresh];
             [self.tableView reloadData];
         });
         
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [self StopRefresh];
+        [self.tableView reloadData];
     }];
+    
+    
 }
 
 #pragma mark -- Refresh method
@@ -114,9 +122,10 @@
                                          };
             [WOTHTTPNetwork setDemandWithParams:parameters success:^(id bean) {
                 [MBProgressHUDUtil showMessage:@"接受成功！状态已更改为沟通中" toView:self.view];
+                [self createRequest];
             } fail:^(NSInteger errorCode, NSString *errorMessage) {
                 [MBProgressHUDUtil showMessage:@"接受失败！请稍后再试！" toView:self.view];
-
+                
             }];
         }
             break;

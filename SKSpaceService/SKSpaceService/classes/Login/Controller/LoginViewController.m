@@ -206,6 +206,8 @@
     NSString *alias = [NSString stringWithFormat:@"%@S",self.userTelField.text];
     [WOTHTTPNetwork userLoginWithTelOrEmail:self.userTelField.text password:self.verificationCodeField.text alias:alias success:^(id bean) {
         SKLoginModel_msg *model = bean;
+        if ([model.code isEqualToString:@"200"]) {
+            NSLog(@"字段%@",model.msg.jurisdiction);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[WOTUserSingleton shared] saveUserInfoToPlistWithModel:model.msg];
                 [WOTUserSingleton shared].login = YES;
@@ -219,6 +221,11 @@
                     } seq:1];
                 });
             });
+        }else
+        {
+            [MBProgressHUDUtil showMessage:model.result toView:self.view];
+        }
+        
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
     }];
