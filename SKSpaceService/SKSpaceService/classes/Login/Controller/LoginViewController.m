@@ -193,6 +193,7 @@
 #pragma mark - 登录
 -(void)loginButtonMethod
 {
+
     BOOL isUserTel = [self.userTelField.text isEqualToString:@""] || self.userTelField.text ==NULL;
     BOOL isPassWord = [self.verificationCodeField.text isEqualToString:@""] || self.userTelField.text == NULL;
     if (isUserTel || isPassWord) {
@@ -246,9 +247,11 @@
 #pragma mark - selectIndentity delegate
 -(void)selectIdentityView:(SKSelectIdentityView *)view selectIndentity:(NSString *)indentity
 {
+    
+    [WOTUserSingleton shared].userInfo.currentPermission = indentity;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate loadViewControllerWithName:permissionVCNameList[indentity]];
-    [WOTUserSingleton shared].userInfo.currentPermission = indentity;
+    
 }
 
 

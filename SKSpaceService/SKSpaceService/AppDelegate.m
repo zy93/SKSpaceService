@@ -29,7 +29,7 @@
     //更新用户信息
     [[WOTUserSingleton shared] updateUserInfoByServer];
     [WOTUserSingleton shared].firstLoad = YES;
-    if ([WOTUserSingleton shared].isLogin) {
+    if ([WOTUserSingleton shared].userInfo.currentPermission) {
         [self loadViewControllerWithName:permissionVCNameList[[WOTUserSingleton shared].userInfo.currentPermission]];
     }
     else {
