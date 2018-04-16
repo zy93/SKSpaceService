@@ -56,7 +56,6 @@
 		2A9850E320170802005705ED /* WOTFileUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850C620170802005705ED /* WOTFileUitls.m */; };
 		2A9850E420170802005705ED /* MBProgressHUD+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */; };
 		2A9850E620170803005705ED /* JudgmentTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CC20170802005705ED /* JudgmentTime.m */; };
-		2A9850E720170803005705ED /* WOTBueToothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CE20170802005705ED /* WOTBueToothManager.m */; };
 		2A9850E820170803005705ED /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850CF20170802005705ED /* UIView+Extension.m */; };
 		2A9850E920170803005705ED /* WOTUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850D020170802005705ED /* WOTUitls.m */; };
 		2A98518720170814005705ED /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2A9850ED20170814005705ED /* UMSocialSDKResources.bundle */; };
@@ -270,7 +269,6 @@
 		2A9850B020170802005705ED /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
 		2A9850B120170802005705ED /* WOTFileUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTFileUitls.h; sourceTree = "<group>"; };
 		2A9850B220170802005705ED /* WOTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMapManager.h; sourceTree = "<group>"; };
-		2A9850B320170802005705ED /* WOTBueToothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBueToothManager.h; sourceTree = "<group>"; };
 		2A9850B420170802005705ED /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		2A9850B520170802005705ED /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		2A9850B620170802005705ED /* JudgmentTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JudgmentTime.h; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 		2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extension.m"; sourceTree = "<group>"; };
 		2A9850CC20170802005705ED /* JudgmentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JudgmentTime.m; sourceTree = "<group>"; };
 		2A9850CD20170802005705ED /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
-		2A9850CE20170802005705ED /* WOTBueToothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTBueToothManager.m; sourceTree = "<group>"; };
 		2A9850CF20170802005705ED /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		2A9850D020170802005705ED /* WOTUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTUitls.m; sourceTree = "<group>"; };
 		2A9850D120170802005705ED /* UISearchBar+JCSearchBarPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+JCSearchBarPlaceholder.h"; sourceTree = "<group>"; };
@@ -704,8 +701,6 @@
 				2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */,
 				2A9850CD20170802005705ED /* UIViewController+Extension.h */,
 				2A9850B520170802005705ED /* UIViewController+Extension.m */,
-				2A9850B320170802005705ED /* WOTBueToothManager.h */,
-				2A9850CE20170802005705ED /* WOTBueToothManager.m */,
 				2A9850BD20170802005705ED /* WOTUitls.h */,
 				2A9850D020170802005705ED /* WOTUitls.m */,
 				C5031C0C2022A6F0009854DF /* NSArray+ImageArray.h */,
@@ -1714,7 +1709,6 @@
 				2A98519320170814005705ED /* CardView.m in Sources */,
 				2A9850E420170802005705ED /* MBProgressHUD+Extension.m in Sources */,
 				C5ACC973201F000C00FAAA31 /* ButtonView.m in Sources */,
-				2A9850E720170803005705ED /* WOTBueToothManager.m in Sources */,
 				2A9850DD20170802005705ED /* UItableView+Extension.m in Sources */,
 				2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */,
 				2A9850D420170802005705ED /* NSString+URL.m in Sources */,
