@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, SKSalesOrderVCTYPE) {
 };
 
 
-@interface SKSalesOrderVC : WOTBaseTableViewController
+@interface SKSalesOrderVC : UIViewController
 
 @property (nonatomic, assign) SKSalesOrderVCTYPE type;
 

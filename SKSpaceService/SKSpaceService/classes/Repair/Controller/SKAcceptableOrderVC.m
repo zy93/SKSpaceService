@@ -42,7 +42,8 @@
 -(void)layoutSubviews
 {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.left.right.top.equalTo(self.view);
+        make.bottom.equalTo(self.view).with.offset(-0);
     }];
 }
 

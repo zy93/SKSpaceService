@@ -292,6 +292,11 @@
         return;
     }
     
+    if (![NSString valiMobile:self.clientTelText.textField.text]) {
+        [MBProgressHUDUtil showMessage:@"电话格式不正确！" toView:self.view];
+        return;
+    }
+    
     NSMutableDictionary *params = [@{@"clientName":self.clientNameText.textField.text,
                                      @"contacts":self.clientNameText.textField.text,
                                      @"tel":self.clientTelText.textField.text,

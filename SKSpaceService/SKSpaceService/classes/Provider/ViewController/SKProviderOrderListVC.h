@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, SKProviderOrderListVCTYPE) {
     SKProviderOrderListVCTYPE_TREATED,   //已处理
 };
 
-@interface SKProviderOrderListVC : WOTBaseTableViewController
+@interface SKProviderOrderListVC : UIViewController
+
 @property (nonatomic, assign) SKProviderOrderListVCTYPE vcType;
 @end

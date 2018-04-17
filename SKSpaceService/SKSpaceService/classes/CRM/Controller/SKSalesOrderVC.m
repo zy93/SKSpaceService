@@ -12,8 +12,9 @@
 #import "SKSalesOrderModel.h"
 #import "SKSalesMainVC.h"
 
-@interface SKSalesOrderVC ()
+@interface SKSalesOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray * tableList;
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation SKSalesOrderVC
@@ -26,6 +27,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView = [[UITableView alloc] init];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).with.offset(-215*[WOTUitls GetLengthAdaptRate]);
+        make.left.right.top.equalTo(self.view);
+    }];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"SKSalesOrderCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKSalesOrderCell"];
     [self AddRefreshHeader];

@@ -11,11 +11,12 @@
 #import "SKDemandModel.h"
 #import "SKDemandDetailsVC.h"
 
-@interface SKProviderOrderListVC () <SKDemandeCellDelegate>
+@interface SKProviderOrderListVC () <SKDemandeCellDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     NSAttributedString * phoneNumber;
 }
 @property (nonatomic, strong) NSMutableArray * tableList;
+@property(nonatomic,strong)UITableView *tableView;
 
 @end
 
@@ -29,10 +30,31 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView = [[UITableView alloc] init];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"SKDemandeCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKDemandeCell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self createRequest];
+    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).with.offset(-64);
+        make.left.right.top.equalTo(self.view);
+    }];
     [self AddRefreshHeader];
+    
+//    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_offset(0);
+//        make.left.mas_offset(0);
+//        make.right.mas_offset(0);
+//        make.bottom.equalTo(self.view.mas_bottom);
+//    }];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self createRequest];
 }
 
 - (void)didReceiveMemoryWarning {
