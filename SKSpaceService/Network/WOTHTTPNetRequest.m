@@ -32,23 +32,24 @@
                                                          @"image/jpeg",
                                                          @"image/png",
                                                          @"application/octet-stream",
-                                                         @"text/json", nil];
+                                                         @"text/json",
+                                                         @"text/plain",nil];
     
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithArray:@[@"POST", @"GET", @"HEAD"]];
     
     [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSLog(@"**********request URL:%@",task.originalRequest.URL.absoluteString);
-        NSString *responseStr = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-//        NSLog(@"**********responseStr:%@",responseStr);
-        NSError *error = nil;
-        NSData *jsonData = [responseStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+//        NSString *responseStr = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+////        NSLog(@"**********responseStr:%@",responseStr);
+//        NSError *error = nil;
+//        NSData *jsonData = [responseStr dataUsingEncoding:NSUTF8StringEncoding];
+//        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
         
-        WOTBaseModel *model = complete(responseDic);
+        WOTBaseModel *model = complete(responseObject);
         if ([model.code isEqualToString:@"200"]) {
             if (success) {
                 success(model);

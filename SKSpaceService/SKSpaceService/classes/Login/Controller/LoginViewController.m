@@ -247,7 +247,6 @@
 #pragma mark - selectIndentity delegate
 -(void)selectIdentityView:(SKSelectIdentityView *)view selectIndentity:(NSString *)indentity
 {
-    
     [WOTUserSingleton shared].userInfo.currentPermission = indentity;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate loadViewControllerWithName:permissionVCNameList[indentity]];

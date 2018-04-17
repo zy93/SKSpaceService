@@ -100,7 +100,7 @@ static dispatch_once_t token;
 -(void)userLogout
 {
     self.login = NO;
-    self.userInfo = nil;
+    //self.userInfo = nil;
     [self deletePlistFile];
 }
 

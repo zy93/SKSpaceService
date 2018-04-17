@@ -24,19 +24,12 @@ typedef WOTBaseModel *(^complete)(id responseDic);
                           fail:(fail)fail;
 
 
-
-
 +(void)doFileRequestWithParameters:(NSDictionary *)parameters
                             useUrl:(NSString *)Url
                              image:(NSArray<UIImage *> *)images
                           complete:(complete)complete
                            success:(success)success
                               fail:(fail)fail;
-
-
-
-
-
 
 
 @end
