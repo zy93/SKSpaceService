@@ -364,18 +364,22 @@
     [cell addSubview:btn2];
     [cell addSubview:btn3];
     [cell addSubview:btn4];
+    
     [btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-35*[WOTUitls GetLengthAdaptRate]);
         make.centerY.equalTo(cell.mas_centerY);
     }];
+    
     [btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(btn4.mas_left).offset(-2);
         make.centerY.equalTo(cell.mas_centerY);
     }];
+    
     [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(btn3.mas_left).offset(-2);
         make.centerY.equalTo(cell.mas_centerY);
     }];
+    
     [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(btn2.mas_left).offset(-2);
         make.centerY.equalTo(cell.mas_centerY);

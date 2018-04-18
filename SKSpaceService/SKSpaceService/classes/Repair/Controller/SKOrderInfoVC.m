@@ -17,6 +17,7 @@
 #import "TZImageManager.h"
 #import <Photos/Photos.h>
 #import "NSArray+ImageArray.h"
+#import "MBProgressHUD+Extension.h"
 
 @interface SKOrderInfoVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UIImagePickerControllerDelegate,TZImagePickerControllerDelegate>
 @property(nonatomic,strong)NSMutableArray *userImageArray;
@@ -302,26 +303,34 @@
 -(void)startService
 {
     if ([WOTSingtleton shared].orderType == ORDER_TYPE_ACCEPTEDORDER) {
-        [WOTHTTPNetwork startServiceWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
-            [MBProgressHUD showMessage:@"处理成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+            [WOTHTTPNetwork startServiceWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
+                
+                [hud setHidden: YES];
+                [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self.navigationController popViewControllerAnimated:YES];
                 });
+                
+                
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:@"处理失败！" toView:self.view];
             }];
-        } fail:^(NSInteger errorCode, NSString *errorMessage) {
-            [MBProgressHUDUtil showMessage:@"处理失败！" toView:self.view];
         }];
+        
     }
     
     if ([WOTSingtleton shared].orderType == ORDER_TYPE_SERVICINGORDER) {
-        [WOTHTTPNetwork serviceFinishWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
-            [MBProgressHUD showMessage:@"处理成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+            [WOTHTTPNetwork serviceFinishWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
+                [hud setHidden: YES];
+                [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self.navigationController popViewControllerAnimated:YES];
                 });
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:@"处理失败！" toView:self.view];
             }];
-        } fail:^(NSInteger errorCode, NSString *errorMessage) {
-             [MBProgressHUDUtil showMessage:@"处理失败！" toView:self.view];
         }];
     }
 }

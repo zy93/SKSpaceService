@@ -37,8 +37,6 @@
 #pragma mark - action
 -(void)rightItemAction
 {
-    //
-    
     if (!self.params) {
         [MBProgressHUDUtil showMessage:@"请选择类型！" toView:self.view];
         return;
@@ -98,12 +96,14 @@
         
         if (self.type == SKSelectTypeVCTYPE_ORDER_STATE) {
             self.params = @{@"sellId":self.model.sellId,
-                       @"stage":cell.textLabel.text,
+                            @"stage":cell.textLabel.text,
+                            @"leaderId":[WOTUserSingleton shared].userInfo.staffId
                        };
         }
         else {
             self.params = @{@"sellId":self.model.sellId,
-                       @"source":cell.textLabel.text,
+                            @"source":cell.textLabel.text,
+                            @"leaderId":[WOTUserSingleton shared].userInfo.staffId
                        };
         }
         if (self.index) {
