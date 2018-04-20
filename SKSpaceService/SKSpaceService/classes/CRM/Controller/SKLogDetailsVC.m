@@ -276,7 +276,7 @@
             //订单进度
              __weak typeof(self) weakSelf = self;
              SKSelectTypeVC *vc = [[SKSelectTypeVC alloc] init];
-             vc.tableList = [SalesOrderStateList subarrayWithRange:NSMakeRange(1, SalesOrderStateList.count-3)];
+             vc.tableList = [SalesOrderStateList subarrayWithRange:NSMakeRange(2, SalesOrderStateList.count-4)];
              vc.model = self.model;
              vc.type = SKSelectTypeVCTYPE_ORDER_STATE;
              [weakSelf.navigationController pushViewController:vc animated:YES];

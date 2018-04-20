@@ -61,7 +61,10 @@
     __weak typeof(self) weakSelf = self;
     self.textView = [[SKBottomTextView alloc] init];
     self.textView.editingText = ^(NSString *string) {
-        
+        if (strIsEmpty(string)) {
+            [MBProgressHUDUtil showMessage:@"日志内容不能为空！" toView:weakSelf.view];
+            return ;
+        }
         [WOTHTTPNetwork addDemandLogWithDemandId:weakSelf.model.demandId content:string success:^(id bean) {
             weakSelf.textView.textView.text = nil;
             //应该手动加一个model到list尾部
@@ -134,6 +137,9 @@
                                  };
     [WOTHTTPNetwork setDemandWithParams:parameters success:^(id bean) {
         [MBProgressHUDUtil showMessage:@"状态已变更为处理完成！" toView:self.view];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [MBProgressHUDUtil showMessage:@"修改失败！请稍后再试！" toView:self.view];
         

@@ -65,10 +65,6 @@
 #pragma mark - request
 -(void)createRequest
 {
-    if (self.tableList.count) {
-        [self.tableList removeAllObjects];
-    }
-    
     NSString *str ;
     switch (self.vcType ) {
         case SKProviderOrderListVCTYPE_UNTREATED:
@@ -86,6 +82,9 @@
     
     [WOTHTTPNetwork getDemandWithState:str success:^(id bean) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.tableList.count) {
+                [self.tableList removeAllObjects];
+            }
             self.tableList = [[NSMutableArray alloc] initWithArray:((SKDemandModel_msg*)bean).msg.list];
             [self StopRefresh];
             [self.tableView reloadData];
@@ -194,7 +193,7 @@
     if (!cell) {
         cell = [[SKDemandeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SKDemandeCell"];
     }
-    
+    NSLog(@"%@",self.tableList);
     SKDemandModel *model = self.tableList[indexPath.row];
     cell.addrValueLab.text = model.spaceName;
     cell.nameValueLab.text = model.userName;

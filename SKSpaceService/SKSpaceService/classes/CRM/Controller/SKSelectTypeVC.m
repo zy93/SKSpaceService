@@ -83,35 +83,46 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:self.index];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.accessoryView = nil;
     if (self.type == SKSelectTypeVCTYPE_SELECT) {
         self.selectSpaceBlock(cell.textLabel.text);
         [self.navigationController popViewControllerAnimated:YES];
     }
     else {
         
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"select_round_blue"]];
+//        if (!(self.index.row == indexPath.row)) {
+//            cell = [tableView cellForRowAtIndexPath:self.index];
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            cell.accessoryView = nil;
+//        }else
+//        {
+//             UITableViewCell *celled = [tableView cellForRowAtIndexPath:self.index];
+//            celled.accessoryType = UITableViewCellAccessoryNone;
+//            celled.accessoryView = nil;
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"select_round_blue"]];
+//        }
+        UITableViewCell *celled = [tableView  cellForRowAtIndexPath:indexPath];
+        celled.accessoryType = UITableViewCellAccessoryCheckmark;
+        celled.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"select_round_blue"]];
+        
        
         
         if (self.type == SKSelectTypeVCTYPE_ORDER_STATE) {
             self.params = @{@"sellId":self.model.sellId,
-                            @"stage":cell.textLabel.text,
+                            @"stage":celled.textLabel.text,
                             @"leaderId":[WOTUserSingleton shared].userInfo.staffId
                        };
         }
         else {
             self.params = @{@"sellId":self.model.sellId,
-                            @"source":cell.textLabel.text,
+                            @"source":celled.textLabel.text,
                             @"leaderId":[WOTUserSingleton shared].userInfo.staffId
                        };
         }
-        if (self.index) {
-            cell = [tableView cellForRowAtIndexPath:indexPath];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.accessoryView = nil;
-        }
-        self.index = indexPath;
+       self.index = indexPath;
     }
 }
 
