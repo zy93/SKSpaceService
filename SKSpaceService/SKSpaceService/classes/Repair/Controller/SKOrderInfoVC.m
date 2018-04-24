@@ -302,6 +302,10 @@
 #pragma mark - 处理订单接口
 -(void)startService
 {
+    if (self.selectedPhotos.count == 0) {
+        [MBProgressHUDUtil showMessage:@"请选择图片" toView:self.view];
+        return;
+    }
     if ([WOTSingtleton shared].orderType == ORDER_TYPE_ACCEPTEDORDER) {
         [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
             [WOTHTTPNetwork startServiceWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
