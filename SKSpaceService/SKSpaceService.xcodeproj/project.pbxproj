@@ -175,6 +175,9 @@
 		C5ACC96D201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC96A201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m */; };
 		C5ACC970201EEC5200FAAA31 /* SKOrderInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC96F201EEC5200FAAA31 /* SKOrderInfoVC.m */; };
 		C5ACC973201F000C00FAAA31 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC972201F000B00FAAA31 /* ButtonView.m */; };
+		C5C6C2D8209052580043FCDD /* CSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C2D6209052580043FCDD /* CSLoginViewController.m */; };
+		C5C6C2D9209052580043FCDD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C2D7209052580043FCDD /* RegisterViewController.m */; };
+		C5C6C2DC2090538F0043FCDD /* WOTGetVerifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C2DA2090538F0043FCDD /* WOTGetVerifyModel.m */; };
 		C5E4DCA820200B35006BC4C2 /* SKOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E4DCA720200B35006BC4C2 /* SKOrderInfoModel.m */; };
 		C5E4DCAB20205C30006BC4C2 /* SKAcceptAnOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E4DCAA20205C30006BC4C2 /* SKAcceptAnOrderModel.m */; };
 		DA1BBBB078BB9353ECB5FE70 /* libPods-SKSpaceServiceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A28CF1A5D01B08520871E17 /* libPods-SKSpaceServiceUITests.a */; };
@@ -522,6 +525,12 @@
 		C5ACC96F201EEC5200FAAA31 /* SKOrderInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderInfoVC.m; sourceTree = "<group>"; };
 		C5ACC971201F000B00FAAA31 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonView.h; sourceTree = "<group>"; };
 		C5ACC972201F000B00FAAA31 /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonView.m; sourceTree = "<group>"; };
+		C5C6C2D4209052580043FCDD /* CSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLoginViewController.h; sourceTree = "<group>"; };
+		C5C6C2D5209052580043FCDD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		C5C6C2D6209052580043FCDD /* CSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLoginViewController.m; sourceTree = "<group>"; };
+		C5C6C2D7209052580043FCDD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		C5C6C2DA2090538F0043FCDD /* WOTGetVerifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTGetVerifyModel.m; sourceTree = "<group>"; };
+		C5C6C2DB2090538F0043FCDD /* WOTGetVerifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTGetVerifyModel.h; sourceTree = "<group>"; };
 		C5E4DCA620200B35006BC4C2 /* SKOrderInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderInfoModel.h; sourceTree = "<group>"; };
 		C5E4DCA720200B35006BC4C2 /* SKOrderInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderInfoModel.m; sourceTree = "<group>"; };
 		C5E4DCA920205C30006BC4C2 /* SKAcceptAnOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAcceptAnOrderModel.h; sourceTree = "<group>"; };
@@ -1220,6 +1229,7 @@
 		2AC82AA5201726CA0076305E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C5C6C2D3209052350043FCDD /* Alternative */,
 				2AC82A98201725040076305E /* LoginViewController.h */,
 				2AC82A99201725040076305E /* LoginViewController.m */,
 				2AC4A7A5202171D300D824EA /* SKMyVC.h */,
@@ -1231,6 +1241,8 @@
 		2AC82AA6201726CA0076305E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5C6C2DB2090538F0043FCDD /* WOTGetVerifyModel.h */,
+				C5C6C2DA2090538F0043FCDD /* WOTGetVerifyModel.m */,
 				2AC82AA7201726CA0076305E /* SKLoginModel.h */,
 				2AC82AAA201726CA0076305E /* SKLoginModel.m */,
 				2AC82AA9201726CA0076305E /* WOTBaseModel.h */,
@@ -1338,6 +1350,17 @@
 				C5ACC96A201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m */,
 			);
 			path = ShowImageScrollView;
+			sourceTree = "<group>";
+		};
+		C5C6C2D3209052350043FCDD /* Alternative */ = {
+			isa = PBXGroup;
+			children = (
+				C5C6C2D4209052580043FCDD /* CSLoginViewController.h */,
+				C5C6C2D6209052580043FCDD /* CSLoginViewController.m */,
+				C5C6C2D5209052580043FCDD /* RegisterViewController.h */,
+				C5C6C2D7209052580043FCDD /* RegisterViewController.m */,
+			);
+			path = Alternative;
 			sourceTree = "<group>";
 		};
 		C92E5C1A7947AE002977DF5B /* Frameworks */ = {
@@ -1700,6 +1723,7 @@
 				2ABC430D2019E982008C3EDA /* SKQuestionSendCell.m in Sources */,
 				2A4AC5CD20181E9A00A8CC19 /* WOTPageMenuParentVC.m in Sources */,
 				2A9850E320170802005705ED /* WOTFileUitls.m in Sources */,
+				C5C6C2DC2090538F0043FCDD /* WOTGetVerifyModel.m in Sources */,
 				2A9851AA20170814005705ED /* SRRandom.m in Sources */,
 				2A9851AD20170814005705ED /* SRIOConsumerPool.m in Sources */,
 				2A9851B320170814005705ED /* JXPopoverViewCell.m in Sources */,
@@ -1718,6 +1742,7 @@
 				2A9850E920170803005705ED /* WOTUitls.m in Sources */,
 				2A9850D820170802005705ED /* UIDevice+Resolutions.m in Sources */,
 				2ABC43012019E45A008C3EDA /* SKQuestionListVC.m in Sources */,
+				C5C6C2D9209052580043FCDD /* RegisterViewController.m in Sources */,
 				2A4AC5D620186B2E00A8CC19 /* SKSalesOrderVC.m in Sources */,
 				2A98519520170814005705ED /* UIFont+MyFont.m in Sources */,
 				2A9850E220170802005705ED /* WOTMapManager.m in Sources */,
@@ -1739,6 +1764,7 @@
 				2A9851A720170814005705ED /* SRLog.m in Sources */,
 				2ABC43162019EBC2008C3EDA /* SKQuestionDetailsHeader.m in Sources */,
 				2A9850D520170802005705ED /* UIColor+ColorChange.m in Sources */,
+				C5C6C2D8209052580043FCDD /* CSLoginViewController.m in Sources */,
 				2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */,
 				2A9850DC20170802005705ED /* UIImage+Extension.m in Sources */,
 				2ABC43092019E7E6008C3EDA /* SKQuestionDetailsVC.m in Sources */,
@@ -1985,7 +2011,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skwork.service.gtsk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2023,7 +2049,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skwork.service.gtsk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

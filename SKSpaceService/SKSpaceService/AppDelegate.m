@@ -10,15 +10,18 @@
 #import "WOTBaseNavigationController.h"
 #import "WOTUserSingleton.h"
 #import "LoginViewController.h"
+#import "CSLoginViewController.h"
 #import "SKSalesMainVC.h"
 #import "SKRepairVC.h"
 #import "JPUSHService.h"
+#import "JudgmentTime.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
-
+@property (nonatomic, strong)JudgmentTime *jumdgmentTime;
+@property (nonatomic, assign)BOOL isShow;
 @end
 
 @implementation AppDelegate
@@ -27,13 +30,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //更新用户信息
+    self.jumdgmentTime = [[JudgmentTime alloc] init];
+    
+    [self jumdgmentTimeMethod];
     [[WOTUserSingleton shared] updateUserInfoByServer];
     [WOTUserSingleton shared].firstLoad = YES;
     if ([WOTUserSingleton shared].userInfo.currentPermission) {
         [self loadViewControllerWithName:permissionVCNameList[[WOTUserSingleton shared].userInfo.currentPermission]];
     }
     else {
-        [self loadViewControllerWithName:@"LoginViewController"];
+        if (_isShow) {
+            [self loadViewControllerWithName:@"CSLoginViewController"];
+        }else
+        {
+            [self loadViewControllerWithName:@"LoginViewController"];
+        }
+        
+        //[self loadViewControllerWithName:@"LoginViewController"];
     }
     [WOTUserSingleton shared].firstLoad = NO;
     
@@ -187,4 +200,23 @@
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
 }
+
+-(void)jumdgmentTimeMethod
+{
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *DateTime = [formatter stringFromDate:date];
+    // NSString *aDataTime =@"2017/11/02";
+    _isShow = [self.jumdgmentTime compareDate:DateTime withDate:@"2018/5/1"];
+    
+}
+
 @end

@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 #import "UIDevice+Resolutions.h"
 #import "SKSelectIdentityView.h"
+#import "CSLoginViewController.h"
+#import "JudgmentTime.h"
 
 @interface SKMyVC () < SKSelectIdentityViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -19,6 +21,8 @@
 @property (nonatomic, strong) UILabel * nameLab;
 @property (nonatomic, strong) UILabel * telLab;
 @property (nonatomic, strong) UICollectionView * collectionView;
+@property (nonatomic, strong)JudgmentTime *jumdgmentTime;
+@property (nonatomic, assign)BOOL isShow;
 
 @end
 
@@ -26,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.jumdgmentTime = [[JudgmentTime alloc] init];
+    [self judgmentTimeMethod];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     CGFloat  buff = [[UIDevice currentDevice] resolution]==UIDeviceResolution_iPhoneRetina58 ? 88: 20;
@@ -136,7 +142,13 @@
             [[WOTUserSingleton shared] userLogout];
             //跳转登录页
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate loadViewControllerWithName:@"LoginViewController"];
+            if (_isShow) {
+                [appDelegate loadViewControllerWithName:@"CSLoginViewController"];
+            }else
+            {
+                [appDelegate loadViewControllerWithName:@"LoginViewController"];
+            }
+            
         }];
         [alert addAction:action1];
         [alert addAction:action2];
@@ -145,6 +157,7 @@
     }
 }
 
+
 #pragma mark - selectIndentity delegate
 -(void)selectIdentityView:(SKSelectIdentityView *)view selectIndentity:(NSString *)indentity
 {
@@ -152,6 +165,24 @@
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate loadViewControllerWithName:permissionVCNameList[indentity]];
     [WOTUserSingleton shared].userInfo.currentPermission = indentity;
+}
+
+-(void)judgmentTimeMethod
+{
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *DateTime = [formatter stringFromDate:date];
+    // NSString *aDataTime =@"2017/11/02";
+    _isShow = [self.jumdgmentTime compareDate:DateTime withDate:@"2018/5/1"];
+    
 }
 
 /*

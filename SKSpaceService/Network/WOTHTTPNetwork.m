@@ -18,6 +18,7 @@
 #import "SKQuestionModel.h"
 #import "SKDemandModel.h"
 #import "SKDemandeLogModel.h"
+#import "WOTGetVerifyModel.h"
 
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
@@ -59,6 +60,16 @@
     
     [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
         SKLoginModel_msg *model = [[SKLoginModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    } success:success fail:fail];
+}
+
++(void)userGetVerifyWitTel:(NSString *)tel success:(success)success fail:(fail)fail
+{
+    NSDictionary *dic = @{@"tel" :tel};
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/User/sendVerify"];
+    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
+        WOTGetVerifyModel *model = [[WOTGetVerifyModel alloc] initWithDictionary:responseDic error:nil];
         return model;
     } success:success fail:fail];
 }

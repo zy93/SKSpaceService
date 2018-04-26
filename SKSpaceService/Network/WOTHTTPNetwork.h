@@ -24,6 +24,14 @@
 
 +(void)updateUserInfoUserId:(NSNumber *)userId success:(success)success fail:(fail)fail;
 
+/**
+ * 发送手机验证码
+ @param tel  电话
+ @param success     成功回调
+ @param fail        失败回调
+ */
++(void)userGetVerifyWitTel:(NSString *)tel success:(success)success fail:(fail)fail;
+
 #pragma mark - 维修订单
 /**
  查询订单
