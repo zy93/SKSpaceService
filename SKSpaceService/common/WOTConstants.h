@@ -62,7 +62,7 @@
 //#define HTTPBaseURL @"http://219.143.170.98:10011"//公网测试
 #define HTTPBaseURL @"http://101.200.32.180"//尚科服务器
 //#define HTTPBaseURL @"http://192.168.1.216:8080"//赵亮亮
-//#define HTTPBaseURL @"http://192.168.35.50:8080"//石宇驰 
+//#define HTTPBaseURL @"http://192.168.35.50:8080"//石宇驰 1851314
 //#define HTTPBaseURL @"http://192.168.1.116:8080"//石宇驰
 
 //集团的appid

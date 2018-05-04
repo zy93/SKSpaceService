@@ -44,7 +44,6 @@
 		2A9850D620170802005705ED /* WOTConfigThemeUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850AB20170802005705ED /* WOTConfigThemeUitls.m */; };
 		2A9850D720170802005705ED /* WOTQRCodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850AC20170802005705ED /* WOTQRCodeUtils.m */; };
 		2A9850D820170802005705ED /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850AD20170802005705ED /* UIDevice+Resolutions.m */; };
-		2A9850D920170802005705ED /* WOTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850AF20170802005705ED /* WOTLocationManager.m */; };
 		2A9850DA20170802005705ED /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850B020170802005705ED /* UIImage+Blur.m */; };
 		2A9850DB20170802005705ED /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850B520170802005705ED /* UIViewController+Extension.m */; };
 		2A9850DC20170802005705ED /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9850B920170802005705ED /* UIImage+Extension.m */; };
@@ -268,7 +267,6 @@
 		2A9850AC20170802005705ED /* WOTQRCodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTQRCodeUtils.m; sourceTree = "<group>"; };
 		2A9850AD20170802005705ED /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
 		2A9850AE20170802005705ED /* NSDate+Uitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Uitls.h"; sourceTree = "<group>"; };
-		2A9850AF20170802005705ED /* WOTLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTLocationManager.m; sourceTree = "<group>"; };
 		2A9850B020170802005705ED /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
 		2A9850B120170802005705ED /* WOTFileUitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTFileUitls.h; sourceTree = "<group>"; };
 		2A9850B220170802005705ED /* WOTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTMapManager.h; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 		2A9850C520170802005705ED /* WOTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTMapManager.m; sourceTree = "<group>"; };
 		2A9850C620170802005705ED /* WOTFileUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTFileUitls.m; sourceTree = "<group>"; };
 		2A9850C720170802005705ED /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
-		2A9850C820170802005705ED /* WOTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTLocationManager.h; sourceTree = "<group>"; };
 		2A9850C920170802005705ED /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extension.m"; sourceTree = "<group>"; };
 		2A9850CC20170802005705ED /* JudgmentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JudgmentTime.m; sourceTree = "<group>"; };
@@ -704,8 +701,6 @@
 				2A9850AC20170802005705ED /* WOTQRCodeUtils.m */,
 				2A9850C720170802005705ED /* UIImage+Blur.h */,
 				2A9850B020170802005705ED /* UIImage+Blur.m */,
-				2A9850C820170802005705ED /* WOTLocationManager.h */,
-				2A9850AF20170802005705ED /* WOTLocationManager.m */,
 				2A9850B720170802005705ED /* MBProgressHUD+Extension.h */,
 				2A9850CA20170802005705ED /* MBProgressHUD+Extension.m */,
 				2A9850CD20170802005705ED /* UIViewController+Extension.h */,
@@ -1790,7 +1785,6 @@
 				2AAFCBEF20480B540096F27A /* SKProviderMainVC.m in Sources */,
 				2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */,
 				2AC45A54201F3870009D0698 /* SKQuestionModel.m in Sources */,
-				2A9850D920170802005705ED /* WOTLocationManager.m in Sources */,
 				2A9851BB20170814005705ED /* View+MASAdditions.m in Sources */,
 				2A3E3FFB2049224700171558 /* SKDemandeLogModel.m in Sources */,
 				2A98519120170814005705ED /* CardViewItem.m in Sources */,
