@@ -309,9 +309,24 @@
     if ([WOTSingtleton shared].orderType == ORDER_TYPE_ACCEPTEDORDER) {
         [MBProgressHUDUtil showLoadingWithMessage:@"" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
             [WOTHTTPNetwork startServiceWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
-                
+                NSString *summary ;
+                if ([self.orderInfoModel.type  isEqualToString:@"维修"]) {
+                    summary = @"您的报修正在维修中。";
+                }
+                if ([self.orderInfoModel.type isEqualToString:@"清洁"]) {
+                    summary = @"您的清洁正在进行中。";
+                }
+                if ([self.orderInfoModel.type  isEqualToString:@"其他"]) {
+                    summary = @"您的问题报修正在处理中。";
+                }
+                [WOTHTTPNetwork sendMessageWithUserId:@([self.orderInfoModel.userId  integerValue]) type:@"维修反馈" summary:summary success:^(id bean) {
+                    
+                } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                    
+                }];
                 [hud setHidden: YES];
                 [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
+                //提交成功；
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self.navigationController popViewControllerAnimated:YES];
                 });
@@ -329,6 +344,21 @@
             [WOTHTTPNetwork serviceFinishWithInfoId:self.orderInfoModel.infoId imageArray:self.selectedPhotos success:^(id bean) {
                 [hud setHidden: YES];
                 [MBProgressHUDUtil showMessage:SubmitReminding toView:self.view];
+                NSString *summary ;
+                if ([self.orderInfoModel.type  isEqualToString:@"维修"]) {
+                    summary = @"您的报修已完成。";
+                }
+                if ([self.orderInfoModel.type isEqualToString:@"清洁"]) {
+                    summary = @"您的清洁已完成。";
+                }
+                if ([self.orderInfoModel.type  isEqualToString:@"其他"]) {
+                    summary = @"您的问题报修已完成。";
+                }
+                [WOTHTTPNetwork sendMessageWithUserId:@([self.orderInfoModel.userId  integerValue]) type:@"维修反馈" summary:summary success:^(id bean) {
+                    
+                } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                    
+                }];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self.navigationController popViewControllerAnimated:YES];
                 });

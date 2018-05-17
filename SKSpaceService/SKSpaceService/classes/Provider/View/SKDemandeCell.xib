@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -39,14 +39,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务需求：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gae-K2-Tlp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务类型：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gae-K2-Tlp">
                                 <rect key="frame" x="20" y="110" width="76.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyh-na-5Nh">
-                                <rect key="frame" x="20" y="140" width="76.5" height="18"/>
+                                <rect key="frame" x="20" y="170" width="76.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-OA-ZBz">
-                                <rect key="frame" x="102" y="140" width="76.5" height="18"/>
+                                <rect key="frame" x="102" y="170" width="76.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -92,16 +92,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务商名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPO-P9-V03">
+                                <rect key="frame" x="20" y="140" width="76.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adf-2x-YL3">
+                                <rect key="frame" x="102" y="140" width="38" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9DD-xX-7UP" firstAttribute="leading" secondItem="WSf-be-hjB" secondAttribute="leading" constant="20" id="1Hy-br-rtN"/>
                             <constraint firstItem="fIg-xv-U0V" firstAttribute="leading" secondItem="9DD-xX-7UP" secondAttribute="leading" id="68a-w1-oXA"/>
+                            <constraint firstItem="yPO-P9-V03" firstAttribute="leading" secondItem="9DD-xX-7UP" secondAttribute="leading" id="75c-6M-Fd2"/>
                             <constraint firstAttribute="bottom" secondItem="MmH-VU-zaE" secondAttribute="bottom" constant="10" id="AQP-LL-iEk"/>
                             <constraint firstItem="W3m-OA-ZBz" firstAttribute="centerY" secondItem="uyh-na-5Nh" secondAttribute="centerY" id="Bhj-rN-YWA"/>
                             <constraint firstItem="Xny-Ah-DIL" firstAttribute="centerY" secondItem="wHa-9t-l6D" secondAttribute="centerY" id="Exo-wN-ZC9"/>
                             <constraint firstItem="wHa-9t-l6D" firstAttribute="top" secondItem="9DD-xX-7UP" secondAttribute="bottom" constant="12" id="Fb9-xA-sBT"/>
-                            <constraint firstItem="uyh-na-5Nh" firstAttribute="top" secondItem="Gae-K2-Tlp" secondAttribute="bottom" constant="12" id="K1j-Zh-JKR"/>
+                            <constraint firstItem="uyh-na-5Nh" firstAttribute="top" secondItem="yPO-P9-V03" secondAttribute="bottom" constant="12" id="K1j-Zh-JKR"/>
                             <constraint firstItem="9DD-xX-7UP" firstAttribute="top" secondItem="WSf-be-hjB" secondAttribute="top" constant="20" id="MJR-5Y-9FH"/>
                             <constraint firstItem="1Kb-Ft-mIx" firstAttribute="leading" secondItem="9DD-xX-7UP" secondAttribute="trailing" constant="5" id="R01-Ub-IzL"/>
                             <constraint firstAttribute="trailing" secondItem="MmH-VU-zaE" secondAttribute="trailing" constant="10" id="RUS-q9-nIl"/>
@@ -110,6 +123,9 @@
                             <constraint firstItem="Xny-Ah-DIL" firstAttribute="leading" secondItem="1Kb-Ft-mIx" secondAttribute="leading" id="TtR-Xc-GLb"/>
                             <constraint firstItem="uyh-na-5Nh" firstAttribute="leading" secondItem="9DD-xX-7UP" secondAttribute="leading" id="XSD-qy-eCD"/>
                             <constraint firstItem="1Kb-Ft-mIx" firstAttribute="centerY" secondItem="9DD-xX-7UP" secondAttribute="centerY" id="eHl-5f-53R"/>
+                            <constraint firstItem="Adf-2x-YL3" firstAttribute="leading" secondItem="W3m-OA-ZBz" secondAttribute="leading" id="gKl-rP-lJa"/>
+                            <constraint firstItem="Adf-2x-YL3" firstAttribute="top" secondItem="yPO-P9-V03" secondAttribute="top" id="hDR-eg-u3m"/>
+                            <constraint firstItem="yPO-P9-V03" firstAttribute="top" secondItem="Gae-K2-Tlp" secondAttribute="bottom" constant="12" id="jAm-VV-0xk"/>
                             <constraint firstItem="iqh-Cz-Qpe" firstAttribute="leading" secondItem="Xny-Ah-DIL" secondAttribute="leading" id="kef-Jd-FkT"/>
                             <constraint firstItem="fIg-xv-U0V" firstAttribute="top" secondItem="wHa-9t-l6D" secondAttribute="bottom" constant="12" id="pL0-yS-eDv"/>
                             <constraint firstItem="wHa-9t-l6D" firstAttribute="leading" secondItem="9DD-xX-7UP" secondAttribute="leading" id="pzO-5Y-c9g"/>
@@ -137,10 +153,14 @@
                 <outlet property="createValueLab" destination="W3m-OA-ZBz" id="2aJ-xR-xY1"/>
                 <outlet property="demandeLab" destination="Gae-K2-Tlp" id="4mO-Wa-Xt0"/>
                 <outlet property="demandeValueLab" destination="i7O-7V-1lM" id="7Hz-AY-qpe"/>
+                <outlet property="facilitatorInfoLabel" destination="Adf-2x-YL3" id="huB-iH-ERf"/>
+                <outlet property="facilitatorLabel" destination="yPO-P9-V03" id="YO4-RO-H0b"/>
+                <outlet property="facilitatorTopConstraint" destination="jAm-VV-0xk" id="WfF-Kb-g2N"/>
                 <outlet property="nameLab" destination="wHa-9t-l6D" id="iuy-d3-5fS"/>
                 <outlet property="nameValueLab" destination="Xny-Ah-DIL" id="ahT-gD-STN"/>
                 <outlet property="telLab" destination="fIg-xv-U0V" id="cH0-jX-O7S"/>
                 <outlet property="telValueLab" destination="iqh-Cz-Qpe" id="Ka8-TV-3cC"/>
+                <outlet property="topConstraint" destination="K1j-Zh-JKR" id="eTM-VX-v94"/>
             </connections>
             <point key="canvasLocation" x="32" y="147.5"/>
         </tableViewCell>

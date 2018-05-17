@@ -64,6 +64,9 @@
         make.height.mas_equalTo(43);
     }];
     
+    if (self.type == SKTextViewVCTYPE_EDIT_CLIENT_APPOINTMENT_PEOPLENUM) {
+        self.textView.keyboardType = UIKeyboardTypeNumberPad;
+    }
     
 }
 
@@ -169,6 +172,67 @@
             [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
                 [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
                     self.model.specificSource = self.textView.text;
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+            }];
+        }
+            break;
+            
+        case SKTextViewVCTYPE_EDIT_CLIENT_REMARK:
+        {
+            if (strIsEmpty(self.textView.text)) {
+                [MBProgressHUDUtil showMessage:@"请录入信息!" toView:self.view];
+                return;
+                
+            }
+            NSDictionary *params = @{@"sellId":self.model.sellId,
+                                     @"remark":self.textView.text,
+                                     };
+            [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+                [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                    self.model.remark = self.textView.text;
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+            }];
+        }
+            break;
+        case SKTextViewVCTYPE_EDIT_CLIENT_APPOINTMENT_PEOPLENUM:
+        {
+            if (strIsEmpty(self.textView.text)) {
+                [MBProgressHUDUtil showMessage:@"请录入信息!" toView:self.view];
+                return;
+                
+            }
+            NSDictionary *params = @{@"sellId":self.model.sellId,
+                                     @"peopleNum":@([self.textView.text integerValue]),
+                                     };
+            [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+                [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                    self.model.peopleNum = @([self.textView.text integerValue]);
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
+            }];
+        }
+            break;
+        case SKTextViewVCTYPE_EDIT_CLIENT_APPOINTMENT_TIME:
+        {
+            if (strIsEmpty(self.textView.text)) {
+                [MBProgressHUDUtil showMessage:@"请录入信息!" toView:self.view];
+                return;
+                
+            }
+            NSDictionary *params = @{@"sellId":self.model.sellId,
+                                     @"appointmentTime":self.textView.text,
+                                     };
+            [WOTHTTPNetwork updateSalesOrderInfoWithParam:params success:^(id bean) {
+                [MBProgressHUD showMessage:@"修改成功！" toView:self.view hide:YES afterDelay:0.8f complete:^{
+                    self.model.appointmentTime = self.textView.text;
                     [self.navigationController popViewControllerAnimated:YES];
                 }];
             } fail:^(NSInteger errorCode, NSString *errorMessage) {

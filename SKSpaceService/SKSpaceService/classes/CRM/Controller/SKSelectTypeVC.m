@@ -50,6 +50,11 @@
             else {
                 self.model.source = self.params[@"source"];
             }
+            [WOTHTTPNetwork sendMessageWithUserId:self.model.userId type:@"预约入驻反馈" summary:@"预约入驻申请已有专人负责，请等待工作人员联系。" success:^(id bean) {
+                
+            } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                
+            }];
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } fail:^(NSInteger errorCode, NSString *errorMessage) {

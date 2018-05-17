@@ -114,6 +114,23 @@
     [WOTHTTPNetwork acceptAnOrderWithUserName:[WOTUserSingleton shared].userInfo.realName infoId:self.infoModelArray[button.tag].infoId pickUpUserID:[WOTUserSingleton shared].userInfo.staffId success:^(id bean) {
         [MBProgressHUDUtil showMessage:@"接单成功！" toView:self.view];
         [self queryAcceptableOrderMethod];
+        NSString *summary ;
+        if ([self.infoModelArray[button.tag].type isEqualToString:@"维修"]) {
+            summary = @"您的报修已接单，请等待工作人员前往维修。";
+        }
+        if ([self.infoModelArray[button.tag].type isEqualToString:@"清洁"]) {
+            summary = @"您的清洁已接单，请等待工作人员前往清洁。";
+        }
+        if ([self.infoModelArray[button.tag].type isEqualToString:@"其他"]) {
+            summary = @"您的问题报修已接单，请等待工作人员处理。";
+        }
+        [WOTHTTPNetwork sendMessageWithUserId:@([self.infoModelArray[button.tag].userId integerValue]) type:@"维修反馈" summary:summary success:^(id bean) {
+            
+        } fail:^(NSInteger errorCode, NSString *errorMessage) {
+            
+        }];
+        
+        
     } fail:^(NSInteger errorCode, NSString *errorMessage) {
         [MBProgressHUDUtil showMessage:@"接单失败！" toView:self.view];
     }];

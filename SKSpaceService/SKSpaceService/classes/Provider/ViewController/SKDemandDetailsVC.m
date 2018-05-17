@@ -98,6 +98,7 @@
         [self StopRefresh];
     }];
 }
+
 #pragma mark -- Refresh method
 /**
  *  添加下拉刷新事件
@@ -137,6 +138,7 @@
                                  };
     [WOTHTTPNetwork setDemandWithParams:parameters success:^(id bean) {
         [MBProgressHUDUtil showMessage:@"状态已变更为处理完成！" toView:self.view];
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
@@ -177,10 +179,18 @@
     cell.createValueLab.text = self.model.putTime;
     cell.delegate = self;
     if ([self.model.needType isEqualToString:@"服务商"]) {
-        cell.demandeValueLab.text= self.model.firmName;
+        cell.facilitatorLabel.text = @"服务商名:";
+        cell.facilitatorInfoLabel.text= self.model.firmName;
+        cell.demandeValueLab.text = self.model.needType;
+        //cell.topConstraint.constant = 15;
     }
     else {
-        cell.demandeValueLab.text= self.model.demandContent;
+//        cell.facilitatorLabel.hidden = YES;
+//        cell.facilitatorInfoLabel.hidden = YES;
+        cell.facilitatorLabel.text = @"服务内容:";
+        cell.facilitatorInfoLabel.text = self.model.demandContent;
+        //cell.topConstraint.constant =-15;
+        cell.demandeValueLab.text= self.model.demandType;
     }
     cell.bgViewBottomConstraints.constant = 20;
     [cell.btn setTitle:@"完成" forState:UIControlStateNormal];

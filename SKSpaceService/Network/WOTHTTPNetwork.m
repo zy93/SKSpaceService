@@ -74,6 +74,17 @@
     } success:success fail:fail];
 }
 
++(void)sendMessageWithUserId:(NSNumber *)userId type:(NSString *)type summary:(NSString*)summary success:(success)success fail:(fail)fail
+{
+    NSDictionary *dic = @{@"userId":userId,@"type":type,@"summary":summary};
+    NSString * string = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Newslists/add"];
+    [WOTHTTPNetRequest doRequestWithParameters:dic useUrl:string complete:^WOTBaseModel *(id responseDic) {
+        WOTBaseModel *model = [[WOTBaseModel alloc] initWithDictionary:responseDic error:nil];
+        return model;
+    } success:success fail:fail];
+}
+
+
 #pragma mark - 维修订单
 //查询报修订单
 +(void)queryRepairsOrderWithSpaceList:(NSString *)spaceList statuscode:(NSString *)statuscode pickUpUserID:(NSNumber *)pickUpUserID success:(success)success fail:(fail)fail;

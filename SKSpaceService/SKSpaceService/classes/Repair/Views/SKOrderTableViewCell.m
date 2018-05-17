@@ -51,6 +51,7 @@
     [self.serviceAddressInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.serviceAddressLabel);
         make.left.equalTo(self.serviceAddressLabel.mas_right);
+        make.right.equalTo(self.backGroundView).with.offset(-10);
     }];
     
     [self.serviceArticleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,6 +74,7 @@
     [self.serviceCauseInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.serviceCauseLabel);
         make.left.equalTo(self.serviceCauseLabel.mas_right);
+        make.right.equalTo(self.backGroundView).with.offset(-10);
     }];
     
     [self.serviceTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {

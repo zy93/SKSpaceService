@@ -15,6 +15,9 @@ typedef NS_ENUM(NSInteger, SKTextViewVCTYPE) {
     SKTextViewVCTYPE_EDIT_CLIENT_TEL ,   //编辑客户电话
     SKTextViewVCTYPE_EDIT_CLIENT_COMPANY,//编辑客户公司
     SKTextViewVCTYPE_EDIT_CLIENT_SPECIFIC_SOURCE, //编辑客户具体来源
+    SKTextViewVCTYPE_EDIT_CLIENT_APPOINTMENT_PEOPLENUM,//编辑预约人数
+    SKTextViewVCTYPE_EDIT_CLIENT_APPOINTMENT_TIME,//编辑预约时间
+    SKTextViewVCTYPE_EDIT_CLIENT_REMARK,//编辑备注
 };
 
 @interface SKTextViewVC : UIViewController

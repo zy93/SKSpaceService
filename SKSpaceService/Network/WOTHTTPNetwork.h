@@ -32,6 +32,17 @@
  */
 +(void)userGetVerifyWitTel:(NSString *)tel success:(success)success fail:(fail)fail;
 
+/**
+ 添加消息
+
+ @param userId 用户id
+ @param type 类型
+ @param summary 消息内容
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)sendMessageWithUserId:(NSNumber *)userId type:(NSString *)type summary:(NSString*)summary success:(success)success fail:(fail)fail;
+
 #pragma mark - 维修订单
 /**
  查询订单

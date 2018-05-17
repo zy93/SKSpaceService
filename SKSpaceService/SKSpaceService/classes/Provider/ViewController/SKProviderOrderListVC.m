@@ -142,7 +142,12 @@
                                         @"dealState":@"处理中",
                                          };
             [WOTHTTPNetwork setDemandWithParams:parameters success:^(id bean) {
-                [MBProgressHUDUtil showMessage:@"接受成功！状态已更改为沟通中" toView:self.view];
+                [WOTHTTPNetwork sendMessageWithUserId:model.userId type:@"需求反馈" summary:@"您的需求已有专人负责，请等待工作人员联系。" success:^(id bean) {
+                 
+                } fail:^(NSInteger errorCode, NSString *errorMessage) {
+                    
+                }];
+                [MBProgressHUDUtil showMessage:@"接单成功！状态已更改为沟通中" toView:self.view];
                 [self createRequest];
             } fail:^(NSInteger errorCode, NSString *errorMessage) {
                 [MBProgressHUDUtil showMessage:@"接受失败！请稍后再试！" toView:self.view];
@@ -203,10 +208,17 @@
     cell.delegate = self;
     cell.index = indexPath;
     if ([model.needType isEqualToString:@"服务商"]) {
-        cell.demandeValueLab.text= model.firmName;
+        cell.facilitatorLabel.hidden = NO;
+        cell.facilitatorInfoLabel.hidden = NO;
+        cell.facilitatorInfoLabel.text= model.firmName;
+        cell.demandeValueLab.text = model.needType;
+        cell.topConstraint.constant = 15;
     }
     else {
-        cell.demandeValueLab.text= model.demandContent;
+        cell.facilitatorLabel.hidden = YES;
+        cell.facilitatorInfoLabel.hidden = YES;
+        cell.topConstraint.constant =-15;
+        cell.demandeValueLab.text= model.demandType;
     }
     switch (self.vcType) {
         case SKProviderOrderListVCTYPE_UNTREATED:

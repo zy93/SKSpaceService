@@ -34,5 +34,9 @@
 
 @property (nonatomic, strong) id <SKDemandeCellDelegate> delegate;
 @property (nonatomic, strong) NSIndexPath * index;
+@property (weak, nonatomic) IBOutlet UILabel *facilitatorInfoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *facilitatorLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *facilitatorTopConstraint;
 
 @end

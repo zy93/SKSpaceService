@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *industry;
 @property (nonatomic, strong) NSString *intention ;
 @property (nonatomic, strong) NSNumber *leaderId;
+@property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *leaderName ;
 @property (nonatomic, strong) NSString *record ;
 @property (nonatomic, strong) NSString *remark;
@@ -33,6 +34,8 @@
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSString *tel;
 @property (nonatomic, strong) NSString *will ;
+@property (nonatomic, strong) NSString *appointmentTime;
+@property (nonatomic, strong) NSNumber *peopleNum;
 @end
 
 @interface SKSalesOrderList : WOTBaseModel

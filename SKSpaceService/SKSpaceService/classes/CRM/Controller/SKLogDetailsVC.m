@@ -94,7 +94,7 @@
 
 -(void)loadData
 {
-    NSArray *baseList = @[@"客户姓名：", @"电话号码：", @"订单进度：", @"公司名称", @"意向空间：", @"客户来源：", @"具体来源：", @"创建时间：", @"客户意向："];
+    NSArray *baseList = @[@"客户姓名：", @"电话号码：", @"订单进度：", @"公司名称", @"意向空间：", @"客户来源：", @"具体来源：", @"创建时间：",@"预约时间：",@"预约人数：",@"备注：", @"客户意向："];
     self.tableList = [NSMutableArray new];
     [self.tableList addObject:baseList];
 }
@@ -230,14 +230,25 @@
             }];
         }
         //数据value
-        NSArray *detailList = @[self.model.clientName, self.model.tel, self.model.stage, self.model.companyName, self.model.spaceName, self.model.source, self.model.specificSource, self.model.createTime];
+        NSString *remark ;
+        if (strIsEmpty(self.model.remark)) {
+            remark = @"无";
+        }else
+        {
+            remark = self.model.remark;
+        }
+        NSArray *detailList = @[self.model.contacts, self.model.tel, self.model.stage, self.model.companyName, self.model.spaceName, self.model.source, self.model.specificSource, self.model.createTime,self.model.appointmentTime,[NSString stringWithFormat:@"%@", self.model.peopleNum],remark];
         NSArray *arr = self.tableList[indexPath.section];
         cell.textLabel.text =arr[indexPath.row];
+        
         if (indexPath.row == ((NSArray *)self.tableList[indexPath.section]).count-1) {
             [self setStarWithCell:cell state:self.model.will];
         }
         else {
+            NSLog(@"信息：%@",detailList[indexPath.row]);
+            NSLog(@"全部信息：%@",detailList);
             cell.detailTextLabel.text = detailList[indexPath.row];
+            
         }
         return  cell;
     }
@@ -300,7 +311,7 @@
         else if (indexPath.row==7) {
             //创建时间
         }
-        else if (indexPath.row==8) {
+        else if (indexPath.row==11) {
             //客户意向
         }
         else {
@@ -313,6 +324,12 @@
                 vc.type = SKTextViewVCTYPE_EDIT_CLIENT_COMPANY;
             } else if (indexPath.row==6) {
                 vc.type = SKTextViewVCTYPE_EDIT_CLIENT_SPECIFIC_SOURCE;
+            }else if (indexPath.row==8){
+                vc.type = SKTextViewVCTYPE_EDIT_CLIENT_APPOINTMENT_TIME;
+            }else if (indexPath.row==9){
+                vc.type = SKTextViewVCTYPE_EDIT_CLIENT_APPOINTMENT_PEOPLENUM;
+            }else if (indexPath.row==10){
+                vc.type = SKTextViewVCTYPE_EDIT_CLIENT_REMARK;
             }
             vc.model = self.model;
             [self.navigationController pushViewController:vc animated:YES];
