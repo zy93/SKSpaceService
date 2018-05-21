@@ -92,7 +92,6 @@
         self.servicingImageInfoHeight = 0;
         self.finishedImageInfoHeight = 0;
         return;
-        
     }
     
     if ([WOTSingtleton shared].orderType == ORDER_TYPE_SERVICINGORDER) {
@@ -108,8 +107,6 @@
         self.addImageHeight = 0;
         return;
     }
-    
-    
 }
 
 -(void)layoutSubviews
@@ -218,7 +215,7 @@
 #pragma mark - TZImagePickerController
 - (void)pushTZImagePickerController {
     
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:3 delegate:self pushPhotoPickerVc:YES];
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:4 columnNumber:3 delegate:self pushPhotoPickerVc:YES];
     //imagePickerVc.isSelectOriginalPhoto = _isSelectOriginalPhoto;
     
    
