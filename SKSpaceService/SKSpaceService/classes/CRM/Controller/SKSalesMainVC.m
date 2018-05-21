@@ -36,7 +36,7 @@
     self.pageTabView.bottomOffLine = YES;
     self.pageTabView.indicatorStyle = XXPageTabIndicatorStyleDefault;
     self.pageTabView.indicatorWidth = 40;
-    self.pageTabView.selectedTabIndex = 3;
+    self.pageTabView.selectedTabIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,6 +133,7 @@
     SKSalesOrderVC *vc1 = [[SKSalesOrderVC alloc]init];
     vc1.type = SKSalesOrderVCTYPE_ALL;
     [self addChildViewController:vc1];
+    
     SKSalesOrderVC *vc11 = [[SKSalesOrderVC alloc]init];
     vc11.type = SKSalesOrderVCTYPE_CLIENT_ORDER;
     [self addChildViewController:vc11];
@@ -151,6 +152,7 @@
     SKSalesOrderVC *vc5 = [[SKSalesOrderVC alloc]init];
     vc5.type = SKSalesOrderVCTYPE_UNFINISHED;
     [self addChildViewController:vc5];
+    
     return self.childViewControllers;
 }
 

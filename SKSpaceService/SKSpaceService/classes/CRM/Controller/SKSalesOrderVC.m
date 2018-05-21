@@ -32,13 +32,20 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).with.offset(-215*[WOTUitls GetLengthAdaptRate]);
+        make.bottom.equalTo(self.view);
+        //.with.offset(-215*[WOTUitls GetLengthAdaptRate]);
         make.left.right.top.equalTo(self.view);
     }];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"SKSalesOrderCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SKSalesOrderCell"];
     [self AddRefreshHeader];
     [self StartRefresh];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,26 +56,32 @@
 #pragma mark - request
 -(void)createRequest
 {
+    __weak typeof(self) weakSelf = self;
     NSArray *arr = SalesOrderStateList;
     if (self.type == SKSalesOrderVCTYPE_CLIENT_ORDER) {
         [WOTHTTPNetwork getUntreatedSalesOrderSuccess:^(id bean) {
             SKUntreatedSalesOrder_msg *model = bean;
-            self.tableList = model.msg;
-            [self StopRefresh];
-            [self.tableView reloadData];
+            weakSelf.tableList = model.msg;
+            [weakSelf StopRefresh];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.tableView reloadData];
+            });
+            
         } fail:^(NSInteger errorCode, NSString *errorMessage) {
-            [self StopRefresh];
+            [weakSelf StopRefresh];
             [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
         }];
     }
     else {
         [WOTHTTPNetwork getSalesOrderWithState:self.type==0?nil:arr[self.type] success:^(id bean) {
             SKSalesOrder_msg *model = bean;
-            self.tableList = model.msg.list;
-            [self StopRefresh];
-            [self.tableView reloadData];
+            weakSelf.tableList = model.msg.list;
+            [weakSelf StopRefresh];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.tableView reloadData];
+            });
         } fail:^(NSInteger errorCode, NSString *errorMessage) {
-            [self StopRefresh];
+            [weakSelf StopRefresh];
             [MBProgressHUDUtil showMessage:errorMessage toView:self.view];
         }];
     }
