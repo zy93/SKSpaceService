@@ -19,6 +19,7 @@
 #import "SKDemandModel.h"
 #import "SKDemandeLogModel.h"
 #import "WOTGetVerifyModel.h"
+#import "WOTWorkStationHistoryModel.h"
 
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
@@ -303,6 +304,16 @@
                                  };
     [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
         SKDemandeLogModel_msg * model_msg = [[SKDemandeLogModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success fail:fail];
+}
+
++(void)getReserveBookStationOrderWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Order/find"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        WOTWorkStationHistoryModel_msg * model_msg = [[WOTWorkStationHistoryModel_msg alloc] initWithDictionary:responseDic error:nil];
         return  model_msg;
     } success:success fail:fail];
 }

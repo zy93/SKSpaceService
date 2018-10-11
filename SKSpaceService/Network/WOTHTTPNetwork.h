@@ -222,18 +222,16 @@
 
 
 
+#pragma mark - 运营人员接收到的用户下工位订单
 
+/**
+ 运营人员接收到的用户下工位订单
 
-
-
-
-
-
-
-
-
-
-
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)getReserveBookStationOrderWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
 
 
 @end
