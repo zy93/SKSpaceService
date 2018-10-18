@@ -50,7 +50,7 @@
 //        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
         
         WOTBaseModel *model = complete(responseObject);
-        if ([model.code isEqualToString:@"200"]) {
+        if ([model.code isEqualToString:@"200"] || [model.code isEqualToString:@"202"]) {
             if (success) {
                 success(model);
             }

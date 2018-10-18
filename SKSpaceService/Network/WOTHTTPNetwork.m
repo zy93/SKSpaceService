@@ -315,7 +315,7 @@
     [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
         WOTWorkStationHistoryModel_msg * model_msg = [[WOTWorkStationHistoryModel_msg alloc] initWithDictionary:responseDic error:nil];
         return  model_msg;
-    } success:success fail:fail];
+    } success:success
+      fail:fail];
 }
-
 @end

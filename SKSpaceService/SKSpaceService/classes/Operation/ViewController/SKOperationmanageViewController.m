@@ -9,7 +9,7 @@
 #import "SKOperationmanageViewController.h"
 #import "WOTWorkStationHistoryModel.h"
 #import "SKOrderNotificationCell.h"
-#import "SKMyVC.h"
+
 
 @interface SKOperationmanageViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,9 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"工位预定信息";
+    //self.title = @"工位预定信息";
     self.pageNum = 1;
-    [self configNaviRightItemWithImage:[UIImage imageNamed:@"top_my"]];
+    
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[SKOrderNotificationCell class] forCellReuseIdentifier:@"cell"];
     [self layoutSubviews];
@@ -113,15 +113,23 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.clientNameInfoLabel.text = self.infoModelArray[indexPath.row].userName;
-    cell.presetTimeInfoLabel.text = self.infoModelArray[indexPath.row].starTime;
-    cell.spaceInfoLabel.text = self.infoModelArray[indexPath.row].spaceName;
+    if ([self.infoModelArray[indexPath.row].commodityKind isEqualToString:@"长租工位"]) {
+        cell.presetTimeInfoLabel.text = self.infoModelArray[indexPath.row].commodityNumList;
+        cell.spaceInfoLabel.text =[NSString stringWithFormat:@"%@·%@",self.infoModelArray[indexPath.row].spaceName,self.infoModelArray[indexPath.row].commodityName];// self.infoModelArray[indexPath.row].spaceName;
+    }else
+    {
+        cell.presetTimeInfoLabel.text = self.infoModelArray[indexPath.row].starTime;
+        cell.spaceInfoLabel.text = self.infoModelArray[indexPath.row].spaceName;
+    }
+    
     return cell;
 }
 
 #pragma mark - 查询用户工位下单
 -(void)queryBookStationOrder
 {
-    NSDictionary *dict = @{@"pageNo":@(self.pageNum),@"pageSizev":@10,@"spaceList":[WOTUserSingleton shared].userInfo.spaceList,@"commodityKind":@"工位",@"orderState":@"SUCCESS"};
+    NSArray *arr = @[@"工位",@"会议室",@"长租工位"];
+    NSDictionary *dict = @{@"pageNo":@(self.pageNum),@"pageSizev":@10,@"spaceList":[WOTUserSingleton shared].userInfo.spaceList,@"commodityKind":arr[self.orderlisttype],@"orderState":@"SUCCESS"};
      __weak typeof(self) weakSelf = self;
     if (self.pageNum == 1) {
         [weakSelf.infoModelArray removeAllObjects];
@@ -151,7 +159,8 @@
 {
     __weak typeof(self) weakSelf = self;
     self.pageNum++;
-    NSDictionary *dict = @{@"pageNo":@(self.pageNum),@"pageSizev":@10,@"spaceList":[WOTUserSingleton shared].userInfo.spaceList,@"commodityKind":@"工位",@"orderState":@"SUCCESS"};
+     NSArray *arr = @[@"工位",@"会议室",@"长租工位"];
+    NSDictionary *dict = @{@"pageNo":@(self.pageNum),@"pageSizev":@10,@"spaceList":[WOTUserSingleton shared].userInfo.spaceList,@"commodityKind":arr[self.orderlisttype],@"orderState":@"SUCCESS"};
     [WOTHTTPNetwork getReserveBookStationOrderWithPict:dict success:^(id bean) {
         WOTWorkStationHistoryModel_msg *model = bean;
         [self StopRefresh];
@@ -178,11 +187,7 @@
    
 }
 
--(void)rightItemAction
-{
-    SKMyVC *vc = [[SKMyVC alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+
 
 
 -(UITableView *)tableView

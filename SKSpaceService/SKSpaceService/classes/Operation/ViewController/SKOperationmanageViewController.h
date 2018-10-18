@@ -10,8 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SKOperationmanageViewController : UIViewController
+typedef NS_ENUM(NSInteger, WOTPageMenuVCType) {
+    WOTPageMenuVCTypeStation, //工位
+    WOTPageMenuVCTypeMeeting, //会议室
+    WOTPageMenuVCTypeLongTimeStation,//长租工位
+};
 
+@interface SKOperationmanageViewController : UIViewController
+@property(nonatomic,assign)WOTPageMenuVCType orderlisttype;
 @end
 
 NS_ASSUME_NONNULL_END

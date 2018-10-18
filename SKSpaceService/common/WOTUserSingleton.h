@@ -11,7 +11,7 @@
 
 //系统权限
 #define permissionList @[@"报修管理", @"销控管理", @"服务商管理",@"运营管理"]
-#define permissionVCNameList @{@"报修管理":@"SKRepairVC", @"销控管理":@"SKSalesMainVC", @"服务商管理":@"SKProviderMainVC",@"运营管理":@"SKOperationmanageViewController"}
+#define permissionVCNameList @{@"报修管理":@"SKRepairVC", @"销控管理":@"SKSalesMainVC", @"服务商管理":@"SKProviderMainVC",@"运营管理":@"SKAllReserveOrderVC"}
 
 
 @interface WOTUserSingleton : NSObject

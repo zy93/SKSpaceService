@@ -78,7 +78,6 @@
 		2A98519920170814005705ED /* image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2A98511620170814005705ED /* image.bundle */; };
 		2A98519C20170814005705ED /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98511D20170814005705ED /* SRWebSocket.m */; };
 		2A98519D20170814005705ED /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98511E20170814005705ED /* NSRunLoop+SRWebSocket.m */; };
-		2A98519E20170814005705ED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A98512020170814005705ED /* Info.plist */; };
 		2A98519F20170814005705ED /* SRSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98512120170814005705ED /* SRSecurityPolicy.m */; };
 		2A9851A020170814005705ED /* SRProxyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98512620170814005705ED /* SRProxyConnect.m */; };
 		2A9851A120170814005705ED /* SRRunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98512A20170814005705ED /* SRRunLoopThread.m */; };
@@ -99,16 +98,6 @@
 		2A9851B220170814005705ED /* JXPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515A20170814005705ED /* JXPopoverView.m */; };
 		2A9851B320170814005705ED /* JXPopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515B20170814005705ED /* JXPopoverViewCell.m */; };
 		2A9851B420170814005705ED /* JXPopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515C20170814005705ED /* JXPopoverAction.m */; };
-		2A9851B520170814005705ED /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98515F20170814005705ED /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		2A9851B620170814005705ED /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98516820170814005705ED /* ViewController+MASAdditions.m */; };
-		2A9851B720170814005705ED /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98516C20170814005705ED /* MASCompositeConstraint.m */; };
-		2A9851B820170814005705ED /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98516D20170814005705ED /* MASConstraintMaker.m */; };
-		2A9851B920170814005705ED /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98516E20170814005705ED /* MASLayoutConstraint.m */; };
-		2A9851BA20170814005705ED /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98516F20170814005705ED /* NSArray+MASAdditions.m */; };
-		2A9851BB20170814005705ED /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98517020170814005705ED /* View+MASAdditions.m */; };
-		2A9851BC20170814005705ED /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98517320170814005705ED /* MASConstraint.m */; };
-		2A9851BD20170814005705ED /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98517520170814005705ED /* MASViewConstraint.m */; };
-		2A9851BE20170814005705ED /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98517620170814005705ED /* MASViewAttribute.m */; };
 		2A9851BF20170814005705ED /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98517820170814005705ED /* MBProgressHUD.m */; };
 		2A9851C920170827005705ED /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9851C620170827005705ED /* MBProgressHUD+Add.m */; };
 		2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9851C720170827005705ED /* MBProgressHUDUtil.m */; };
@@ -159,6 +148,10 @@
 		2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AA8201726CA0076305E /* WOTBaseModel.m */; };
 		2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AAA201726CA0076305E /* SKLoginModel.m */; };
 		C5031C0E2022A6F0009854DF /* NSArray+ImageArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5031C0D2022A6F0009854DF /* NSArray+ImageArray.m */; };
+		C59004F821783497003BC61A /* SKAllReserveOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C59004F721783497003BC61A /* SKAllReserveOrderVC.m */; };
+		C59EF47F216DEF38000927D4 /* SKOperationmanageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59EF47E216DEF38000927D4 /* SKOperationmanageViewController.m */; };
+		C59EF482216DFF68000927D4 /* WOTWorkStationHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59EF480216DFF68000927D4 /* WOTWorkStationHistoryModel.m */; };
+		C59EF485216E0329000927D4 /* SKOrderNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59EF484216E0329000927D4 /* SKOrderNotificationCell.m */; };
 		C59FA728201AF1FA00C7E22F /* SKAcceptableOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */; };
 		C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59FA72A201AFA3200C7E22F /* SKOrderIncludeButtonCell.m */; };
 		C5A084A520219EAE00AA629C /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A084A420219EAE00AA629C /* TZTestCell.m */; };
@@ -330,7 +323,6 @@
 		2A98511620170814005705ED /* image.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = image.bundle; sourceTree = "<group>"; };
 		2A98511D20170814005705ED /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		2A98511E20170814005705ED /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
-		2A98512020170814005705ED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A98512120170814005705ED /* SRSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSecurityPolicy.m; sourceTree = "<group>"; };
 		2A98512220170814005705ED /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
 		2A98512420170814005705ED /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
@@ -376,31 +368,6 @@
 		2A98515A20170814005705ED /* JXPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPopoverView.m; sourceTree = "<group>"; };
 		2A98515B20170814005705ED /* JXPopoverViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPopoverViewCell.m; sourceTree = "<group>"; };
 		2A98515C20170814005705ED /* JXPopoverAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPopoverAction.m; sourceTree = "<group>"; };
-		2A98515E20170814005705ED /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		2A98515F20170814005705ED /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		2A98516020170814005705ED /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		2A98516120170814005705ED /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		2A98516220170814005705ED /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		2A98516320170814005705ED /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		2A98516420170814005705ED /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		2A98516520170814005705ED /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		2A98516620170814005705ED /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		2A98516720170814005705ED /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		2A98516820170814005705ED /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		2A98516920170814005705ED /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		2A98516A20170814005705ED /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		2A98516B20170814005705ED /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		2A98516C20170814005705ED /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
-		2A98516D20170814005705ED /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
-		2A98516E20170814005705ED /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
-		2A98516F20170814005705ED /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		2A98517020170814005705ED /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
-		2A98517120170814005705ED /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		2A98517220170814005705ED /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		2A98517320170814005705ED /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
-		2A98517420170814005705ED /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
-		2A98517520170814005705ED /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
-		2A98517620170814005705ED /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		2A98517820170814005705ED /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		2A98517920170814005705ED /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2A9851C520170827005705ED /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
@@ -492,6 +459,14 @@
 		A5AA5708E2389643C4D3D890 /* Pods-SKSpaceServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C5031C0C2022A6F0009854DF /* NSArray+ImageArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ImageArray.h"; sourceTree = "<group>"; };
 		C5031C0D2022A6F0009854DF /* NSArray+ImageArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ImageArray.m"; sourceTree = "<group>"; };
+		C59004F621783497003BC61A /* SKAllReserveOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAllReserveOrderVC.h; sourceTree = "<group>"; };
+		C59004F721783497003BC61A /* SKAllReserveOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAllReserveOrderVC.m; sourceTree = "<group>"; };
+		C59EF47D216DEF38000927D4 /* SKOperationmanageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOperationmanageViewController.h; sourceTree = "<group>"; };
+		C59EF47E216DEF38000927D4 /* SKOperationmanageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOperationmanageViewController.m; sourceTree = "<group>"; };
+		C59EF480216DFF68000927D4 /* WOTWorkStationHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWorkStationHistoryModel.m; sourceTree = "<group>"; };
+		C59EF481216DFF68000927D4 /* WOTWorkStationHistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTWorkStationHistoryModel.h; sourceTree = "<group>"; };
+		C59EF483216E0329000927D4 /* SKOrderNotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderNotificationCell.h; sourceTree = "<group>"; };
+		C59EF484216E0329000927D4 /* SKOrderNotificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderNotificationCell.m; sourceTree = "<group>"; };
 		C59FA726201AF1FA00C7E22F /* SKAcceptableOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAcceptableOrderVC.h; sourceTree = "<group>"; };
 		C59FA727201AF1FA00C7E22F /* SKAcceptableOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAcceptableOrderVC.m; sourceTree = "<group>"; };
 		C59FA729201AFA3200C7E22F /* SKOrderIncludeButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderIncludeButtonCell.h; sourceTree = "<group>"; };
@@ -724,7 +699,6 @@
 				2A98511720170814005705ED /* MJRefresh */,
 				2A98511C20170814005705ED /* SocketRocket */,
 				2A98515620170814005705ED /* JXPopoverView */,
-				2A98515D20170814005705ED /* Masonry */,
 				2A98517720170814005705ED /* MBProgressHUD */,
 			);
 			path = librarys;
@@ -891,7 +865,6 @@
 		2A98511F20170814005705ED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2A98512020170814005705ED /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -996,38 +969,6 @@
 			path = JXPopoverView;
 			sourceTree = "<group>";
 		};
-		2A98515D20170814005705ED /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				2A98515E20170814005705ED /* MASCompositeConstraint.h */,
-				2A98515F20170814005705ED /* NSLayoutConstraint+MASDebugAdditions.m */,
-				2A98516020170814005705ED /* MASConstraint+Private.h */,
-				2A98516120170814005705ED /* MASLayoutConstraint.h */,
-				2A98516220170814005705ED /* NSArray+MASShorthandAdditions.h */,
-				2A98516320170814005705ED /* MASConstraintMaker.h */,
-				2A98516420170814005705ED /* View+MASAdditions.h */,
-				2A98516520170814005705ED /* NSArray+MASAdditions.h */,
-				2A98516620170814005705ED /* MASUtilities.h */,
-				2A98516720170814005705ED /* MASViewAttribute.h */,
-				2A98516820170814005705ED /* ViewController+MASAdditions.m */,
-				2A98516920170814005705ED /* MASViewConstraint.h */,
-				2A98516A20170814005705ED /* MASConstraint.h */,
-				2A98516B20170814005705ED /* NSLayoutConstraint+MASDebugAdditions.h */,
-				2A98516C20170814005705ED /* MASCompositeConstraint.m */,
-				2A98516D20170814005705ED /* MASConstraintMaker.m */,
-				2A98516E20170814005705ED /* MASLayoutConstraint.m */,
-				2A98516F20170814005705ED /* NSArray+MASAdditions.m */,
-				2A98517020170814005705ED /* View+MASAdditions.m */,
-				2A98517120170814005705ED /* View+MASShorthandAdditions.h */,
-				2A98517220170814005705ED /* Masonry.h */,
-				2A98517320170814005705ED /* MASConstraint.m */,
-				2A98517420170814005705ED /* ViewController+MASAdditions.h */,
-				2A98517520170814005705ED /* MASViewConstraint.m */,
-				2A98517620170814005705ED /* MASViewAttribute.m */,
-			);
-			path = Masonry;
-			sourceTree = "<group>";
-		};
 		2A98517720170814005705ED /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,6 +1047,7 @@
 		2AC82A9B201726CA0076305E /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				C59EF479216DEE9E000927D4 /* Operation */,
 				2AD765072046AC500007188C /* Provider */,
 				2AC82A9C201726CA0076305E /* CRM */,
 				2AC82AA0201726CA0076305E /* Repair */,
@@ -1284,6 +1226,45 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C59EF479216DEE9E000927D4 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				C59EF47C216DEEE3000927D4 /* View */,
+				C59EF47B216DEEDC000927D4 /* Model */,
+				C59EF47A216DEED2000927D4 /* ViewController */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		C59EF47A216DEED2000927D4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C59004F621783497003BC61A /* SKAllReserveOrderVC.h */,
+				C59004F721783497003BC61A /* SKAllReserveOrderVC.m */,
+				C59EF47D216DEF38000927D4 /* SKOperationmanageViewController.h */,
+				C59EF47E216DEF38000927D4 /* SKOperationmanageViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C59EF47B216DEEDC000927D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C59EF481216DFF68000927D4 /* WOTWorkStationHistoryModel.h */,
+				C59EF480216DFF68000927D4 /* WOTWorkStationHistoryModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C59EF47C216DEEE3000927D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C59EF483216E0329000927D4 /* SKOrderNotificationCell.h */,
+				C59EF484216E0329000927D4 /* SKOrderNotificationCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C5A4C1432019AD2200336297 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1390,7 +1371,6 @@
 				2A98506B201707C7005705ED /* Sources */,
 				2A98506C201707C7005705ED /* Frameworks */,
 				2A98506D201707C7005705ED /* Resources */,
-				5019E172A66858DA0858A258 /* [CP] Embed Pods Frameworks */,
 				BBC49B4F9A97F3232C19073E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1410,8 +1390,6 @@
 				2A985086201707C7005705ED /* Sources */,
 				2A985087201707C7005705ED /* Frameworks */,
 				2A985088201707C7005705ED /* Resources */,
-				716654D43B6108FFE25C574A /* [CP] Embed Pods Frameworks */,
-				871CAA76F8BA8B06070E0BA6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1431,8 +1409,6 @@
 				2A985091201707C7005705ED /* Sources */,
 				2A985092201707C7005705ED /* Frameworks */,
 				2A985093201707C7005705ED /* Resources */,
-				E262101CF9B06975EE3CDA41 /* [CP] Embed Pods Frameworks */,
-				B44B682A40BC8C7B6153FD9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1505,7 +1481,6 @@
 				2ABC43062019E481008C3EDA /* SKQuestionListCell.xib in Resources */,
 				2ABC430E2019E982008C3EDA /* SKQuestionSendCell.xib in Resources */,
 				2A985082201707C7005705ED /* LaunchScreen.storyboard in Resources */,
-				2A98519E20170814005705ED /* Info.plist in Resources */,
 				2AC82A7D20171C8A0076305E /* CityCode.plist in Resources */,
 				2ABC43132019E9FA008C3EDA /* SKQuestionReplyCell.xib in Resources */,
 				2A3E3FF52048F02F00171558 /* SKDemandeCell.xib in Resources */,
@@ -1545,13 +1520,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKSpaceService-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4DA0F585F38F94958DCC4D86 /* [CP] Check Pods Manifest.lock */ = {
@@ -1560,43 +1538,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKSpaceServiceUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5019E172A66858DA0858A258 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		716654D43B6108FFE25C574A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		771093CEA1BE20B774BB122F /* [CP] Check Pods Manifest.lock */ = {
@@ -1605,43 +1556,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKSpaceServiceTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		871CAA76F8BA8B06070E0BA6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B44B682A40BC8C7B6153FD9C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BBC49B4F9A97F3232C19073E /* [CP] Copy Pods Resources */ = {
@@ -1650,28 +1574,28 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService-resources.sh",
+				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoActionSheet.xib",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowserCell.xib",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowser.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoActionSheet.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowserCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowser.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E262101CF9B06975EE3CDA41 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1687,15 +1611,12 @@
 				2A9851A420170814005705ED /* SRMutex.m in Sources */,
 				2A9850E020170802005705ED /* NSDate+Uitls.m in Sources */,
 				2A98519D20170814005705ED /* NSRunLoop+SRWebSocket.m in Sources */,
-				2A9851B520170814005705ED /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				2A9851B720170814005705ED /* MASCompositeConstraint.m in Sources */,
 				2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */,
 				C5ACC970201EEC5200FAAA31 /* SKOrderInfoVC.m in Sources */,
 				C5ACC955201ECF4700FAAA31 /* SKOrderTableViewCell.m in Sources */,
 				2AC45A4E201EC7B7009D0698 /* SKBaseResponseModel.m in Sources */,
 				2A9851E220170837005705ED /* WOTHTTPNetwork.m in Sources */,
 				2A9851A920170814005705ED /* SRError.m in Sources */,
-				2A9851B620170814005705ED /* ViewController+MASAdditions.m in Sources */,
 				2ABC42F22019B4BB008C3EDA /* SKTextField.m in Sources */,
 				2A9851C920170827005705ED /* MBProgressHUD+Add.m in Sources */,
 				2A9851BF20170814005705ED /* MBProgressHUD.m in Sources */,
@@ -1714,7 +1635,6 @@
 				2ABC43052019E481008C3EDA /* SKQuestionListCell.m in Sources */,
 				2ABC42F82019BEB2008C3EDA /* WOTSpaceModel.m in Sources */,
 				2A985074201707C7005705ED /* AppDelegate.m in Sources */,
-				2A9851BA20170814005705ED /* NSArray+MASAdditions.m in Sources */,
 				2ABC430D2019E982008C3EDA /* SKQuestionSendCell.m in Sources */,
 				2A4AC5CD20181E9A00A8CC19 /* WOTPageMenuParentVC.m in Sources */,
 				2A9850E320170802005705ED /* WOTFileUitls.m in Sources */,
@@ -1724,7 +1644,7 @@
 				2A9851B320170814005705ED /* JXPopoverViewCell.m in Sources */,
 				2A98519420170814005705ED /* HCCreateQRCode.m in Sources */,
 				C5E4DCA820200B35006BC4C2 /* SKOrderInfoModel.m in Sources */,
-				2A9851B820170814005705ED /* MASConstraintMaker.m in Sources */,
+				C59EF485216E0329000927D4 /* SKOrderNotificationCell.m in Sources */,
 				2A98519320170814005705ED /* CardView.m in Sources */,
 				2A9850E420170802005705ED /* MBProgressHUD+Extension.m in Sources */,
 				C5ACC973201F000C00FAAA31 /* ButtonView.m in Sources */,
@@ -1736,6 +1656,7 @@
 				2A98519F20170814005705ED /* SRSecurityPolicy.m in Sources */,
 				2A9850E920170803005705ED /* WOTUitls.m in Sources */,
 				2A9850D820170802005705ED /* UIDevice+Resolutions.m in Sources */,
+				C59004F821783497003BC61A /* SKAllReserveOrderVC.m in Sources */,
 				2ABC43012019E45A008C3EDA /* SKQuestionListVC.m in Sources */,
 				C5C6C2D9209052580043FCDD /* RegisterViewController.m in Sources */,
 				2A4AC5D620186B2E00A8CC19 /* SKSalesOrderVC.m in Sources */,
@@ -1768,12 +1689,12 @@
 				2A985085201707C7005705ED /* main.m in Sources */,
 				2A9851AF20170814005705ED /* NSURLRequest+SRWebSocket.m in Sources */,
 				C5ACC95E201ED44700FAAA31 /* SKFinishedOrderVC.m in Sources */,
+				C59EF47F216DEF38000927D4 /* SKOperationmanageViewController.m in Sources */,
 				2A1540E920207A25001730D4 /* SKSalesOrderLogModel.m in Sources */,
 				2A98519620170814005705ED /* UIView+Frame.m in Sources */,
 				C5ACC96C201EEAAC00FAAA31 /* DetailImageInfoView.m in Sources */,
 				C5ACC96D201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m in Sources */,
 				C5E4DCAB20205C30006BC4C2 /* SKAcceptAnOrderModel.m in Sources */,
-				2A9851BD20170814005705ED /* MASViewConstraint.m in Sources */,
 				2A98519820170814005705ED /* SystemFunctions.m in Sources */,
 				2A9850E120170802005705ED /* NSString+Category.m in Sources */,
 				C5031C0E2022A6F0009854DF /* NSArray+ImageArray.m in Sources */,
@@ -1785,15 +1706,12 @@
 				2AAFCBEF20480B540096F27A /* SKProviderMainVC.m in Sources */,
 				2A4AC5C220181CB500A8CC19 /* XXPageTabItemLable.m in Sources */,
 				2AC45A54201F3870009D0698 /* SKQuestionModel.m in Sources */,
-				2A9851BB20170814005705ED /* View+MASAdditions.m in Sources */,
 				2A3E3FFB2049224700171558 /* SKDemandeLogModel.m in Sources */,
 				2A98519120170814005705ED /* CardViewItem.m in Sources */,
 				C5ACC958201ED0BE00FAAA31 /* SKAcceptedOrderVC.m in Sources */,
 				C59FA72B201AFA3200C7E22F /* SKOrderIncludeButtonCell.m in Sources */,
-				2A9851B920170814005705ED /* MASLayoutConstraint.m in Sources */,
 				2A9851A520170814005705ED /* SRHTTPConnectMessage.m in Sources */,
 				2AAFCBE620479BF40096F27A /* SKSelectIdentityView.m in Sources */,
-				2A9851BE20170814005705ED /* MASViewAttribute.m in Sources */,
 				C59FA728201AF1FA00C7E22F /* SKAcceptableOrderVC.m in Sources */,
 				2A9851A620170814005705ED /* SRURLUtilities.m in Sources */,
 				C5A4C14B2019B45C00336297 /* SKPageMenuParentVC.m in Sources */,
@@ -1811,8 +1729,8 @@
 				2A3E3FF42048F02F00171558 /* SKDemandeCell.m in Sources */,
 				2ABC42FE2019CE5E008C3EDA /* SKSelectTypeVC.m in Sources */,
 				2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */,
+				C59EF482216DFF68000927D4 /* WOTWorkStationHistoryModel.m in Sources */,
 				2AAFCBEE20480B540096F27A /* SKProviderOrderListVC.m in Sources */,
-				2A9851BC20170814005705ED /* MASConstraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
