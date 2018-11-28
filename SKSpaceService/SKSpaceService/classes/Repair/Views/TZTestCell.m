@@ -26,7 +26,7 @@
         self.clipsToBounds = YES;
         
         _videoImageView = [[UIImageView alloc] init];
-        _videoImageView.image = [UIImage imageNamedFromMyBundle:@"MMVideoPreviewPlay"];
+        //_videoImageView.image = [UIImage imageNamedFromMyBundle:@"MMVideoPreviewPlay"];
         _videoImageView.contentMode = UIViewContentModeScaleAspectFill;
         _videoImageView.hidden = YES;
         [self addSubview:_videoImageView];
@@ -58,7 +58,7 @@
     if ([asset isKindOfClass:[PHAsset class]]) {
         PHAsset *phAsset = asset;
         _videoImageView.hidden = phAsset.mediaType != PHAssetMediaTypeVideo;
-        _gifLable.hidden = ![[phAsset valueForKey:@"filename"] tz_containsString:@"GIF"];
+        //_gifLable.hidden = ![[phAsset valueForKey:@"filename"] tz_containsString:@"GIF"];
     } else if ([asset isKindOfClass:[ALAsset class]]) {
         ALAsset *alAsset = asset;
         _videoImageView.hidden = ![[alAsset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo];

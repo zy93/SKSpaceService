@@ -29,7 +29,7 @@
  */
 -(BOOL)compareDate:(NSString*)aDate withDate:(NSString*)bDate;
 
-
+-(BOOL)compareDate1:(NSString*)aDate withDate:(NSString*)bDate;
 /**
  计算两个时间之间相隔几天
 

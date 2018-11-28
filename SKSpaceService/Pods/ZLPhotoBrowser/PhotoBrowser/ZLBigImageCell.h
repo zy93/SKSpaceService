@@ -27,6 +27,11 @@
 
 
 /**
+ 重置缩放比例
+ */
+- (void)resetCellStatus;
+
+/**
  界面停止滑动后，加载gif和livephoto，保持界面流畅
  */
 - (void)reloadGifLivePhoto;
@@ -42,6 +47,7 @@
 @class ZLPreviewImageAndGif;
 @class ZLPreviewLivePhoto;
 @class ZLPreviewVideo;
+@class ZLPreviewNetVideo;
 
 //预览大图，image、gif、livephoto、video
 @interface ZLPreviewView : UIView
@@ -52,6 +58,7 @@
 @property (nonatomic, strong) ZLPreviewImageAndGif *imageGifView;
 @property (nonatomic, strong) ZLPreviewLivePhoto *livePhotoView;
 @property (nonatomic, strong) ZLPreviewVideo *videoView;
+@property (nonatomic, strong) ZLPreviewNetVideo *netVideoView;
 @property (nonatomic, strong) ZLPhotoModel *model;
 @property (nonatomic, copy)   void (^singleTapCallBack)(void);
 @property (nonatomic, copy)   void (^longPressCallBack)(void);
@@ -100,12 +107,14 @@
 
 @end
 
-//---------------image与gif---------------
+//---------------image、gif、net image---------------
 @interface ZLPreviewImageAndGif : ZLBasePreviewView
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic, assign) BOOL loadOK;
+
 @property (nonatomic, copy)   void (^longPressCallBack)(void);
 
 - (void)loadGifImage:(PHAsset *)asset;
@@ -142,3 +151,17 @@
 
 @end
 
+
+//---------------net video---------------
+@interface ZLPreviewNetVideo : ZLBasePreviewView
+
+@property (nonatomic, strong) AVPlayerLayer *playLayer;
+@property (nonatomic, strong) UIButton *playBtn;
+
+- (void)loadNetVideo:(NSURL *)url;
+
+- (void)seekToZero;
+
+- (void)stopPlayNetVideo;
+
+@end

@@ -13,6 +13,7 @@
 #import "NSBundle+ZLPhotoBrowser.h"
 
 #define ZLPhotoBrowserCameraText @"ZLPhotoBrowserCameraText"
+#define ZLPhotoBrowserCameraRecordText @"ZLPhotoBrowserCameraRecordText"
 #define ZLPhotoBrowserAblumText @"ZLPhotoBrowserAblumText"
 #define ZLPhotoBrowserCancelText @"ZLPhotoBrowserCancelText"
 #define ZLPhotoBrowserOriginalText @"ZLPhotoBrowserOriginalText"
@@ -76,12 +77,15 @@
 #define kViewHeight     [[UIScreen mainScreen] bounds].size.height
 
 //app名字
-#define kAPPName [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleDisplayName"] ?: [[NSBundle mainBundle].infoDictionary valueForKey:(__bridge NSString *)kCFBundleNameKey]
+#define kInfoDict [NSBundle mainBundle].localizedInfoDictionary ?: [NSBundle mainBundle].infoDictionary
+#define kAPPName [kInfoDict valueForKey:@"CFBundleDisplayName"] ?: [kInfoDict valueForKey:@"CFBundleName"]
 
 //自定义图片名称存于plist中的key
 #define ZLCustomImageNames @"ZLCustomImageNames"
 //设置框架语言的key
 #define ZLLanguageTypeKey @"ZLLanguageTypeKey"
+//自定义多语言key value存于plist中的key
+#define ZLCustomLanguageKeyValue @"ZLCustomLanguageKeyValue"
 
 ////////ZLShowBigImgViewController
 #define kItemMargin 40
@@ -92,6 +96,9 @@
 #define ClippingRatioValue1 @"value1"
 #define ClippingRatioValue2 @"value2"
 #define ClippingRatioTitleFormat @"titleFormat"
+
+#define ZLPreviewPhotoObj @"ZLPreviewPhotoObj"
+#define ZLPreviewPhotoTyp @"ZLPreviewPhotoTyp"
 
 typedef NS_ENUM(NSUInteger, ZLLanguageType) {
     //跟随系统语言，默认
@@ -106,6 +113,7 @@ typedef NS_ENUM(NSUInteger, ZLLanguageType) {
     ZLLanguageJapanese,
 };
 
+//录制视频及拍照分辨率
 typedef NS_ENUM(NSUInteger, ZLCaptureSessionPreset) {
     ZLCaptureSessionPreset325x288,
     ZLCaptureSessionPreset640x480,
@@ -114,11 +122,37 @@ typedef NS_ENUM(NSUInteger, ZLCaptureSessionPreset) {
     ZLCaptureSessionPreset3840x2160,
 };
 
+//导出视频类型
 typedef NS_ENUM(NSUInteger, ZLExportVideoType) {
+    //default
     ZLExportVideoTypeMov,
     ZLExportVideoTypeMp4,
-    ZLExportVideoType3gp,
 };
+
+//导出视频水印位置
+typedef NS_ENUM(NSUInteger, ZLWatermarkLocation) {
+    ZLWatermarkLocationTopLeft,
+    ZLWatermarkLocationTopRight,
+    ZLWatermarkLocationCenter,
+    ZLWatermarkLocationBottomLeft,
+    ZLWatermarkLocationBottomRight,
+};
+
+//混合预览图片时，图片类型
+typedef NS_ENUM(NSUInteger, ZLPreviewPhotoType) {
+    ZLPreviewPhotoTypePHAsset,
+    ZLPreviewPhotoTypeUIImage,
+    ZLPreviewPhotoTypeURLImage,
+    ZLPreviewPhotoTypeURLVideo,
+};
+
+
+static inline NSDictionary * GetDictForPreviewPhoto(id obj, ZLPreviewPhotoType type) {
+    if (nil == obj) {
+        @throw [NSException exceptionWithName:@"error" reason:@"预览对象不能为空" userInfo:nil];
+    }
+    return @{ZLPreviewPhotoObj: obj, ZLPreviewPhotoTyp: @(type)};
+}
 
 static inline void SetViewWidth(UIView *view, CGFloat width) {
     CGRect frame = view.frame;
@@ -141,6 +175,10 @@ static inline CGFloat GetViewHeight(UIView *view) {
 }
 
 static inline NSString *  GetLocalLanguageTextValue (NSString *key) {
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] valueForKey:ZLCustomLanguageKeyValue];
+    if ([dic.allKeys containsObject:key]) {
+        return dic[key];
+    }
     return [NSBundle zlLocalizedStringForKey:key];
 }
 
@@ -217,8 +255,7 @@ static inline NSInteger GetDuration (NSString *duration) {
 }
 
 
-static inline NSDictionary *
-GetCustomClipRatio() {
+static inline NSDictionary * GetCustomClipRatio() {
     return @{ClippingRatioValue1: @(0), ClippingRatioValue2: @(0), ClippingRatioTitleFormat: @"Custom"};
 }
 

@@ -5,7 +5,7 @@
 //  Created by long on 15/11/25.
 //  Copyright © 2015年 long. All rights reserved.
 //
-//pods version 2.5.1.1 - 2017.11.15 update
+//pods version 2.7.2 - 2018.07.04 update
 
 #import <UIKit/UIKit.h>
 #import "ZLPhotoConfiguration.h"
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) UIViewController *sender;
 
 /**相册框架配置，默认为 [ZLPhotoConfiguration defaultPhotoConfiguration]*/
-@property (nonatomic, strong) ZLPhotoConfiguration *configuration;
+@property (nonatomic, strong, readonly) ZLPhotoConfiguration *configuration;
 
 /**
  已选择的asset对象数组，用于标记已选择的图片
@@ -34,6 +34,12 @@ NS_ASSUME_NONNULL_BEGIN
  pod 2.2.6版本之后 统一通过selectImageBlock回调
  */
 @property (nonatomic, copy) void (^selectImageBlock)(NSArray<UIImage *> *__nullable images, NSArray<PHAsset *> *assets, BOOL isOriginal);
+
+/**
+ 取消选择回调
+ */
+@property (nonatomic, copy) void (^cancleBlock)(void);
+
 
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 
@@ -70,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 提供 预览用户已选择的照片，并可以取消已选择的照片
+ 提供 预览用户已选择的照片，并可以取消已选择的照片 （需先设置 sender 参数）
 
  @param photos 已选择的uiimage照片数组
  @param assets 已选择的phasset照片数组
@@ -81,14 +87,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 提供 预览照片网络/本地图片
+ 提供 混合预览照片及视频的方法， 相册PHAsset / 网络、本地图片 / 网络、本地视频，（需先设置 sender 参数）
  
- @param photos 接收对象 UIImage / NSURL(网络url或本地图片url)
- @param index 点击的照片索引
+ @warning photos 内对象请调用 ZLDefine 中 GetDictForPreviewPhoto 方法，e.g.: GetDictForPreviewPhoto(image, ZLPreviewPhotoTypeUIImage)
+ 
+ @param photos 接收对象 ZLDefine 中 GetDictForPreviewPhoto 生成的字典
+ @param index 点击的照片/视频索引
  @param hideToolBar 是否隐藏底部工具栏和导航右上角选择按钮
- @param complete 回调 (数组内为接收的UIImage / NSUrl 对象)
+ @param complete 回调 (数组内为接收的 PHAsset / UIImage / NSURL 对象)
  */
-- (void)previewPhotos:(NSArray *)photos index:(NSInteger)index hideToolBar:(BOOL)hideToolBar complete:(void (^)(NSArray *photos))complete;
+- (void)previewPhotos:(NSArray<NSDictionary *> *)photos index:(NSInteger)index hideToolBar:(BOOL)hideToolBar complete:(void (^)(NSArray *photos))complete;
 
 NS_ASSUME_NONNULL_END
 

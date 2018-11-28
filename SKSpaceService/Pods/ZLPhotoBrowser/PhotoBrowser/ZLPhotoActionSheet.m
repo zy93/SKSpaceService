@@ -18,6 +18,7 @@
 #import "ZLEditVideoController.h"
 #import "ZLCustomCamera.h"
 #import "ZLDefine.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 #define kBaseViewHeight (self.configuration.maxPreviewCount ? 300 : 142)
 
@@ -94,14 +95,6 @@ double const ScalePhotoWidth = 1000;
     return _placeholderLabel;
 }
 
-- (ZLPhotoConfiguration *)configuration
-{
-    if (!_configuration) {
-        _configuration = [ZLPhotoConfiguration defaultPhotoConfiguration];
-    }
-    return _configuration;
-}
-
 #pragma mark - setter
 - (void)setArrSelectedAssets:(NSMutableArray<PHAsset *> *)arrSelectedAssets
 {
@@ -123,6 +116,8 @@ double const ScalePhotoWidth = 1000;
         layout.minimumInteritemSpacing = 3;
         layout.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5);
         
+        _configuration = [ZLPhotoConfiguration defaultPhotoConfiguration];
+        
         self.collectionView.collectionViewLayout = layout;
         self.collectionView.backgroundColor = [UIColor whiteColor];
         [self.collectionView registerClass:NSClassFromString(@"ZLCollectionCell") forCellWithReuseIdentifier:@"ZLCollectionCell"];
@@ -137,7 +132,11 @@ double const ScalePhotoWidth = 1000;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.btnCamera setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCameraText) forState:UIControlStateNormal];
+    if (!self.configuration.allowSelectImage && self.configuration.allowRecordVideo) {
+        [self.btnCamera setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCameraRecordText) forState:UIControlStateNormal];
+    } else {
+        [self.btnCamera setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCameraText) forState:UIControlStateNormal];
+    }
     [self.btnAblum setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserAblumText) forState:UIControlStateNormal];
     [self.btnCancel setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCancelText) forState:UIControlStateNormal];
     [self resetSubViewState];
@@ -231,8 +230,17 @@ double const ScalePhotoWidth = 1000;
 - (void)previewSelectedPhotos:(NSArray<UIImage *> *)photos assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal
 {
     self.isSelectOriginalPhoto = isOriginal;
-    self.arrSelectedAssets = [NSMutableArray arrayWithArray:assets];
-    ZLShowBigImgViewController *svc = [self pushBigImageToPreview:photos index:index];
+    //将assets转换为对应类型的model
+    NSMutableArray<ZLPhotoModel *> *models = [NSMutableArray arrayWithCapacity:assets.count];
+    for (PHAsset *asset in assets) {
+        ZLPhotoModel *model = [ZLPhotoModel modelWithAsset:asset type:[ZLPhotoManager transformAssetType:asset] duration:nil];
+        model.selected = YES;
+        [models addObject:model];
+    }
+    
+    [self.arrSelectedModels removeAllObjects];
+    ZLShowBigImgViewController *svc = [self pushBigImageToPreview:photos models:models index:index];
+    
     zl_weakify(self);
     __weak typeof(svc.navigationController) weakNav = svc.navigationController;
     svc.previewSelectedImageBlock = ^(NSArray<UIImage *> *arrP, NSArray<PHAsset *> *arrA) {
@@ -252,21 +260,38 @@ double const ScalePhotoWidth = 1000;
     };
 }
 
-- (void)previewPhotos:(NSArray *)photos index:(NSInteger)index hideToolBar:(BOOL)hideToolBar complete:(nonnull void (^)(NSArray * _Nonnull))complete
+- (void)previewPhotos:(NSArray<NSDictionary *> *)photos index:(NSInteger)index hideToolBar:(BOOL)hideToolBar complete:(void (^)(NSArray * _Nonnull))complete
 {
-    [self.arrSelectedModels removeAllObjects];
-    for (id obj in photos) {
+    //转换为对应类型的model对象
+    NSMutableArray<ZLPhotoModel *> *models = [NSMutableArray arrayWithCapacity:photos.count];
+    for (NSDictionary *dic in photos) {
         ZLPhotoModel *model = [[ZLPhotoModel alloc] init];
-        if ([obj isKindOfClass:UIImage.class]) {
-            model.image = obj;
-        } else if ([obj isKindOfClass:NSURL.class]) {
-            model.url = obj;
+        ZLPreviewPhotoType type = [dic[ZLPreviewPhotoTyp] integerValue];
+        id obj = dic[ZLPreviewPhotoObj];
+        switch (type) {
+            case ZLPreviewPhotoTypePHAsset:
+                model.asset = obj;
+                model.type = [ZLPhotoManager transformAssetType:obj];
+                break;
+            case ZLPreviewPhotoTypeUIImage:
+                model.image = obj;
+                model.type = ZLAssetMediaTypeNetImage;
+                break;
+            case ZLPreviewPhotoTypeURLImage:
+                model.url = obj;
+                model.type = ZLAssetMediaTypeNetImage;
+                break;
+            case ZLPreviewPhotoTypeURLVideo:
+                model.url = obj;
+                model.type = ZLAssetMediaTypeNetVideo;
+                break;
         }
-        model.type = ZLAssetMediaTypeNetImage;
         model.selected = YES;
-        [self.arrSelectedModels addObject:model];
+        [models addObject:model];
     }
-    ZLShowBigImgViewController *svc = [self pushBigImageToPreview:photos index:index];
+    
+    [self.arrSelectedModels removeAllObjects];
+    ZLShowBigImgViewController *svc = [self pushBigImageToPreview:photos models:models index:index];
     svc.hideToolBar = hideToolBar;
     
     zl_weakify(self);
@@ -289,7 +314,7 @@ double const ScalePhotoWidth = 1000;
     [self.arrDataSources removeAllObjects];
     
     [self.arrDataSources addObjectsFromArray:[ZLPhotoManager getAllAssetInPhotoAlbumWithAscending:NO limitCount:self.configuration.maxPreviewCount allowSelectVideo:self.configuration.allowSelectVideo allowSelectImage:self.configuration.allowSelectImage allowSelectGif:self.configuration.allowSelectGif allowSelectLivePhoto:self.configuration.allowSelectLivePhoto]];
-    [ZLPhotoManager markSelcectModelInArr:self.arrDataSources selArr:self.arrSelectedModels];
+    [ZLPhotoManager markSelectModelInArr:self.arrDataSources selArr:self.arrSelectedModels];
     [self.collectionView reloadData];
 }
 
@@ -452,6 +477,11 @@ double const ScalePhotoWidth = 1000;
         [self hide];
         return;
     }
+    if (!self.configuration.allowSelectImage &&
+        !self.configuration.allowRecordVideo) {
+        ShowAlert(@"allowSelectImage与allowRecordVideo不能同时为NO", self.sender);
+        return;
+    }
     if (self.configuration.useSystemCamera) {
         //系统相机拍照
         if ([UIImagePickerController isSourceTypeAvailable:
@@ -459,8 +489,16 @@ double const ScalePhotoWidth = 1000;
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
             picker.allowsEditing = NO;
-            picker.videoQuality = UIImagePickerControllerQualityTypeLow;
+            picker.videoQuality = UIImagePickerControllerQualityTypeHigh;
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            NSArray *a1 = self.configuration.allowSelectImage?@[(NSString *)kUTTypeImage]:@[];
+            NSArray *a2 = (self.configuration.allowSelectVideo && self.configuration.allowRecordVideo)?@[(NSString *)kUTTypeMovie]:@[];
+            NSMutableArray *arr = [NSMutableArray array];
+            [arr addObjectsFromArray:a1];
+            [arr addObjectsFromArray:a2];
+            
+            picker.mediaTypes = arr;
+            picker.videoMaximumDuration = self.configuration.maxRecordDuration;
             [self.sender showDetailViewController:picker sender:nil];
         }
     } else {
@@ -471,7 +509,8 @@ double const ScalePhotoWidth = 1000;
             return;
         }
         ZLCustomCamera *camera = [[ZLCustomCamera alloc] init];
-        camera.allowRecordVideo = self.configuration.allowRecordVideo;
+        camera.allowTakePhoto = self.configuration.allowSelectImage;
+        camera.allowRecordVideo = self.configuration.allowSelectVideo && self.configuration.allowRecordVideo;
         camera.sessionPreset = self.configuration.sessionPreset;
         camera.videoType = self.configuration.exportVideoType;
         camera.circleProgressColor = self.configuration.bottomBtnsNormalTitleColor;
@@ -501,6 +540,8 @@ double const ScalePhotoWidth = 1000;
         [self requestSelPhotos:nil data:self.arrSelectedModels hideAfterCallBack:YES];
         return;
     }
+    
+    if (self.cancleBlock) self.cancleBlock();
     [self hide];
 }
 
@@ -757,6 +798,7 @@ double const ScalePhotoWidth = 1000;
     
     [nav setCancelBlock:^{
         zl_strongify(weakSelf);
+        if (strongSelf.cancleBlock) strongSelf.cancleBlock();
         [strongSelf hide];
     }];
 
@@ -790,7 +832,7 @@ double const ScalePhotoWidth = 1000;
     zl_weakify(self);
     [svc setBtnBackBlock:^(NSArray<ZLPhotoModel *> *selectedModels, BOOL isOriginal) {
         zl_strongify(weakSelf);
-        [ZLPhotoManager markSelcectModelInArr:strongSelf.arrDataSources selArr:selectedModels];
+        [ZLPhotoManager markSelectModelInArr:strongSelf.arrDataSources selArr:selectedModels];
         strongSelf.isSelectOriginalPhoto = isOriginal;
         [strongSelf.arrSelectedModels removeAllObjects];
         [strongSelf.arrSelectedModels addObjectsFromArray:selectedModels];
@@ -801,14 +843,15 @@ double const ScalePhotoWidth = 1000;
     [self.sender showDetailViewController:nav sender:nil];
 }
 
-- (ZLShowBigImgViewController *)pushBigImageToPreview:(NSArray *)photos index:(NSInteger)index
+- (ZLShowBigImgViewController *)pushBigImageToPreview:(NSArray *)photos models:(NSArray<ZLPhotoModel *> *)models index:(NSInteger)index
 {
+    [self.arrSelectedModels addObjectsFromArray:models];
+    
     ZLShowBigImgViewController *svc = [[ZLShowBigImgViewController alloc] init];
     ZLImageNavigationController *nav = [self getImageNavWithRootVC:svc];
-    nav.configuration.showSelectBtn = YES;
     svc.selectIndex = index;
     svc.arrSelPhotos = [NSMutableArray arrayWithArray:photos];
-    svc.models = self.arrSelectedModels;
+    svc.models = models;
     
     self.preview = NO;
     [self.sender.view addSubview:self];
@@ -839,8 +882,9 @@ double const ScalePhotoWidth = 1000;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     [picker dismissViewControllerAnimated:YES completion:^{
-        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        [self saveImage:image videoUrl:nil];
+        UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+        NSURL *url = [info valueForKey:UIImagePickerControllerMediaURL];
+        [self saveImage:image videoUrl:url];
     }];
 }
 
@@ -881,14 +925,26 @@ double const ScalePhotoWidth = 1000;
 
 - (void)handleDataArray:(ZLPhotoModel *)model
 {
+    zl_weakify(self);
+    BOOL (^shouldSelect)(void) = ^BOOL() {
+        zl_strongify(weakSelf);
+        if (model.type == ZLAssetMediaTypeVideo) {
+            return (model.asset.duration <= strongSelf.configuration.maxVideoDuration);
+        }
+        return YES;
+    };
+    
     [self.arrDataSources insertObject:model atIndex:0];
-    [self.arrDataSources removeLastObject];
-    if (self.configuration.maxSelectCount > 1 && self.arrSelectedModels.count < self.configuration.maxSelectCount) {
-        model.selected = YES;
+    if (self.arrDataSources.count > self.configuration.maxPreviewCount) {
+        [self.arrDataSources removeLastObject];
+    }
+    BOOL sel = shouldSelect();
+    if (self.configuration.maxSelectCount > 1 && self.arrSelectedModels.count < self.configuration.maxSelectCount && sel) {
+        model.selected = sel;
         [self.arrSelectedModels addObject:model];
-    } else if (self.configuration.maxSelectCount == 1 && !self.arrSelectedModels.count) {
+    } else if (self.configuration.maxSelectCount == 1 && !self.arrSelectedModels.count && sel) {
         if (![self shouldDirectEdit:model]) {
-            model.selected = YES;
+            model.selected = sel;
             [self.arrSelectedModels addObject:model];
             [self requestSelPhotos:nil data:self.arrSelectedModels hideAfterCallBack:YES];
             return;
@@ -908,7 +964,7 @@ double const ScalePhotoWidth = 1000;
 {
     CGFloat width  = (CGFloat)asset.pixelWidth;
     CGFloat height = (CGFloat)asset.pixelHeight;
-    CGFloat scale = MAX(0.5, width/height);
+    CGFloat scale = MIN(1.7, MAX(0.5, width/height));
     
     return CGSizeMake(self.collectionView.frame.size.height*scale, self.collectionView.frame.size.height);
 }

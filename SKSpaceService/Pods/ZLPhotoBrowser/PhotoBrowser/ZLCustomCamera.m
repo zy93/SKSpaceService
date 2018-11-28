@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
 #import "ZLPlayer.h"
+#import "ZLPhotoManager.h"
 
 
 #define kTopViewScale .5
@@ -46,6 +47,15 @@
 
 @interface CameraToolView : UIView <CAAnimationDelegate, UIGestureRecognizerDelegate>
 {
+    struct {
+        unsigned int takePic : 1;
+        unsigned int startRecord : 1;
+        unsigned int finishRecord : 1;
+        unsigned int retake : 1;
+        unsigned int okClick : 1;
+        unsigned int dismiss : 1;
+    } _delegateFlag;
+    
     //避免动画及长按手势触发两次
     BOOL _stopRecord;
     BOOL _layoutOK;
@@ -53,6 +63,7 @@
 
 @property (nonatomic, weak) id<CameraToolViewDelegate> delegate;
 
+@property (nonatomic, assign) BOOL allowTakePhoto;
 @property (nonatomic, assign) BOOL allowRecordVideo;
 @property (nonatomic, strong) UIColor *circleProgressColor;
 @property (nonatomic, assign) NSInteger maxRecordDuration;
@@ -94,6 +105,17 @@
     return self;
 }
 
+- (void)setDelegate:(id<CameraToolViewDelegate>)delegate
+{
+    _delegate = delegate;
+    _delegateFlag.takePic = [delegate respondsToSelector:@selector(onTakePicture)];
+    _delegateFlag.startRecord = [delegate respondsToSelector:@selector(onStartRecord)];
+    _delegateFlag.finishRecord = [delegate respondsToSelector:@selector(onFinishRecord)];
+    _delegateFlag.retake = [delegate respondsToSelector:@selector(onRetake)];
+    _delegateFlag.okClick = [delegate respondsToSelector:@selector(onOkClick)];
+    _delegateFlag.dismiss = [delegate respondsToSelector:@selector(onDismiss)];
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -116,6 +138,15 @@
     
     self.doneBtn.frame = self.bottomView.frame;
     self.doneBtn.layer.cornerRadius = height*kBottomViewScale/2;
+}
+
+- (void)setAllowTakePhoto:(BOOL)allowTakePhoto
+{
+    _allowTakePhoto = allowTakePhoto;
+    if (allowTakePhoto) {
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [self.bottomView addGestureRecognizer:tap];
+    }
 }
 
 - (void)setAllowRecordVideo:(BOOL)allowRecordVideo
@@ -142,18 +173,15 @@
     self.topView.userInteractionEnabled = NO;
     [self addSubview:self.topView];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self.bottomView addGestureRecognizer:tap];
-    
     self.dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.dismissBtn.frame = CGRectMake(60, self.bounds.size.height/2-25/2, 25, 25);
-    [self.dismissBtn setImage:GetImageWithName(@"arrow_down") forState:UIControlStateNormal];
+    [self.dismissBtn setImage:GetImageWithName(@"zl_arrow_down") forState:UIControlStateNormal];
     [self.dismissBtn addTarget:self action:@selector(dismissVC) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.dismissBtn];
     
     self.cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelBtn.backgroundColor = [kRGB(244, 244, 244) colorWithAlphaComponent:.9];
-    [self.cancelBtn setImage:GetImageWithName(@"retake") forState:UIControlStateNormal];
+    [self.cancelBtn setImage:GetImageWithName(@"zl_retake") forState:UIControlStateNormal];
     [self.cancelBtn addTarget:self action:@selector(retake) forControlEvents:UIControlEventTouchUpInside];
     self.cancelBtn.layer.masksToBounds = YES;
     self.cancelBtn.hidden = YES;
@@ -162,7 +190,7 @@
     self.doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.doneBtn.frame = self.bottomView.frame;
     self.doneBtn.backgroundColor = [UIColor whiteColor];
-    [self.doneBtn setImage:GetImageWithName(@"takeok") forState:UIControlStateNormal];
+    [self.doneBtn setImage:GetImageWithName(@"zl_takeok") forState:UIControlStateNormal];
     [self.doneBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
     self.doneBtn.layer.masksToBounds = YES;
     self.doneBtn.hidden = YES;
@@ -173,9 +201,7 @@
 - (void)tapAction:(UITapGestureRecognizer *)tap
 {
     [self stopAnimate];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onTakePicture)]) {
-        [self.delegate performSelector:@selector(onTakePicture)];
-    }
+    if (_delegateFlag.takePic) [self.delegate performSelector:@selector(onTakePicture)];
 }
 
 - (void)longPressAction:(UILongPressGestureRecognizer *)longG
@@ -185,9 +211,7 @@
         {
             //此处不启动动画，由vc界面开始录制之后启动
             _stopRecord = NO;
-            if (self.delegate && [self.delegate respondsToSelector:@selector(onStartRecord)]) {
-                [self.delegate performSelector:@selector(onStartRecord)];
-            }
+            if (_delegateFlag.startRecord) [self.delegate performSelector:@selector(onStartRecord)];
         }
             break;
         case UIGestureRecognizerStateCancelled:
@@ -196,9 +220,7 @@
             if (_stopRecord) return;
             _stopRecord = YES;
             [self stopAnimate];
-            if (self.delegate && [self.delegate respondsToSelector:@selector(onFinishRecord)]) {
-                [self.delegate performSelector:@selector(onFinishRecord)];
-            }
+            if (_delegateFlag.finishRecord) [self.delegate performSelector:@selector(onFinishRecord)];
         }
             break;
             
@@ -258,9 +280,7 @@
     
     _stopRecord = YES;
     [self stopAnimate];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onFinishRecord)]) {
-        [self.delegate performSelector:@selector(onFinishRecord)];
-    }
+    if (_delegateFlag.finishRecord) [self.delegate performSelector:@selector(onFinishRecord)];
 }
 
 - (void)showCancelDoneBtn
@@ -299,24 +319,18 @@
 #pragma mark - btn actions
 - (void)dismissVC
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onDismiss)]) {
-        [self.delegate performSelector:@selector(onDismiss)];
-    }
+    if (_delegateFlag.dismiss) [self.delegate performSelector:@selector(onDismiss)];
 }
 
 - (void)retake
 {
     [self resetUI];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onRetake)]) {
-        [self.delegate performSelector:@selector(onRetake)];
-    }
+    if (_delegateFlag.retake) [self.delegate performSelector:@selector(onRetake)];
 }
 
 - (void)doneClick
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onOkClick)]) {
-        [self.delegate performSelector:@selector(onOkClick)];
-    }
+    if (_delegateFlag.okClick) [self.delegate performSelector:@selector(onOkClick)];
 }
 
 @end
@@ -386,17 +400,25 @@
     
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         if (granted) {
-            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted) {
-                if (!granted) {
-                    [self onDismiss];
-                } else {
-                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive) name:UIApplicationWillResignActiveNotification object:nil];
-                }
-            }];
+            if (self.allowRecordVideo) {
+                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted) {
+                    if (!granted) {
+                        [self onDismiss];
+                    } else {
+                        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+                    }
+                }];
+            } else {
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+            }
         } else {
             [self onDismiss];
         }
     }];
+    
+    //暂停其他音乐，
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -454,6 +476,9 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     [self.session startRunning];
     [self setFocusCursorWithPoint:self.view.center];
+    if (!self.allowTakePhoto && !self.allowRecordVideo) {
+        ShowAlert(@"allowTakePhoto与allowRecordVideo不能同时为NO", self);
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -494,12 +519,13 @@
     
     self.toolView = [[CameraToolView alloc] init];
     self.toolView.delegate = self;
+    self.toolView.allowTakePhoto = self.allowTakePhoto;
     self.toolView.allowRecordVideo = self.allowRecordVideo;
     self.toolView.circleProgressColor = self.circleProgressColor;
     self.toolView.maxRecordDuration = self.maxRecordDuration;
     [self.view addSubview:self.toolView];
     
-    self.focusCursorImageView = [[UIImageView alloc] initWithImage:GetImageWithName(@"focus")];
+    self.focusCursorImageView = [[UIImageView alloc] initWithImage:GetImageWithName(@"zl_focus")];
     self.focusCursorImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.focusCursorImageView.clipsToBounds = YES;
     self.focusCursorImageView.frame = CGRectMake(0, 0, 80, 80);
@@ -507,7 +533,7 @@
     [self.view addSubview:self.focusCursorImageView];
     
     self.toggleCameraBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.toggleCameraBtn setImage:GetImageWithName(@"toggle_camera") forState:UIControlStateNormal];
+    [self.toggleCameraBtn setImage:GetImageWithName(@"zl_toggle_camera") forState:UIControlStateNormal];
     [self.toggleCameraBtn addTarget:self action:@selector(btnToggleCameraAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.toggleCameraBtn];
     
@@ -532,7 +558,11 @@
     
     //音频输入流
     AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio].firstObject;
-    AVCaptureDeviceInput *audioInput = [[AVCaptureDeviceInput alloc] initWithDevice:audioCaptureDevice error:nil];
+    AVCaptureDeviceInput *audioInput = nil;
+    if (self.allowRecordVideo) {
+        audioInput = [[AVCaptureDeviceInput alloc] initWithDevice:audioCaptureDevice error:nil];
+    }
+    
     
     //视频输出流
     //设置视频格式
@@ -549,7 +579,7 @@
     if ([self.session canAddInput:self.videoInput]) {
         [self.session addInput:self.videoInput];
     }
-    if ([self.session canAddInput:audioInput]) {
+    if (audioInput && [self.session canAddInput:audioInput]) {
         [self.session addInput:audioInput];
     }
     //将输出流添加到session
@@ -634,13 +664,13 @@
         [captureDevice setFocusPointOfInterest:point];
     }
     //曝光模式
-//    if ([captureDevice isExposureModeSupported:exposureMode]) {
-//        [captureDevice setExposureMode:AVCaptureExposureModeAutoExpose];
-//    }
-//    //曝光点
-//    if ([captureDevice isExposurePointOfInterestSupported]) {
-//        [captureDevice setExposurePointOfInterest:point];
-//    }
+    if ([captureDevice isExposureModeSupported:exposureMode]) {
+        [captureDevice setExposureMode:AVCaptureExposureModeAutoExpose];
+    }
+    //曝光点
+    if ([captureDevice isExposurePointOfInterestSupported]) {
+        [captureDevice setExposurePointOfInterest:point];
+    }
     [captureDevice unlockForConfiguration];
 }
 
@@ -773,7 +803,7 @@
     movieConnection.videoOrientation = self.orientation;
     [movieConnection setVideoScaleAndCropFactor:1.0];
     if (![self.movieFileOutPut isRecording]) {
-        NSURL *url = [self getVideoFileUrl];
+        NSURL *url = [NSURL fileURLWithPath:[ZLPhotoManager getVideoExportFilePath:self.videoType]];
         [self.movieFileOutPut startRecordingToOutputFileURL:url recordingDelegate:self];
     }
 }
@@ -798,11 +828,12 @@
 //确定选择
 - (void)onOkClick
 {
-    if (self.doneBlock) {
-        self.doneBlock(self.takedImage, self.videoUrl);
-    }
-    
-    [self onDismiss];
+    [self.playerView reset];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (self.doneBlock) {
+            self.doneBlock(self.takedImage, self.videoUrl);
+        }
+    }];
 }
 
 //dismiss
@@ -811,30 +842,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:nil];
     });
-}
-
-- (NSURL *)getVideoFileUrl
-{
-    NSString *filePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, NO).firstObject;
-    NSString *format = self.videoType == ZLExportVideoTypeMov ? @"mov" : self.videoType == ZLExportVideoTypeMp4 ? @"mp4" : @"3gp";
-    
-    filePath = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"%@.%@", [self getUniqueStrByUUID], format]];
-    return [NSURL fileURLWithPath:filePath];
-}
-
-- (NSString *)getUniqueStrByUUID
-{
-    CFUUIDRef uuidObj = CFUUIDCreate(nil);//create a new UUID
-    
-    //get the string representation of the UUID
-    CFStringRef uuidString = CFUUIDCreateString(nil, uuidObj);
-    
-    NSString *str = [NSString stringWithString:(__bridge NSString *)uuidString];
-    
-    CFRelease(uuidObj);
-    CFRelease(uuidString);
-    
-    return [str lowercaseString];
 }
 
 - (void)playVideo
@@ -865,10 +872,12 @@
 - (void)captureOutput:(AVCaptureFileOutput *)output didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray<AVCaptureConnection *> *)connections error:(NSError *)error
 {
     if (CMTimeGetSeconds(output.recordedDuration) < 1) {
-        //视频长度小于1s 则拍照
-        NSLog(@"视频长度小于0.5s，按拍照处理");
-        [self onTakePicture];
-        return;
+        if (self.allowTakePhoto) {
+            //视频长度小于1s 允许拍照则拍照，不允许拍照，则保存小于1s的视频
+            NSLog(@"视频长度小于1s，按拍照处理");
+            [self onTakePicture];
+            return;
+        }
     }
     
     self.videoUrl = outputFileURL;

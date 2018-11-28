@@ -36,7 +36,7 @@
                                                          @"text/plain",nil];
     
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
-    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+   // manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithArray:@[@"POST", @"GET", @"HEAD"]];
     
     [manager POST:Url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -57,8 +57,8 @@
         }
         else {
             if (fail) {
-                NSLog(@"********** request url: %@ error: %@",model.code,model.result);
-                fail(model.code.integerValue,model.result);
+               // NSLog(@"********** request url: %@ error: %@",model.code,model.result);
+                fail([[responseObject objectForKey:@"code"] integerValue],[responseObject objectForKey:@"result"]);
             }
         }
         

@@ -20,6 +20,17 @@
 #import "SKDemandeLogModel.h"
 #import "WOTGetVerifyModel.h"
 #import "WOTWorkStationHistoryModel.h"
+#import "SKVipNumberModel.h"
+#import "SKOrderNumberModel.h"
+#import "SKGiftBagNumberModel.h"
+#import "SKResidueBookStationModel.h"
+#import "SKProjectEarningsModel.h"
+#import "SKAllSpaceCompanyModel.h"
+#import "SKAllSpaceBookStationModel.h"
+#import "SKFacilitatorTopModel.h"
+#import "SKActivityApplyModel.h"
+#import "SKStatisticsOneFacilitatorModel.h"
+#import "SKFacilitatorModel.h"
 
 #define kMaxRequestCount 3
 @interface WOTHTTPNetwork()
@@ -155,7 +166,8 @@
 {
     NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Space/find"];
     NSDictionary *parameters = @{@"pageNo":page,
-                                 @"pageSize":pageSize
+                                 @"pageSize":pageSize,
+                                 @"spaceState":@0
                                  };
     [WOTHTTPNetRequest doRequestWithParameters:parameters useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
         WOTSpaceModel_msg * model_msg = [[WOTSpaceModel_msg alloc]initWithDictionary:responseDic error:nil];
@@ -318,4 +330,126 @@
     } success:success
       fail:fail];
 }
+
++(void)queryVipNumberWithSuccess:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsUser"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:nil useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKVipNumberModel_msg * model_msg = [[SKVipNumberModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+     fail:fail];
+}
+
++(void)queryOrderNumberWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsOrder"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKOrderNumberModel_msg * model_msg = [[SKOrderNumberModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)queryGiftBagNumberWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsGiftBag"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKGiftBagNumberModel_msg * model_msg = [[SKGiftBagNumberModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)queryLongTimeBookStationWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsStation"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKResidueBookStationModel_msg * model_msg = [[SKResidueBookStationModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)queryProjectEarningsWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsOrderMoney"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKProjectEarningsModel_msg * model_msg = [[SKProjectEarningsModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)statisticsAllSpaceCompanyWithSuccess:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsCompanyNum"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:nil useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKAllSpaceCompanyModel_msg * model_msg = [[SKAllSpaceCompanyModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)queryAllSpaceBookStationNumberyWithSuccess:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsAllSpaceStation"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:nil useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKAllSpaceBookStationModel_msg * model_msg = [[SKAllSpaceBookStationModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)queryFacilitatorTopWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsFacilitatorTop"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKFacilitatorTopModel_msg * model_msg = [[SKFacilitatorTopModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)activityApplyStatisticsWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsActivityApply"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKActivityApplyModel_msg * model_msg = [[SKActivityApplyModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)queryStatisticsOneFacilitatorWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/statistics/statisticsOneFacilitator"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKStatisticsOneFacilitatorModel_msg * model_msg = [[SKStatisticsOneFacilitatorModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
++(void)queryAllFacilitatorWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail
+{
+    NSString * urlstring = [NSString stringWithFormat:@"%@%@", HTTPBaseURL,@"/SKwork/Facilitator/find"];
+    
+    [WOTHTTPNetRequest doRequestWithParameters:dict useUrl:urlstring complete:^WOTBaseModel *(id responseDic) {
+        SKFacilitatorModel_msg * model_msg = [[SKFacilitatorModel_msg alloc] initWithDictionary:responseDic error:nil];
+        return  model_msg;
+    } success:success
+      fail:fail];
+}
+
 @end

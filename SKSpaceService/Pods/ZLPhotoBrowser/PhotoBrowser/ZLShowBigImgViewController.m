@@ -16,14 +16,13 @@
 #import "ZLPhotoManager.h"
 #import "ZLEditViewController.h"
 #import "ZLEditVideoController.h"
+#import "ZLAnimateTransition.h"
+#import "ZLInteractiveTrasition.h"
 
-@interface ZLShowBigImgViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ZLShowBigImgViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate>
 {
     UICollectionView *_collectionView;
     
-    
-    //自定义导航视图
-    UIView *_navView;
     UIButton *_btnBack;
     UIButton *_navRightBtn;
     UILabel *_indexLabel;
@@ -34,10 +33,7 @@
     UIButton *_btnDone;
     //编辑按钮
     UIButton *_btnEdit;
-    
-    //双击的scrollView
-    UIScrollView *_selectScrollView;
-    NSInteger _currentPage;
+
     
     NSArray *_arrSelPhotosBackup;
     NSMutableArray *_arrSelAssets;
@@ -52,8 +48,14 @@
     UICollectionViewFlowLayout *_layout;
     
     NSString *_modelIdentifile;
+    
+    ZLInteractiveTrasition *_interactiveTransition;
+    BOOL _shouldStartDismiss;
+    NSInteger _panCount;
 }
 
+@property (nonatomic, assign) BOOL interactive;
+@property (nonatomic, strong) ZLInteractiveTrasition *trasition;
 @property (nonatomic, strong) UILabel *labPhotosBytes;
 
 @end
@@ -82,6 +84,12 @@
     [self resetEditBtnState];
     [self resetOriginalBtnState];
     
+    if (self.canInteractivePop) {
+        self.navigationController.delegate = self;
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+        [self.view addGestureRecognizer:pan];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationChanged:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
 }
 
@@ -101,6 +109,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     if (!_isFirstAppear) {
         return;
     }
@@ -127,7 +137,7 @@
     
     //nav view
     CGFloat navHeight = inset.top+44;
-    CGRect navFrame = _hideNavBar?CGRectMake(0, -navHeight, kViewWidth, navHeight):CGRectMake(0, 0, kViewWidth, navHeight);
+    CGRect navFrame = CGRectMake(0, 0, kViewWidth, navHeight);
     _navView.frame = navFrame;
     
     _btnBack.frame = CGRectMake(inset.left, inset.top, 60, 44);
@@ -135,7 +145,7 @@
     _navRightBtn.frame = CGRectMake(kViewWidth-40-inset.right, inset.top+(44-25)/2, 25, 25);
     
     //底部view
-    CGRect frame = _hideNavBar?CGRectMake(0, kViewHeight, kViewWidth, 44+inset.bottom):CGRectMake(0, kViewHeight-44-inset.bottom, kViewWidth, 44+inset.bottom);
+    CGRect frame = CGRectMake(0, kViewHeight-44-inset.bottom, kViewWidth, 44+inset.bottom);
     _bottomView.frame = frame;
     
     CGFloat btnOriWidth = GetMatchValue(GetLocalLanguageTextValue(ZLPhotoBrowserOriginalText), 15, YES, 30);
@@ -155,10 +165,14 @@
 - (void)setModels:(NSArray<ZLPhotoModel *> *)models
 {
     _models = models;
-    //如果预览网络图片则返回
-    if (models.firstObject.type == ZLAssetMediaTypeNetImage) {
-        return;
+    //如果预览数组中存在网络图片/视频则返回
+    for (ZLPhotoModel *m in models) {
+        if (m.type == ZLAssetMediaTypeNetImage ||
+            m.type == ZLAssetMediaTypeNetVideo) {
+            return;
+        }
     }
+    
     if (self.arrSelPhotos) {
         _arrSelAssets = [NSMutableArray array];
         for (ZLPhotoModel *m in models) {
@@ -174,6 +188,14 @@
     _arrSelPhotosBackup = arrSelPhotos.copy;
 }
 
+- (ZLInteractiveTrasition *)trasition
+{
+    if (!_trasition) {
+        _trasition = [[ZLInteractiveTrasition alloc] init];
+    }
+    return _trasition;
+}
+
 - (void)initNavView
 {
     ZLPhotoConfiguration *configuration = [(ZLImageNavigationController *)self.navigationController configuration];
@@ -183,7 +205,7 @@
     [self.view addSubview:_navView];
     
     _btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_btnBack setImage:GetImageWithName(@"navBackBtn") forState:UIControlStateNormal];
+    [_btnBack setImage:GetImageWithName(@"zl_navBack") forState:UIControlStateNormal];
     [_btnBack setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     [_btnBack addTarget:self action:@selector(btnBack_Click) forControlEvents:UIControlEventTouchUpInside];
     [_navView addSubview:_btnBack];
@@ -195,15 +217,15 @@
     _indexLabel.text = [NSString stringWithFormat:@"%ld/%ld", _currentPage, self.models.count];
     [_navView addSubview:_indexLabel];
     
-    if (!configuration.showSelectBtn || self.hideToolBar) {
+    if (self.hideToolBar || (!configuration.showSelectBtn && !self.arrSelPhotos.count)) {
         return;
     }
     
     //right nav btn
     _navRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _navRightBtn.frame = CGRectMake(0, 0, 25, 25);
-    UIImage *normalImg = GetImageWithName(@"btn_circle");
-    UIImage *selImg = GetImageWithName(@"btn_selected");
+    UIImage *normalImg = GetImageWithName(@"zl_btn_circle");
+    UIImage *selImg = GetImageWithName(@"zl_btn_selected");
     [_navRightBtn setBackgroundImage:normalImg forState:UIControlStateNormal];
     [_navRightBtn setBackgroundImage:selImg forState:UIControlStateSelected];
     [_navRightBtn addTarget:self action:@selector(navRightBtn_Click:) forControlEvents:UIControlEventTouchUpInside];
@@ -247,8 +269,8 @@
         [_btnOriginalPhoto setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserOriginalText) forState:UIControlStateNormal];
         _btnOriginalPhoto.titleLabel.font = [UIFont systemFontOfSize:15];
         [_btnOriginalPhoto setTitleColor:configuration.bottomBtnsNormalTitleColor forState: UIControlStateNormal];
-        UIImage *normalImg = GetImageWithName(@"btn_original_circle");
-        UIImage *selImg = GetImageWithName(@"btn_selected");
+        UIImage *normalImg = GetImageWithName(@"zl_btn_original_circle");
+        UIImage *selImg = GetImageWithName(@"zl_btn_selected");
         [_btnOriginalPhoto setImage:normalImg forState:UIControlStateNormal];
         [_btnOriginalPhoto setImage:selImg forState:UIControlStateSelected];
         [_btnOriginalPhoto setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 5)];
@@ -285,9 +307,9 @@
     
     [self.view addSubview:_bottomView];
     
-    if (self.arrSelPhotos) {
-        //预览用户已确定选择的照片，隐藏原图按钮
-        _btnOriginalPhoto.hidden = YES;
+    if (self.arrSelPhotos.count && !_arrSelAssets.count) {
+        //预览本地/网络 图片/视频时，隐藏原图按钮
+        [_btnOriginalPhoto removeFromSuperview];
     }
     if (!configuration.allowEditImage && !configuration.allowEditVideo) {
         _btnEdit.hidden = YES;
@@ -374,6 +396,18 @@
 
 - (void)btnBack_Click
 {
+    [self callBack];
+    
+    UIViewController *vc = [self.navigationController popViewControllerAnimated:YES];
+    //由于collectionView的frame的width是大于该界面的width，所以设置这个颜色是为了pop时候隐藏collectionView的黑色背景
+    _collectionView.backgroundColor = [UIColor clearColor];
+    if (!vc) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)callBack
+{
     ZLImageNavigationController *nav = (ZLImageNavigationController *)self.navigationController;
     if (self.btnBackBlock) {
         self.btnBackBlock(nav.arrSelectedModels, nav.isSelectOriginalPhoto);
@@ -381,13 +415,6 @@
     
     if (self.cancelPreviewBlock) {
         self.cancelPreviewBlock();
-    }
-    
-    UIViewController *vc = [self.navigationController popViewControllerAnimated:YES];
-    //由于collectionView的frame的width是大于该界面的width，所以设置这个颜色是为了pop时候隐藏collectionView的黑色背景
-    _collectionView.backgroundColor = [UIColor clearColor];
-    if (!vc) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -447,6 +474,60 @@
     [self resetEditBtnState];
 }
 
+#pragma mark - panAction
+- (void)panAction:(UIPanGestureRecognizer *)pan
+{
+    CGPoint p = [pan translationInView:self.view];
+    
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        _shouldStartDismiss = p.y >= 0;
+        _panCount = 0;
+    } else if (pan.state == UIGestureRecognizerStateChanged) {
+        if (!_shouldStartDismiss) return;
+        
+        _panCount++;
+        
+        if (_panCount == 1 && (p.y < 0 || atan(fabs(p.x)/fabs(p.y)) > M_PI_2/3)) {
+            // 不满足下拉手势返回
+            _shouldStartDismiss = NO;
+        } else if (_panCount == 1) {
+            _shouldStartDismiss = YES;
+            self.interactive = YES;
+            [self callBack];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        if (_shouldStartDismiss) {
+            CGFloat percent = 0;
+            percent = p.y / (self.view.superview.frame.size.height);
+            percent = MAX(percent, 0);
+            [self.trasition updatePercent:percent];
+            [self.trasition updateInteractiveTransition:percent];
+        }
+    } else if (pan.state == UIGestureRecognizerStateCancelled ||
+               pan.state == UIGestureRecognizerStateEnded) {
+        if (!_shouldStartDismiss) return;
+        
+        CGPoint vel = [pan velocityInView:self.view];
+        
+        CGFloat percent = 0;
+        percent = p.y / (self.view.superview.frame.size.height);
+        percent = MAX(percent, 0);
+        
+        BOOL dismiss = vel.y > 300 || (percent > 0.4 && vel.y > -300);
+        
+        if (dismiss) {
+            [self.trasition finishInteractiveTransition];
+            [self.trasition finishAnimate];
+        } else {
+            [self.trasition cancelInteractiveTransition];
+            [self.trasition cancelAnimate];
+        }
+        self.trasition = nil;
+        self.interactive = NO;
+    }
+}
+
 - (void)showDownloadAlert
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -457,15 +538,24 @@
         ZLBigImageCell *cell = (ZLBigImageCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:_currentPage-1 inSection:0]];
         
         [ZLPhotoManager saveImageToAblum:cell.previewView.image completion:^(BOOL suc, PHAsset *asset) {
-            [hud hide];
-            if (!suc) {
-                ShowToastLong(@"%@", GetLocalLanguageTextValue(ZLPhotoBrowserSaveImageErrorText));
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hide];
+                if (!suc) {
+                    ShowToastLong(@"%@", GetLocalLanguageTextValue(ZLPhotoBrowserSaveImageErrorText));
+                }
+            });
         }];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCancelText) style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:save];
     [alert addAction:cancel];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)  {
+        alert.popoverPresentationController.sourceView = self.view;
+        alert.popoverPresentationController.sourceRect = CGRectMake(CGRectGetMidX(self.view.frame),
+                                                                    CGRectGetMidY(self.view.frame),
+                                                                    2, 2);
+        alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    }
     [self showDetailViewController:alert sender:nil];
 }
 
@@ -562,12 +652,13 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [((ZLBigImageCell *)cell).previewView resetScale];
+    [((ZLBigImageCell *)cell) resetCellStatus];
     ((ZLBigImageCell *)cell).willDisplaying = YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [((ZLBigImageCell *)cell) resetCellStatus];
     [((ZLBigImageCell *)cell).previewView handlerEndDisplaying];
 }
 
@@ -586,8 +677,13 @@
         zl_strongify(weakSelf);
         [strongSelf handlerSingleTap];
     };
+    __weak typeof(cell) weakCell = cell;
     cell.longPressCallBack = ^{
         zl_strongify(weakSelf);
+        __strong typeof(weakCell) strongCell = weakCell;
+        if (!strongCell.previewView.image) {
+            return;
+        }
         [strongSelf showDownloadAlert];
     };
     
@@ -603,7 +699,8 @@
         
         if (m.type == ZLAssetMediaTypeGif ||
             m.type == ZLAssetMediaTypeLivePhoto ||
-            m.type == ZLAssetMediaTypeVideo) {
+            m.type == ZLAssetMediaTypeVideo ||
+            m.type == ZLAssetMediaTypeNetVideo) {
             ZLBigImageCell *cell = (ZLBigImageCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:_currentPage-1 inSection:0]];
             [cell pausePlay];
         }
@@ -652,6 +749,21 @@
     _currentPage = str.integerValue + 1;
     ZLPhotoModel *model = self.models[_currentPage-1];
     return model;
+}
+
+#pragma mark - nav delegate
+- (nullable id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController
+{
+    return self.interactive ? self.trasition : nil;
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                            animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                         fromViewController:(UIViewController *)fromVC
+                                                           toViewController:(UIViewController *)toVC
+{
+    return self.interactive ? [ZLAnimateTransition new] : nil;
 }
 
 @end

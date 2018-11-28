@@ -277,11 +277,11 @@
     _selectedAssets = [NSMutableArray arrayWithArray:assets];
     [self viewDidLayoutSubviews];
     [_collectionView reloadData];
-    if (iOS8Later) {
-        for (PHAsset *phAsset in assets) {
-            NSLog(@"location:%@",phAsset.location);
-        }
-    }
+//    if (iOS8Later) {
+//        for (PHAsset *phAsset in assets) {
+//            NSLog(@"location:%@",phAsset.location);
+//        }
+//    }
 }
 
 //图片删除方法

@@ -99,6 +99,8 @@
         self.livePhotoView.frame = self.bounds;
     } else if (self.model.type == ZLAssetMediaTypeVideo) {
         self.videoView.frame = self.bounds;
+    } else if (self.model.type == ZLAssetMediaTypeNetVideo) {
+        self.netVideoView.frame = self.bounds;
     }
 }
 
@@ -128,6 +130,15 @@
         _videoView.singleTapCallBack = self.singleTapCallBack;
     }
     return _videoView;
+}
+
+- (ZLPreviewNetVideo *)netVideoView
+{
+    if (!_netVideoView) {
+        _netVideoView = [[ZLPreviewNetVideo alloc] initWithFrame:self.bounds];
+        _netVideoView.singleTapCallBack = self.singleTapCallBack;
+    }
+    return _netVideoView;
 }
 
 - (void)setModel:(ZLPhotoModel *)model
@@ -167,6 +178,11 @@
             [self.imageGifView loadImage:model.image?:model.url];
         }
             break;
+        case ZLAssetMediaTypeNetVideo: {
+            [self addSubview:self.netVideoView];
+            [self.netVideoView loadNetVideo:model.url];
+        }
+            break;
             
         default:
             break;
@@ -199,6 +215,8 @@
         [self.livePhotoView stopPlayLivePhoto];
     } else if (self.model.type == ZLAssetMediaTypeVideo) {
         [self.videoView stopPlayVideo];
+    } else if (self.model.type == ZLAssetMediaTypeNetVideo) {
+        [self.netVideoView stopPlayNetVideo];
     }
 }
 
@@ -212,17 +230,24 @@
         if ([self.videoView haveLoadVideo]) {
             [self.videoView loadNormalImage:self.model.asset];
         }
+    } else if (self.model.type == ZLAssetMediaTypeNetVideo) {
+        [self.netVideoView seekToZero];
     }
 }
 
 - (void)resetScale
 {
-    [self.imageGifView resetScale];
+    if (self.model.type == ZLAssetMediaTypeImage ||
+        self.model.type == ZLAssetMediaTypeGif ||
+        self.model.type == ZLAssetMediaTypeNetImage) {
+        [self.imageGifView resetScale];
+    }
 }
 
 - (UIImage *)image
 {
     if (self.model.type == ZLAssetMediaTypeImage ||
+        self.model.type == ZLAssetMediaTypeGif ||
         self.model.type == ZLAssetMediaTypeNetImage) {
         return self.imageGifView.imageView.image;
     }
@@ -294,9 +319,7 @@
 
 //!!!!: ZLPreviewImageAndGif
 @interface ZLPreviewImageAndGif () <UIScrollViewDelegate>
-{
-    BOOL _loadOK;
-}
+
 @end
 
 @implementation ZLPreviewImageAndGif
@@ -304,9 +327,10 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
     self.scrollView.frame = self.bounds;
-    [self.scrollView setZoomScale:1.0];
-    if (_loadOK) {
+    [self resetScale];
+    if (self.loadOK) {
         [self resetSubviewSize:self.asset?:self.imageView.image];
     }
 }
@@ -434,7 +458,7 @@
         [strongSelf resetSubviewSize:asset];
         if (![[info objectForKey:PHImageResultIsDegradedKey] boolValue]) {
             [strongSelf.indicator stopAnimating];
-            strongSelf->_loadOK = YES;
+            strongSelf.loadOK = YES;
         }
     }];
 }
@@ -461,7 +485,7 @@
             if (error) {
                 ShowToastLong(@"%@", GetLocalLanguageTextValue(ZLPhotoBrowserLoadNetImageFailed));
             } else {
-                strongSelf->_loadOK = YES;
+                strongSelf.loadOK = YES;
                 [strongSelf resetSubviewSize:image];
             }
         }];
@@ -483,9 +507,8 @@
     }
     
     CGFloat width = MIN(kViewWidth, w);
-    BOOL orientationIsUpOrDown = YES;
+    
     if (isLandscape) {
-        orientationIsUpOrDown = NO;
         CGFloat height = MIN(GetViewHeight(self), h);
         frame.origin = CGPointZero;
         frame.size.height = height;
@@ -532,7 +555,7 @@
     
     
     CGSize contentSize;
-    if (orientationIsUpOrDown) {
+    if (!isLandscape) {
         contentSize = CGSizeMake(width, MAX(GetViewHeight(self), frame.size.height));
         if (frame.size.height < GetViewHeight(self)) {
             self.containerView.center = CGPointMake(GetViewWidth(self)/2, GetViewHeight(self)/2);
@@ -732,7 +755,7 @@
 {
     if (!_playBtn) {
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playBtn setBackgroundImage:GetImageWithName(@"playVideo") forState:UIControlStateNormal];
+        [_playBtn setBackgroundImage:GetImageWithName(@"zl_playVideo") forState:UIControlStateNormal];
         _playBtn.frame = CGRectMake(0, 0, 80, 80);
         _playBtn.center = self.center;
         [_playBtn addTarget:self action:@selector(playBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -747,7 +770,7 @@
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] init];
         //创建图片附件
         NSTextAttachment *attach = [[NSTextAttachment alloc]init];
-        attach.image = GetImageWithName(@"videoLoadFailed");
+        attach.image = GetImageWithName(@"zl_videoLoadFailed");
         attach.bounds = CGRectMake(0, -10, 30, 30);
         //创建属性字符串 通过图片附件
         NSAttributedString *attrStr = [NSAttributedString attributedStringWithAttachment:attach];
@@ -909,3 +932,166 @@
 
 @end
 
+
+//!!!!: ZLPreviewNetVideo
+@implementation ZLPreviewNetVideo
+{
+    BOOL _observerIsRemoved;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (!_observerIsRemoved) {
+        [self.playLayer.player.currentItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+        [self.playLayer.player.currentItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+        _observerIsRemoved = YES;
+    }
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    _playLayer.frame = self.bounds;
+    _playBtn.center = self.center;
+}
+
+- (AVPlayerLayer *)playLayer
+{
+    if (!_playLayer) {
+        _playLayer = [[AVPlayerLayer alloc] init];
+        _playLayer.frame = self.bounds;
+    }
+    return _playLayer;
+}
+
+- (UIButton *)playBtn
+{
+    if (!_playBtn) {
+        _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_playBtn setBackgroundImage:GetImageWithName(@"zl_playVideo") forState:UIControlStateNormal];
+        _playBtn.frame = CGRectMake(0, 0, 80, 80);
+        _playBtn.center = self.center;
+        [_playBtn addTarget:self action:@selector(playBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [self bringSubviewToFront:_playBtn];
+    return _playBtn;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initUI];
+    }
+    return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self initUI];
+    }
+    return self;
+}
+
+- (void)initUI
+{
+    [self.layer addSublayer:self.playLayer];
+    [self addSubview:self.playBtn];
+    [self addSubview:self.indicator];
+}
+
+- (void)loadNetVideo:(NSURL *)url
+{
+    [self.indicator stopAnimating];
+    AVPlayer *player = [AVPlayer playerWithURL:url];
+    self.playLayer.player = player;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:player.currentItem];
+    [player.currentItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+    [player.currentItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+    _observerIsRemoved = NO;
+}
+
+- (void)seekToZero
+{
+    if (!_observerIsRemoved) {
+        [self.playLayer.player.currentItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+        [self.playLayer.player.currentItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+        _observerIsRemoved = YES;
+    }
+    
+    AVPlayer *player = self.playLayer.player;
+    [player.currentItem seekToTime:kCMTimeZero];
+}
+
+- (void)stopPlayNetVideo
+{
+    if (!_playLayer) {
+        return;
+    }
+    AVPlayer *player = self.playLayer.player;
+    
+    if (player.rate != .0) {
+        [player pause];
+        self.playBtn.hidden = NO;
+        [self.indicator stopAnimating];
+    }
+}
+
+- (void)singleTapAction
+{
+    [super singleTapAction];
+    [self switchVideoStatus];
+}
+
+- (void)playBtnClick
+{
+    [self singleTapAction];
+}
+
+- (void)switchVideoStatus
+{
+    AVPlayer *player = self.playLayer.player;
+    CMTime stop = player.currentItem.currentTime;
+    CMTime duration = player.currentItem.duration;
+    if (player.rate == .0) {
+        self.playBtn.hidden = YES;
+        if (stop.value == duration.value) {
+            [player.currentItem seekToTime:CMTimeMake(0, 1)];
+        }
+        [player play];
+    } else {
+        self.playBtn.hidden = NO;
+        [self.indicator stopAnimating];
+        [player pause];
+    }
+}
+
+- (void)playFinished:(AVPlayerItem *)item
+{
+    [super singleTapAction];
+    self.playBtn.hidden = NO;
+    [self.indicator stopAnimating];
+    [self.playLayer.player seekToTime:kCMTimeZero];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"playbackBufferEmpty"]) {
+        //缓冲为空
+//        NSLog(@"缓冲为空");
+        if (self.playLayer.player.rate != 0.0) {
+//            NSLog(@"正在播放，显示等待视图");
+            [self.indicator startAnimating];
+        }
+    } else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
+        //缓冲好了
+//        NSLog(@"缓冲好了");
+        [self.indicator stopAnimating];
+    }
+}
+
+@end

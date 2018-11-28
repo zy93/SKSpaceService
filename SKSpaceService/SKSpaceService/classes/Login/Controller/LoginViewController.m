@@ -206,7 +206,7 @@
     }
     NSString *alias = [NSString stringWithFormat:@"%@S",self.userTelField.text];
     [WOTHTTPNetwork userLoginWithTelOrEmail:self.userTelField.text password:self.verificationCodeField.text alias:alias success:^(id bean) {
-        SKLoginModel_msg *model = bean;
+        SKLoginModel_msg *model = (SKLoginModel_msg *)bean;
         if ([model.code isEqualToString:@"200"]) {
             NSLog(@"权限字段%@",[[WOTUserSingleton shared] getUserPermissions]);
             

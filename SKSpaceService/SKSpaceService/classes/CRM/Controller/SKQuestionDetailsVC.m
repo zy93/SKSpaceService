@@ -121,9 +121,13 @@
 {
     [WOTHTTPNetwork getSalesOrderQuestionWithSellId:self.model.sellId success:^(id bean) {
         SKQuestion_msg *model = bean;
+        if ([model.code isEqualToString:@"202"]) {
+            return ;
+        }
         self.tableList = model.msg.list;
         [self.tableView reloadData];
         [self StopRefresh];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.tableList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
         });

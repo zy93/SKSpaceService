@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03076E34FFC25D455EE279CD /* libPods-SKSpaceService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */; };
 		2A1540E920207A25001730D4 /* SKSalesOrderLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1540E820207A25001730D4 /* SKSalesOrderLogModel.m */; };
 		2A3E3FF42048F02F00171558 /* SKDemandeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF22048F02F00171558 /* SKDemandeCell.m */; };
 		2A3E3FF52048F02F00171558 /* SKDemandeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3E3FF32048F02F00171558 /* SKDemandeCell.xib */; };
@@ -147,8 +146,19 @@
 		2AC82A9A201725040076305E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82A99201725040076305E /* LoginViewController.m */; };
 		2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AA8201726CA0076305E /* WOTBaseModel.m */; };
 		2AC82AAD201726CA0076305E /* SKLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC82AAA201726CA0076305E /* SKLoginModel.m */; };
+		51CC295DAB113BB975353936 /* Pods_SKSpaceServiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59CC8979C29BA8BF8BC89E9 /* Pods_SKSpaceServiceUITests.framework */; };
+		91792507A62897D626F7ED1C /* Pods_SKSpaceServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B364B051AD4E901804A957 /* Pods_SKSpaceServiceTests.framework */; };
+		BBC84A878B61A24846A33F8B /* Pods_SKSpaceService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8346BE1370DBE86870CC6D8B /* Pods_SKSpaceService.framework */; };
 		C5031C0E2022A6F0009854DF /* NSArray+ImageArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5031C0D2022A6F0009854DF /* NSArray+ImageArray.m */; };
+		C5166F1B21AA4D2E008858A7 /* SKLineChartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5166F1A21AA4D2E008858A7 /* SKLineChartVC.m */; };
+		C54B022C21A2B2B60016C7B5 /* SKStatisticsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C54B022B21A2B2B60016C7B5 /* SKStatisticsTableView.m */; };
 		C59004F821783497003BC61A /* SKAllReserveOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C59004F721783497003BC61A /* SKAllReserveOrderVC.m */; };
+		C59CE68E21A7E1140056AD46 /* SKAllSpaceCompanyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59CE68D21A7E1140056AD46 /* SKAllSpaceCompanyModel.m */; };
+		C59CE69121A7E5AE0056AD46 /* SKAllSpaceBookStationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59CE69021A7E5AE0056AD46 /* SKAllSpaceBookStationModel.m */; };
+		C59CE69621A7FF9C0056AD46 /* SKFacilitatorTopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59CE69521A7FF9C0056AD46 /* SKFacilitatorTopModel.m */; };
+		C59CE69921A8022E0056AD46 /* SKActivityApplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59CE69821A8022E0056AD46 /* SKActivityApplyModel.m */; };
+		C59CE69C21A807220056AD46 /* SKStatisticsOneFacilitatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59CE69B21A807220056AD46 /* SKStatisticsOneFacilitatorModel.m */; };
+		C59CE69F21A8085C0056AD46 /* SKFacilitatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59CE69E21A8085C0056AD46 /* SKFacilitatorModel.m */; };
 		C59EF47F216DEF38000927D4 /* SKOperationmanageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59EF47E216DEF38000927D4 /* SKOperationmanageViewController.m */; };
 		C59EF482216DFF68000927D4 /* WOTWorkStationHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C59EF480216DFF68000927D4 /* WOTWorkStationHistoryModel.m */; };
 		C59EF485216E0329000927D4 /* SKOrderNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59EF484216E0329000927D4 /* SKOrderNotificationCell.m */; };
@@ -167,13 +177,23 @@
 		C5ACC96D201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC96A201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m */; };
 		C5ACC970201EEC5200FAAA31 /* SKOrderInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC96F201EEC5200FAAA31 /* SKOrderInfoVC.m */; };
 		C5ACC973201F000C00FAAA31 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC972201F000B00FAAA31 /* ButtonView.m */; };
+		C5AF098D21A6B10B00ED1D39 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF098B21A6B10A00ED1D39 /* PickerView.m */; };
+		C5B361AB21A4F144007D75FC /* SKGiftBagNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B361AA21A4F144007D75FC /* SKGiftBagNumberModel.m */; };
+		C5B361AE21A4F7E5007D75FC /* SKResidueBookStationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B361AD21A4F7E5007D75FC /* SKResidueBookStationModel.m */; };
+		C5B361B121A52000007D75FC /* SKProjectEarningsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B361B021A52000007D75FC /* SKProjectEarningsModel.m */; };
+		C5B361B421A52DD5007D75FC /* SKBarChartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B361B321A52DD5007D75FC /* SKBarChartVC.m */; };
+		C5B361BB21A55E61007D75FC /* XAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B361B921A55E60007D75FC /* XAxisValueFormatter.m */; };
 		C5C6C2D8209052580043FCDD /* CSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C2D6209052580043FCDD /* CSLoginViewController.m */; };
 		C5C6C2D9209052580043FCDD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C2D7209052580043FCDD /* RegisterViewController.m */; };
 		C5C6C2DC2090538F0043FCDD /* WOTGetVerifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C6C2DA2090538F0043FCDD /* WOTGetVerifyModel.m */; };
+		C5D8607B21A3A15E0005CB09 /* SKPieChartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8607A21A3A15E0005CB09 /* SKPieChartVC.m */; };
+		C5D860D521A3E3CC0005CB09 /* WOTDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D860D221A3E3CB0005CB09 /* WOTDatePickerView.m */; };
+		C5D860D621A3E3CC0005CB09 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D860D321A3E3CB0005CB09 /* DatePickerView.m */; };
+		C5D860D721A3E3CC0005CB09 /* WOTDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D860D421A3E3CC0005CB09 /* WOTDatePickerView.xib */; };
+		C5D860DB21A3F96F0005CB09 /* SKVipNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D860DA21A3F96F0005CB09 /* SKVipNumberModel.m */; };
+		C5D860DE21A419AC0005CB09 /* SKOrderNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D860DD21A419AC0005CB09 /* SKOrderNumberModel.m */; };
 		C5E4DCA820200B35006BC4C2 /* SKOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E4DCA720200B35006BC4C2 /* SKOrderInfoModel.m */; };
 		C5E4DCAB20205C30006BC4C2 /* SKAcceptAnOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E4DCAA20205C30006BC4C2 /* SKAcceptAnOrderModel.m */; };
-		DA1BBBB078BB9353ECB5FE70 /* libPods-SKSpaceServiceUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A28CF1A5D01B08520871E17 /* libPods-SKSpaceServiceUITests.a */; };
-		EE3F58836CB18DE061A68206 /* libPods-SKSpaceServiceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E63B3B941F14DE95A92AB7DB /* libPods-SKSpaceServiceTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -453,14 +473,31 @@
 		2AC82AA9201726CA0076305E /* WOTBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTBaseModel.h; sourceTree = "<group>"; };
 		2AC82AAA201726CA0076305E /* SKLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLoginModel.m; sourceTree = "<group>"; };
 		2AEDB5C95F7086F6DA4185DE /* Pods-SKSpaceServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests.release.xcconfig"; sourceTree = "<group>"; };
-		4A28CF1A5D01B08520871E17 /* libPods-SKSpaceServiceUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceServiceUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceService.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B364B051AD4E901804A957 /* Pods_SKSpaceServiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKSpaceServiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8346BE1370DBE86870CC6D8B /* Pods_SKSpaceService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKSpaceService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		891FC413E8C2F086217A5A11 /* Pods-SKSpaceService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AA5708E2389643C4D3D890 /* Pods-SKSpaceServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceTests/Pods-SKSpaceServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C5031C0C2022A6F0009854DF /* NSArray+ImageArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ImageArray.h"; sourceTree = "<group>"; };
 		C5031C0D2022A6F0009854DF /* NSArray+ImageArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ImageArray.m"; sourceTree = "<group>"; };
+		C5166F1921AA4D2E008858A7 /* SKLineChartVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLineChartVC.h; sourceTree = "<group>"; };
+		C5166F1A21AA4D2E008858A7 /* SKLineChartVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKLineChartVC.m; sourceTree = "<group>"; };
+		C54B022A21A2B2B60016C7B5 /* SKStatisticsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKStatisticsTableView.h; sourceTree = "<group>"; };
+		C54B022B21A2B2B60016C7B5 /* SKStatisticsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKStatisticsTableView.m; sourceTree = "<group>"; };
 		C59004F621783497003BC61A /* SKAllReserveOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAllReserveOrderVC.h; sourceTree = "<group>"; };
 		C59004F721783497003BC61A /* SKAllReserveOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAllReserveOrderVC.m; sourceTree = "<group>"; };
+		C59CC8979C29BA8BF8BC89E9 /* Pods_SKSpaceServiceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKSpaceServiceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C59CE68C21A7E1140056AD46 /* SKAllSpaceCompanyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAllSpaceCompanyModel.h; sourceTree = "<group>"; };
+		C59CE68D21A7E1140056AD46 /* SKAllSpaceCompanyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAllSpaceCompanyModel.m; sourceTree = "<group>"; };
+		C59CE68F21A7E5AE0056AD46 /* SKAllSpaceBookStationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAllSpaceBookStationModel.h; sourceTree = "<group>"; };
+		C59CE69021A7E5AE0056AD46 /* SKAllSpaceBookStationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAllSpaceBookStationModel.m; sourceTree = "<group>"; };
+		C59CE69421A7FF9C0056AD46 /* SKFacilitatorTopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKFacilitatorTopModel.h; sourceTree = "<group>"; };
+		C59CE69521A7FF9C0056AD46 /* SKFacilitatorTopModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKFacilitatorTopModel.m; sourceTree = "<group>"; };
+		C59CE69721A8022E0056AD46 /* SKActivityApplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKActivityApplyModel.h; sourceTree = "<group>"; };
+		C59CE69821A8022E0056AD46 /* SKActivityApplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKActivityApplyModel.m; sourceTree = "<group>"; };
+		C59CE69A21A807220056AD46 /* SKStatisticsOneFacilitatorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKStatisticsOneFacilitatorModel.h; sourceTree = "<group>"; };
+		C59CE69B21A807220056AD46 /* SKStatisticsOneFacilitatorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKStatisticsOneFacilitatorModel.m; sourceTree = "<group>"; };
+		C59CE69D21A8085C0056AD46 /* SKFacilitatorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKFacilitatorModel.h; sourceTree = "<group>"; };
+		C59CE69E21A8085C0056AD46 /* SKFacilitatorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKFacilitatorModel.m; sourceTree = "<group>"; };
 		C59EF47D216DEF38000927D4 /* SKOperationmanageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOperationmanageViewController.h; sourceTree = "<group>"; };
 		C59EF47E216DEF38000927D4 /* SKOperationmanageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOperationmanageViewController.m; sourceTree = "<group>"; };
 		C59EF480216DFF68000927D4 /* WOTWorkStationHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTWorkStationHistoryModel.m; sourceTree = "<group>"; };
@@ -497,19 +534,42 @@
 		C5ACC96F201EEC5200FAAA31 /* SKOrderInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderInfoVC.m; sourceTree = "<group>"; };
 		C5ACC971201F000B00FAAA31 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonView.h; sourceTree = "<group>"; };
 		C5ACC972201F000B00FAAA31 /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonView.m; sourceTree = "<group>"; };
+		C5AF098B21A6B10A00ED1D39 /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		C5AF098C21A6B10B00ED1D39 /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		C5B361A921A4F144007D75FC /* SKGiftBagNumberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKGiftBagNumberModel.h; sourceTree = "<group>"; };
+		C5B361AA21A4F144007D75FC /* SKGiftBagNumberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKGiftBagNumberModel.m; sourceTree = "<group>"; };
+		C5B361AC21A4F7E5007D75FC /* SKResidueBookStationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKResidueBookStationModel.h; sourceTree = "<group>"; };
+		C5B361AD21A4F7E5007D75FC /* SKResidueBookStationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKResidueBookStationModel.m; sourceTree = "<group>"; };
+		C5B361AF21A52000007D75FC /* SKProjectEarningsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKProjectEarningsModel.h; sourceTree = "<group>"; };
+		C5B361B021A52000007D75FC /* SKProjectEarningsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKProjectEarningsModel.m; sourceTree = "<group>"; };
+		C5B361B221A52DD5007D75FC /* SKBarChartVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBarChartVC.h; sourceTree = "<group>"; };
+		C5B361B321A52DD5007D75FC /* SKBarChartVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBarChartVC.m; sourceTree = "<group>"; };
+		C5B361B921A55E60007D75FC /* XAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAxisValueFormatter.m; sourceTree = "<group>"; };
+		C5B361BA21A55E61007D75FC /* XAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAxisValueFormatter.h; sourceTree = "<group>"; };
 		C5C6C2D4209052580043FCDD /* CSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLoginViewController.h; sourceTree = "<group>"; };
 		C5C6C2D5209052580043FCDD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		C5C6C2D6209052580043FCDD /* CSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLoginViewController.m; sourceTree = "<group>"; };
 		C5C6C2D7209052580043FCDD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		C5C6C2DA2090538F0043FCDD /* WOTGetVerifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTGetVerifyModel.m; sourceTree = "<group>"; };
 		C5C6C2DB2090538F0043FCDD /* WOTGetVerifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTGetVerifyModel.h; sourceTree = "<group>"; };
+		C5D8607921A3A15E0005CB09 /* SKPieChartVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKPieChartVC.h; sourceTree = "<group>"; };
+		C5D8607A21A3A15E0005CB09 /* SKPieChartVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKPieChartVC.m; sourceTree = "<group>"; };
+		C5D860CB21A3AD9B0005CB09 /* SKSpaceService-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKSpaceService-Bridge-Header.h"; sourceTree = "<group>"; };
+		C5D860D021A3E3CB0005CB09 /* WOTDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOTDatePickerView.h; sourceTree = "<group>"; };
+		C5D860D121A3E3CB0005CB09 /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
+		C5D860D221A3E3CB0005CB09 /* WOTDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOTDatePickerView.m; sourceTree = "<group>"; };
+		C5D860D321A3E3CB0005CB09 /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
+		C5D860D421A3E3CC0005CB09 /* WOTDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WOTDatePickerView.xib; sourceTree = "<group>"; };
+		C5D860D921A3F96F0005CB09 /* SKVipNumberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKVipNumberModel.h; sourceTree = "<group>"; };
+		C5D860DA21A3F96F0005CB09 /* SKVipNumberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKVipNumberModel.m; sourceTree = "<group>"; };
+		C5D860DC21A419AC0005CB09 /* SKOrderNumberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderNumberModel.h; sourceTree = "<group>"; };
+		C5D860DD21A419AC0005CB09 /* SKOrderNumberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderNumberModel.m; sourceTree = "<group>"; };
 		C5E4DCA620200B35006BC4C2 /* SKOrderInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKOrderInfoModel.h; sourceTree = "<group>"; };
 		C5E4DCA720200B35006BC4C2 /* SKOrderInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKOrderInfoModel.m; sourceTree = "<group>"; };
 		C5E4DCA920205C30006BC4C2 /* SKAcceptAnOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAcceptAnOrderModel.h; sourceTree = "<group>"; };
 		C5E4DCAA20205C30006BC4C2 /* SKAcceptAnOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAcceptAnOrderModel.m; sourceTree = "<group>"; };
 		CD005319737C341DE0E3D9DC /* Pods-SKSpaceService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceService.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService.release.xcconfig"; sourceTree = "<group>"; };
 		D36C1CD9E6BAE2C219D2F4D8 /* Pods-SKSpaceServiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKSpaceServiceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKSpaceServiceUITests/Pods-SKSpaceServiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E63B3B941F14DE95A92AB7DB /* libPods-SKSpaceServiceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SKSpaceServiceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -535,7 +595,7 @@
 				2A98518F20170814005705ED /* libUMSocialLog.a in Frameworks */,
 				2A98518C20170814005705ED /* libSocialWeChat.a in Frameworks */,
 				2A98518820170814005705ED /* UShareUI.framework in Frameworks */,
-				03076E34FFC25D455EE279CD /* libPods-SKSpaceService.a in Frameworks */,
+				BBC84A878B61A24846A33F8B /* Pods_SKSpaceService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +603,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE3F58836CB18DE061A68206 /* libPods-SKSpaceServiceTests.a in Frameworks */,
+				91792507A62897D626F7ED1C /* Pods_SKSpaceServiceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +611,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA1BBBB078BB9353ECB5FE70 /* libPods-SKSpaceServiceUITests.a in Frameworks */,
+				51CC295DAB113BB975353936 /* Pods_SKSpaceServiceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1107,7 @@
 		2AC82A9B201726CA0076305E /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				C54B022621A2B1FF0016C7B5 /* Statistics */,
 				C59EF479216DEE9E000927D4 /* Operation */,
 				2AD765072046AC500007188C /* Provider */,
 				2AC82A9C201726CA0076305E /* CRM */,
@@ -1226,6 +1287,76 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C54B022621A2B1FF0016C7B5 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C5B361B521A559A6007D75FC /* Formatter */,
+				C5D8607F21A3A2D60005CB09 /* Bridge */,
+				C54B022821A2B22A0016C7B5 /* VieController */,
+				C54B022721A2B2290016C7B5 /* Model */,
+				C54B022921A2B22B0016C7B5 /* View */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		C54B022721A2B2290016C7B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5D860D921A3F96F0005CB09 /* SKVipNumberModel.h */,
+				C5D860DA21A3F96F0005CB09 /* SKVipNumberModel.m */,
+				C5D860DC21A419AC0005CB09 /* SKOrderNumberModel.h */,
+				C5D860DD21A419AC0005CB09 /* SKOrderNumberModel.m */,
+				C5B361A921A4F144007D75FC /* SKGiftBagNumberModel.h */,
+				C5B361AA21A4F144007D75FC /* SKGiftBagNumberModel.m */,
+				C5B361AC21A4F7E5007D75FC /* SKResidueBookStationModel.h */,
+				C5B361AD21A4F7E5007D75FC /* SKResidueBookStationModel.m */,
+				C5B361AF21A52000007D75FC /* SKProjectEarningsModel.h */,
+				C5B361B021A52000007D75FC /* SKProjectEarningsModel.m */,
+				C59CE68C21A7E1140056AD46 /* SKAllSpaceCompanyModel.h */,
+				C59CE68D21A7E1140056AD46 /* SKAllSpaceCompanyModel.m */,
+				C59CE68F21A7E5AE0056AD46 /* SKAllSpaceBookStationModel.h */,
+				C59CE69021A7E5AE0056AD46 /* SKAllSpaceBookStationModel.m */,
+				C59CE69421A7FF9C0056AD46 /* SKFacilitatorTopModel.h */,
+				C59CE69521A7FF9C0056AD46 /* SKFacilitatorTopModel.m */,
+				C59CE69721A8022E0056AD46 /* SKActivityApplyModel.h */,
+				C59CE69821A8022E0056AD46 /* SKActivityApplyModel.m */,
+				C59CE69A21A807220056AD46 /* SKStatisticsOneFacilitatorModel.h */,
+				C59CE69B21A807220056AD46 /* SKStatisticsOneFacilitatorModel.m */,
+				C59CE69D21A8085C0056AD46 /* SKFacilitatorModel.h */,
+				C59CE69E21A8085C0056AD46 /* SKFacilitatorModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C54B022821A2B22A0016C7B5 /* VieController */ = {
+			isa = PBXGroup;
+			children = (
+				C54B022A21A2B2B60016C7B5 /* SKStatisticsTableView.h */,
+				C54B022B21A2B2B60016C7B5 /* SKStatisticsTableView.m */,
+				C5D8607921A3A15E0005CB09 /* SKPieChartVC.h */,
+				C5D8607A21A3A15E0005CB09 /* SKPieChartVC.m */,
+				C5B361B221A52DD5007D75FC /* SKBarChartVC.h */,
+				C5B361B321A52DD5007D75FC /* SKBarChartVC.m */,
+				C5166F1921AA4D2E008858A7 /* SKLineChartVC.h */,
+				C5166F1A21AA4D2E008858A7 /* SKLineChartVC.m */,
+			);
+			path = VieController;
+			sourceTree = "<group>";
+		};
+		C54B022921A2B22B0016C7B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5D860D121A3E3CB0005CB09 /* DatePickerView.h */,
+				C5D860D321A3E3CB0005CB09 /* DatePickerView.m */,
+				C5D860D021A3E3CB0005CB09 /* WOTDatePickerView.h */,
+				C5D860D221A3E3CB0005CB09 /* WOTDatePickerView.m */,
+				C5D860D421A3E3CC0005CB09 /* WOTDatePickerView.xib */,
+				C5AF098C21A6B10B00ED1D39 /* PickerView.h */,
+				C5AF098B21A6B10A00ED1D39 /* PickerView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C59EF479216DEE9E000927D4 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1328,6 +1459,15 @@
 			path = ShowImageScrollView;
 			sourceTree = "<group>";
 		};
+		C5B361B521A559A6007D75FC /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				C5B361BA21A55E61007D75FC /* XAxisValueFormatter.h */,
+				C5B361B921A55E60007D75FC /* XAxisValueFormatter.m */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
 		C5C6C2D3209052350043FCDD /* Alternative */ = {
 			isa = PBXGroup;
 			children = (
@@ -1337,6 +1477,14 @@
 				C5C6C2D7209052580043FCDD /* RegisterViewController.m */,
 			);
 			path = Alternative;
+			sourceTree = "<group>";
+		};
+		C5D8607F21A3A2D60005CB09 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				C5D860CB21A3AD9B0005CB09 /* SKSpaceService-Bridge-Header.h */,
+			);
+			path = Bridge;
 			sourceTree = "<group>";
 		};
 		C92E5C1A7947AE002977DF5B /* Frameworks */ = {
@@ -1353,9 +1501,9 @@
 				2AC82A862017230D0076305E /* Foundation.framework */,
 				2AC82A84201723050076305E /* CFNetwork.framework */,
 				2AC82A82201722FD0076305E /* CoreMotion.framework */,
-				76F59F22D3CA000B015F0B75 /* libPods-SKSpaceService.a */,
-				E63B3B941F14DE95A92AB7DB /* libPods-SKSpaceServiceTests.a */,
-				4A28CF1A5D01B08520871E17 /* libPods-SKSpaceServiceUITests.a */,
+				8346BE1370DBE86870CC6D8B /* Pods_SKSpaceService.framework */,
+				63B364B051AD4E901804A957 /* Pods_SKSpaceServiceTests.framework */,
+				C59CC8979C29BA8BF8BC89E9 /* Pods_SKSpaceServiceUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1372,6 +1520,7 @@
 				2A98506C201707C7005705ED /* Frameworks */,
 				2A98506D201707C7005705ED /* Resources */,
 				BBC49B4F9A97F3232C19073E /* [CP] Copy Pods Resources */,
+				67EF2D15E3616E54743DD8D7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1432,6 +1581,7 @@
 				TargetAttributes = {
 					2A98506E201707C7005705ED = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1494,6 +1644,7 @@
 				2A98507A201707C7005705ED /* Main.storyboard in Resources */,
 				2A870D00201AF2FD006396B6 /* SKLogListCell.xib in Resources */,
 				2AC4A7B12021A5DD00D824EA /* SKMyCollectionReusableView.xib in Resources */,
+				C5D860D721A3E3CC0005CB09 /* WOTDatePickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1550,6 +1701,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		67EF2D15E3616E54743DD8D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
+				"${BUILT_PRODUCTS_DIR}/ZLPhotoBrowser/ZLPhotoBrowser.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZLPhotoBrowser.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		771093CEA1BE20B774BB122F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1576,22 +1767,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SKSpaceService/Pods-SKSpaceService-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
-				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoActionSheet.xib",
-				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowserCell.xib",
-				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowser.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoActionSheet.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowserCell.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowser.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1606,6 +1785,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5A084A520219EAE00AA629C /* TZTestCell.m in Sources */,
+				C5B361AB21A4F144007D75FC /* SKGiftBagNumberModel.m in Sources */,
 				2ABC43122019E9FA008C3EDA /* SKQuestionReplyCell.m in Sources */,
 				2AAFCBF220480FB40096F27A /* SKDemandModel.m in Sources */,
 				2A9851A420170814005705ED /* SRMutex.m in Sources */,
@@ -1621,6 +1801,7 @@
 				2A9851C920170827005705ED /* MBProgressHUD+Add.m in Sources */,
 				2A9851BF20170814005705ED /* MBProgressHUD.m in Sources */,
 				2A870D0B201B2616006396B6 /* SKTextViewVC.m in Sources */,
+				C5D860DB21A3F96F0005CB09 /* SKVipNumberModel.m in Sources */,
 				2A98519020170814005705ED /* WOTCardViewItem.m in Sources */,
 				2A9851A820170814005705ED /* SRHash.m in Sources */,
 				2AC82AAC201726CA0076305E /* WOTBaseModel.m in Sources */,
@@ -1644,11 +1825,14 @@
 				2A9851B320170814005705ED /* JXPopoverViewCell.m in Sources */,
 				2A98519420170814005705ED /* HCCreateQRCode.m in Sources */,
 				C5E4DCA820200B35006BC4C2 /* SKOrderInfoModel.m in Sources */,
+				C54B022C21A2B2B60016C7B5 /* SKStatisticsTableView.m in Sources */,
 				C59EF485216E0329000927D4 /* SKOrderNotificationCell.m in Sources */,
 				2A98519320170814005705ED /* CardView.m in Sources */,
 				2A9850E420170802005705ED /* MBProgressHUD+Extension.m in Sources */,
 				C5ACC973201F000C00FAAA31 /* ButtonView.m in Sources */,
 				2A9850DD20170802005705ED /* UItableView+Extension.m in Sources */,
+				C5B361B421A52DD5007D75FC /* SKBarChartVC.m in Sources */,
+				C59CE69121A7E5AE0056AD46 /* SKAllSpaceBookStationModel.m in Sources */,
 				2A9851CA20170827005705ED /* MBProgressHUDUtil.m in Sources */,
 				2A9850D420170802005705ED /* NSString+URL.m in Sources */,
 				C5A4C1512019B6E200336297 /* SKRepairVC.m in Sources */,
@@ -1663,6 +1847,7 @@
 				2A98519520170814005705ED /* UIFont+MyFont.m in Sources */,
 				2A9850E220170802005705ED /* WOTMapManager.m in Sources */,
 				2A4AC5DA20186B6500A8CC19 /* SKSalesOrderCell.m in Sources */,
+				C5D860D521A3E3CC0005CB09 /* WOTDatePickerView.m in Sources */,
 				2A3E3FF82048FE6D00171558 /* SKDemandDetailsVC.m in Sources */,
 				2A870CF8201AF246006396B6 /* SKLogListVC.m in Sources */,
 				2A9851A320170814005705ED /* SRDelegateController.m in Sources */,
@@ -1671,27 +1856,35 @@
 				2A98519720170814005705ED /* HCScanQRViewController.m in Sources */,
 				2AC4A7AB202190FC00D824EA /* SKMyCell.m in Sources */,
 				2ABC42EC2019701D008C3EDA /* SKCreateSalesVC.m in Sources */,
+				C5B361B121A52000007D75FC /* SKProjectEarningsModel.m in Sources */,
 				2A9850E620170803005705ED /* JudgmentTime.m in Sources */,
 				2A4AC5D320186AD100A8CC19 /* WOTBaseTableViewController.m in Sources */,
+				C5D860D621A3E3CC0005CB09 /* DatePickerView.m in Sources */,
 				2A9850D620170802005705ED /* WOTConfigThemeUitls.m in Sources */,
 				2A9850D720170802005705ED /* WOTQRCodeUtils.m in Sources */,
 				2A4AC5D02018640A00A8CC19 /* WOTButton.m in Sources */,
 				2AC45A51201F045B009D0698 /* SKSalesOrderModel.m in Sources */,
+				C59CE69F21A8085C0056AD46 /* SKFacilitatorModel.m in Sources */,
 				2A9851A720170814005705ED /* SRLog.m in Sources */,
 				2ABC43162019EBC2008C3EDA /* SKQuestionDetailsHeader.m in Sources */,
 				2A9850D520170802005705ED /* UIColor+ColorChange.m in Sources */,
+				C5B361BB21A55E61007D75FC /* XAxisValueFormatter.m in Sources */,
 				C5C6C2D8209052580043FCDD /* CSLoginViewController.m in Sources */,
 				2AC82A7C20171C8A0076305E /* WOTSingtleton.m in Sources */,
 				2A9850DC20170802005705ED /* UIImage+Extension.m in Sources */,
 				2ABC43092019E7E6008C3EDA /* SKQuestionDetailsVC.m in Sources */,
+				C59CE69C21A807220056AD46 /* SKStatisticsOneFacilitatorModel.m in Sources */,
 				2A4AC5C320181CB500A8CC19 /* XXPageTabView.m in Sources */,
+				C5AF098D21A6B10B00ED1D39 /* PickerView.m in Sources */,
 				2A9851A020170814005705ED /* SRProxyConnect.m in Sources */,
 				2A985085201707C7005705ED /* main.m in Sources */,
 				2A9851AF20170814005705ED /* NSURLRequest+SRWebSocket.m in Sources */,
 				C5ACC95E201ED44700FAAA31 /* SKFinishedOrderVC.m in Sources */,
+				C5B361AE21A4F7E5007D75FC /* SKResidueBookStationModel.m in Sources */,
 				C59EF47F216DEF38000927D4 /* SKOperationmanageViewController.m in Sources */,
 				2A1540E920207A25001730D4 /* SKSalesOrderLogModel.m in Sources */,
 				2A98519620170814005705ED /* UIView+Frame.m in Sources */,
+				C5D860DE21A419AC0005CB09 /* SKOrderNumberModel.m in Sources */,
 				C5ACC96C201EEAAC00FAAA31 /* DetailImageInfoView.m in Sources */,
 				C5ACC96D201EEAAC00FAAA31 /* DetailInfoCollectionViewCell.m in Sources */,
 				C5E4DCAB20205C30006BC4C2 /* SKAcceptAnOrderModel.m in Sources */,
@@ -1701,6 +1894,7 @@
 				2A9850E820170803005705ED /* UIView+Extension.m in Sources */,
 				2A9851DF20170837005705ED /* WOTHTTPNetRequest.m in Sources */,
 				2A9851AC20170814005705ED /* SRIOConsumer.m in Sources */,
+				C59CE69621A7FF9C0056AD46 /* SKFacilitatorTopModel.m in Sources */,
 				2A9851AE20170814005705ED /* SRConstants.m in Sources */,
 				2A98507D201707C7005705ED /* SKSpaceService.xcdatamodeld in Sources */,
 				2AAFCBEF20480B540096F27A /* SKProviderMainVC.m in Sources */,
@@ -1716,16 +1910,20 @@
 				2A9851A620170814005705ED /* SRURLUtilities.m in Sources */,
 				C5A4C14B2019B45C00336297 /* SKPageMenuParentVC.m in Sources */,
 				2A9851A120170814005705ED /* SRRunLoopThread.m in Sources */,
+				C5D8607B21A3A15E0005CB09 /* SKPieChartVC.m in Sources */,
 				2A98519C20170814005705ED /* SRWebSocket.m in Sources */,
 				2A9850DF20170802005705ED /* UISearchBar+JCSearchBarPlaceholder.m in Sources */,
 				2A9851B220170814005705ED /* JXPopoverView.m in Sources */,
 				2A9851B420170814005705ED /* JXPopoverAction.m in Sources */,
 				C5ACC961201EE80500FAAA31 /* SKUserOrderInfoView.m in Sources */,
+				C5166F1B21AA4D2E008858A7 /* SKLineChartVC.m in Sources */,
 				2AC4A7B02021A5DD00D824EA /* SKMyCollectionReusableView.m in Sources */,
 				2AC4A7A7202171D300D824EA /* SKMyVC.m in Sources */,
 				2A870CFF201AF2FD006396B6 /* SKLogListCell.m in Sources */,
+				C59CE69921A8022E0056AD46 /* SKActivityApplyModel.m in Sources */,
 				2AC82A9A201725040076305E /* LoginViewController.m in Sources */,
 				2A9850DA20170802005705ED /* UIImage+Blur.m in Sources */,
+				C59CE68E21A7E1140056AD46 /* SKAllSpaceCompanyModel.m in Sources */,
 				2A3E3FF42048F02F00171558 /* SKDemandeCell.m in Sources */,
 				2ABC42FE2019CE5E008C3EDA /* SKSelectTypeVC.m in Sources */,
 				2A4AC5BC201818E300A8CC19 /* SKSalesMainVC.m in Sources */,
@@ -1895,6 +2093,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SKSpaceService/SKSpaceService.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1923,6 +2122,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skwork.service.gtsk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SKSpaceService/SKSpaceService/SKSpaceService/classes/Statistics/Bridge/SKSpaceService-Bridge-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1933,6 +2135,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SKSpaceService/SKSpaceService.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1961,6 +2164,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skwork.service.gtsk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SKSpaceService/SKSpaceService/SKSpaceService/classes/Statistics/Bridge/SKSpaceService-Bridge-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

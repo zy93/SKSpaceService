@@ -58,6 +58,28 @@
     
 }
 
+-(BOOL)compareDate1:(NSString*)aDate withDate:(NSString*)bDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setTimeZone: [NSTimeZone timeZoneWithName:@"GMT"]];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    NSDate *fromDate = [formatter dateFromString:aDate];
+    NSDate *toDate = [formatter dateFromString:bDate];
+    NSLog(@"%@,%@",fromDate,toDate);
+    NSComparisonResult result = [fromDate compare:toDate];
+    if (result==NSOrderedSame)//相等
+    {
+        return NO;
+    }else if (result==NSOrderedAscending)//开始时间比结束时间小
+    {
+        return NO;
+    }else if (result==NSOrderedDescending)//开始时间比结束时间大
+    {
+        return YES;
+    }
+    return NO;
+}
+
 //计算两个时间的字符串的相隔几天
 -(NSInteger)numberOfDaysWithFromDate:(NSString *)fromDateString toDate:(NSString *)toDateString{
     

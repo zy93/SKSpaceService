@@ -47,6 +47,8 @@
     [self.navigationBar setBackgroundImage:[self imageWithColor:configuration.navBarColor] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTintColor:configuration.navTitleColor];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: configuration.navTitleColor}];
+    [self.navigationBar setBackIndicatorImage:GetImageWithName(@"zl_navBack")];
+    [self.navigationBar setBackIndicatorTransitionMaskImage:GetImageWithName(@"zl_navBack")];
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color
@@ -108,7 +110,7 @@
         _placeholderView = [[UIView alloc] initWithFrame:self.view.bounds];
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
-        imageView.image = GetImageWithName(@"defaultphoto");
+        imageView.image = GetImageWithName(@"zl_defaultphoto");
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.center = CGPointMake(kViewWidth/2, kViewHeight/2-90);
         [_placeholderView addSubview:imageView];

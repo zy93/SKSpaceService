@@ -233,5 +233,99 @@
  */
 +(void)getReserveBookStationOrderWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
 
+#pragma mark - 数据统计
 
+/**
+ 会员人数统计
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryVipNumberWithSuccess:(success)success fail:(fail)fail;
+
+/**
+ 查询订单数量
+
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryOrderNumberWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
+
+/**
+ 查询礼包数量
+
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryGiftBagNumberWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
+
+/**
+ 查询长租工位或空间空位统计
+
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryLongTimeBookStationWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
+
+/**
+ 查询项目收益
+
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryProjectEarningsWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
+
+/**
+ 所有空间企业统计
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)statisticsAllSpaceCompanyWithSuccess:(success)success fail:(fail)fail;
+
+
+/**
+ 所有空间工位数量
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryAllSpaceBookStationNumberyWithSuccess:(success)success fail:(fail)fail;
+
+/**
+ 查询服务商点击top10
+ 
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryFacilitatorTopWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
+
+/**
+活动报名统计
+ 
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)activityApplyStatisticsWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
+
+/**
+查询单个服务商点击统计
+ 
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryStatisticsOneFacilitatorWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
+
+/**
+ 查询所有服务商
+ 
+ @param dict 查询参数
+ @param success 成功回调
+ @param fail 失败回调
+ */
++(void)queryAllFacilitatorWithPict:(NSDictionary *)dict success:(success)success fail:(fail)fail;
 @end
